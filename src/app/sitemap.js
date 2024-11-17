@@ -1,6 +1,4 @@
-import { MetadataRoute } from "next";
-
-export default function sitemap(): MetadataRoute.Sitemap {
+export default function sitemap() {
   const baseUrl =
     process.env.NEXT_PUBLIC_BASE_URL || "https://anwersolangi.com";
 

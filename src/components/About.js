@@ -8,7 +8,7 @@ const About = () => (
       </h2>
       <div className="text-lg space-y-4">
         <p className="text-gray-300/90">
-          I'm a self-taught software developer with a passion for mobile
+          I&apos;m a self-taught software developer with a passion for mobile
           development. My journey in programming started with a curiosity to
           build things that people can use in their daily lives.
         </p>

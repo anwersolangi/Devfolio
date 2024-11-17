@@ -1,8 +1,6 @@
-import { Metadata } from "next";
-
 const baseUrl = process.env.NEXT_PUBLIC_BASE_URL;
 
-export const metadata: Metadata = {
+export const metadata = {
   metadataBase: new URL(baseUrl || "https://anwersolangi.com"),
   title: {
     default: "Anwer Solangi | Mobile App Developer - React Native & iOS",
