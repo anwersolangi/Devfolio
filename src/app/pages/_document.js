@@ -9,7 +9,6 @@ export default function Document() {
           name="description"
           content="Anwer Solangi - Software Developer Portfolio"
         />
-        {/* Add more meta tags as needed */}
       </Head>
       <body>
         <Main />

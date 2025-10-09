@@ -1,118 +1,200 @@
-import React from "react";
-import { Code, Heart } from "lucide-react";
-import Image from "next/image";
-import Link from "next/link";
+"use client";
 
-const SocialLink = ({ href, image, alt }) => (
-  <Link
-    href={href}
-    target="_blank"
-    rel="noopener noreferrer"
-    className="group relative p-3 rounded-full hover:bg-blue-500/10 transition-colors duration-300"
-    aria-label={alt}
-  >
-    {/* Hover glow effect */}
-    <div className="absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-blue-500/5 blur-lg" />
+export default function Footer() {
+  const currentYear = new Date().getFullYear();
 
-    {/* SVG Icon */}
-    <div className="relative w-5 h-5">
-      <Image
-        src={image}
-        alt={alt}
-        fill
-        className="object-contain transition-transform duration-300 group-hover:scale-110 group-hover:brightness-125"
-      />
-    </div>
-  </Link>
-);
+  const quickLinks = [
+    { label: "Home", href: "/" },
+    { label: "Projects", href: "#projects" },
+    { label: "About", href: "#about" },
+    { label: "Skills", href: "#skills" },
+    { label: "Experience", href: "#experience" },
+    { label: "Contact", href: "#contact" },
+  ];
 
-const Footer = () => {
   const socialLinks = [
+    { label: "GitHub", href: "https://github.com/anwersolangi" },
+    { label: "LinkedIn", href: "https://linkedin.com/in/anwersolangi" },
+    { label: "Twitter", href: "https://twitter.com/anwerxolangi" },
+    { label: "Medium", href: "https://medium.com/@anwersolangi" },
+    { label: "Fiverr", href: "https://fiverr.com/anwer_solangi" },
+  ];
+
+  const projects = [
     {
-      href: "https://github.com/anwersolangi",
-      image: "/Github.svg",
-      alt: "Anwer Solangi - Github",
+      label: "YouTube Fullscreen Focus",
+      href: "/extensions/youtube-fullscreen-focus",
     },
-    {
-      href: "https://www.instagram.com/anwersolangi",
-      image: "/Instagram.svg",
-      alt: "Anwer Solangi - Instagram",
-    },
-    {
-      href: "https://www.linkedin.com/in/anwersolangi",
-      image: "/LinkedIn.svg",
-      alt: "Anwer Solangi - LinkedIn",
-    },
-    {
-      href: "https://twitter.com/anwerxolangi",
-      image: "/Twitter.svg",
-      alt: "Anwer Solangi - X",
-    },
+    { label: "Nearby App", href: "https://github.com/anwersolangi/nearby" },
+    { label: "ReactTube", href: "https://github.com/anwersolangi/reacttube" },
   ];
 
   return (
-    <footer className="relative py-12 px-6 overflow-hidden">
-      {/* Background with gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-transparent to-gray-900/50 backdrop-blur-sm" />
+    <footer className="bg-gradient-to-b from-gray-50 to-white border-t border-gray-200">
+      <div className="max-w-6xl mx-auto px-6">
+        <div className="py-16 grid md:grid-cols-4 gap-12">
+          <div className="md:col-span-2 space-y-6">
+            <div>
+              <h3 className="text-3xl font-extralight tracking-tight text-gray-900 mb-2">
+                Anwer Solangi<span className="text-blue-500">.</span>
+              </h3>
+              <p className="text-sm uppercase tracking-[0.3em] text-gray-500 mb-4">
+                React Native Developer
+              </p>
+            </div>
+            <p className="text-gray-600 leading-relaxed max-w-md">
+              Senior React Native Developer based in Karachi, Pakistan. Crafting
+              exceptional mobile experiences with clean, maintainable code.
+              Specializing in cross-platform apps, browser extensions, and
+              innovative solutions that delight users worldwide.
+            </p>
 
-      {/* Content */}
-      <div className="max-w-6xl mx-auto relative">
-        {/* Social Links */}
-        <div className="flex justify-center space-x-2 mb-8">
-          {socialLinks.map((link) => (
-            <SocialLink key={link.alt} {...link} />
-          ))}
+            <div className="flex items-start gap-3 text-sm">
+              <svg
+                className="w-5 h-5 text-gray-400 mt-0.5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                />
+              </svg>
+              <div>
+                <p className="text-gray-700 font-light">
+                  Karachi, Sindh, Pakistan
+                </p>
+                <p className="text-gray-500 text-xs">
+                  Available for remote work worldwide
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <h4 className="text-sm uppercase tracking-[0.2em] text-gray-900 mb-6 font-light">
+              Quick Links
+            </h4>
+            <ul className="space-y-3">
+              {quickLinks.map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    className="text-gray-600 hover:text-gray-900 transition-colors duration-300 text-sm font-light"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div>
+            <h4 className="text-sm uppercase tracking-[0.2em] text-gray-900 mb-6 font-light">
+              Featured Work
+            </h4>
+            <ul className="space-y-3 mb-8">
+              {projects.map((project) => (
+                <li key={project.label}>
+                  <a
+                    href={project.href}
+                    target={
+                      project.href.startsWith("http") ? "_blank" : undefined
+                    }
+                    rel={
+                      project.href.startsWith("http")
+                        ? "noopener noreferrer"
+                        : undefined
+                    }
+                    className="text-gray-600 hover:text-gray-900 transition-colors duration-300 text-sm font-light"
+                  >
+                    {project.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+
+            <h4 className="text-sm uppercase tracking-[0.2em] text-gray-900 mb-6 font-light">
+              Connect
+            </h4>
+            <ul className="space-y-3">
+              {socialLinks.slice(0, 3).map((link) => (
+                <li key={link.label}>
+                  <a
+                    href={link.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-gray-600 hover:text-gray-900 transition-colors duration-300 text-sm font-light"
+                  >
+                    {link.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
 
-        {/* Divider with gradient */}
-        <div className="w-full h-px bg-gradient-to-r from-transparent via-blue-500/20 to-transparent mb-8" />
-
-        {/* Credit Text */}
-        <div className="text-center space-y-4">
-          <p className="text-gray-300 flex items-center justify-center gap-2 group">
-            <span className="text-gray-400">Created with</span>
-            <Heart
-              size={16}
-              className="text-red-500 animate-pulse"
-              fill="currentColor"
-            />
-            <span className="text-gray-400">by</span>
-            <Link
-              href="https://twitter.com/anwerxolangi"
-              target="_blank"
-              className="text-blue-400 hover:text-blue-300 transition-colors duration-300"
-            >
-              Anwer Solangi
-            </Link>
-          </p>
-
-          <p className="text-gray-400/80 flex items-center justify-center gap-2 text-sm">
-            <Code size={14} className="text-blue-500/80" />
-            <span>Built with</span>
-            <Link
-              href="https://nextjs.org"
-              target="_blank"
-              className="text-blue-400/80 hover:text-blue-300 transition-colors duration-300"
-            >
-              Next.js
-            </Link>
-          </p>
+        <div className="py-6 border-t border-gray-200">
+          <div className="bg-blue-50 border border-blue-200 rounded-xl p-4">
+            <p className="text-sm text-gray-700 leading-relaxed">
+              <strong className="text-gray-900">Note:</strong> I am{" "}
+              <strong>Anwer Solangi</strong> (spelled with &apos;e&apos;), a
+              React Native developer. I am a different person from{" "}
+              <em>Anwar Solangi</em> (spelled with &apos;a&apos;), who was a
+              Pakistani television actor (1944-2008).
+            </p>
+          </div>
         </div>
 
-        {/* Background Accents */}
-        <div className="absolute left-1/2 bottom-0 w-[200%] h-px -translate-x-1/2 bg-gradient-to-r from-transparent via-blue-500/20 to-transparent opacity-50" />
+        <div className="py-8 border-t border-gray-200">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+            <p>© {currentYear} Anwer Solangi. All rights reserved.</p>
+            <div className="flex items-center gap-6">
+              <a
+                href="/privacy"
+                className="hover:text-gray-900 transition-colors duration-300"
+              >
+                Privacy Policy
+              </a>
+              <span className="text-gray-300">•</span>
+              <p>Built with Next.js & React</p>
+              <span className="text-gray-300">•</span>
+              <p>Deployed on Vercel</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="pb-8 text-center">
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            className="inline-flex items-center gap-2 px-6 py-3 bg-white border border-gray-200 rounded-xl text-sm text-gray-600 hover:text-gray-900 hover:border-gray-900 transition-all duration-300 shadow-sm hover:shadow-md"
+          >
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M5 10l7-7m0 0l7 7m-7-7v18"
+              />
+            </svg>
+            Back to Top
+          </button>
+        </div>
       </div>
-
-      {/* Bottom gradient fade */}
-      <div
-        className="absolute bottom-0 left-0 right-0 h-px"
-        style={{
-          background:
-            "linear-gradient(to right, transparent, rgba(59, 130, 246, 0.1), transparent)",
-        }}
-      />
     </footer>
   );
-};
-
-export default Footer;
+}

@@ -6,12 +6,7 @@ export default function robots() {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: [
-        "/api/",
-        "/private/",
-        "/*.json$", // Disallow JSON files
-        "/*.xml$", // Disallow XML files except sitemap
-      ],
+      disallow: ["/api/", "/private/", "/*.json$", "/*.xml$"],
     },
     sitemap: `${baseUrl}/sitemap.xml`,
     host: baseUrl,

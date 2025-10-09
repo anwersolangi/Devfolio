@@ -1,19 +1,19 @@
-import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
+import Skills from "@/components/Skills";
+import Projects from "@/components/Projects";
 import Experience from "@/components/Experience";
-import AppCard from "@/components/AppCard";
-import Footer from "@/components/Footer";
+import Contact from "@/components/Contact";
 
-const Portfolio = () => (
-  <main className="min-h-screen relative">
-    <Header />
-    <Hero />
-    <About />
-    <Experience />
-    <AppCard />
-    <Footer />
-  </main>
-);
-
-export default Portfolio;
+export default function Home() {
+  return (
+    <main>
+      <Hero />
+      <About />
+      <Skills />
+      <Projects />
+      <Experience />
+      <Contact />
+    </main>
+  );
+}

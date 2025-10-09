@@ -33,7 +33,7 @@ export const metadata = {
     siteName: "Anwer Solangi",
     images: [
       {
-        url: `${baseUrl}/openGraph.png`,
+        url: `${baseUrl}/og-image.png`,
         width: 1200,
         height: 544,
         alt: "Anwer Solangi - Mobile App Developer",
@@ -46,7 +46,7 @@ export const metadata = {
     description:
       "Mobile app developer specializing in React Native and iOS development.",
     creator: "@anwerxolangi",
-    images: [`${baseUrl}/openGraph.png`],
+    images: [`${baseUrl}/og-image.png`],
   },
   alternates: {
     canonical: baseUrl,
