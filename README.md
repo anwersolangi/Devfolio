@@ -11,8 +11,8 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/anwersolangi/portfolio/issues">Report Bug</a> ·
-  <a href="https://github.com/anwersolangi/portfolio/issues">Request Feature</a>
+  <a href="https://github.com/anwersolangi/Devfolio/issues">Report Bug</a> ·
+  <a href="https://github.com/anwersolangi/Devfolio/issues">Request Feature</a>
 </p>
 
 ## ✨ Features
@@ -45,7 +45,7 @@
 1. Clone the repository
 
    ```sh
-   git clone https://github.com/anwersolangi/portfolio.git
+   git clone https://github.com/anwersolangi/Devfolio.git
    ```
 
 2. Install dependencies
@@ -129,7 +129,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 Anwer Solangi - [@anwerxolangi](https://twitter.com/anwerxolangi)
 
-Project Link: [https://github.com/anwersolangi/portfolio](https://github.com/anwersolangi/portfolio)
+Project Link: [https://github.com/anwersolangi/Devfolio](https://github.com/anwersolangi/Devfolio)
 
 ## 🙏 Acknowledgments
 
