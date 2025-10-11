@@ -114,9 +114,9 @@ export default function ExtensionPrivacyPolicy() {
                 </h2>
                 <div className="space-y-4 text-gray-600 leading-relaxed">
                   <p>
-                    YouTube Fullscreen Focus ("the Extension") is committed to
+                    {`YouTube Fullscreen Focus ("the Extension") is committed to
                     protecting your privacy. This policy explains our data
-                    practices.
+                    practices.`}
                   </p>
                   <div className="bg-green-50 border-l-4 border-green-500 p-6 rounded-r-lg">
                     <p className="text-gray-900 font-medium mb-2">
@@ -161,8 +161,8 @@ export default function ExtensionPrivacyPolicy() {
                 </h2>
                 <div className="space-y-6">
                   <p className="text-gray-600 leading-relaxed">
-                    The Extension requires certain permissions to function
-                    properly. Here's what each permission is used for:
+                    {`The Extension requires certain permissions to function
+                    properly. Here's what each permission is used for:`}
                   </p>
 
                   <div className="space-y-4">
@@ -172,11 +172,11 @@ export default function ExtensionPrivacyPolicy() {
                       </h3>
                       <p className="text-gray-600 mb-2">
                         <strong className="font-medium">Purpose:</strong> To
-                        detect when you're on YouTube or YouTube Kids
+                        {`detect when you're on YouTube or YouTube Kids`}
                       </p>
                       <p className="text-gray-600 mb-2">
                         <strong className="font-medium">Data Access:</strong>{" "}
-                        None - only checks the current tab's URL
+                        {`None - only checks the current tab's URL`}
                       </p>
                       <p className="text-gray-600">
                         <strong className="font-medium">Data Storage:</strong>{" "}
@@ -271,7 +271,7 @@ export default function ExtensionPrivacyPolicy() {
 
               <section id="children-privacy" className="mb-16 scroll-mt-32">
                 <h2 className="text-3xl font-light text-gray-900 mb-6">
-                  Children's Privacy
+                  {`Children's Privacy`}
                 </h2>
                 <div className="space-y-4 text-gray-600 leading-relaxed">
                   <p>
@@ -292,9 +292,9 @@ export default function ExtensionPrivacyPolicy() {
                 </h2>
                 <div className="space-y-4 text-gray-600 leading-relaxed">
                   <p>
-                    We may update this Privacy Policy from time to time. Any
+                    {`We may update this Privacy Policy from time to time. Any
                     changes will be reflected by updating the "Last Updated"
-                    date at the top of this policy.
+                    date at the top of this policy.`}
                   </p>
                   <p>
                     We encourage you to review this Privacy Policy periodically
