@@ -1,3 +1,4 @@
+// components/Projects.js
 "use client";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
@@ -10,6 +11,7 @@ export default function Projects() {
   const cardsRef = useRef([]);
 
   useEffect(() => {
+    const currentRef = sectionRef.current;
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -19,19 +21,24 @@ export default function Projects() {
       { threshold: 0.1 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
+    if (currentRef) {
+      observer.observe(currentRef);
     }
 
-    return () => observer.disconnect();
+    return () => {
+      if (currentRef) {
+        observer.unobserve(currentRef);
+      }
+    };
   }, []);
 
   useEffect(() => {
+    const currentRefs = cardsRef.current;
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
-            const index = cardsRef.current.indexOf(entry.target);
+            const index = currentRefs.indexOf(entry.target);
             if (index !== -1 && !activeCards.includes(index)) {
               setActiveCards((prev) => [...prev, index]);
             }
@@ -41,11 +48,15 @@ export default function Projects() {
       { threshold: 0.2 }
     );
 
-    cardsRef.current.forEach((card) => {
+    currentRefs.forEach((card) => {
       if (card) observer.observe(card);
     });
 
-    return () => observer.disconnect();
+    return () => {
+      currentRefs.forEach((card) => {
+        if (card) observer.unobserve(card);
+      });
+    };
   }, [activeCards]);
 
   const projects = [
@@ -104,6 +115,34 @@ export default function Projects() {
       gradient: "from-purple-500 to-pink-500",
     },
     {
+      title: "YouTube Fullscreen Focus",
+      slug: "youtube-fullscreen-focus",
+      category: "Browser Extension",
+      description:
+        "Chrome extension enhancing YouTube's viewing experience with advanced fullscreen controls and focus mode features. Prevents accidental keystrokes while watching videos.",
+      image: "/youtube-fullscreen-focus.jpg",
+      imageUrl: null,
+      technologies: [
+        "JavaScript",
+        "Chrome APIs",
+        "CSS3",
+        "HTML5",
+        "LocalStorage",
+      ],
+      stats: {
+        type: "Browser Extension",
+        status: "Recently Published",
+      },
+      links: {
+        github: "https://github.com/anwersolangi/youtube-fullscreen-focus",
+        chromeStore:
+          "https://chromewebstore.google.com/detail/youtube-fullscreen-focus/plkdmggghbaenhibengiabjlbfjipngp",
+      },
+      detailsLink: "/extensions/youtube-fullscreen-focus",
+      featured: true,
+      gradient: "from-red-500 to-orange-500",
+    },
+    {
       title: "ReactTube",
       slug: "reacttube",
       category: "Video Social Platform UI",
@@ -143,6 +182,7 @@ export default function Projects() {
             isVisible ? "opacity-100" : "opacity-0"
           }`}
         >
+          {/* Header */}
           <div className="mb-20">
             <div className="inline-flex items-center gap-3 mb-4">
               <div className="w-12 h-px bg-gray-300"></div>
@@ -154,11 +194,13 @@ export default function Projects() {
               Featured Projects
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl font-light">
-              A selection of mobile applications built for clients worldwide,
-              showcasing expertise in React Native development and Firebase
-              integration.
+              A selection of mobile applications and browser extensions built
+              for clients worldwide, showcasing expertise in React Native
+              development, Firebase integration, and web technologies.
             </p>
           </div>
+
+          {/* Projects Grid */}
           <div className="space-y-12">
             {projects.map((project, index) => (
               <div
@@ -172,6 +214,7 @@ export default function Projects() {
                 style={{ transitionDelay: `${index * 150}ms` }}
               >
                 <div className="grid lg:grid-cols-2 gap-0">
+                  {/* Project Image */}
                   <div className="relative h-64 lg:h-auto lg:min-h-[400px] overflow-hidden bg-gradient-to-br from-gray-100 to-gray-50">
                     {project.image || project.imageUrl ? (
                       <Image
@@ -198,6 +241,7 @@ export default function Projects() {
                     )}
                   </div>
 
+                  {/* Project Info */}
                   <div className="p-8 lg:p-12 flex flex-col justify-center">
                     <div className="mb-6">
                       <div className="text-xs uppercase tracking-[0.3em] text-gray-500 mb-2">
@@ -212,6 +256,7 @@ export default function Projects() {
                       {project.description}
                     </p>
 
+                    {/* Technologies */}
                     <div className="mb-8">
                       <div className="text-xs uppercase tracking-[0.3em] text-gray-500 mb-3">
                         Technologies
@@ -228,6 +273,7 @@ export default function Projects() {
                       </div>
                     </div>
 
+                    {/* Stats */}
                     <div className="mb-8 grid grid-cols-2 gap-4">
                       {Object.entries(project.stats).map(([key, value], i) => (
                         <div key={i} className="bg-gray-50 p-4 rounded-lg">
@@ -241,9 +287,12 @@ export default function Projects() {
                       ))}
                     </div>
 
+                    {/* Links */}
                     <div className="flex flex-wrap gap-3">
                       <Link
-                        href={`/projects/${project.slug}`}
+                        href={
+                          project.detailsLink || `/projects/${project.slug}`
+                        }
                         className="inline-flex items-center gap-2 px-5 py-2.5 bg-gray-900 text-white rounded-lg text-sm font-light hover:bg-gray-800 transition-colors"
                       >
                         <svg
@@ -276,6 +325,23 @@ export default function Projects() {
                             <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z" />
                           </svg>
                           Play Store
+                        </a>
+                      )}
+                      {project.links.chromeStore && (
+                        <a
+                          href={project.links.chromeStore}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-2 px-5 py-2.5 border border-gray-300 text-gray-700 rounded-lg text-sm font-light hover:bg-gray-50 transition-colors"
+                        >
+                          <svg
+                            className="w-4 h-4"
+                            fill="currentColor"
+                            viewBox="0 0 24 24"
+                          >
+                            <path d="M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2M12,4.44C13.26,4.44 14.45,4.78 15.5,5.36L13.47,8.53C12.76,8.2 12,8 11.18,8C9.47,8 8,9.47 8,11.18C8,12.89 9.47,14.36 11.18,14.36C12.89,14.36 14.36,12.89 14.36,11.18C14.36,10.78 14.29,10.39 14.17,10.03L17.62,5.19C18.9,6.54 19.73,8.35 19.73,10.36C19.73,14.91 16.09,18.55 11.55,18.55C7,18.55 3.36,14.91 3.36,10.36C3.36,5.82 7,2.18 11.55,2.18C11.7,2.18 11.85,2.19 12,2.2V4.44Z" />
+                          </svg>
+                          Chrome Store
                         </a>
                       )}
                       {project.links.github && (
@@ -329,6 +395,7 @@ export default function Projects() {
             ))}
           </div>
 
+          {/* Call to Action */}
           <div className="mt-20 text-center">
             <div className="inline-flex flex-col items-center gap-6 p-12 bg-white border border-gray-200 rounded-2xl shadow-sm">
               <div>
@@ -343,7 +410,7 @@ export default function Projects() {
                 {projects.map((project, index) => (
                   <Link
                     key={index}
-                    href={`/projects/${project.slug}`}
+                    href={project.detailsLink || `/projects/${project.slug}`}
                     className="px-6 py-2.5 border border-gray-300 text-gray-700 rounded-xl font-light hover:bg-gray-50 transition-colors"
                   >
                     {project.title}
