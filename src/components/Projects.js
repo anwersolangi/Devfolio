@@ -1,4 +1,4 @@
-// components/Projects.js
+
 "use client";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
@@ -85,6 +85,7 @@ export default function Projects() {
         codecanyon:
           "https://codecanyon.net/item/nearby-react-native-app-for-find-and-chat-using-gps-technology/25363722",
       },
+      detailsLink: "https://apps.anwersolangi.com/nearby",
       featured: true,
       gradient: "from-blue-500 to-cyan-500",
     },
@@ -111,6 +112,7 @@ export default function Projects() {
         codecanyon:
           "https://codecanyon.net/item/whatsupfire-react-native-messenger/30632195",
       },
+      detailsLink: "https://apps.anwersolangi.com/whatsupfire",
       featured: true,
       gradient: "from-purple-500 to-pink-500",
     },
@@ -138,7 +140,7 @@ export default function Projects() {
         chromeStore:
           "https://chromewebstore.google.com/detail/youtube-fullscreen-focus/plkdmggghbaenhibengiabjlbfjipngp",
       },
-      detailsLink: "/extensions/youtube-fullscreen-focus",
+      detailsLink: "https://apps.anwersolangi.com/youtube-fullscreen-focus",
       featured: true,
       gradient: "from-red-500 to-orange-500",
     },
@@ -165,6 +167,7 @@ export default function Projects() {
         github:
           "https://github.com/anwersolangi/ReactTube-Youtube-clone-in-React-Native",
       },
+      detailsLink: "https://apps.anwersolangi.com/reacttube",
       featured: false,
       gradient: "from-red-500 to-orange-500",
     },
@@ -178,11 +181,10 @@ export default function Projects() {
     >
       <div className="max-w-7xl mx-auto">
         <div
-          className={`transition-all duration-1000 ${
-            isVisible ? "opacity-100" : "opacity-0"
-          }`}
+          className={`transition-all duration-1000 ${isVisible ? "opacity-100" : "opacity-0"
+            }`}
         >
-          {/* Header */}
+
           <div className="mb-20">
             <div className="inline-flex items-center gap-3 mb-4">
               <div className="w-12 h-px bg-gray-300"></div>
@@ -200,21 +202,20 @@ export default function Projects() {
             </p>
           </div>
 
-          {/* Projects Grid */}
+
           <div className="space-y-12">
             {projects.map((project, index) => (
               <div
                 key={index}
                 ref={(el) => (cardsRef.current[index] = el)}
-                className={`bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-700 ${
-                  activeCards.includes(index)
-                    ? "opacity-100 translate-y-0"
-                    : "opacity-0 translate-y-10"
-                }`}
+                className={`bg-white border border-gray-200 rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-700 ${activeCards.includes(index)
+                  ? "opacity-100 translate-y-0"
+                  : "opacity-0 translate-y-10"
+                  }`}
                 style={{ transitionDelay: `${index * 150}ms` }}
               >
                 <div className="grid lg:grid-cols-2 gap-0">
-                  {/* Project Image */}
+
                   <div className="relative h-64 lg:h-auto lg:min-h-[400px] overflow-hidden bg-gradient-to-br from-gray-100 to-gray-50">
                     {project.image || project.imageUrl ? (
                       <Image
@@ -241,7 +242,7 @@ export default function Projects() {
                     )}
                   </div>
 
-                  {/* Project Info */}
+
                   <div className="p-8 lg:p-12 flex flex-col justify-center">
                     <div className="mb-6">
                       <div className="text-xs uppercase tracking-[0.3em] text-gray-500 mb-2">
@@ -256,7 +257,7 @@ export default function Projects() {
                       {project.description}
                     </p>
 
-                    {/* Technologies */}
+
                     <div className="mb-8">
                       <div className="text-xs uppercase tracking-[0.3em] text-gray-500 mb-3">
                         Technologies
@@ -273,7 +274,7 @@ export default function Projects() {
                       </div>
                     </div>
 
-                    {/* Stats */}
+
                     <div className="mb-8 grid grid-cols-2 gap-4">
                       {Object.entries(project.stats).map(([key, value], i) => (
                         <div key={i} className="bg-gray-50 p-4 rounded-lg">
@@ -287,7 +288,7 @@ export default function Projects() {
                       ))}
                     </div>
 
-                    {/* Links */}
+
                     <div className="flex flex-wrap gap-3">
                       <Link
                         href={
@@ -395,7 +396,7 @@ export default function Projects() {
             ))}
           </div>
 
-          {/* Call to Action */}
+
           <div className="mt-20 text-center">
             <div className="inline-flex flex-col items-center gap-6 p-12 bg-white border border-gray-200 rounded-2xl shadow-sm">
               <div>

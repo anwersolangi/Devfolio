@@ -24,7 +24,7 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // Close menu when route changes
+
   useEffect(() => {
     setMenuOpen(false);
   }, [pathname]);
@@ -81,6 +81,25 @@ export default function Header() {
         </svg>
       ),
     },
+    {
+      label: "Apps",
+      href: "https://apps.anwersolangi.com",
+      icon: (
+        <svg
+          className="w-4 h-4"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth={2}
+            d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
+          />
+        </svg>
+      ),
+    },
   ];
 
   const allMobileItems = [...menuItems, ...actionItems];
@@ -88,11 +107,10 @@ export default function Header() {
   return (
     <>
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${
-          isScrolled
-            ? "bg-white/98 backdrop-blur-lg shadow-lg border-b border-gray-100"
-            : "bg-transparent"
-        }`}
+        className={`fixed top-0 left-0 right-0 z-[100] transition-all duration-500 ${isScrolled
+          ? "bg-white/98 backdrop-blur-lg shadow-lg border-b border-gray-100"
+          : "bg-transparent"
+          }`}
       >
         <div
           className="absolute top-0 left-0 h-0.5 bg-gradient-to-r from-blue-500 to-purple-500 transition-all duration-300"
@@ -165,19 +183,16 @@ export default function Header() {
               <span className="sr-only">Toggle menu</span>
               <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
                 <span
-                  className={`block absolute h-0.5 w-6 bg-current transform transition-all duration-300 ${
-                    menuOpen ? "rotate-45" : "-translate-y-2"
-                  }`}
+                  className={`block absolute h-0.5 w-6 bg-current transform transition-all duration-300 ${menuOpen ? "rotate-45" : "-translate-y-2"
+                    }`}
                 />
                 <span
-                  className={`block absolute h-0.5 w-6 bg-current transform transition-all duration-300 ${
-                    menuOpen ? "opacity-0" : "opacity-100"
-                  }`}
+                  className={`block absolute h-0.5 w-6 bg-current transform transition-all duration-300 ${menuOpen ? "opacity-0" : "opacity-100"
+                    }`}
                 />
                 <span
-                  className={`block absolute h-0.5 w-6 bg-current transform transition-all duration-300 ${
-                    menuOpen ? "-rotate-45" : "translate-y-2"
-                  }`}
+                  className={`block absolute h-0.5 w-6 bg-current transform transition-all duration-300 ${menuOpen ? "-rotate-45" : "translate-y-2"
+                    }`}
                 />
               </div>
             </button>
@@ -186,16 +201,14 @@ export default function Header() {
       </header>
 
       <div
-        className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-[55] lg:hidden transition-opacity duration-300 ${
-          menuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
-        }`}
+        className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-[105] lg:hidden transition-opacity duration-300 ${menuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
+          }`}
         onClick={() => setMenuOpen(false)}
       />
 
       <div
-        className={`fixed top-0 right-0 bottom-0 w-full sm:w-80 bg-white z-[60] lg:hidden transform transition-transform duration-500 ease-out shadow-2xl ${
-          menuOpen ? "translate-x-0" : "translate-x-full"
-        }`}
+        className={`fixed top-0 right-0 bottom-0 w-full sm:w-80 bg-white z-[110] lg:hidden transform transition-transform duration-500 ease-out shadow-2xl ${menuOpen ? "translate-x-0" : "translate-x-full"
+          }`}
       >
         <div className="h-full flex flex-col">
           <div className="flex items-center justify-between px-6 py-6 border-b border-gray-100">

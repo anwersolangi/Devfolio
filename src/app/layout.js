@@ -2,8 +2,8 @@ import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { AllSchemas } from "@/components/SEOComponents";
 
+import { AllSchemas } from "@/components/SEOComponents";
 const inter = Inter({
   subsets: ["latin"],
   display: "swap",
@@ -16,7 +16,7 @@ const jetbrainsMono = JetBrains_Mono({
   variable: "--font-mono",
 });
 
-const baseUrl = process.env.NEXT_PUBLIC_BASE_URL || "https://anwersolangi.com";
+const baseUrl = (process.env.NEXT_PUBLIC_BASE_URL || "https://anwersolangi.com").replace(/\/$/, "");
 
 export const metadata = {
   metadataBase: new URL(baseUrl),

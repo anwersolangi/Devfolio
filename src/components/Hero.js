@@ -77,9 +77,8 @@ export default function Hero() {
 
       <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-b from-white to-gray-50 px-6 overflow-hidden">
         <div
-          className={`max-w-6xl w-full transition-all duration-1000 ${
-            isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-          }`}
+          className={`max-w-6xl w-full transition-all duration-1000 ${isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+            }`}
         >
           <div className="space-y-12">
             <div className="space-y-6">
@@ -163,6 +162,13 @@ export default function Hero() {
                 className="text-sm font-light tracking-widest text-gray-500 hover:text-gray-900 transition-colors duration-300"
               >
                 GITHUB
+              </a>
+
+              <a
+                href="https://apps.anwersolangi.com"
+                className="text-sm font-light tracking-widest text-gray-500 hover:text-gray-900 transition-colors duration-300"
+              >
+                APPS
               </a>
 
               <a
