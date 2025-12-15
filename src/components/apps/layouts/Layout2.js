@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 function FAQItem({ question, answer }) {
     const [isOpen, setIsOpen] = useState(false);
@@ -107,9 +108,11 @@ export default function Layout2({ app }) {
 
                         {app.icon && (
                             <div className="absolute top-20 right-6 md:top-1/2 md:-translate-y-1/2 md:right-0 lg:-right-20 hidden lg:block opacity-10">
-                                <img
+                                <Image
                                     src={app.icon}
                                     alt={`${app.name} Icon`}
+                                    width={384}
+                                    height={384}
                                     className="w-96 h-96 rounded-3xl filter grayscale"
                                 />
                             </div>
@@ -117,9 +120,11 @@ export default function Layout2({ app }) {
 
                         {app.icon && (
                             <div className="block lg:hidden mb-8">
-                                <img
+                                <Image
                                     src={app.icon}
                                     alt={`${app.name} Icon`}
+                                    width={96}
+                                    height={96}
                                     className="w-24 h-24 rounded-2xl shadow-lg"
                                 />
                             </div>

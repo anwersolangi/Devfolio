@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 function FAQItem({ question, answer }) {
     const [isOpen, setIsOpen] = useState(false);
@@ -101,9 +102,11 @@ export default function Layout3({ app }) {
                     <div className="space-y-8">
                         <div className="flex flex-col md:flex-row items-start md:items-center gap-6">
                             {app.icon && (
-                                <img
+                                <Image
                                     src={app.icon}
                                     alt={`${app.name} Icon`}
+                                    width={96}
+                                    height={96}
                                     className="w-20 h-20 md:w-24 md:h-24 rounded-2xl shadow-lg"
                                 />
                             )}

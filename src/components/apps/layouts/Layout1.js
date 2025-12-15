@@ -1,6 +1,7 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 
 export default function Layout1({ app }) {
     const [isVisible, setIsVisible] = useState(false);
@@ -64,9 +65,11 @@ export default function Layout1({ app }) {
 
                         {app.icon && (
                             <div className="absolute top-10 right-10 md:static md:mb-8 hidden md:block">
-                                <img
+                                <Image
                                     src={app.icon}
                                     alt={`${app.name} Icon`}
+                                    width={160}
+                                    height={160}
                                     className="w-32 h-32 md:w-40 md:h-40 rounded-3xl shadow-2xl transform rotate-3 hover:rotate-0 transition-all duration-500"
                                 />
                             </div>

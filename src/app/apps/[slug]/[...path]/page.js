@@ -444,7 +444,7 @@ function HelpPage({ help, appSlug }) {
       {/* Footer Note */}
       <div className="bg-gray-50 rounded-xl p-6 border border-gray-200 text-center">
         <p className="text-gray-600">
-          Can't find what you're looking for? Email me directly at{" "}
+          Can&apos;t find what you&apos;re looking for? Email me directly at{" "}
           <a
             href={`mailto:${help.supportEmail}`}
             className="text-blue-600 hover:underline font-medium"
