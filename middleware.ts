@@ -6,8 +6,13 @@ export function middleware(request: NextRequest) {
 
   // Get hostname from headers to handle subdomains correctly
   const host = request.headers.get("host") || "";
+  const forwardedHost = request.headers.get("x-forwarded-host") || "";
+  const finalHost = forwardedHost || host;
+
   // Remove port if present (e.g. localhost:3000)
-  const hostname = host.split(":")[0];
+  const hostname = finalHost.split(":")[0];
+
+  console.log("Middleware Debug:", { host, forwardedHost, hostname, path: url.pathname });
 
   const subdomain = "apps";
   // Check if hostname matches our subdomain
