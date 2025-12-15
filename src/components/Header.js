@@ -120,7 +120,7 @@ export default function Header() {
         <nav className="max-w-7xl mx-auto px-6 lg:px-12">
           <div className="flex items-center justify-between h-20">
             <Link
-              href="/"
+              href="https://anwersolangi.com"
               className="group relative font-light text-xl md:text-2xl tracking-tighter text-black transition-all duration-300 hover:scale-105"
             >
               Anwer Solangi

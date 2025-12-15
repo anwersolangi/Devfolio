@@ -3,12 +3,20 @@ import type { NextRequest } from "next/server";
 
 export function middleware(request: NextRequest) {
   const url = request.nextUrl;
-  const hostname = request.headers.get("host") || "";
+
+  // Get hostname from headers to handle subdomains correctly
+  const host = request.headers.get("host") || "";
+  // Remove port if present (e.g. localhost:3000)
+  const hostname = host.split(":")[0];
 
   const subdomain = "apps";
-  const isAppsSubdomain = hostname.startsWith(`${subdomain}.`);
+  // Check if hostname matches our subdomain
+  const isAppsSubdomain = hostname === `apps.anwersolangi.com` || hostname.startsWith(`${subdomain}.`);
 
   if (isAppsSubdomain) {
+    // Rewrites:
+    // apps.domain.com/ -> /apps
+    // apps.domain.com/slug -> /apps/slug
     const newUrl = new URL(`/apps${url.pathname}`, request.url);
     return NextResponse.rewrite(newUrl);
   }
