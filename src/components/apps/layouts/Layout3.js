@@ -290,7 +290,7 @@ export default function Layout3({ app }) {
                             </a>
                         )}
                         <Link
-                            href="/"
+                            href="https://anwersolangi.com/#contact"
                             className="text-sm font-light text-gray-600 hover:text-black transition-colors duration-300 tracking-wide"
                         >
                             CONTACT DEVELOPER
@@ -303,10 +303,10 @@ export default function Layout3({ app }) {
             <section className="py-12 px-6 border-t border-gray-100">
                 <div className="max-w-5xl mx-auto">
                     <div className="flex flex-wrap gap-6 justify-center text-sm">
-                        <Link href={`/apps/${app.slug}/privacy`} className="text-gray-500 hover:text-black transition-colors">
+                        <Link href={`https://apps.anwersolangi.com/${app.slug}/privacy`} className="text-gray-500 hover:text-black transition-colors">
                             Privacy Policy
                         </Link>
-                        <Link href={`/apps/${app.slug}/terms`} className="text-gray-500 hover:text-black transition-colors">
+                        <Link href={`https://apps.anwersolangi.com/${app.slug}/terms`} className="text-gray-500 hover:text-black transition-colors">
                             Terms of Service
                         </Link>
                         {app.links?.email && (
