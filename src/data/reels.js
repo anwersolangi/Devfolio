@@ -1571,4 +1571,56 @@ Absolutely positioned at \`bottom: insets.bottom + 16\`, always visible above th
 **Stack:** React Native · Reanimated 3 · expo-linear-gradient · TypeScript
   `,
   },
+  {
+    id: 48,
+    facebookPostId: "",
+    reelId: "",
+    title:
+      "Coffee Order Carousel in React Native — Swipe the cards and they scale, tilt and fade",
+    slug: "coffee-order-carousel-react-native-swipe-tap-cards",
+    category: "Mobile UI",
+    description:
+      "A coffee-ordering carousel where cards scale, tilt and fade on swipe, and tap springs one to center. Swipe the cards and they scale, tilt and fade.",
+    videoUrl: "",
+    coverImage: `${COVERS}/coffee-order-carousel-react-native-swipe-tap-cards-reel.png`,
+    coverImageReel: `${COVERS}/coffee-order-carousel-react-native-swipe-tap-cards-reel.png`,
+    coverImageOg: `${COVERS}/og-image-coffee-order-carousel-in-react-native-swipe-the-cards-warm.png`,
+    coverImagePin: `${COVERS}/pin-coffee-order-carousel-light.png`,
+    technologies: [
+      "React Native",
+      "Reanimated",
+      "react-native-gesture-handler",
+      "expo-linear-gradient",
+      "TypeScript",
+    ],
+    views: 1032,
+    duration: 5,
+    publishTime: "05 June 2026",
+    permalink: "",
+    links: {
+      facebook: "https://www.facebook.com/share/r/1DVTqX3NEv/",
+      github: "https://github.com/anwersolangi/rn-interface-kit",
+      youtube: "https://youtube.com/shorts/Xkadoqb-HO0?si=oJaaB2BFy693T3EY",
+      instagram:
+        "https://www.instagram.com/reel/DZNjYcQMR76/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      tiktok:
+        "https://www.tiktok.com/@anwersolangidev/video/7647958173608840455",
+      pinterest: "https://pin.it/3t8JlWT3M",
+    },
+    content: `
+# Coffee Order Carousel in React Native
+
+A coffee-ordering carousel where cards scale, tilt and fade on swipe, and tap springs one to center.
+
+## The hook moment
+
+Swipe the cards and they scale, tilt and fade — the beat that stops the scroll.
+
+## Built from scratch
+
+Single-file TypeScript, zero UI kit, production-ready. Pure Reanimated + Gesture Handler.
+
+**Stack:** React Native · Reanimated · react-native-gesture-handler · expo-linear-gradient · TypeScript
+  `,
+  },
 ];
