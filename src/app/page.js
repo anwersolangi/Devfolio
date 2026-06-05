@@ -9,7 +9,7 @@ import Contact from "@/components/Contact";
 import { reelsData } from "@/data/reels";
 import { getReelsStats } from "@/lib/reelStats";
 
-export const revalidate = 60 * 60;
+export const revalidate = 3600;
 
 export default async function Home() {
   const featuredReels = [...reelsData].slice(-5).reverse();

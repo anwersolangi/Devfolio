@@ -25,9 +25,8 @@ function cleanTitle(str) {
 const SITE_URL = "https://anwersolangi.com";
 const SITE_NAME = "Anwer Solangi";
 const TWITTER_HANDLE = "@anwerxolangi";
-const REEL_DETAIL_REVALIDATE_SECONDS = 60 * 60;
 
-export const revalidate = REEL_DETAIL_REVALIDATE_SECONDS;
+export const revalidate = 3600;
 
 function YouTubeIcon({ className }) {
   return (

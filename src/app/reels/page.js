@@ -9,7 +9,7 @@ import {
 } from "@/lib/reelStats";
 import { Play, ArrowLeft, ArrowRight } from "lucide-react";
 
-export const revalidate = 60 * 60;
+export const revalidate = 3600;
 
 export const metadata = {
   title: "UI Reels & Shorts | Anwer Solangi",
