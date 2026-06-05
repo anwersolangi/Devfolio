@@ -3,10 +3,42 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
+// Apps live on their own subdomain in production; everything else on the root domain.
+const MAIN_DOMAIN = "anwersolangi.com";
+const MAIN_URL = "https://anwersolangi.com";
+const APPS_URL = "https://apps.anwersolangi.com";
+
+// Renders a same-origin Next link, or a plain anchor for cross-subdomain URLs
+// (Next's <Link> can't client-side navigate across origins).
+function NavLink({ href, className, onClick, children }) {
+  if (href.startsWith("http")) {
+    return (
+      <a href={href} className={className} onClick={onClick}>
+        {children}
+      </a>
+    );
+  }
+  return (
+    <Link href={href} className={className} onClick={onClick}>
+      {children}
+    </Link>
+  );
+}
+
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  // Default to relative links so the server render and first client render match
+  // (no hydration mismatch); the effect below upgrades them after mount.
+  const [isProd, setIsProd] = useState(false);
+  const [onAppsSubdomain, setOnAppsSubdomain] = useState(false);
   const pathname = usePathname();
+
+  useEffect(() => {
+    const host = window.location.hostname;
+    setIsProd(host === MAIN_DOMAIN || host.endsWith(`.${MAIN_DOMAIN}`));
+    setOnAppsSubdomain(host.startsWith("apps."));
+  }, []);
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 10);
@@ -23,15 +55,22 @@ export default function Header() {
     };
   }, [menuOpen]);
 
-  // Links are absolute so they work the same from /, /apps, /reels/[slug] etc.
-  // Anchor links jump to the home page section; route links navigate.
+  // "Apps" always points at the apps subdomain in production.
+  const appsHref = isProd ? APPS_URL : "/apps";
+  // From the apps subdomain, main-site links must cross back to the root domain;
+  // anywhere else they stay relative.
+  const mainHref = (path) => (onAppsSubdomain ? `${MAIN_URL}${path}` : path);
+
+  const logoHref = mainHref("/");
+  const contactHref = mainHref("/#contact");
+
   const links = [
-    { label: "Reels", href: "/reels", type: "route" },
-    { label: "Apps", href: "/apps", type: "route" },
-    { label: "Projects", href: "/#projects", type: "anchor" },
-    { label: "About", href: "/#about", type: "anchor" },
-    { label: "Experience", href: "/#experience", type: "anchor" },
-    { label: "Contact", href: "/#contact", type: "anchor" },
+    { label: "Reels", href: mainHref("/reels") },
+    { label: "Apps", href: appsHref },
+    { label: "Projects", href: mainHref("/#projects") },
+    { label: "About", href: mainHref("/#about") },
+    { label: "Experience", href: mainHref("/#experience") },
+    { label: "Contact", href: mainHref("/#contact") },
   ];
 
   return (
@@ -46,7 +85,7 @@ export default function Header() {
         <nav className="max-w-screen mx-auto px-6 lg:px-16">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <Link href="/" className="group inline-flex items-center gap-2.5">
+            <NavLink href={logoHref} className="group inline-flex items-center gap-2.5">
               <span className="w-7 h-7 rounded-md bg-accent text-[#1a0a02] font-bold text-sm flex items-center justify-center">
                 A
               </span>
@@ -56,18 +95,18 @@ export default function Header() {
               <span className="hidden sm:inline font-mono text-[10px] tracking-[0.08em] text-ink-3 ml-1">
                 / react native dev
               </span>
-            </Link>
+            </NavLink>
 
             {/* Desktop links */}
             <div className="hidden lg:flex items-center gap-7 text-sm text-ink-2">
               {links.map((l) => (
-                <Link
+                <NavLink
                   key={l.href}
                   href={l.href}
                   className="hover:text-ink transition-colors duration-200"
                 >
                   {l.label}
-                </Link>
+                </NavLink>
               ))}
             </div>
 
@@ -81,12 +120,12 @@ export default function Header() {
               >
                 github ↗
               </a>
-              <Link
-                href="/#contact"
+              <NavLink
+                href={contactHref}
                 className="px-4 py-2 rounded-full bg-ink text-bg text-xs font-semibold hover:bg-accent hover:text-[#1a0a02] transition-colors duration-200"
               >
                 Hire me
-              </Link>
+              </NavLink>
             </div>
 
             {/* Mobile burger */}
@@ -140,14 +179,14 @@ export default function Header() {
           </div>
           <nav className="flex-1 overflow-y-auto px-6 py-6 space-y-1">
             {links.map((l) => (
-              <Link
+              <NavLink
                 key={l.href}
                 href={l.href}
                 onClick={() => setMenuOpen(false)}
                 className="block px-4 py-3 text-base font-light text-ink/80 hover:text-ink hover:bg-white/5 rounded-md transition-all"
               >
                 {l.label}
-              </Link>
+              </NavLink>
             ))}
             <div className="mt-6 space-y-2">
               <a
@@ -159,13 +198,13 @@ export default function Header() {
               >
                 github ↗
               </a>
-              <Link
-                href="/#contact"
+              <NavLink
+                href={contactHref}
                 onClick={() => setMenuOpen(false)}
                 className="block text-center px-4 py-3 bg-accent text-[#1a0a02] rounded-md text-sm font-semibold"
               >
                 Hire me
-              </Link>
+              </NavLink>
             </div>
           </nav>
           <div className="px-6 py-5 border-t border-rule font-mono text-[11px] text-ink-3 tracking-[0.06em]">
