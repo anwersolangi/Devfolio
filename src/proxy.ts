@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const url = request.nextUrl;
 
   // Get hostname from headers to handle subdomains correctly
@@ -12,42 +12,21 @@ export function middleware(request: NextRequest) {
   // Remove port if present (e.g. localhost:3000)
   const hostname = finalHost.split(":")[0];
 
-  console.log("Middleware Debug:", {
-    host,
-    forwardedHost,
-    hostname,
-    path: url.pathname,
-  });
-
-  // Create response object to add debug headers
-  const response = NextResponse.next();
-  // Helper to set debug headers
-  const setDebugHeaders = (res: NextResponse) => {
-    res.headers.set("x-debug-host", host);
-    res.headers.set("x-debug-forwarded-host", forwardedHost);
-    res.headers.set("x-debug-hostname", hostname);
-  };
-  setDebugHeaders(response);
-
   const subdomain = "apps";
   // Check if hostname matches our subdomain
   const isAppsSubdomain =
     hostname === `apps.anwersolangi.com` ||
     hostname.startsWith(`${subdomain}.`);
-  response.headers.set("x-debug-is-apps", isAppsSubdomain ? "true" : "false");
 
   if (isAppsSubdomain) {
     // Rewrites:
     // apps.domain.com/ -> /apps
     // apps.domain.com/slug -> /apps/slug
     const newUrl = new URL(`/apps${url.pathname}`, request.url);
-    const rewriteResponse = NextResponse.rewrite(newUrl);
-    setDebugHeaders(rewriteResponse);
-    rewriteResponse.headers.set("x-debug-rewrite-target", newUrl.pathname);
-    return rewriteResponse;
+    return NextResponse.rewrite(newUrl);
   }
 
-  return response;
+  return NextResponse.next();
 }
 
 export const config = {

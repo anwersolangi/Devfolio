@@ -1,3 +1,6 @@
+// data/reels.js — updated for v2 schema
+const COVERS = "/reels/covers";
+
 export const reelsData = [
   {
     id: 1,
@@ -11,7 +14,10 @@ export const reelsData = [
       "Couldn’t decide what to eat… so I built a spinning food wheel in React Native 🍝🥩🍛",
     videoUrl:
       "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1470240467975774%2F&show_text=0&width=560",
-    coverImage: "", // TODO: replace with thumbnail URL
+    coverImage: "",
+    coverImageReel: `${COVERS}/couldnt-decide-what-to-eat-so-i-built-a-spinning-food-wheel-reel.png`,
+    coverImageOg: `${COVERS}/couldnt-decide-what-to-eat-so-i-built-a-spinning-food-wheel-og.png`,
+    coverImagePin: `${COVERS}/couldnt-decide-what-to-eat-so-i-built-a-spinning-food-wheel-pin.png`,
     technologies: [
       "React Native",
       "Reanimated",
@@ -27,6 +33,8 @@ export const reelsData = [
       github: "https://github.com/anwersolangi/rn-interface-kit",
       youtube: "",
       instagram: "",
+      tiktok: "",
+      pinterest: "",
     },
     content: `
 # Couldn’t decide what to eat… so I built a spinning food wheel in React Native 🍝🥩🍛
@@ -52,7 +60,10 @@ What should I add next to this wheel?
       "Biometric Authentication Screen with Face ID & Fingerprint in React Native 🔐",
     videoUrl:
       "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F839348452465405%2F&show_text=0&width=560",
-    coverImage: "", // TODO: replace with thumbnail URL
+    coverImage: "",
+    coverImageReel: `${COVERS}/biometric-authentication-screen-with-face-id-fingerprint-in-reel.png`,
+    coverImageOg: `${COVERS}/biometric-authentication-screen-with-face-id-fingerprint-in-og.png`,
+    coverImagePin: `${COVERS}/biometric-authentication-screen-with-face-id-fingerprint-in-pin.png`,
     technologies: [
       "React Native",
       "Reanimated",
@@ -69,6 +80,8 @@ What should I add next to this wheel?
       github: "https://github.com/anwersolangi/rn-interface-kit",
       youtube: "",
       instagram: "",
+      tiktok: "",
+      pinterest: "",
     },
     content: `
 # Biometric Authentication Screen with Face ID & Fingerprint in React Native 🔐
@@ -91,7 +104,10 @@ Full code 👉 anwersolangi.com
       "Swipeable Card Stack Wallet with Gesture-Driven Animations 💳✨",
     videoUrl:
       "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F2042944753254242%2F&show_text=0&width=560",
-    coverImage: "", // TODO: replace with thumbnail URL
+    coverImage: "",
+    coverImageReel: `${COVERS}/swipeable-card-stack-wallet-with-gesture-driven-animations-reel.png`,
+    coverImageOg: `${COVERS}/swipeable-card-stack-wallet-with-gesture-driven-animations-og.png`,
+    coverImagePin: `${COVERS}/swipeable-card-stack-wallet-with-gesture-driven-animations-pin.png`,
     technologies: [
       "React Native",
       "Reanimated",
@@ -109,6 +125,8 @@ Full code 👉 anwersolangi.com
       github: "https://github.com/anwersolangi/rn-interface-kit",
       youtube: "",
       instagram: "",
+      tiktok: "",
+      pinterest: "",
     },
     content: `
 # Swipeable Card Stack Wallet with Gesture-Driven Animations 💳✨
@@ -131,7 +149,10 @@ Full code 👉 anwersolangi.com
       "Your dashboard isn’t boring… it just needs better hierarchy ⚡",
     videoUrl:
       "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F897735173244805%2F&show_text=0&width=560",
-    coverImage: "", // TODO: replace with thumbnail URL
+    coverImage: "",
+    coverImageReel: `${COVERS}/your-dashboard-isnt-boring-it-just-needs-better-hierarchy-reel.png`,
+    coverImageOg: `${COVERS}/your-dashboard-isnt-boring-it-just-needs-better-hierarchy-og.png`,
+    coverImagePin: `${COVERS}/your-dashboard-isnt-boring-it-just-needs-better-hierarchy-pin.png`,
     technologies: ["React Native"],
     views: 630,
     duration: 10,
@@ -142,6 +163,8 @@ Full code 👉 anwersolangi.com
       github: "https://github.com/anwersolangi/rn-interface-kit",
       youtube: "",
       instagram: "",
+      tiktok: "",
+      pinterest: "",
     },
     content: `
 # Your dashboard isn’t boring… it just needs better hierarchy ⚡
@@ -162,7 +185,10 @@ Clean spacing + contrast = instant upgrade.
       "Premium Instagram-Inspired Feed + Glassmorphic Tab Bar in React Native 🔥",
     videoUrl:
       "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1320114499875664%2F&show_text=0&width=560",
-    coverImage: "", // TODO: replace with thumbnail URL
+    coverImage: "",
+    coverImageReel: `${COVERS}/premium-instagram-inspired-feed-glassmorphic-tab-bar-in-reac-reel.png`,
+    coverImageOg: `${COVERS}/premium-instagram-inspired-feed-glassmorphic-tab-bar-in-reac-og.png`,
+    coverImagePin: `${COVERS}/premium-instagram-inspired-feed-glassmorphic-tab-bar-in-reac-pin.png`,
     technologies: [
       "React Native",
       "Reanimated",
@@ -179,6 +205,8 @@ Clean spacing + contrast = instant upgrade.
       github: "https://github.com/anwersolangi/rn-interface-kit",
       youtube: "",
       instagram: "",
+      tiktok: "",
+      pinterest: "",
     },
     content: `
 # Premium Instagram-Inspired Feed + Glassmorphic Tab Bar in React Native 🔥
@@ -204,7 +232,10 @@ Perfect for your next social media app! 🚀
     description: "Built a Cyberpunk Slot Machine in React Native 🎰🤖",
     videoUrl:
       "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1245609144338386%2F&show_text=0&width=560",
-    coverImage: "", // TODO: replace with thumbnail URL
+    coverImage: "",
+    coverImageReel: `${COVERS}/built-a-cyberpunk-slot-machine-in-react-native-reel.png`,
+    coverImageOg: `${COVERS}/built-a-cyberpunk-slot-machine-in-react-native-og.png`,
+    coverImagePin: `${COVERS}/built-a-cyberpunk-slot-machine-in-react-native-pin.png`,
     technologies: ["React Native", "TypeScript"],
     views: 153,
     duration: 29,
@@ -215,6 +246,8 @@ Perfect for your next social media app! 🚀
       github: "https://github.com/anwersolangi/rn-interface-kit",
       youtube: "",
       instagram: "",
+      tiktok: "",
+      pinterest: "",
     },
     content: `
 # Built a Cyberpunk Slot Machine in React Native 🎰🤖
@@ -242,6 +275,9 @@ Animated API only — zero external libraries
       "Building a React Native Gamification Library with Streaks, XP & Badges",
     videoUrl: "https://www.youtube.com/embed/0RcrlGVIjyY",
     coverImage: "https://i.ytimg.com/vi/0RcrlGVIjyY/hqdefault.jpg",
+    coverImageReel: `${COVERS}/building-a-react-native-gamification-library-with-streaks-xp-reel.png`,
+    coverImageOg: `${COVERS}/building-a-react-native-gamification-library-with-streaks-xp-og.png`,
+    coverImagePin: `${COVERS}/building-a-react-native-gamification-library-with-streaks-xp-pin.png`,
     technologies: ["React Native"],
     views: 96,
     duration: 15,
@@ -252,6 +288,8 @@ Animated API only — zero external libraries
       github: "https://github.com/anwersolangi/rn-interface-kit",
       youtube: "",
       instagram: "",
+      tiktok: "",
+      pinterest: "",
     },
     content: `
 # Building a React Native Gamification Library with Streaks, XP & Badges
@@ -270,6 +308,9 @@ Follow to be the first to know when it drops 🔔
     description: "Sleek Login Screen UI in React Native 🚀",
     videoUrl: "https://www.youtube.com/embed/jdRxKHIwkys",
     coverImage: "https://i.ytimg.com/vi/jdRxKHIwkys/hqdefault.jpg",
+    coverImageReel: `${COVERS}/sleek-login-screen-ui-in-react-native-reel.png`,
+    coverImageOg: `${COVERS}/sleek-login-screen-ui-in-react-native-og.png`,
+    coverImagePin: `${COVERS}/sleek-login-screen-ui-in-react-native-pin.png`,
     technologies: ["React Native"],
     views: 1900,
     duration: 26,
@@ -280,6 +321,8 @@ Follow to be the first to know when it drops 🔔
       github: "https://github.com/anwersolangi/rn-interface-kit",
       youtube: "https://www.youtube.com/shorts/jdRxKHIwkys",
       instagram: "",
+      tiktok: "",
+      pinterest: "",
     },
     content: `
 # Sleek Login Screen UI in React Native 🚀
@@ -297,6 +340,9 @@ Follow to be the first to know when it drops 🔔
     description: "Smooth Liquid Swipe Onboarding with React Native Reanimated",
     videoUrl: "https://www.youtube.com/embed/W4o1mQ_lmhI",
     coverImage: "https://i.ytimg.com/vi/W4o1mQ_lmhI/hqdefault.jpg",
+    coverImageReel: `${COVERS}/smooth-liquid-swipe-onboarding-with-react-native-reanimated-reel.png`,
+    coverImageOg: `${COVERS}/smooth-liquid-swipe-onboarding-with-react-native-reanimated-og.png`,
+    coverImagePin: `${COVERS}/smooth-liquid-swipe-onboarding-with-react-native-reanimated-pin.png`,
     technologies: [
       "React Native",
       "Reanimated",
@@ -313,6 +359,8 @@ Follow to be the first to know when it drops 🔔
       github: "https://github.com/anwersolangi/rn-interface-kit",
       youtube: "https://www.youtube.com/shorts/W4o1mQ_lmhI",
       instagram: "",
+      tiktok: "",
+      pinterest: "",
     },
     content: `
 # Smooth Liquid Swipe Onboarding with React Native Reanimated
@@ -338,6 +386,9 @@ What do you think? Drop a comment below! 👇
     description: "Premium OTP Verification Screen in React Native 🔐✨",
     videoUrl: "https://www.youtube.com/embed/Jzmq5VH8SW8",
     coverImage: "https://i.ytimg.com/vi/Jzmq5VH8SW8/hqdefault.jpg",
+    coverImageReel: `${COVERS}/premium-otp-verification-screen-in-react-native-reel.png`,
+    coverImageOg: `${COVERS}/premium-otp-verification-screen-in-react-native-og.png`,
+    coverImagePin: `${COVERS}/premium-otp-verification-screen-in-react-native-pin.png`,
     technologies: ["React Native", "Reanimated", "TypeScript"],
     views: 3418,
     duration: 25,
@@ -348,6 +399,8 @@ What do you think? Drop a comment below! 👇
       github: "https://github.com/anwersolangi/rn-interface-kit",
       youtube: "https://www.youtube.com/shorts/Jzmq5VH8SW8",
       instagram: "",
+      tiktok: "",
+      pinterest: "",
     },
     content: `
 # Premium OTP Verification Screen in React Native 🔐✨
@@ -374,6 +427,9 @@ Follow @anwersolangidev for daily React Native tutorials 🚀
       "Building a ChatGPT-style AI Assistant UI in React Native 🤖✨",
     videoUrl: "https://www.youtube.com/embed/lPDEZXtllro",
     coverImage: "https://i.ytimg.com/vi/lPDEZXtllro/hqdefault.jpg",
+    coverImageReel: `${COVERS}/building-a-chatgpt-style-ai-assistant-ui-in-react-native-reel.png`,
+    coverImageOg: `${COVERS}/building-a-chatgpt-style-ai-assistant-ui-in-react-native-og.png`,
+    coverImagePin: `${COVERS}/building-a-chatgpt-style-ai-assistant-ui-in-react-native-pin.png`,
     technologies: [
       "React Native",
       "Reanimated",
@@ -390,6 +446,8 @@ Follow @anwersolangidev for daily React Native tutorials 🚀
       github: "https://github.com/anwersolangi/rn-interface-kit",
       youtube: "https://www.youtube.com/shorts/lPDEZXtllro",
       instagram: "",
+      tiktok: "",
+      pinterest: "",
     },
     content: `
 # Building a ChatGPT-style AI Assistant UI in React Native 🤖✨
@@ -413,6 +471,9 @@ Follow @anwersolangidev for daily React Native tutorials 🚀
     description: "Building a Premium Habit Tracker in React Native 📊🔥",
     videoUrl: "https://www.youtube.com/embed/HY0yi_RV6Mo",
     coverImage: "https://i.ytimg.com/vi/HY0yi_RV6Mo/hqdefault.jpg",
+    coverImageReel: `${COVERS}/building-a-premium-habit-tracker-in-react-native-reel.png`,
+    coverImageOg: `${COVERS}/building-a-premium-habit-tracker-in-react-native-og.png`,
+    coverImagePin: `${COVERS}/building-a-premium-habit-tracker-in-react-native-pin.png`,
     technologies: [
       "React Native",
       "Reanimated",
@@ -429,6 +490,8 @@ Follow @anwersolangidev for daily React Native tutorials 🚀
       github: "https://github.com/anwersolangi/rn-interface-kit",
       youtube: "https://www.youtube.com/shorts/HY0yi_RV6Mo",
       instagram: "",
+      tiktok: "",
+      pinterest: "",
     },
     content: `
 # Building a Premium Habit Tracker in React Native 📊🔥
@@ -454,6 +517,9 @@ Follow @anwersolangidev for daily React Native tutorials 🚀
       "Uber-Style Delivery Tracker with Real-Time Map in React Native 🚗📍",
     videoUrl: "https://www.youtube.com/embed/V03GBRyA3GY",
     coverImage: "https://i.ytimg.com/vi/V03GBRyA3GY/hqdefault.jpg",
+    coverImageReel: `${COVERS}/uber-style-delivery-tracker-with-real-time-map-in-react-nati-reel.png`,
+    coverImageOg: `${COVERS}/uber-style-delivery-tracker-with-real-time-map-in-react-nati-og.png`,
+    coverImagePin: `${COVERS}/uber-style-delivery-tracker-with-real-time-map-in-react-nati-pin.png`,
     technologies: ["React Native"],
     views: 727,
     duration: 23,
@@ -464,6 +530,8 @@ Follow @anwersolangidev for daily React Native tutorials 🚀
       github: "https://github.com/anwersolangi/rn-interface-kit",
       youtube: "https://www.youtube.com/shorts/V03GBRyA3GY",
       instagram: "",
+      tiktok: "",
+      pinterest: "",
     },
     content: `
 # Uber-Style Delivery Tracker with Real-Time Map in React Native 🚗📍
@@ -490,6 +558,9 @@ Drop a 💙 if you want the full tutorial!
       "Card Input Screen with Real-Time Preview in React Native 💳✨",
     videoUrl: "https://www.youtube.com/embed/SCj2Ie2jagc",
     coverImage: "https://i.ytimg.com/vi/SCj2Ie2jagc/hqdefault.jpg",
+    coverImageReel: `${COVERS}/card-input-screen-with-real-time-preview-in-react-native-reel.png`,
+    coverImageOg: `${COVERS}/card-input-screen-with-real-time-preview-in-react-native-og.png`,
+    coverImagePin: `${COVERS}/card-input-screen-with-real-time-preview-in-react-native-pin.png`,
     technologies: ["React Native", "TypeScript", "Expo"],
     views: 9128,
     duration: 15,
@@ -500,6 +571,8 @@ Drop a 💙 if you want the full tutorial!
       github: "https://github.com/anwersolangi/rn-interface-kit",
       youtube: "https://www.youtube.com/shorts/SCj2Ie2jagc",
       instagram: "",
+      tiktok: "",
+      pinterest: "",
     },
     content: `
 # Card Input Screen with Real-Time Preview in React Native 💳✨
@@ -525,6 +598,9 @@ Drop a 💙 if you want the code!
     description: "Interactive 3D UI Demo with Expo & React Native Skia",
     videoUrl: "https://www.youtube.com/embed/qJcigGuG8RU",
     coverImage: "https://i.ytimg.com/vi/qJcigGuG8RU/hqdefault.jpg",
+    coverImageReel: `${COVERS}/interactive-3d-ui-demo-with-expo-react-native-skia-reel.png`,
+    coverImageOg: `${COVERS}/interactive-3d-ui-demo-with-expo-react-native-skia-og.png`,
+    coverImagePin: `${COVERS}/interactive-3d-ui-demo-with-expo-react-native-skia-pin.png`,
     technologies: ["React Native", "React Native Skia", "Expo"],
     views: 381,
     duration: 16,
@@ -535,6 +611,8 @@ Drop a 💙 if you want the code!
       github: "https://github.com/anwersolangi/rn-interface-kit",
       youtube: "https://www.youtube.com/shorts/qJcigGuG8RU",
       instagram: "",
+      tiktok: "",
+      pinterest: "",
     },
     content: `
 # Interactive 3D UI Demo with Expo & React Native Skia
@@ -555,6 +633,9 @@ Let me know what part of this you want broken down next!
     description: "Premium Glassmorphism Calculator in React Native 💎✨",
     videoUrl: "https://www.youtube.com/embed/jLu03xKxPuI",
     coverImage: "https://i.ytimg.com/vi/jLu03xKxPuI/hqdefault.jpg",
+    coverImageReel: `${COVERS}/premium-glassmorphism-calculator-in-react-native-reel.png`,
+    coverImageOg: `${COVERS}/premium-glassmorphism-calculator-in-react-native-og.png`,
+    coverImagePin: `${COVERS}/premium-glassmorphism-calculator-in-react-native-pin.png`,
     technologies: [
       "React Native",
       "Reanimated",
@@ -571,6 +652,8 @@ Let me know what part of this you want broken down next!
       github: "https://github.com/anwersolangi/rn-interface-kit",
       youtube: "https://www.youtube.com/shorts/jLu03xKxPuI",
       instagram: "",
+      tiktok: "",
+      pinterest: "",
     },
     content: `
 # Premium Glassmorphism Calculator in React Native 💎✨
@@ -591,6 +674,9 @@ Full code on my portfolio 👉 anwersolangi.com
     description: "Liquid Glass Music Player Inspired by Apple Music 🎵✨",
     videoUrl: "https://www.youtube.com/embed/4zRMy2c_mOI",
     coverImage: "https://i.ytimg.com/vi/4zRMy2c_mOI/hqdefault.jpg",
+    coverImageReel: `${COVERS}/liquid-glass-music-player-inspired-by-apple-music-reel.png`,
+    coverImageOg: `${COVERS}/liquid-glass-music-player-inspired-by-apple-music-og.png`,
+    coverImagePin: `${COVERS}/liquid-glass-music-player-inspired-by-apple-music-pin.png`,
     technologies: [
       "React Native",
       "Reanimated",
@@ -607,6 +693,8 @@ Full code on my portfolio 👉 anwersolangi.com
       github: "https://github.com/anwersolangi/rn-interface-kit",
       youtube: "https://www.youtube.com/shorts/4zRMy2c_mOI",
       instagram: "",
+      tiktok: "",
+      pinterest: "",
     },
     content: `
 # Liquid Glass Music Player Inspired by Apple Music 🎵✨
@@ -628,6 +716,9 @@ Full code 👉 anwersolangi.com
     description: "Built Flappy Bird from Scratch in React Native 🐦✨",
     videoUrl: "https://www.youtube.com/embed/YmkfJ06UT4U",
     coverImage: "https://i.ytimg.com/vi/YmkfJ06UT4U/hqdefault.jpg",
+    coverImageReel: `${COVERS}/built-flappy-bird-from-scratch-in-react-native-reel.png`,
+    coverImageOg: `${COVERS}/built-flappy-bird-from-scratch-in-react-native-og.png`,
+    coverImagePin: `${COVERS}/built-flappy-bird-from-scratch-in-react-native-pin.png`,
     technologies: [
       "React Native",
       "Reanimated",
@@ -644,6 +735,8 @@ Full code 👉 anwersolangi.com
       github: "https://github.com/anwersolangi/rn-interface-kit",
       youtube: "https://www.youtube.com/shorts/YmkfJ06UT4U",
       instagram: "",
+      tiktok: "",
+      pinterest: "",
     },
     content: `
 # Built Flappy Bird from Scratch in React Native 🐦✨
@@ -666,6 +759,9 @@ Full game code 👉 anwersolangi.com
       "Built a fully interactive Pizza Ordering UI in React Native 🍕",
     videoUrl: "https://www.youtube.com/embed/kIl8HJvMjBE",
     coverImage: "https://i.ytimg.com/vi/kIl8HJvMjBE/hqdefault.jpg",
+    coverImageReel: `${COVERS}/built-a-fully-interactive-pizza-ordering-ui-in-react-native-reel.png`,
+    coverImageOg: `${COVERS}/built-a-fully-interactive-pizza-ordering-ui-in-react-native-og.png`,
+    coverImagePin: `${COVERS}/built-a-fully-interactive-pizza-ordering-ui-in-react-native-pin.png`,
     technologies: ["React Native", "TypeScript"],
     views: 1656,
     duration: 17,
@@ -676,6 +772,8 @@ Full game code 👉 anwersolangi.com
       github: "https://github.com/anwersolangi/rn-interface-kit",
       youtube: "https://www.youtube.com/shorts/kIl8HJvMjBE",
       instagram: "",
+      tiktok: "",
+      pinterest: "",
     },
     content: `
 # Built a fully interactive Pizza Ordering UI in React Native 🍕
@@ -700,6 +798,9 @@ and useState for real-time price management
       "Built a fully interactive Broadcast Radio UI in React Native 📻",
     videoUrl: "https://www.youtube.com/embed/iOHvGwu6A_I",
     coverImage: "https://i.ytimg.com/vi/iOHvGwu6A_I/hqdefault.jpg",
+    coverImageReel: `${COVERS}/built-a-fully-interactive-broadcast-radio-ui-in-react-native-reel.png`,
+    coverImageOg: `${COVERS}/built-a-fully-interactive-broadcast-radio-ui-in-react-native-og.png`,
+    coverImagePin: `${COVERS}/built-a-fully-interactive-broadcast-radio-ui-in-react-native-pin.png`,
     technologies: ["React Native", "TypeScript"],
     views: 2135,
     duration: 16,
@@ -710,6 +811,8 @@ and useState for real-time price management
       github: "https://github.com/anwersolangi/rn-interface-kit",
       youtube: "https://www.youtube.com/shorts/iOHvGwu6A_I",
       instagram: "",
+      tiktok: "",
+      pinterest: "",
     },
     content: `
 # Built a fully interactive Broadcast Radio UI in React Native 📻
@@ -736,6 +839,9 @@ Pure React Native. No shortcuts.
       "Duolingo spent millions building their interactive word translation screen.",
     videoUrl: "https://www.youtube.com/embed/kyZBjNGSkmE",
     coverImage: "https://i.ytimg.com/vi/kyZBjNGSkmE/hqdefault.jpg",
+    coverImageReel: `${COVERS}/duolingo-spent-millions-building-their-interactive-word-tran-reel.png`,
+    coverImageOg: `${COVERS}/duolingo-spent-millions-building-their-interactive-word-tran-og.png`,
+    coverImagePin: `${COVERS}/duolingo-spent-millions-building-their-interactive-word-tran-pin.png`,
     technologies: ["React Native", "Reanimated", "Gesture Handler"],
     views: 1738,
     duration: 16,
@@ -746,6 +852,8 @@ Pure React Native. No shortcuts.
       github: "https://github.com/anwersolangi/rn-interface-kit",
       youtube: "https://www.youtube.com/shorts/kyZBjNGSkmE",
       instagram: "",
+      tiktok: "",
+      pinterest: "",
     },
     content: `
 # Duolingo spent millions building their interactive word translation screen.
@@ -771,6 +879,9 @@ What app UI should I clone next? Let me know 👇
     description: "What if weather UIs were more satisfying? ☀️",
     videoUrl: "https://www.youtube.com/embed/g398y_5qQvg",
     coverImage: "https://i.ytimg.com/vi/g398y_5qQvg/hqdefault.jpg",
+    coverImageReel: `${COVERS}/what-if-weather-uis-were-more-satisfying-reel.png`,
+    coverImageOg: `${COVERS}/what-if-weather-uis-were-more-satisfying-og.png`,
+    coverImagePin: `${COVERS}/what-if-weather-uis-were-more-satisfying-pin.png`,
     technologies: ["React Native"],
     views: 2159,
     duration: 11,
@@ -781,6 +892,8 @@ What app UI should I clone next? Let me know 👇
       github: "https://github.com/anwersolangi/rn-interface-kit",
       youtube: "https://www.youtube.com/shorts/g398y_5qQvg",
       instagram: "",
+      tiktok: "",
+      pinterest: "",
     },
     content: `
 # What if weather UIs were more satisfying? ☀️
@@ -798,6 +911,9 @@ What app UI should I clone next? Let me know 👇
     description: "Building a Neo Brutalism Wallet UI in React Native ⚡️",
     videoUrl: "https://www.youtube.com/embed/My4GWdR_5t4",
     coverImage: "https://i.ytimg.com/vi/My4GWdR_5t4/hqdefault.jpg",
+    coverImageReel: `${COVERS}/building-a-neo-brutalism-wallet-ui-in-react-native-reel.png`,
+    coverImageOg: `${COVERS}/building-a-neo-brutalism-wallet-ui-in-react-native-og.png`,
+    coverImagePin: `${COVERS}/building-a-neo-brutalism-wallet-ui-in-react-native-pin.png`,
     technologies: [
       "React Native",
       "Reanimated",
@@ -813,6 +929,8 @@ What app UI should I clone next? Let me know 👇
       github: "https://github.com/anwersolangi/rn-interface-kit",
       youtube: "https://www.youtube.com/shorts/My4GWdR_5t4",
       instagram: "",
+      tiktok: "",
+      pinterest: "",
     },
     content: `
 # Building a Neo Brutalism Wallet UI in React Native ⚡️
@@ -838,6 +956,9 @@ More UI experiments coming soon.
     description: "Pure Monochrome Editorial UI in React Native",
     videoUrl: "https://www.youtube.com/embed/kBdDbar-3_g",
     coverImage: "https://i.ytimg.com/vi/kBdDbar-3_g/hqdefault.jpg",
+    coverImageReel: `${COVERS}/pure-monochrome-editorial-ui-in-react-native-reel.png`,
+    coverImageOg: `${COVERS}/pure-monochrome-editorial-ui-in-react-native-og.png`,
+    coverImagePin: `${COVERS}/pure-monochrome-editorial-ui-in-react-native-pin.png`,
     technologies: ["React Native"],
     views: 1500,
     duration: 7,
@@ -848,6 +969,8 @@ More UI experiments coming soon.
       github: "https://github.com/anwersolangi/rn-interface-kit",
       youtube: "https://www.youtube.com/shorts/kBdDbar-3_g",
       instagram: "",
+      tiktok: "",
+      pinterest: "",
     },
     content: `
 # Pure Monochrome Editorial UI in React Native
@@ -871,6 +994,9 @@ Design isn’t decoration. It’s intention.
       "Recreated a Childhood Scenery Drawing Using React Native Skia 🌄",
     videoUrl: "https://www.youtube.com/embed/RWDXtFLiJEU",
     coverImage: "https://i.ytimg.com/vi/RWDXtFLiJEU/hqdefault.jpg",
+    coverImageReel: `${COVERS}/recreated-a-childhood-scenery-drawing-using-react-native-ski-reel.png`,
+    coverImageOg: `${COVERS}/recreated-a-childhood-scenery-drawing-using-react-native-ski-og.png`,
+    coverImagePin: `${COVERS}/recreated-a-childhood-scenery-drawing-using-react-native-ski-pin.png`,
     technologies: ["React Native", "React Native Skia"],
     views: 3232,
     duration: 10,
@@ -881,6 +1007,8 @@ Design isn’t decoration. It’s intention.
       github: "https://github.com/anwersolangi/rn-interface-kit",
       youtube: "https://www.youtube.com/shorts/RWDXtFLiJEU",
       instagram: "",
+      tiktok: "",
+      pinterest: "",
     },
     content: `
 # Recreated a Childhood Scenery Drawing Using React Native Skia 🌄
@@ -901,6 +1029,9 @@ Developers draw differently. 👨‍💻
     description: "Building a Food Ordering App UI using React Native 📱🍔",
     videoUrl: "https://www.youtube.com/embed/S_VdcURQSg4",
     coverImage: "https://i.ytimg.com/vi/S_VdcURQSg4/hqdefault.jpg",
+    coverImageReel: `${COVERS}/building-a-food-ordering-app-ui-using-react-native-reel.png`,
+    coverImageOg: `${COVERS}/building-a-food-ordering-app-ui-using-react-native-og.png`,
+    coverImagePin: `${COVERS}/building-a-food-ordering-app-ui-using-react-native-pin.png`,
     technologies: ["React Native"],
     views: 16219,
     duration: 10,
@@ -911,6 +1042,8 @@ Developers draw differently. 👨‍💻
       github: "https://github.com/anwersolangi/rn-interface-kit",
       youtube: "https://www.youtube.com/shorts/S_VdcURQSg4",
       instagram: "",
+      tiktok: "",
+      pinterest: "",
     },
     content: `
 # Building a Food Ordering App UI using React Native 📱🍔
@@ -936,6 +1069,9 @@ Follow for more React Native tutorials, coding reels, and mobile app development
     description: "Built a Full Flight, Bus & Train Booking UI in React Native",
     videoUrl: "https://www.youtube.com/embed/IdMe66TKyp0",
     coverImage: "https://i.ytimg.com/vi/IdMe66TKyp0/hqdefault.jpg",
+    coverImageReel: `${COVERS}/built-a-full-flight-bus-train-booking-ui-in-react-native-reel.png`,
+    coverImageOg: `${COVERS}/built-a-full-flight-bus-train-booking-ui-in-react-native-og.png`,
+    coverImagePin: `${COVERS}/built-a-full-flight-bus-train-booking-ui-in-react-native-pin.png`,
     technologies: ["React Native", "Expo"],
     views: 4316,
     duration: 14,
@@ -946,6 +1082,8 @@ Follow for more React Native tutorials, coding reels, and mobile app development
       github: "https://github.com/anwersolangi/rn-interface-kit",
       youtube: "https://www.youtube.com/shorts/IdMe66TKyp0",
       instagram: "",
+      tiktok: "",
+      pinterest: "",
     },
     content: `
 # Built a Full Flight, Bus & Train Booking UI in React Native
@@ -967,6 +1105,9 @@ Drop a ✈️ for the full GhostTyper script
       "Built a Stock Trading UI with Slot-Machine Digit Flip in React Native 📈",
     videoUrl: "https://www.youtube.com/embed/J3PA-IDTojc",
     coverImage: "https://i.ytimg.com/vi/J3PA-IDTojc/hqdefault.jpg",
+    coverImageReel: `${COVERS}/built-a-stock-trading-ui-with-slot-machine-digit-flip-in-rea-reel.png`,
+    coverImageOg: `${COVERS}/built-a-stock-trading-ui-with-slot-machine-digit-flip-in-rea-og.png`,
+    coverImagePin: `${COVERS}/built-a-stock-trading-ui-with-slot-machine-digit-flip-in-rea-pin.png`,
     technologies: ["React Native", "Reanimated", "Expo"],
     views: 8155,
     duration: 10,
@@ -977,6 +1118,8 @@ Drop a ✈️ for the full GhostTyper script
       github: "https://github.com/anwersolangi/rn-interface-kit",
       youtube: "https://www.youtube.com/shorts/J3PA-IDTojc",
       instagram: "",
+      tiktok: "",
+      pinterest: "",
     },
     content: `
 # Built a Stock Trading UI with Slot-Machine Digit Flip in React Native 📈
@@ -1003,6 +1146,9 @@ Stack used:
       "Built a Full Habit Tracker UI with AI Insights in React Native",
     videoUrl: "https://www.youtube.com/embed/7NlNdU_-pkw",
     coverImage: "https://i.ytimg.com/vi/7NlNdU_-pkw/hqdefault.jpg",
+    coverImageReel: `${COVERS}/built-a-full-habit-tracker-ui-with-ai-insights-in-react-nati-reel.png`,
+    coverImageOg: `${COVERS}/built-a-full-habit-tracker-ui-with-ai-insights-in-react-nati-og.png`,
+    coverImagePin: `${COVERS}/built-a-full-habit-tracker-ui-with-ai-insights-in-react-nati-pin.png`,
     technologies: ["React Native", "Reanimated", "Expo"],
     views: 6405,
     duration: 11,
@@ -1013,6 +1159,8 @@ Stack used:
       github: "https://github.com/anwersolangi/rn-interface-kit",
       youtube: "https://www.youtube.com/shorts/7NlNdU_-pkw",
       instagram: "",
+      tiktok: "",
+      pinterest: "",
     },
     content: `
 # Built a Full Habit Tracker UI with AI Insights in React Native
@@ -1038,6 +1186,9 @@ Drop a 🔥 if you want the full GhostTyper script.
       "Building an interactive settings screen with a satisfying dark/light mode toggle ⚡",
     videoUrl: "https://www.youtube.com/embed/6IqnxWX524o",
     coverImage: "https://i.ytimg.com/vi/6IqnxWX524o/hqdefault.jpg",
+    coverImageReel: `${COVERS}/building-an-interactive-settings-screen-with-a-satisfying-da-reel.png`,
+    coverImageOg: `${COVERS}/building-an-interactive-settings-screen-with-a-satisfying-da-og.png`,
+    coverImagePin: `${COVERS}/building-an-interactive-settings-screen-with-a-satisfying-da-pin.png`,
     technologies: ["React Native"],
     views: 2850,
     duration: 7,
@@ -1048,6 +1199,8 @@ Drop a 🔥 if you want the full GhostTyper script.
       github: "https://github.com/anwersolangi/rn-interface-kit",
       youtube: "https://www.youtube.com/shorts/6IqnxWX524o",
       instagram: "",
+      tiktok: "",
+      pinterest: "",
     },
     content: `
 # Building an interactive settings screen with a satisfying dark/light mode toggle ⚡
@@ -1066,6 +1219,9 @@ Small details = better user experience (UX)
     description: "Built a Premium Crypto Wallet UI in React Native ⚡",
     videoUrl: "https://www.youtube.com/embed/bqtcX1-Nid0",
     coverImage: "https://i.ytimg.com/vi/bqtcX1-Nid0/hqdefault.jpg",
+    coverImageReel: `${COVERS}/built-a-premium-crypto-wallet-ui-in-react-native-reel.png`,
+    coverImageOg: `${COVERS}/built-a-premium-crypto-wallet-ui-in-react-native-og.png`,
+    coverImagePin: `${COVERS}/built-a-premium-crypto-wallet-ui-in-react-native-pin.png`,
     technologies: ["React Native"],
     views: 2345,
     duration: 28,
@@ -1076,14 +1232,343 @@ Small details = better user experience (UX)
       github: "https://github.com/anwersolangi/rn-interface-kit",
       youtube: "https://www.youtube.com/shorts/bqtcX1-Nid0",
       instagram: "",
+      tiktok: "",
+      pinterest: "",
     },
     content: `
 # Built a Premium Crypto Wallet UI in React Native ⚡
 
 React Native + hot reload = insane speed 🔥
-From blank screen → production-ready UI in seconds.
+From blan k screen → production-ready UI in seconds.
 This is why developers love fast UI workflows.
 Follow for daily UI builds, dev tips & clean mobile designs 🚀
     `,
+  },
+  {
+    id: 43,
+    facebookPostId: "1002889018757136",
+    reelId: "DYpnx70MZcj",
+    title:
+      "Restaurant Floor Plan UI in React Native Skia — Neon Glow + GPU Canvas",
+    slug: "restaurant-floor-plan-ui-react-native-skia-neon-glow-gpu-canvas",
+    category: "Creative Coding",
+    description:
+      "A premium restaurant floor plan on a hardware-accelerated Skia GPU canvas — neon ambient glow from BlurMask, responsive coordinate mapping (table.x × FLOOR_W), and 60fps pulse animations via Reanimated shared values. Dark theme.",
+    videoUrl: "https://youtube.com/shorts/Nvlf1H2TsyQ",
+    coverImage: `${COVERS}/restaurant-floor-plan-ui-react-native-skia-neon-glow-gpu-canvas-reel.png`,
+    coverImageReel: `${COVERS}/restaurant-floor-plan-ui-react-native-skia-neon-glow-gpu-canvas-reel.png`,
+    coverImageOg: `${COVERS}/restaurant-floor-plan-ui-react-native-skia-neon-glow-gpu-canvas-og.png`,
+    coverImagePin: `${COVERS}/restaurant-floor-plan-ui-react-native-skia-neon-glow-gpu-canvas-pin.png`,
+    technologies: [
+      "React Native",
+      "React Native Skia",
+      "Reanimated",
+      "TypeScript",
+      "Expo",
+    ],
+    views: 13,
+    duration: 17,
+    publishTime: "05/22/2026 11:18",
+    permalink: "https://www.instagram.com/reel/DYpnx70MZcj/",
+    links: {
+      facebook: "https://www.facebook.com/share/r/1FSESLR7A4/",
+      github: "https://github.com/anwersolangi/rn-interface-kit",
+      youtube: "https://youtube.com/shorts/Nvlf1H2TsyQ",
+      instagram: "https://www.instagram.com/reel/DYpnx70MZcj/",
+      tiktok:
+        "https://www.tiktok.com/@anwersolangidev/video/7642791713991331080",
+      pinterest: "",
+    },
+    content: `
+# Restaurant Floor Plan UI in React Native Skia 🍽️
+
+Stop building boring grid layouts. Move your architecture to the GPU canvas.
+
+## Why Skia
+
+Standard React Native components hit their ceiling fast when you need pixel-perfect spatial layouts with animated neon glows. Skia gives you a hardware-accelerated canvas where every draw call runs on the GPU.
+
+## Neon ambient glow
+
+\`\`\`typescript
+// Skia BlurMask + Group opacity for the neon table glow
+<Group opacity={glowOpacity}>
+  <Circle cx={table.x * FLOOR_W} cy={table.y * FLOOR_H} r={TABLE_R + 12}>
+    <Paint>
+      <BlurMask blur={18} style="outer" />
+    </Paint>
+  </Circle>
+</Group>
+\`\`\`
+
+## Responsive coordinate mapping
+
+\`\`\`typescript
+// table.x and table.y are percentages (0–1)
+// multiply by canvas dimensions at render time
+const cx = table.x * FLOOR_W;
+const cy = table.y * FLOOR_H;
+\`\`\`
+
+This makes the layout scale flawlessly on any screen size without a single pixel value hardcoded.
+
+## 60fps pulse via Reanimated shared value
+
+The glow opacity pulses using a Reanimated shared value driven by \`withRepeat(withSequence(...))\`. Skia reads the shared value directly via \`useDerivedValue\` — no bridge calls, no JS thread.
+
+**Stack:** React Native · @shopify/react-native-skia · Reanimated 3 · TypeScript
+  `,
+  },
+  {
+    id: 45,
+    facebookPostId: "",
+    reelId: "DYkbY4CsCmm",
+    title:
+      "Netflix-Style OTT Streaming Home in React Native — Hero Banner + Progress Bars",
+    slug: "netflix-style-ott-streaming-home-react-native-hero-banner-progress-bars",
+    category: "Mobile UI",
+    description:
+      "A Netflix-style streaming home with an Unsplash hero banner, a Continue Watching row with per-show purple progress bars keyed to show ID, a Trending grid with rank badges, and a +My List button with withSpring(1.3).",
+    videoUrl: "",
+    coverImage: `${COVERS}/netflix-style-ott-streaming-home-react-native-hero-banner-progress-bars-reel.png`,
+    coverImageReel: `${COVERS}/netflix-style-ott-streaming-home-react-native-hero-banner-progress-bars-reel.png`,
+    coverImageOg: `${COVERS}/netflix-style-ott-streaming-home-react-native-hero-banner-progress-bars-og.png`,
+    coverImagePin: `${COVERS}/netflix-style-ott-streaming-home-react-native-hero-banner-progress-bars-pin.png`,
+    technologies: [
+      "React Native",
+      "Reanimated",
+      "expo-linear-gradient",
+      "TypeScript",
+      "Expo",
+    ],
+    views: 20,
+    duration: 17,
+    publishTime: "05/20/2026 11:14",
+    permalink: "https://www.instagram.com/reel/DYkbY4CsCmm/",
+    links: {
+      facebook: "https://www.facebook.com/share/r/18uWmKfcJ5/",
+      github: "https://github.com/anwersolangi/rn-interface-kit",
+      youtube: "https://youtube.com/shorts/2unp9-E4PqU?si=Tb6dvMeOt8vkLFYN",
+      instagram: "https://www.instagram.com/reel/DYkbY4CsCmm/",
+      tiktok:
+        "https://www.tiktok.com/@anwersolangidev/video/7642036265537375506?is_from_webapp=1&sender_device=pc&web_id=7554992195380938256",
+      pinterest: "",
+    },
+    content: `
+# Netflix-Style OTT Streaming Home in React Native 🎬
+
+Hero banner. Continue watching. Trending now. All built with real Unsplash images and zero streaming libraries.
+
+## Continue Watching — per-show progress bars
+
+\`\`\`typescript
+const WATCH_PCT: Record<string, number> = {
+  show_1: 0.72, // 72% watched
+  show_2: 0.38,
+  show_3: 0.91,
+};
+
+// In each card:
+<View style={[styles.progressBar, { width: \`\${WATCH_PCT[show.id] * 100}%\` }]} />
+\`\`\`
+
+Each show has its own progress percentage keyed to its ID in a plain object. No playback state, no API — just a data map.
+
+## Trending Now — rank badges
+
+\`\`\`typescript
+{TRENDING.map((show, i) => (
+  <View key={show.id} style={styles.trendCard}>
+    <Text style={styles.rankBadge}>#{i + 1}</Text>
+    <Image source={{ uri: show.image }} style={styles.trendImg} />
+  </View>
+))}
+\`\`\`
+
+## +My List button spring
+
+\`\`\`typescript
+listScale.value = withSpring(1.3, { damping: 5, stiffness: 400 }, () => {
+  listScale.value = withSpring(1, { damping: 8, stiffness: 300 });
+});
+\`\`\`
+
+The +My List button has its own \`Animated.View\` wrapper — separate from the card scale so it can spring independently.
+
+**Stack:** React Native · Reanimated 3 · expo-linear-gradient · TypeScript
+  `,
+  },
+  {
+    id: 46,
+    facebookPostId: "",
+    reelId: "DYhwAU-M02u",
+    title:
+      "Premium Gym Membership Card in React Native Skia — Hologram Shimmer + Card Flip",
+    slug: "premium-gym-membership-card-react-native-skia-hologram-shimmer-card-flip",
+    category: "Creative Coding",
+    description:
+      "A premium gym membership card with a 3-layer radial gradient hologram shimmer in Skia Canvas (each at a different phase), a diagonal shine sweep on loop, a 180° card flip via Reanimated perspective, and a full QR code from pure Skia Rect primitives — zero image assets.",
+    videoUrl: "",
+    coverImage: `${COVERS}/premium-gym-membership-card-react-native-skia-hologram-shimmer-card-flip-reel.png`,
+    coverImageReel: `${COVERS}/premium-gym-membership-card-react-native-skia-hologram-shimmer-card-flip-reel.png`,
+    coverImageOg: `${COVERS}/premium-gym-membership-card-react-native-skia-hologram-shimmer-card-flip-og.png`,
+    coverImagePin: `${COVERS}/premium-gym-membership-card-react-native-skia-hologram-shimmer-card-flip-pin.png`,
+    technologies: [
+      "React Native",
+      "React Native Skia",
+      "Reanimated",
+      "TypeScript",
+      "Expo",
+    ],
+    views: 13,
+    duration: 13,
+    publishTime: "05/19/2026 09:46",
+    permalink: "https://www.instagram.com/reel/DYhwAU-M02u/",
+    links: {
+      facebook: "https://www.facebook.com/share/r/1ahnrXZyA6/",
+      github: "https://github.com/anwersolangi/rn-interface-kit",
+      youtube: "https://youtube.com/shorts/L8SjD_N1oCc?si=kzSuDvAZmyBiavfU",
+      instagram: "https://www.instagram.com/reel/DYhwAU-M02u/",
+      tiktok:
+        "https://www.tiktok.com/@anwersolangidev/video/7641646658924596487?is_from_webapp=1&sender_device=pc&web_id=7554992195380938256",
+      pinterest: "https://pin.it/1QlcrsH1A",
+    },
+    content: `
+# Premium Gym Membership Card in React Native Skia 💪
+
+Hologram shimmer. Shine sweep. 180° card flip. QR code from primitives. Zero image assets.
+
+## 3-layer hologram shimmer
+
+\`\`\`typescript
+// 3 radial gradients, each at a different phase offset
+const phases = [0, (2 * Math.PI) / 3, (4 * Math.PI) / 3];
+
+phases.forEach((phase, i) => {
+  const t = (animValue.value + phase) % (2 * Math.PI);
+  const cx = CARD_W * 0.5 + Math.cos(t) * CARD_W * 0.3;
+  const cy = CARD_H * 0.4 + Math.sin(t) * CARD_H * 0.2;
+
+  canvas.drawCircle(cx, cy, 60, shimmerPaint); // RadialGradient paint
+});
+\`\`\`
+
+Three independent radial gradients orbit the card surface at equal phase offsets, creating the iridescent hologram effect.
+
+## Diagonal shine sweep
+
+\`\`\`typescript
+shineProg.value = withRepeat(withTiming(1, { duration: 2400, easing: Easing.in(Easing.ease) }), -1, false);
+
+// In Skia draw:
+const shineX = interpolate(shineProg.value, [0, 1], [-CARD_W, CARD_W * 2]);
+// Draw a thin rotated Rectangle at shineX position
+\`\`\`
+
+## 180° card flip — Reanimated perspective
+
+\`\`\`typescript
+const frontStyle = useAnimatedStyle(() => ({
+  transform: [
+    { perspective: 1200 },
+    { rotateY: \`\${interpolate(flip.value, [0, 1], [0, 90])}deg\` },
+  ],
+  opacity: flip.value < 0.5 ? 1 : 0,
+}));
+\`\`\`
+
+## QR code from Skia Rect primitives
+
+The back-side QR is a 15×15 binary grid of Skia Rects — no QR library, no image. Same pattern as the SVG QR approach but drawn directly on the Skia canvas.
+
+**Stack:** React Native · @shopify/react-native-skia · Reanimated 3 · TypeScript
+  `,
+  },
+  {
+    id: 47,
+    facebookPostId: "",
+    reelId: "DYfRJv9PLQM",
+    title:
+      "OLX Listing Home in React Native — Snap-Scroll Cards + Heart Spring",
+    slug: "olx-listing-home-react-native-snap-scroll-cards-heart-spring",
+    category: "Mobile UI",
+    description:
+      "An OLX-style marketplace home with snap-scroll featured hero cards, an 8-icon category grid, a heart that springs to 1.35×, real Unsplash images, and a sticky Post an Ad FAB — ~200 lines of TypeScript, zero UI kit.",
+    videoUrl: "",
+    coverImage: `${COVERS}/olx-listing-home-react-native-snap-scroll-cards-heart-spring-reel.png`,
+    coverImageReel: `${COVERS}/olx-listing-home-react-native-snap-scroll-cards-heart-spring-reel.png`,
+    coverImageOg: `${COVERS}/olx-listing-home-react-native-snap-scroll-cards-heart-spring-og.png`,
+    coverImagePin: `${COVERS}/olx-listing-home-react-native-snap-scroll-cards-heart-spring-pin.png`,
+    technologies: [
+      "React Native",
+      "Reanimated",
+      "expo-linear-gradient",
+      "TypeScript",
+      "Expo",
+    ],
+    views: 15,
+    duration: 18,
+    publishTime: "05/18/2026 10:51",
+    permalink: "https://www.instagram.com/reel/DYfRJv9PLQM/",
+    links: {
+      facebook: "https://www.facebook.com/share/r/1EYoZBride/",
+      github: "https://github.com/anwersolangi/rn-interface-kit",
+      youtube: "https://youtube.com/shorts/X02UbmwjJwk?si=70NcIxKL16qox_TC",
+      instagram: "https://www.instagram.com/reel/DYfRJv9PLQM/",
+      tiktok:
+        "https://www.tiktok.com/@anwersolangidev/video/7641288781340888327?is_from_webapp=1&sender_device=pc&web_id=7554992195380938256",
+      pinterest: "https://pin.it/6FRsHwDhX",
+    },
+    content: `
+# OLX Listing Home in React Native 🛒
+
+The one where I rebuilt OLX from scratch. ~200 lines. Zero UI kit.
+
+## Snap-scroll hero cards
+
+\`\`\`typescript
+<FlatList
+  data={FEATURED}
+  horizontal
+  pagingEnabled
+  decelerationRate="fast"
+  showsHorizontalScrollIndicator={false}
+  renderItem={({ item }) => (
+    <View style={styles.heroCard}>
+      <Image source={{ uri: item.image }} style={styles.heroImg} resizeMode="cover" />
+      <LinearGradient colors={['transparent', 'rgba(0,0,0,0.7)']} style={styles.heroGrad} />
+      <Text style={styles.heroTitle}>{item.title}</Text>
+    </View>
+  )}
+/>
+\`\`\`
+
+## Category grid — 8 colour-coded icons
+
+\`\`\`typescript
+const CATEGORIES = [
+  { label: 'Electronics', icon: 'phone-portrait-outline', color: '#6366f1' },
+  { label: 'Vehicles',    icon: 'car-outline',            color: '#f97316' },
+  { label: 'Property',    icon: 'home-outline',           color: '#22c55e' },
+  // ...
+];
+\`\`\`
+
+Rendered as a 4-column FlatList. Each chip has a coloured background and an Ionicon.
+
+## Heart spring
+
+\`\`\`typescript
+heartScale.value = withSpring(1.35, { damping: 4, stiffness: 500 }, () => {
+  heartScale.value = withSpring(1, { damping: 8, stiffness: 300 });
+});
+\`\`\`
+
+## Sticky Post an Ad FAB
+
+Absolutely positioned at \`bottom: insets.bottom + 16\`, always visible above the scroll content. Spring-scales on tap with the same pattern.
+
+**Stack:** React Native · Reanimated 3 · expo-linear-gradient · TypeScript
+  `,
   },
 ];

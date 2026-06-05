@@ -90,7 +90,7 @@ const AppCard = ({ app, index }) => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     if (currentRef) {
@@ -211,7 +211,7 @@ const SectionTitle = ({ children }) => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     if (currentRef) {
@@ -256,7 +256,7 @@ const HireMeBanner = () => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.1 }
+      { threshold: 0.1 },
     );
 
     if (currentRef) {

@@ -1,23 +1,24 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@config "../../tailwind.config.js";
 
 @layer base {
   :root {
-    --font-inter: "Inter", system-ui, -apple-system, sans-serif;
-    --font-mono: "JetBrains Mono", "Courier New", monospace;
-    --color-black: #000000;
-    --color-gray-900: #111111;
-    --color-gray-800: #1a1a1a;
-    --color-gray-700: #2d2d2d;
-    --color-gray-600: #4a4a4a;
-    --color-gray-500: #6b6b6b;
-    --color-gray-400: #8c8c8c;
-    --color-gray-300: #adadad;
-    --color-gray-200: #d4d4d4;
-    --color-gray-100: #ebebeb;
-    --color-gray-50: #f7f7f7;
-    --color-white: #ffffff;
+    /* V1 palette */
+    --bg: #0d0c0b;
+    --bg-2: #161514;
+    --bg-3: #1f1d1b;
+    --ink: #f4efe7;
+    --ink-2: rgba(244, 239, 231, 0.62);
+    --ink-3: rgba(244, 239, 231, 0.38);
+    --rule: rgba(244, 239, 231, 0.1);
+    --accent: #ff6a3d;
+    --accent-2: #ffb27a;
+    --good: #7af0a8;
+
+    /* Map to your existing CSS variables so any older component that uses
+       var(--background) / var(--foreground) keeps working with the dark theme */
+    --background: #0d0c0b;
+    --foreground: #f4efe7;
   }
 
   html {
@@ -26,108 +27,183 @@
 
   body {
     @apply min-h-screen;
-    font-feature-settings: "rlig" 1, "calt" 1;
+    background: var(--bg);
+    color: var(--ink);
+    font-family:
+      var(--font-inter),
+      system-ui,
+      -apple-system,
+      sans-serif;
+    font-feature-settings:
+      "rlig" 1,
+      "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 }
 
+/* =========================================================================
+   Component classes — V1 primitives + your existing helpers, re-skinned
+   for the dark theme. 404 / project detail / reel detail pages pick this
+   up automatically.
+   ========================================================================= */
 @layer components {
-  .container {
-    @apply mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
-  }
-
   .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3 
-           bg-black text-white font-medium rounded-full
-           hover:bg-gray-900 focus:outline-none focus:ring-2 
-           focus:ring-gray-800 focus:ring-offset-2
-           transition-all duration-200 border border-black;
+    @apply inline-flex items-center justify-center px-6 py-3
+           font-semibold rounded-xl
+           focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#0d0c0b]
+           transition-all duration-200;
+    background: var(--accent);
+    color: #1a0a02;
+  }
+  .btn-primary:hover {
+    opacity: 0.92;
   }
 
   .btn-secondary {
     @apply inline-flex items-center justify-center px-6 py-3
-           bg-white text-black font-medium rounded-full
-           hover:bg-gray-50 focus:outline-none focus:ring-2
-           focus:ring-gray-400 focus:ring-offset-2
-           transition-all duration-200 border border-black;
+           font-semibold rounded-xl
+           focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#0d0c0b]
+           transition-all duration-200;
+    color: var(--ink);
+    border: 1px solid var(--rule);
+    background: transparent;
+  }
+  .btn-secondary:hover {
+    background: rgba(244, 239, 231, 0.05);
   }
 
   .section-padding {
-    @apply py-16 sm:py-20 lg:py-24;
+    @apply py-24 lg:py-32;
   }
 
   .heading-1 {
-    @apply text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight;
+    @apply text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-[-0.04em] leading-[0.95];
   }
-
   .heading-2 {
-    @apply text-3xl sm:text-4xl font-bold tracking-tight;
+    @apply text-4xl sm:text-5xl lg:text-6xl font-bold tracking-[-0.035em] leading-[1];
   }
-
   .heading-3 {
-    @apply text-xl sm:text-2xl font-semibold;
+    @apply text-2xl sm:text-3xl font-bold tracking-[-0.02em];
   }
 
   .text-muted {
-    @apply text-gray-600;
+    color: var(--ink-2);
   }
 
   .card {
-    @apply bg-white rounded-xl border border-gray-200 
-           hover:border-gray-300 transition-all duration-200;
+    @apply rounded-xl transition-all duration-200;
+    background: var(--bg-2);
+    border: 1px solid var(--rule);
+  }
+  .card:hover {
+    border-color: rgba(244, 239, 231, 0.18);
   }
 
   .badge {
-    @apply inline-flex items-center px-3 py-1 rounded-full
-           text-xs font-medium bg-gray-100 text-gray-700;
+    @apply inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium;
+    background: rgba(244, 239, 231, 0.05);
+    color: var(--ink-2);
+    border: 1px solid var(--rule);
+    font-family: var(--font-mono);
+    letter-spacing: 0.02em;
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    letter-spacing: 0.14em;
+    color: var(--accent);
+    text-transform: uppercase;
   }
 }
 
+/* =========================================================================
+   Utilities
+   ========================================================================= */
 @layer utilities {
-  .animate-fade-in {
-    animation: fadeIn 0.8s ease-out forwards;
+  .font-display {
+    font-family: var(--font-inter), system-ui, sans-serif;
+  }
+  .font-italic-serif {
+    font-family: var(--font-instrument-serif), Georgia, serif;
+    font-style: italic;
   }
 
-  @keyframes fadeIn {
+  .marquee {
+    display: flex;
+    overflow: hidden;
+    white-space: nowrap;
+  }
+  .marquee-track {
+    display: inline-flex;
+    animation: marquee 60s linear infinite;
+  }
+  @keyframes marquee {
     from {
-      opacity: 0;
+      transform: translateX(0);
     }
     to {
-      opacity: 1;
+      transform: translateX(-50%);
     }
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .glow-orb {
+    position: absolute;
+    border-radius: 9999px;
+    filter: blur(20px);
+    pointer-events: none;
+    background: radial-gradient(
+      circle,
+      rgba(255, 106, 61, 0.18),
+      transparent 60%
+    );
   }
 }
 
-/* Custom scrollbar - minimal */
+/* =========================================================================
+   Scrollbar — dark theme
+   ========================================================================= */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
-
 ::-webkit-scrollbar-track {
-  @apply bg-white;
+  background: var(--bg);
 }
-
 ::-webkit-scrollbar-thumb {
-  @apply bg-gray-300 rounded-full;
+  background: rgba(244, 239, 231, 0.12);
+  border-radius: 9999px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-400;
+  background: rgba(244, 239, 231, 0.22);
 }
 
-/* Focus styles for accessibility */
 *:focus-visible {
-  @apply outline-none ring-1 ring-gray-400 ring-offset-2;
+  outline: none;
+  box-shadow: 0 0 0 2px var(--accent);
+  border-radius: 4px;
 }
 
-/* Selection */
 ::selection {
-  @apply bg-gray-900 text-white;
+  background: var(--accent);
+  color: #1a0a02;
 }
 
-/* Print styles */
 @media print {
   .no-print {
     display: none !important;
+  }
+  body {
+    background: white;
+    color: black;
   }
 }

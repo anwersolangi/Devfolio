@@ -8,11 +8,17 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
+        // Same variable names as before — `font-sans` and `font-mono` keep
+        // working everywhere. We swap the underlying font in layout.js
+        // (Hanken Grotesk → --font-inter, Geist Mono → --font-mono).
         sans: ["var(--font-inter)", "system-ui", "sans-serif"],
         heading: ["var(--font-outfit)", "system-ui", "sans-serif"],
         mono: ["var(--font-mono)", "monospace"],
+        // NEW — italic serif accents used in V1 hero & CTA
+        serif: ["var(--font-instrument-serif)", "Georgia", "serif"],
       },
       colors: {
+        // Preserve your existing tokens
         background: "var(--background)",
         foreground: "var(--foreground)",
         blue: {
@@ -24,9 +30,27 @@ module.exports = {
           900: "#111827",
           950: "#030712",
         },
+        // V1 palette — added without colliding with anything above
+        bg: "#0d0c0b",
+        "bg-2": "#161514",
+        "bg-3": "#1f1d1b",
+        ink: "#f4efe7",
+        "ink-2": "rgba(244, 239, 231, 0.62)",
+        "ink-3": "rgba(244, 239, 231, 0.38)",
+        rule: "rgba(244, 239, 231, 0.10)",
+        accent: "#ff6a3d",
+        "accent-2": "#ffb27a",
+        good: "#7af0a8",
+      },
+      letterSpacing: {
+        tightest: "-0.045em",
+        "extra-tight": "-0.035em",
+      },
+      maxWidth: {
+        screen: "1440px",
       },
       animation: {
-        // Preserve existing animations
+        // ALL your existing animations — preserved
         gradient: "gradient 6s ease infinite",
         "gradient-fast": "gradient 3s ease infinite",
         cursor: "cursor 1s step-end infinite",
@@ -34,13 +58,12 @@ module.exports = {
         "bounce-slow": "bounce 3s ease-in-out infinite",
         typing: "typing 2s ease-in-out infinite",
         "fade-in": "fadeIn 0.5s ease-out forwards",
-
-        // New animations
         float: "float 5s ease-in-out infinite",
         "pulse-slow": "pulse-slow 3s infinite",
+        // New: marquee for the hero tech ticker
+        marquee: "marquee 60s linear infinite",
       },
       keyframes: {
-        // Preserve existing keyframes
         gradient: {
           "0%, 100%": { "background-position": "0% 50%" },
           "50%": { "background-position": "100% 50%" },
@@ -62,8 +85,6 @@ module.exports = {
           "50%": { transform: "translateX(150px)" },
           "100%": { transform: "translateX(0)" },
         },
-
-        // New keyframes
         float: {
           "0%, 100%": { transform: "translateY(0)" },
           "50%": { transform: "translateY(-10px)" },
@@ -71,6 +92,10 @@ module.exports = {
         "pulse-slow": {
           "0%, 100%": { opacity: 0.6 },
           "50%": { opacity: 1 },
+        },
+        marquee: {
+          from: { transform: "translateX(0)" },
+          to: { transform: "translateX(-50%)" },
         },
       },
       backgroundSize: {
@@ -85,8 +110,5 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    // Optional plugin for scrollbar styling - uncomment if you want to install it
-    require("tailwindcss-scrollbar"),
-  ],
+  plugins: [],
 };

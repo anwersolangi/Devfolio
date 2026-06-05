@@ -1,19 +1,32 @@
 import Hero from "@/components/Hero";
+import ReelsCarousel from "@/components/ReelsCarousel";
+import Projects from "@/components/Projects";
+import Apps from "@/components/Apps";
 import About from "@/components/About";
 import Skills from "@/components/Skills";
-import Projects from "@/components/Projects";
-import ReelsCarousel from "@/components/ReelsCarousel";
 import Experience from "@/components/Experience";
 import Contact from "@/components/Contact";
+import { reelsData } from "@/data/reels";
+import { getReelsStats } from "@/lib/reelStats";
 
-export default function Home() {
+export const revalidate = 60 * 60;
+
+export default async function Home() {
+  const featuredReels = [...reelsData].slice(-5).reverse();
+  const statsBySlug = await getReelsStats(featuredReels);
+
   return (
     <main>
       <Hero />
+      <ReelsCarousel
+        reels={featuredReels}
+        statsBySlug={statsBySlug}
+        totalReels={reelsData.length}
+      />
+      <Projects />
+      <Apps />
       <About />
       <Skills />
-      <Projects />
-      <ReelsCarousel />
       <Experience />
       <Contact />
     </main>

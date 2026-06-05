@@ -1,3 +1,4 @@
+//apps/[slug]/page.js
 import { notFound } from "next/navigation";
 import Layout1 from "@/components/apps/layouts/Layout1";
 import Layout2 from "@/components/apps/layouts/Layout2";

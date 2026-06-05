@@ -1,269 +1,221 @@
 import Link from "next/link";
+import { notFound } from "next/navigation";
+import {
+  ArrowLeft,
+  ArrowRight,
+  Mail,
+  ChevronDown,
+  AlertTriangle,
+  ShieldAlert,
+  ExternalLink,
+  Send,
+} from "lucide-react";
 import { APPS_DATA } from "@/data/apps";
 import { PRIVACY_POLICIES } from "@/data/privacy";
 import { TERMS_OF_SERVICE } from "@/data/terms";
 import { HELP_CONTENT } from "@/data/help";
 import { CHILD_SAFETY_POLICIES } from "@/data/child-safety";
-import { notFound } from "next/navigation";
 
 export async function generateMetadata({ params }) {
   const { slug, path } = await params;
   const app = APPS_DATA[slug];
+  if (!app) return { title: "Not Found" };
+
+  const map = {
+    privacy: [
+      "Privacy Policy",
+      `Privacy Policy for ${app.name}. Learn how your data is handled.`,
+    ],
+    terms: [
+      "Terms of Service",
+      `Terms of Service for ${app.name}. Read the terms and conditions.`,
+    ],
+    help: [
+      "Help & Support",
+      `Get help with ${app.name}. FAQs, troubleshooting, and contact support.`,
+    ],
+    contact: [
+      "Contact Us",
+      `Contact support for ${app.name}. Bug reports, feature requests, and inquiries.`,
+    ],
+    "child-safety": [
+      "Child Safety Standards",
+      `Child Safety Standards Policy for ${app.name}. Our commitment to child safety and protection.`,
+    ],
+  };
+  const entry = map[path?.[0]];
+  if (entry) {
+    return {
+      title: `${entry[0]} | ${app.name} | Anwer Solangi`,
+      description: entry[1],
+    };
+  }
   const pageName = path?.join(" / ");
-
-  if (!app) {
-    return { title: "Not Found" };
-  }
-
-  if (path?.[0] === "privacy") {
-    return {
-      title: `Privacy Policy | ${app.name} | Anwer Solangi`,
-      description: `Privacy Policy for ${app.name}. Learn how your data is handled.`,
-    };
-  }
-
-  if (path?.[0] === "terms") {
-    return {
-      title: `Terms of Service | ${app.name} | Anwer Solangi`,
-      description: `Terms of Service for ${app.name}. Read the terms and conditions.`,
-    };
-  }
-
-  if (path?.[0] === "help") {
-    return {
-      title: `Help & Support | ${app.name} | Anwer Solangi`,
-      description: `Get help with ${app.name}. FAQs, troubleshooting, and contact support.`,
-    };
-  }
-
-  if (path?.[0] === "contact") {
-    return {
-      title: `Contact Us | ${app.name} | Anwer Solangi`,
-      description: `Contact support for ${app.name}. Bug reports, feature requests, and inquiries.`,
-    };
-  }
-
-  if (path?.[0] === "child-safety") {
-    return {
-      title: `Child Safety Standards Policy | ${app.name} | Anwer Solangi`,
-      description: `Child Safety Standards Policy for ${app.name}. Our commitment to child safety and protection.`,
-    };
-  }
-
   return {
     title: `${pageName} | ${app.name} | Anwer Solangi`,
     description: `${pageName} for ${app.name}`,
   };
 }
 
+function BackLink({ appSlug, appName }) {
+  return (
+    <Link
+      href={`/apps/${appSlug}`}
+      className="inline-flex items-center gap-2 text-sm text-ink-2 hover:text-ink mb-12 group font-mono"
+    >
+      <ArrowLeft className="w-3.5 h-3.5 transition-transform duration-300 group-hover:-translate-x-1" />
+      back to {appName}
+    </Link>
+  );
+}
+
+function PageHeader({ eyebrow, title, lastUpdated }) {
+  return (
+    <header className="mb-12">
+      <div className="font-mono text-[11px] tracking-[0.14em] text-accent uppercase">
+        {eyebrow}
+      </div>
+      <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-[-0.04em] leading-[0.98] mt-3 text-ink">
+        {title}
+      </h1>
+      {lastUpdated && (
+        <p className="font-mono text-[12px] tracking-[0.06em] text-ink-3 mt-4">
+          LAST UPDATED · {lastUpdated.toUpperCase()}
+        </p>
+      )}
+    </header>
+  );
+}
+
+function PolicySection({ section }) {
+  return (
+    <section className="mb-12 pb-12 border-b border-rule last:border-b-0">
+      <h2 className="text-2xl md:text-3xl font-bold text-ink tracking-[-0.02em] mb-5 leading-tight">
+        {section.title}
+      </h2>
+
+      {section.content && (
+        <p className="text-ink-2 text-[15px] leading-[1.7] whitespace-pre-line mb-4">
+          {section.content}
+        </p>
+      )}
+
+      {section.items && (
+        <ul className="space-y-2 mb-4">
+          {section.items.map((item, i) => (
+            <li
+              key={i}
+              className="relative pl-5 text-ink-2 text-[15px] leading-[1.6]"
+            >
+              <span className="absolute left-0 top-[10px] w-1.5 h-1.5 rounded-full bg-accent" />
+              {item}
+            </li>
+          ))}
+        </ul>
+      )}
+
+      {section.footer && (
+        <p className="text-ink leading-[1.6] mt-4 p-4 rounded-lg bg-bg-2 border border-rule border-l-2 border-l-accent">
+          {section.footer}
+        </p>
+      )}
+
+      {section.subsections?.map((sub, i) => (
+        <div key={i} className="mt-5 p-5 bg-bg-2 rounded-xl border border-rule">
+          <h3 className="text-lg font-semibold text-ink tracking-[-0.01em] mb-2">
+            {sub.title}
+          </h3>
+          <p className="text-ink-2 text-[14px] leading-[1.6] whitespace-pre-line">
+            {sub.content}
+          </p>
+        </div>
+      ))}
+
+      {section.contactEmail && (
+        <a
+          href={`mailto:${section.contactEmail}`}
+          className="inline-flex items-center gap-2 mt-4 px-4 py-2.5 rounded-lg border border-rule text-ink hover:bg-white/5 hover:border-accent/40 transition text-sm font-mono"
+        >
+          <Mail className="w-4 h-4 text-accent" />
+          {section.contactEmail}
+        </a>
+      )}
+    </section>
+  );
+}
+
+function FootCard({ children }) {
+  return (
+    <div className="mt-12 p-6 rounded-xl border border-rule bg-bg-2">
+      <p className="text-ink-2 text-center text-[15px]">{children}</p>
+    </div>
+  );
+}
+
 function PrivacyPolicyPage({ policy, appSlug }) {
   return (
-    <main className="container mx-auto px-4 pt-32 pb-12 max-w-4xl">
-      <Link
-        href={`/apps/${appSlug}`}
-        className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-8 transition-colors"
-      >
-        <svg
-          className="w-4 h-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M15 19l-7-7 7-7"
-          />
-        </svg>
-        Back to {policy.appName}
-      </Link>
-
-      <article className="prose prose-gray max-w-none">
-        <h1 className="text-4xl font-bold mb-2 text-gray-900">
-          {policy.title}
-        </h1>
-        <p className="text-gray-500 mb-8">Last Updated: {policy.lastUpdated}</p>
-
-        {policy.sections.map((section, index) => (
-          <section key={index} className="mb-10">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-              {section.title}
-            </h2>
-
-            {section.content && (
-              <p className="text-gray-700 whitespace-pre-line mb-4">
-                {section.content}
-              </p>
-            )}
-
-            {section.items && (
-              <ul className="list-disc list-inside space-y-2 text-gray-700 mb-4">
-                {section.items.map((item, i) => (
-                  <li key={i}>{item}</li>
-                ))}
-              </ul>
-            )}
-
-            {section.footer && (
-              <p className="text-gray-700 mt-4">{section.footer}</p>
-            )}
-
-            {section.subsections &&
-              section.subsections.map((sub, i) => (
-                <div key={i} className="ml-4 mb-6 p-4 bg-gray-50 rounded-lg">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                    {sub.title}
-                  </h3>
-                  <p className="text-gray-700 whitespace-pre-line">
-                    {sub.content}
-                  </p>
-                </div>
-              ))}
-
-            {section.contactEmail && (
-              <a
-                href={`mailto:${section.contactEmail}`}
-                className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors"
-              >
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  />
-                </svg>
-                {section.contactEmail}
-              </a>
-            )}
-          </section>
-        ))}
-      </article>
-
-      <div className="mt-12 p-6 bg-gray-50 rounded-xl border border-gray-200">
-        <p className="text-gray-600 text-center">
+    <main className="min-h-screen pt-28 pb-20 px-6 lg:px-16">
+      <div className="max-w-4xl mx-auto">
+        <BackLink appSlug={appSlug} appName={policy.appName} />
+        <PageHeader
+          eyebrow={`${policy.appName} · LEGAL`}
+          title={policy.title}
+          lastUpdated={policy.lastUpdated}
+        />
+        <article>
+          {policy.sections.map((section, i) => (
+            <PolicySection key={i} section={section} />
+          ))}
+        </article>
+        <FootCard>
           Have questions about privacy practices?{" "}
           <a
             href="mailto:me@anwersolangi.com"
-            className="text-blue-600 hover:underline"
+            className="text-accent hover:underline font-medium"
           >
             Contact me
           </a>
-        </p>
+        </FootCard>
       </div>
     </main>
   );
 }
 
+// ─────────────────────────────────────────────────────────────────────────
+// Terms of Service
+// ─────────────────────────────────────────────────────────────────────────
 function TermsOfServicePage({ terms, appSlug }) {
   return (
-    <main className="container mx-auto px-4 pt-32 pb-12 max-w-4xl">
-      <Link
-        href={`/apps/${appSlug}`}
-        className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-8 transition-colors"
-      >
-        <svg
-          className="w-4 h-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M15 19l-7-7 7-7"
-          />
-        </svg>
-        Back to {terms.appName}
-      </Link>
-
-      <article className="prose prose-gray max-w-none">
-        <h1 className="text-4xl font-bold mb-2 text-gray-900">{terms.title}</h1>
-        <p className="text-gray-500 mb-8">Last Updated: {terms.lastUpdated}</p>
-
-        {terms.sections.map((section, index) => (
-          <section key={index} className="mb-10">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-              {section.title}
-            </h2>
-
-            {section.content && (
-              <p className="text-gray-700 whitespace-pre-line mb-4">
-                {section.content}
-              </p>
-            )}
-
-            {section.items && (
-              <ul className="list-disc list-inside space-y-2 text-gray-700 mb-4">
-                {section.items.map((item, i) => (
-                  <li key={i}>{item}</li>
-                ))}
-              </ul>
-            )}
-
-            {section.footer && (
-              <p className="text-gray-700 mt-4 font-medium">{section.footer}</p>
-            )}
-
-            {section.subsections &&
-              section.subsections.map((sub, i) => (
-                <div key={i} className="ml-4 mb-6 p-4 bg-gray-50 rounded-lg">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                    {sub.title}
-                  </h3>
-                  <p className="text-gray-700 whitespace-pre-line">
-                    {sub.content}
-                  </p>
-                </div>
-              ))}
-
-            {section.contactEmail && (
-              <a
-                href={`mailto:${section.contactEmail}`}
-                className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors"
-              >
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                  />
-                </svg>
-                {section.contactEmail}
-              </a>
-            )}
-          </section>
-        ))}
-      </article>
-
-      <div className="mt-12 p-6 bg-gray-50 rounded-xl border border-gray-200">
-        <p className="text-gray-600 text-center">
+    <main className="min-h-screen pt-28 pb-20 px-6 lg:px-16">
+      <div className="max-w-4xl mx-auto">
+        <BackLink appSlug={appSlug} appName={terms.appName} />
+        <PageHeader
+          eyebrow={`${terms.appName} · LEGAL`}
+          title={terms.title}
+          lastUpdated={terms.lastUpdated}
+        />
+        <article>
+          {terms.sections.map((section, i) => (
+            <PolicySection key={i} section={section} />
+          ))}
+        </article>
+        <FootCard>
           Have questions about these terms?{" "}
           <a
             href="mailto:me@anwersolangi.com"
-            className="text-blue-600 hover:underline"
+            className="text-accent hover:underline font-medium"
           >
             Contact me
           </a>
-        </p>
+        </FootCard>
       </div>
     </main>
   );
 }
 
+// ─────────────────────────────────────────────────────────────────────────
+// Help & Support
+// ─────────────────────────────────────────────────────────────────────────
 function HelpPage({ help, appSlug }) {
   const createMailtoLink = (option) => {
     const subject = encodeURIComponent(option.subject);
@@ -272,196 +224,180 @@ function HelpPage({ help, appSlug }) {
   };
 
   return (
-    <main className="container mx-auto px-4 pt-32 pb-12 max-w-5xl">
-      <Link
-        href={`/apps/${appSlug}`}
-        className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-8 transition-colors"
-      >
-        <svg
-          className="w-4 h-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M15 19l-7-7 7-7"
-          />
-        </svg>
-        Back to {help.appName}
-      </Link>
+    <main className="min-h-screen pt-28 pb-20 px-6 lg:px-16">
+      <div className="max-w-5xl mx-auto">
+        <BackLink appSlug={appSlug} appName={help.appName} />
 
-      {/* Header */}
-      <div className="text-center mb-16">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
-          {help.title}
-        </h1>
-        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-          {help.description}
-        </p>
-      </div>
-
-      {/* Quick Contact */}
-      <div className="bg-gradient-to-r from-gray-900 to-gray-800 rounded-2xl p-8 mb-16 text-white">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-          <div>
-            <h2 className="text-2xl font-semibold mb-2">
-              Need Immediate Help?
-            </h2>
-            <p className="text-gray-300">
-              Reach out directly via email for personalized support.
-            </p>
+        <header className="mb-12 max-w-3xl">
+          <div className="font-mono text-[11px] tracking-[0.14em] text-accent uppercase">
+            {help.appName} · SUPPORT
           </div>
-          <a
-            href={`mailto:${help.supportEmail}?subject=${encodeURIComponent(
-              help.appName + " Support Request"
-            )}`}
-            className="inline-flex items-center gap-2 px-6 py-3 bg-white text-gray-900 rounded-lg font-medium hover:bg-gray-100 transition-colors"
-          >
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-              />
-            </svg>
-            Email Support
-          </a>
-        </div>
-      </div>
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-[-0.045em] leading-[0.95] mt-3 text-ink">
+            {help.title.replace(/\.$/, "")}
+            <span className="text-accent">.</span>
+          </h1>
+          <p className="text-lg md:text-xl text-ink-2 font-light leading-[1.5] mt-5">
+            {help.description}
+          </p>
+        </header>
 
-      {/* FAQ Section */}
-      <section className="mb-16">
-        <h2 className="text-3xl font-bold mb-8 text-gray-900">
-          Frequently Asked Questions
-        </h2>
-        <div className="space-y-4">
-          {help.faqs.map((faq, index) => (
-            <details
-              key={index}
-              className="group bg-white border border-gray-200 rounded-lg overflow-hidden"
-            >
-              <summary className="flex items-center justify-between p-6 cursor-pointer list-none hover:bg-gray-50 transition-colors">
-                <span className="font-medium text-gray-900 pr-4">
-                  {faq.question}
-                </span>
-                <svg
-                  className="w-5 h-5 text-gray-500 transition-transform group-open:rotate-180"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 9l-7 7-7-7"
-                  />
-                </svg>
-              </summary>
-              <div className="px-6 pb-6 text-gray-600">{faq.answer}</div>
-            </details>
-          ))}
-        </div>
-      </section>
-
-      {/* Troubleshooting Section */}
-      <section className="mb-16">
-        <h2 className="text-3xl font-bold mb-8 text-gray-900">
-          Troubleshooting
-        </h2>
-        <div className="grid md:grid-cols-2 gap-6">
-          {help.troubleshooting.map((item, index) => (
-            <div
-              key={index}
-              className="bg-white border border-gray-200 rounded-xl p-6 hover:shadow-lg transition-shadow"
-            >
-              <div className="flex items-center gap-3 mb-4">
-                <span className="text-3xl">{item.icon}</span>
-                <h3 className="text-xl font-semibold text-gray-900">
-                  {item.title}
-                </h3>
+        {/* Immediate-help banner */}
+        <div className="relative rounded-2xl p-8 mb-16 overflow-hidden border border-rule bg-bg-2">
+          <div
+            className="absolute inset-0 pointer-events-none opacity-40"
+            style={{
+              background:
+                "radial-gradient(circle at top right, rgba(255,106,61,0.25), transparent 70%)",
+            }}
+          />
+          <div className="relative flex flex-col md:flex-row md:items-center md:justify-between gap-5">
+            <div className="max-w-xl">
+              <div className="font-mono text-[10px] tracking-[0.18em] text-accent uppercase">
+                ▸ Need immediate help?
               </div>
-              <ol className="space-y-2">
-                {item.steps.map((step, i) => (
-                  <li key={i} className="flex items-start gap-3 text-gray-600">
-                    <span className="flex-shrink-0 w-6 h-6 rounded-full bg-gray-100 text-gray-700 text-sm flex items-center justify-center font-medium">
-                      {i + 1}
-                    </span>
-                    <span>{step}</span>
-                  </li>
-                ))}
-              </ol>
+              <h2 className="text-2xl md:text-3xl font-bold tracking-[-0.02em] text-ink mt-2">
+                Email me directly.
+              </h2>
+              <p className="text-ink-2 mt-2">
+                Personalised support, replies usually inside a day.
+              </p>
             </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Contact Options */}
-      <section className="mb-16">
-        <h2 className="text-3xl font-bold mb-8 text-gray-900">Contact Me</h2>
-        <p className="text-gray-600 mb-8">
-          Choose the option that best describes your inquiry. Each link opens
-          your email client with a pre-filled template.
-        </p>
-        <div className="grid md:grid-cols-2 gap-6">
-          {help.contactOptions.map((option, index) => (
             <a
-              key={index}
-              href={createMailtoLink(option)}
-              className="block bg-white border border-gray-200 rounded-xl p-6 hover:border-gray-400 hover:shadow-lg transition-all group"
+              href={`mailto:${help.supportEmail}?subject=${encodeURIComponent(help.appName + " Support Request")}`}
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-accent text-[#1a0a02] text-sm font-bold hover:opacity-90 transition shrink-0"
             >
-              <div className="flex items-start gap-4">
-                <span className="text-4xl">{option.icon}</span>
-                <div>
-                  <h3 className="text-xl font-semibold text-gray-900 group-hover:text-black mb-1">
-                    {option.title}
-                  </h3>
-                  <p className="text-gray-600">{option.description}</p>
-                </div>
-                <svg
-                  className="w-5 h-5 text-gray-400 group-hover:text-gray-600 ml-auto flex-shrink-0"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M9 5l7 7-7 7"
-                  />
-                </svg>
-              </div>
+              <Mail className="w-4 h-4" /> Email support
             </a>
-          ))}
+          </div>
         </div>
-      </section>
 
-      {/* Footer Note */}
-      <div className="bg-gray-50 rounded-xl p-6 border border-gray-200 text-center">
-        <p className="text-gray-600">
+        {/* FAQs */}
+        <section className="mb-20">
+          <div className="font-mono text-[11px] tracking-[0.14em] text-accent mb-3 uppercase">
+            01 · FAQ
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-[-0.03em] text-ink mb-8">
+            Frequently asked questions.
+          </h2>
+          <div className="space-y-3">
+            {help.faqs.map((faq, i) => (
+              <details
+                key={i}
+                className="group bg-bg-2 border border-rule rounded-xl overflow-hidden transition-colors hover:border-accent/30"
+              >
+                <summary className="flex items-start justify-between gap-4 p-6 cursor-pointer list-none">
+                  <div className="flex items-start gap-4">
+                    <span className="font-mono text-[11px] text-accent tracking-[0.1em] pt-1 shrink-0">
+                      {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <span className="font-semibold text-ink leading-snug">
+                      {faq.question}
+                    </span>
+                  </div>
+                  <ChevronDown className="w-5 h-5 text-ink-2 transition-transform group-open:rotate-180 shrink-0 mt-0.5" />
+                </summary>
+                <div className="px-6 pb-6 pl-[68px] text-ink-2 text-[15px] leading-[1.65]">
+                  {faq.answer}
+                </div>
+              </details>
+            ))}
+          </div>
+        </section>
+
+        {/* Troubleshooting */}
+        <section className="mb-20">
+          <div className="font-mono text-[11px] tracking-[0.14em] text-accent mb-3 uppercase">
+            02 · TROUBLESHOOTING
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-[-0.03em] text-ink mb-8">
+            Common fixes.
+          </h2>
+          <div className="grid md:grid-cols-2 gap-5">
+            {help.troubleshooting.map((item, i) => (
+              <div
+                key={i}
+                className="bg-bg-2 border border-rule rounded-xl p-6 hover:border-accent/30 transition-colors"
+              >
+                <div className="flex items-center gap-3 mb-5">
+                  <span className="text-3xl" aria-hidden>
+                    {item.icon}
+                  </span>
+                  <h3 className="text-lg font-semibold text-ink tracking-[-0.01em]">
+                    {item.title}
+                  </h3>
+                </div>
+                <ol className="space-y-2.5">
+                  {item.steps.map((step, j) => (
+                    <li
+                      key={j}
+                      className="flex items-start gap-3 text-ink-2 text-[14px] leading-[1.55]"
+                    >
+                      <span className="shrink-0 w-6 h-6 rounded-full bg-bg border border-rule text-accent text-[11px] font-mono flex items-center justify-center">
+                        {j + 1}
+                      </span>
+                      <span>{step}</span>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Contact options */}
+        <section className="mb-12">
+          <div className="font-mono text-[11px] tracking-[0.14em] text-accent mb-3 uppercase">
+            03 · GET IN TOUCH
+          </div>
+          <h2 className="text-3xl md:text-4xl font-bold tracking-[-0.03em] text-ink mb-3">
+            Pick what fits your question.
+          </h2>
+          <p className="text-ink-2 mb-8 max-w-2xl">
+            Each link opens your email client with a ready-to-send template.
+          </p>
+          <div className="grid md:grid-cols-2 gap-5">
+            {help.contactOptions.map((option, i) => (
+              <a
+                key={i}
+                href={createMailtoLink(option)}
+                className="group block bg-bg-2 border border-rule rounded-xl p-6 hover:border-accent/40 hover:-translate-y-0.5 transition-all"
+              >
+                <div className="flex items-start gap-4">
+                  <span className="text-4xl shrink-0" aria-hidden>
+                    {option.icon}
+                  </span>
+                  <div className="flex-1">
+                    <h3 className="text-lg font-semibold text-ink tracking-[-0.01em] mb-1 group-hover:text-accent-2 transition-colors">
+                      {option.title}
+                    </h3>
+                    <p className="text-ink-2 text-[14px] leading-[1.55]">
+                      {option.description}
+                    </p>
+                  </div>
+                  <ArrowRight className="w-5 h-5 text-ink-3 group-hover:text-accent group-hover:translate-x-1 transition-all shrink-0" />
+                </div>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        <FootCard>
           Can&apos;t find what you&apos;re looking for? Email me directly at{" "}
           <a
             href={`mailto:${help.supportEmail}`}
-            className="text-blue-600 hover:underline font-medium"
+            className="text-accent hover:underline font-medium"
           >
             {help.supportEmail}
           </a>
-        </p>
+        </FootCard>
       </div>
     </main>
   );
 }
 
+// ─────────────────────────────────────────────────────────────────────────
+// Contact (standalone)
+// ─────────────────────────────────────────────────────────────────────────
 function ContactPage({ contactOptions, appSlug, supportEmail }) {
   const createMailtoLink = (option) => {
     const subject = encodeURIComponent(option.subject);
@@ -470,334 +406,182 @@ function ContactPage({ contactOptions, appSlug, supportEmail }) {
   };
 
   return (
-    <main className="container mx-auto px-4 pt-32 pb-12 max-w-4xl">
-      <Link
-        href={`/apps/${appSlug}`}
-        className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-8 transition-colors"
-      >
-        <svg
-          className="w-4 h-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M15 19l-7-7 7-7"
-          />
-        </svg>
-        Back to App
-      </Link>
+    <main className="min-h-screen pt-28 pb-20 px-6 lg:px-16">
+      <div className="max-w-4xl mx-auto">
+        <BackLink appSlug={appSlug} appName="app" />
 
-      <div className="text-center mb-16">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
-          Contact Support
-        </h1>
-        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-          How can I help you today? Choose an option below to get in touch.
-        </p>
-      </div>
+        <header className="mb-12 max-w-3xl">
+          <div className="font-mono text-[11px] tracking-[0.14em] text-accent uppercase">
+            CONTACT
+          </div>
+          <h1 className="text-5xl md:text-6xl font-extrabold tracking-[-0.045em] leading-[0.95] mt-3 text-ink">
+            How can I{" "}
+            <span className="font-serif italic text-accent font-normal">
+              help
+            </span>
+            <span className="text-accent">?</span>
+          </h1>
+          <p className="text-lg text-ink-2 font-light leading-[1.5] mt-5">
+            Choose an option below to get in touch.
+          </p>
+        </header>
 
-      <div className="grid md:grid-cols-2 gap-6">
-        {contactOptions.map((option, index) => (
+        <div className="grid md:grid-cols-2 gap-5">
+          {contactOptions.map((option, i) => (
+            <a
+              key={i}
+              href={createMailtoLink(option)}
+              className="group bg-bg-2 p-7 rounded-2xl border border-rule hover:border-accent/40 hover:-translate-y-1 transition-all duration-300"
+            >
+              <div className="flex items-start justify-between mb-5">
+                <span className="text-4xl bg-bg w-16 h-16 rounded-xl border border-rule flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                  {option.icon}
+                </span>
+                <Send className="w-5 h-5 text-ink-3 opacity-0 group-hover:opacity-100 group-hover:text-accent translate-x-2 group-hover:translate-x-0 transition-all" />
+              </div>
+              <h2 className="text-xl font-bold text-ink tracking-[-0.01em] mb-2 group-hover:text-accent-2 transition-colors">
+                {option.title}
+              </h2>
+              <p className="text-ink-2 text-[14px] leading-[1.6]">
+                {option.description}
+              </p>
+            </a>
+          ))}
+        </div>
+
+        <div className="mt-12 p-8 rounded-2xl border border-rule bg-bg-2 text-center">
+          <p className="text-ink-2 mb-2 text-sm font-mono uppercase tracking-[0.08em]">
+            Prefer to send a direct email?
+          </p>
           <a
-            key={index}
-            href={createMailtoLink(option)}
-            className="group bg-white p-8 rounded-2xl border border-gray-200 hover:border-gray-300 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1"
+            href={`mailto:${supportEmail}`}
+            className="text-2xl font-semibold text-ink hover:text-accent transition-colors tracking-[-0.01em]"
           >
-            <div className="flex items-start justify-between mb-4">
-              <span className="text-4xl bg-gray-50 w-16 h-16 rounded-xl flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                {option.icon}
-              </span>
-              <span className="text-blue-600 opacity-0 group-hover:opacity-100 transition-opacity transform translate-x-2 group-hover:translate-x-0">
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M14 5l7 7m0 0l-7 7m7-7H3"
-                  />
-                </svg>
-              </span>
-            </div>
-            <h2 className="text-2xl font-bold text-gray-900 mb-2">
-              {option.title}
-            </h2>
-            <p className="text-gray-600">{option.description}</p>
+            {supportEmail}
           </a>
-        ))}
-      </div>
-
-      <div className="mt-16 text-center bg-gray-50 rounded-2xl p-8">
-        <p className="text-gray-600 mb-2">Prefer to send a direct email?</p>
-        <a
-          href={`mailto:${supportEmail}`}
-          className="text-xl font-medium text-gray-900 hover:text-blue-600 transition-colors"
-        >
-          {supportEmail}
-        </a>
+        </div>
       </div>
     </main>
   );
 }
 
+// ─────────────────────────────────────────────────────────────────────────
+// Child Safety
+// ─────────────────────────────────────────────────────────────────────────
 function ChildSafetyPolicyPage({ policy, appSlug }) {
   return (
-    <main className="container mx-auto px-4 pt-32 pb-12 max-w-4xl">
-      <Link
-        href={`/apps/${appSlug}`}
-        className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-8 transition-colors"
-      >
-        <svg
-          className="w-4 h-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M15 19l-7-7 7-7"
-          />
-        </svg>
-        Back to {policy.appName}
-      </Link>
+    <main className="min-h-screen pt-28 pb-20 px-6 lg:px-16">
+      <div className="max-w-4xl mx-auto">
+        <BackLink appSlug={appSlug} appName={policy.appName} />
 
-      {/* Critical Safety Banner */}
-      <div className="bg-red-50 border-l-4 border-red-500 p-6 rounded-lg mb-8">
-        <div className="flex items-start gap-4">
-          <svg
-            className="w-6 h-6 text-red-600 flex-shrink-0 mt-0.5"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-            />
-          </svg>
+        {/* Critical safety banner — red, but tuned for the dark theme */}
+        <div className="bg-[#3a1a14] border border-[#f06a5a]/40 border-l-4 border-l-[#f06a5a] p-6 rounded-xl mb-12 flex items-start gap-4">
+          <ShieldAlert className="w-6 h-6 text-[#f06a5a] shrink-0 mt-0.5" />
           <div>
-            <h2 className="text-red-800 font-semibold text-lg mb-1">
-              Child Safety is Our Priority
+            <h2 className="text-[#ffb1a0] font-bold text-lg mb-1 tracking-[-0.01em]">
+              Child safety is our priority
             </h2>
-            <p className="text-red-700">
+            <p className="text-[#f4d4cd] text-[15px] leading-[1.6]">
               If you suspect a child is in immediate danger, please contact your
               local emergency services immediately.
             </p>
           </div>
         </div>
-      </div>
 
-      <article className="prose prose-gray max-w-none">
-        <h1 className="text-4xl font-bold mb-2 text-gray-900">
-          {policy.title}
-        </h1>
-        <p className="text-gray-500 mb-8">Last Updated: {policy.lastUpdated}</p>
+        <PageHeader
+          eyebrow={`${policy.appName} · LEGAL`}
+          title={policy.title}
+          lastUpdated={policy.lastUpdated}
+        />
 
-        {policy.sections.map((section, index) => (
-          <section key={index} className="mb-10">
-            <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-              {section.title}
-            </h2>
+        <article>
+          {policy.sections.map((section, i) => (
+            <PolicySection key={i} section={section} />
+          ))}
+        </article>
 
-            {section.content && (
-              <p className="text-gray-700 whitespace-pre-line mb-4">
-                {section.content}
-              </p>
-            )}
-
-            {section.items && (
-              <ul className="list-disc list-inside space-y-2 text-gray-700 mb-4">
-                {section.items.map((item, i) => (
-                  <li key={i}>{item}</li>
-                ))}
-              </ul>
-            )}
-
-            {section.footer && (
-              <p className="text-gray-700 mt-4 font-medium bg-gray-50 p-4 rounded-lg border-l-4 border-gray-400">
-                {section.footer}
-              </p>
-            )}
-
-            {section.subsections &&
-              section.subsections.map((sub, i) => (
-                <div key={i} className="ml-4 mb-6 p-4 bg-gray-50 rounded-lg">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-2">
-                    {sub.title}
-                  </h3>
-                  <p className="text-gray-700 whitespace-pre-line">
-                    {sub.content}
-                  </p>
-                </div>
-              ))}
-
-            {section.contactEmail && (
-              <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
-                <p className="text-gray-700 mb-2">Child Safety Contact:</p>
-                <a
-                  href={`mailto:${section.contactEmail}`}
-                  className="inline-flex items-center gap-2 text-blue-600 hover:text-blue-800 transition-colors font-semibold"
-                >
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                    />
-                  </svg>
-                  {section.contactEmail}
-                </a>
-              </div>
-            )}
-          </section>
-        ))}
-      </article>
-
-      {/* Report Section */}
-      <div className="mt-12 p-6 bg-red-50 rounded-xl border border-red-200">
-        <h3 className="text-red-800 font-semibold text-lg mb-2">
-          Report Child Safety Concerns
-        </h3>
-        <p className="text-red-700 mb-4">
-          If you encounter any content or behavior that exploits, abuses, or
-          endangers children on Nearby, please report it immediately using the
-          in-app Report feature or contact us directly.
-        </p>
-        <div className="flex flex-wrap gap-4">
-          <a
-            href="mailto:me@anwersolangi.com"
-            className="inline-flex items-center gap-2 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors"
-          >
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+        {/* Report section */}
+        <div className="mt-12 p-7 rounded-xl border border-[#f06a5a]/40 bg-[#221311]">
+          <div className="flex items-center gap-3 mb-3">
+            <AlertTriangle className="w-5 h-5 text-[#f06a5a]" />
+            <h3 className="text-[#ffb1a0] font-bold text-lg tracking-[-0.01em]">
+              Report child safety concerns
+            </h3>
+          </div>
+          <p className="text-[#f4d4cd] text-[15px] leading-[1.65] mb-5">
+            If you encounter content or behaviour that exploits, abuses, or
+            endangers children, please report it immediately using the in-app
+            Report feature or contact us directly.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <a
+              href="mailto:me@anwersolangi.com"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-lg bg-[#f06a5a] text-[#1a0805] text-sm font-bold hover:opacity-90 transition"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-              />
-            </svg>
-            Contact Safety Team
-          </a>
-          <a
-            href="https://www.cybertipline.org"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-900 transition-colors"
-          >
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
+              <Mail className="w-4 h-4" />
+              Contact safety team
+            </a>
+            <a
+              href="https://www.cybertipline.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-rule text-ink text-sm font-semibold hover:bg-white/5 transition"
             >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-              />
-            </svg>
-            NCMEC CyberTipline
-          </a>
+              <ExternalLink className="w-4 h-4" />
+              NCMEC CyberTipline
+            </a>
+          </div>
         </div>
       </div>
     </main>
   );
 }
 
+// ─────────────────────────────────────────────────────────────────────────
+// Generic fallback
+// ─────────────────────────────────────────────────────────────────────────
 function GenericSubPage({ slug, path, app }) {
   const pageName = path?.join(" / ");
-
   return (
-    <main className="container mx-auto px-4 pt-32 pb-12">
-      <Link
-        href={`/apps/${slug}`}
-        className="inline-flex items-center gap-2 text-gray-600 hover:text-gray-900 mb-8 transition-colors"
-      >
-        <svg
-          className="w-4 h-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth={2}
-            d="M15 19l-7-7 7-7"
-          />
-        </svg>
-        Back to {app.name}
-      </Link>
-      <h1 className="text-4xl font-bold mb-4 capitalize text-gray-900">
-        {pageName}
-      </h1>
-      <p className="text-lg text-gray-600">
-        This page is coming soon for <strong>{app.name}</strong>.
-      </p>
+    <main className="min-h-screen pt-28 pb-20 px-6 lg:px-16">
+      <div className="max-w-4xl mx-auto">
+        <BackLink appSlug={slug} appName={app.name} />
+        <PageHeader eyebrow={`${app.name} · SUB-PAGE`} title={pageName} />
+        <p className="text-lg text-ink-2 leading-relaxed">
+          This page is coming soon for{" "}
+          <strong className="text-ink">{app.name}</strong>.
+        </p>
+      </div>
     </main>
   );
 }
 
+// ─────────────────────────────────────────────────────────────────────────
+// Router
+// ─────────────────────────────────────────────────────────────────────────
 export default async function AppSubPage({ params }) {
   const { slug, path } = await params;
   const app = APPS_DATA[slug];
+  if (!app) notFound();
 
-  if (!app) {
-    notFound();
-  }
-
-  // Handle privacy policy pages
   if (path?.[0] === "privacy") {
     const policy = PRIVACY_POLICIES[slug];
-    if (policy) {
-      return <PrivacyPolicyPage policy={policy} appSlug={slug} />;
-    }
+    if (policy) return <PrivacyPolicyPage policy={policy} appSlug={slug} />;
   }
 
-  // Handle terms of service pages
   if (path?.[0] === "terms") {
     const terms = TERMS_OF_SERVICE[slug];
-    if (terms) {
-      return <TermsOfServicePage terms={terms} appSlug={slug} />;
-    }
+    if (terms) return <TermsOfServicePage terms={terms} appSlug={slug} />;
   }
 
-  // Handle help pages
   if (path?.[0] === "help") {
     const help = HELP_CONTENT[slug];
-    if (help) {
-      return <HelpPage help={help} appSlug={slug} />;
-    }
+    if (help) return <HelpPage help={help} appSlug={slug} />;
   }
 
-  // Handle contact pages
   if (path?.[0] === "contact") {
     const help = HELP_CONTENT[slug];
-    if (help && help.contactOptions) {
+    if (help?.contactOptions) {
       return (
         <ContactPage
           contactOptions={help.contactOptions}
@@ -808,14 +592,10 @@ export default async function AppSubPage({ params }) {
     }
   }
 
-  // Handle child safety policy pages
   if (path?.[0] === "child-safety") {
     const policy = CHILD_SAFETY_POLICIES[slug];
-    if (policy) {
-      return <ChildSafetyPolicyPage policy={policy} appSlug={slug} />;
-    }
+    if (policy) return <ChildSafetyPolicyPage policy={policy} appSlug={slug} />;
   }
 
-  // Generic sub-page handler
   return <GenericSubPage slug={slug} path={path} app={app} />;
 }

@@ -1,9 +1,12 @@
+// data/apps/index.js
+
 import { nearby } from "./nearby";
 import { whatsupfire } from "./whatsupfire";
 import { velocityTrack } from "./velocity-track";
 import { youtubeFullscreenFocus } from "./youtube-fullscreen-focus";
 import { reacttube } from "./reacttube";
 import { convertiX } from "./convertix";
+import { tapMeal } from "./tapmeal";
 
 export const APPS_DATA = {
   nearby,
@@ -12,6 +15,7 @@ export const APPS_DATA = {
   "youtube-fullscreen-focus": youtubeFullscreenFocus,
   reacttube,
   convertix: convertiX,
+  tapmeal: tapMeal,
 };
 
 export const APPS_LIST = [
@@ -51,6 +55,13 @@ export const APPS_LIST = [
     description: reacttube.description,
     icon: reacttube.icon,
   },
+  {
+    slug: tapMeal.slug,
+    name: tapMeal.name,
+    description: tapMeal.description,
+    icon: tapMeal.icon,
+    externalUrl: tapMeal.externalUrl,
+  },
 ];
 
 export {
@@ -60,4 +71,5 @@ export {
   youtubeFullscreenFocus,
   reacttube,
   convertiX,
+  tapMeal,
 };
