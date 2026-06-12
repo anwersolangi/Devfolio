@@ -55,6 +55,14 @@ export default function Header() {
     };
   }, [menuOpen]);
 
+  // Close the mobile sheet on Escape
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e) => e.key === "Escape" && setMenuOpen(false);
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [menuOpen]);
+
   // "Apps" always points at the apps subdomain in production.
   const appsHref = isProd ? APPS_URL : "/apps";
   // From the apps subdomain, main-site links must cross back to the root domain;
@@ -133,6 +141,8 @@ export default function Header() {
               onClick={() => setMenuOpen((v) => !v)}
               className="lg:hidden relative w-10 h-10 text-ink"
               aria-label="Toggle menu"
+              aria-expanded={menuOpen}
+              aria-controls="mobile-menu"
             >
               <span
                 className={`block absolute left-1/2 top-1/2 -translate-x-1/2 h-0.5 w-6 bg-current transform transition-all duration-300 ${
@@ -162,6 +172,10 @@ export default function Header() {
         onClick={() => setMenuOpen(false)}
       />
       <div
+        id="mobile-menu"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Site navigation"
         className={`fixed top-0 right-0 bottom-0 w-full sm:w-80 bg-bg-2 z-[110] lg:hidden transform transition-transform duration-500 ease-out ${
           menuOpen ? "translate-x-0" : "translate-x-full"
         }`}

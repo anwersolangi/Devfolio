@@ -188,7 +188,7 @@ export default function Layout1({ app }) {
                 02 · DEEP DIVE
               </div>
               <h2 className="text-4xl md:text-5xl font-bold tracking-[-0.035em] text-ink mt-3">
-                How it's built.
+                How it’s built.
               </h2>
             </div>
 

@@ -27,7 +27,7 @@ export default function AppsPage() {
             APPS · {APPS_LIST.length} SHIPPED
           </div>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-[-0.045em] leading-[0.95] mt-3 text-ink">
-            Apps I've{" "}
+            Apps I’ve{" "}
             <span className="font-serif italic text-accent font-normal">
               shipped
             </span>
@@ -55,7 +55,7 @@ export default function AppsPage() {
             <h2 className="text-3xl md:text-4xl font-bold tracking-[-0.03em] text-ink mt-3 leading-tight">
               Got an app idea?{" "}
               <span className="font-serif italic text-accent font-normal">
-                Let's ship it.
+                Let’s ship it.
               </span>
             </h2>
             <p className="text-ink-2 mt-3 max-w-lg">

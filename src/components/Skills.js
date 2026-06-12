@@ -1,148 +1,112 @@
-"use client";
-import { useEffect, useRef, useState } from "react";
+import Reveal from "@/components/Reveal";
 
+/**
+ * Capability-first stack section. No skill percentages — each category
+ * leads with what the tool is actually used for in shipped work.
+ */
 const categories = [
   {
-    title: "Mobile",
-    skills: [
-      ["React Native", 95],
-      ["JavaScript ES6+", 95],
-      ["TypeScript", 85],
-      ["Redux / MobX", 90],
-      ["React Navigation", 95],
-      ["Native Modules", 75],
+    title: "Mobile Engineering",
+    items: [
+      ["React Native & Expo", "5+ years, 50+ shipped apps"],
+      ["TypeScript & modern JavaScript", "typed, maintainable codebases"],
+      ["Reanimated & Gesture Handler", "the 60fps motion behind the reels"],
+      ["React Navigation & deep linking", "auth flows, tabs, universal links"],
+      ["Native modules", "Swift / Kotlin bridges when JS isn't enough"],
     ],
   },
   {
-    title: "Backend",
-    skills: [
-      ["Firebase", 95],
-      ["Node.js", 85],
-      ["REST APIs", 95],
-      ["GraphQL", 70],
-      ["Socket.io", 85],
-      ["MongoDB", 75],
+    title: "Backend & Realtime",
+    items: [
+      ["Firebase", "Auth, Firestore, FCM, Cloud Functions"],
+      ["Node.js & REST APIs", "pragmatic backends for mobile products"],
+      ["GraphQL & Socket.io", "live data, chat, presence"],
+      ["MongoDB", "document modeling for app data"],
+      ["Stripe & payments", "subscriptions and checkout flows"],
     ],
   },
   {
-    title: "Tools",
-    skills: [
-      ["Git / GitHub", 95],
-      ["VS Code", 95],
-      ["Xcode", 85],
-      ["Android Studio", 85],
-      ["Postman", 90],
-      ["Figma", 75],
+    title: "Shipping & Tooling",
+    items: [
+      ["Fastlane · TestFlight · Play Console", "automated release pipelines"],
+      ["CodePush", "over-the-air updates, no resubmission"],
+      ["Git, GitHub & CI", "reviews, branching, automated checks"],
+      ["Jest & Detox", "unit and end-to-end testing"],
+      ["Figma", "design handoff and motion specs"],
     ],
   },
 ];
 
 const additional = [
-  "Expo",
-  "RN Paper",
-  "Styled Components",
-  "Async Storage",
-  "Reanimated",
+  "Redux / MobX",
   "Lottie",
   "Push Notifications",
-  "CodePush",
-  "Fastlane",
-  "TestFlight",
-  "Play Console",
-  "Chrome Ext APIs",
+  "Async Storage",
+  "Styled Components",
+  "RN Paper",
+  "Chrome Extension APIs",
+  "Xcode",
+  "Android Studio",
   "Webpack",
   "Babel",
-  "Jest",
-  "Detox",
+  "Postman",
 ];
 
 export default function Skills() {
-  const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const obs = new IntersectionObserver(
-      ([e]) => e.isIntersecting && setVisible(true),
-      { threshold: 0.05 },
-    );
-    const node = ref.current;
-    if (node) obs.observe(node);
-    return () => node && obs.unobserve(node);
-  }, []);
-
   return (
-    <section id="skills" ref={ref} className="py-24 lg:py-32 px-6 lg:px-16">
-      <div className="max-w-[1440px] mx-auto">
-        <div
-          className={`mb-12 transition-all duration-700 ${
-            visible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
-          }`}
-        >
-          <div className="font-mono text-[11px] tracking-[0.14em] text-[#ff6a3d]">
-            04 · STACK
-          </div>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.035em] mt-3 text-[#f4efe7]">
+    <section id="skills" className="py-16 md:py-24 lg:py-32 px-6 lg:px-16">
+      <div className="max-w-screen mx-auto">
+        <Reveal className="mb-10 lg:mb-12">
+          <div className="eyebrow">05 · STACK</div>
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-extra-tight mt-3 text-ink">
             Tools I reach for.
           </h2>
-        </div>
+          <p className="text-base md:text-lg text-ink-2 leading-relaxed mt-5 max-w-2xl">
+            The stack behind everything in the sections above — organized by
+            what it’s actually used for, not by buzzword count.
+          </p>
+        </Reveal>
 
-        <div className="grid md:grid-cols-3 gap-10 lg:gap-12">
+        <div className="grid md:grid-cols-3 gap-5 lg:gap-6">
           {categories.map((cat, ci) => (
-            <div
-              key={cat.title}
-              className="transition-all duration-700"
-              style={{
-                opacity: visible ? 1 : 0,
-                transform: visible ? "translateY(0)" : "translateY(16px)",
-                transitionDelay: `${ci * 120}ms`,
-              }}
-            >
-              <div className="font-mono text-[11px] tracking-[0.14em] text-white/40 uppercase mb-4 pb-3 border-b border-white/10">
-                {cat.title}
-              </div>
-              {cat.skills.map(([name, pct], si) => (
-                <div key={name} className="mb-4">
-                  <div className="flex items-center justify-between text-[13px] mb-1.5">
-                    <span className="text-[#f4efe7]">{name}</span>
-                    <span className="font-mono text-[11px] text-white/40">
-                      {pct}%
-                    </span>
-                  </div>
-                  <div className="h-[3px] bg-[#1f1d1b] rounded-full overflow-hidden">
-                    <div
-                      className="h-full bg-[#ff6a3d] transition-all duration-1000 ease-out"
-                      style={{
-                        width: visible ? `${pct}%` : "0%",
-                        transitionDelay: `${ci * 120 + si * 80 + 200}ms`,
-                      }}
-                    />
-                  </div>
+            <Reveal key={cat.title} delay={ci * 120} className="h-full">
+              <div className="h-full p-6 lg:p-7 rounded-2xl bg-bg-2 border border-rule hover:border-accent/30 transition-colors duration-300">
+                <div className="font-mono text-[11px] tracking-[0.14em] text-accent uppercase mb-5 pb-4 border-b border-rule">
+                  {cat.title}
                 </div>
-              ))}
-            </div>
+                <ul className="space-y-4 list-none p-0">
+                  {cat.items.map(([name, detail]) => (
+                    <li key={name}>
+                      <div className="text-[15px] font-semibold tracking-[-0.01em] text-ink leading-snug">
+                        {name}
+                      </div>
+                      <div className="text-[13px] text-ink-3 leading-snug mt-0.5">
+                        {detail}
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </Reveal>
           ))}
         </div>
 
-        <div
-          className="mt-12 p-6 rounded-xl bg-[#161514] flex flex-wrap items-center gap-2 transition-all duration-700"
-          style={{
-            opacity: visible ? 1 : 0,
-            transform: visible ? "translateY(0)" : "translateY(16px)",
-            transitionDelay: "500ms",
-          }}
+        <Reveal
+          delay={300}
+          className="mt-5 lg:mt-6 p-6 rounded-2xl bg-bg-2 border border-rule flex flex-wrap items-center gap-2"
         >
-          <div className="font-mono text-[11px] tracking-[0.1em] text-white/40 mr-2">
+          <div className="font-mono text-[11px] tracking-[0.1em] text-ink-3 mr-2">
             +ALSO:
           </div>
           {additional.map((s) => (
             <span
               key={s}
-              className="font-mono text-[11px] px-2.5 py-1.5 border border-white/10 rounded-md text-white/62"
+              className="font-mono text-[11px] px-2.5 py-1.5 border border-rule rounded-md text-ink-2"
             >
               {s}
             </span>
           ))}
-        </div>
+        </Reveal>
       </div>
     </section>
   );

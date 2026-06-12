@@ -1,8 +1,7 @@
-"use client";
-import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
+import Reveal from "@/components/Reveal";
 
 const projects = [
   {
@@ -113,32 +112,13 @@ const projects = [
 ];
 
 export default function Projects() {
-  const sectionRef = useRef(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const obs = new IntersectionObserver(
-      ([e]) => e.isIntersecting && setVisible(true),
-      { threshold: 0.04 },
-    );
-    const node = sectionRef.current;
-    if (node) obs.observe(node);
-    return () => node && obs.unobserve(node);
-  }, []);
-
   return (
-    <section
-      id="projects"
-      ref={sectionRef}
-      className="py-24 lg:py-32 px-6 lg:px-16"
-    >
+    <section id="projects" className="py-16 md:py-24 lg:py-32 px-6 lg:px-16">
       <div className="max-w-screen mx-auto">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16">
+        <Reveal className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 lg:mb-16">
           <div className="max-w-3xl">
-            <div className="font-mono text-[11px] tracking-[0.14em] text-accent">
-              02 · FEATURED PROJECTS
-            </div>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.035em] leading-[1] mt-3 text-ink">
+            <div className="eyebrow">02 · FEATURED PROJECTS</div>
+            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-extra-tight leading-[1] mt-3 text-ink">
               Shipped &{" "}
               <span className="font-italic-serif text-accent font-normal">
                 in production
@@ -151,26 +131,18 @@ export default function Projects() {
               Apps section below.
             </p>
           </div>
-        </div>
+        </Reveal>
 
         <div className="flex flex-col gap-6 lg:gap-8">
-          {projects.map((p, i) =>
-            p.layout === "billboard" ? (
-              <BillboardCard
-                key={p.slug}
-                project={p}
-                index={i}
-                visible={visible}
-              />
-            ) : (
-              <MobileCard
-                key={p.slug}
-                project={p}
-                index={i}
-                visible={visible}
-              />
-            ),
-          )}
+          {projects.map((p, i) => (
+            <Reveal key={p.slug} delay={i * 100}>
+              {p.layout === "billboard" ? (
+                <BillboardCard project={p} />
+              ) : (
+                <MobileCard project={p} reverse={i % 2 !== 0} />
+              )}
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>
@@ -181,18 +153,11 @@ export default function Projects() {
    Mobile project card — screenshot floats bare with rounded corners +
    heavy shadow on a warm-tinted stage. Project name + copy on the side.
    ───────────────────────────────────────────────────────────────────── */
-function MobileCard({ project, index, visible }) {
-  const reverse = index % 2 !== 0;
-
+function MobileCard({ project, reverse }) {
   return (
     <article
       className="group relative rounded-3xl overflow-hidden border border-rule"
-      style={{
-        background: project.stage,
-        opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(24px)",
-        transition: `opacity 700ms ease ${index * 100}ms, transform 700ms ease ${index * 100}ms`,
-      }}
+      style={{ background: project.stage }}
     >
       {/* Ghost numeral baked into the stage */}
       <div
@@ -203,11 +168,12 @@ function MobileCard({ project, index, visible }) {
           opacity: 0.06,
           letterSpacing: "-0.05em",
         }}
+        aria-hidden
       >
         {project.n}
       </div>
 
-      <div className="relative grid md:grid-cols-[1fr_1fr] gap-8 lg:gap-12 items-center px-8 lg:px-14 py-14 lg:py-20">
+      <div className="relative grid md:grid-cols-[1fr_1fr] gap-8 lg:gap-12 items-center px-6 sm:px-8 lg:px-14 py-10 sm:py-14 lg:py-20">
         {/* Screenshot — no frame, just clean image + heavy shadow */}
         <div
           className={`flex justify-center ${reverse ? "md:order-2" : "md:order-1"}`}
@@ -222,7 +188,7 @@ function MobileCard({ project, index, visible }) {
             {project.image ? (
               <Image
                 src={project.image}
-                alt={project.title}
+                alt={`${project.title} app screenshot`}
                 fill
                 sizes="300px"
                 className="object-cover"
@@ -240,7 +206,7 @@ function MobileCard({ project, index, visible }) {
             <span className="text-ink-3">{project.tag}</span>
           </div>
           <h3
-            className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.035em] leading-[1] mt-3 text-ink"
+            className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-extra-tight leading-[1] mt-3 text-ink"
             style={{ textWrap: "balance" }}
           >
             {project.title}
@@ -267,16 +233,11 @@ function MobileCard({ project, index, visible }) {
    Billboard project card — wider, full-bleed treatment for things
    that aren't shaped like phones (Chrome extensions, web apps, etc).
    ───────────────────────────────────────────────────────────────────── */
-function BillboardCard({ project, index, visible }) {
+function BillboardCard({ project }) {
   return (
     <article
       className="group relative rounded-3xl overflow-hidden border border-rule"
-      style={{
-        background: project.stage,
-        opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(24px)",
-        transition: `opacity 700ms ease ${index * 100}ms, transform 700ms ease ${index * 100}ms`,
-      }}
+      style={{ background: project.stage }}
     >
       <div
         className="absolute -top-10 -right-6 select-none pointer-events-none font-display font-extrabold leading-none"
@@ -286,11 +247,12 @@ function BillboardCard({ project, index, visible }) {
           opacity: 0.06,
           letterSpacing: "-0.05em",
         }}
+        aria-hidden
       >
         {project.n}
       </div>
 
-      <div className="relative px-8 lg:px-14 pt-12 lg:pt-16 pb-0">
+      <div className="relative px-6 sm:px-8 lg:px-14 pt-10 sm:pt-12 lg:pt-16 pb-0">
         <div className="grid md:grid-cols-[1.1fr_1fr] gap-8 items-end mb-10">
           <div>
             <div className="flex items-center gap-3 font-mono text-[11px] tracking-[0.14em] uppercase">
@@ -298,7 +260,7 @@ function BillboardCard({ project, index, visible }) {
               <span className="text-ink-3">{project.tag}</span>
             </div>
             <h3
-              className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-[-0.035em] leading-[1] mt-3 text-ink"
+              className="font-display text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold tracking-extra-tight leading-[1] mt-3 text-ink"
               style={{ textWrap: "balance" }}
             >
               {project.title}
@@ -331,7 +293,7 @@ function BillboardCard({ project, index, visible }) {
           {project.image ? (
             <Image
               src={project.image}
-              alt={project.title}
+              alt={`${project.title} screenshot`}
               fill
               sizes="(max-width: 1024px) 100vw, 1200px"
               className="object-cover object-top transition-transform duration-700 group-hover:scale-[1.02]"
@@ -357,6 +319,9 @@ function BillboardCard({ project, index, visible }) {
 /* ───────────────────────────────────────── shared bits ───── */
 
 function Meta({ project, compact = false }) {
+  const statCols =
+    project.stats.length >= 4 ? "sm:grid-cols-4" : "sm:grid-cols-3";
+
   return (
     <>
       <div className={`flex flex-wrap gap-1.5 ${compact ? "mt-5" : "mt-6"}`}>
@@ -370,7 +335,7 @@ function Meta({ project, compact = false }) {
         ))}
       </div>
       <div
-        className={`grid grid-cols-2 sm:grid-cols-${Math.min(4, project.stats.length)} gap-4 ${compact ? "mt-5" : "mt-7"}`}
+        className={`grid grid-cols-2 ${statCols} gap-4 ${compact ? "mt-5" : "mt-7"}`}
       >
         {project.stats.map(([v, l]) => (
           <div key={l}>

@@ -812,7 +812,7 @@ export default async function ReelDetailPage({ params }) {
                 LIKE WHAT YOU SEE?
               </div>
               <p className="text-ink text-lg leading-relaxed mb-5">
-                I'm available for freelance & contract React Native work — apps,
+                I’m available for freelance & contract React Native work — apps,
                 features, UI implementation, you name it.
               </p>
               <div className="flex flex-wrap gap-3">

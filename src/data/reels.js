@@ -1623,4 +1623,104 @@ Single-file TypeScript, zero UI kit, production-ready. Pure Reanimated + Gesture
 **Stack:** React Native · Reanimated · react-native-gesture-handler · expo-linear-gradient · TypeScript
   `,
   },
+  {
+    id: 49,
+    facebookPostId: "",
+    reelId: "",
+    title:
+      "Ride-Hail Driver Arriving in React Native — The car slides the route and snaps to the pin on arrival",
+    slug: "ride-hail-driver-arriving-react-native-animated-route-eta",
+    category: "Mobile UI",
+    description:
+      "An Uber-style driver-arriving screen with a car that animates the curved route and a live ETA. The car slides the route and snaps to the pin on arrival.",
+    videoUrl: "",
+    coverImage: `${COVERS}/ride-hail-driver-arriving-react-native-animated-route-eta-reel.png`,
+    coverImageReel: `${COVERS}/ride-hail-driver-arriving-react-native-animated-route-eta-reel.png`,
+    coverImageOg: `${COVERS}/ride-hail-driver-arriving-react-native-animated-route-eta-og.png`,
+    coverImagePin: `${COVERS}/ride-hail-driver-arriving-react-native-animated-route-eta-pin.png`,
+    technologies: [
+      "React Native",
+      "Reanimated",
+      "react-native-svg",
+      "expo-haptics",
+      "TypeScript",
+    ],
+    views: 0,
+    duration: 0,
+    publishTime: "",
+    permalink: "",
+    links: {
+      facebook: "",
+      github: "https://github.com/anwersolangi/rn-interface-kit",
+      youtube: "",
+      instagram: "",
+      tiktok: "",
+      pinterest: "",
+    },
+    content: `
+# Ride-Hail Driver Arriving in React Native
+ 
+An Uber-style driver-arriving screen with a car that animates the curved route and a live ETA.
+ 
+## The hook moment
+ 
+The car slides the route and snaps to the pin on arrival — the beat that stops the scroll.
+ 
+## Built from scratch
+ 
+Single-file TypeScript, zero UI kit, production-ready. Pure Reanimated.
+ 
+**Stack:** React Native · Reanimated · react-native-svg · expo-haptics · TypeScript
+  `,
+  },
+  {
+    id: 50,
+    facebookPostId: "",
+    reelId: "",
+    title:
+      "Food Delivery Order Tracking in React Native — The bag bounces when the order goes out for delivery",
+    slug: "food-delivery-order-tracking-react-native-step-timeline-bag-bounce",
+    category: "Mobile UI",
+    description:
+      "A food-delivery tracker with a step timeline, pulsing active stage, and a bouncing food bag. The bag bounces when the order goes out for delivery.",
+    videoUrl: "",
+    coverImage: `${COVERS}/food-delivery-order-tracking-react-native-step-timeline-bag-bounce-reel.png`,
+    coverImageReel: `${COVERS}/food-delivery-order-tracking-react-native-step-timeline-bag-bounce-reel.png`,
+    coverImageOg: `${COVERS}/food-delivery-order-tracking-react-native-step-timeline-bag-bounce-og.png`,
+    coverImagePin: `${COVERS}/food-delivery-order-tracking-react-native-step-timeline-bag-bounce-pin.png`,
+    technologies: [
+      "React Native",
+      "Reanimated",
+      "expo-haptics",
+      "TypeScript",
+      "Expo",
+    ],
+    views: 0,
+    duration: 0,
+    publishTime: "",
+    permalink: "",
+    links: {
+      facebook: "",
+      github: "https://github.com/anwersolangi/rn-interface-kit",
+      youtube: "",
+      instagram: "",
+      tiktok: "",
+      pinterest: "",
+    },
+    content: `
+# Food Delivery Order Tracking in React Native
+ 
+A food-delivery tracker with a step timeline, pulsing active stage, and a bouncing food bag.
+ 
+## The hook moment
+ 
+The bag bounces when the order goes out for delivery — the beat that stops the scroll.
+ 
+## Built from scratch
+ 
+Single-file TypeScript, zero UI kit, production-ready. Pure Reanimated.
+ 
+**Stack:** React Native · Reanimated · expo-haptics · TypeScript · Expo
+  `,
+  },
 ];

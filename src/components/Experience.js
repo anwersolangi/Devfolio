@@ -1,5 +1,4 @@
-"use client";
-import { useEffect, useRef, useState } from "react";
+import Reveal from "@/components/Reveal";
 
 const experiences = [
   {
@@ -31,81 +30,59 @@ const experiences = [
 ];
 
 export default function Experience() {
-  const ref = useRef(null);
-  const [visible, setVisible] = useState(false);
-
-  useEffect(() => {
-    const obs = new IntersectionObserver(
-      ([e]) => e.isIntersecting && setVisible(true),
-      { threshold: 0.05 },
-    );
-    const node = ref.current;
-    if (node) obs.observe(node);
-    return () => node && obs.unobserve(node);
-  }, []);
-
   return (
     <section
       id="experience"
-      ref={ref}
-      className="py-24 lg:py-32 px-6 lg:px-16 bg-[#161514]"
+      className="py-16 md:py-24 lg:py-32 px-6 lg:px-16 bg-bg-2"
     >
-      <div className="max-w-[1440px] mx-auto">
-        <div className="mb-12">
-          <div className="font-mono text-[11px] tracking-[0.14em] text-[#ff6a3d]">
-            05 · EXPERIENCE
-          </div>
-          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-[-0.035em] mt-3 text-[#f4efe7]">
+      <div className="max-w-screen mx-auto">
+        <Reveal className="mb-10 lg:mb-12">
+          <div className="eyebrow">06 · EXPERIENCE</div>
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-extra-tight mt-3 text-ink">
             The track record.
           </h2>
-        </div>
+        </Reveal>
 
         {experiences.map((x, i) => (
-          <article
-            key={x.role}
-            className="grid md:grid-cols-[180px_1fr] gap-6 md:gap-10 py-10 border-t border-white/10 transition-all duration-700"
-            style={{
-              opacity: visible ? 1 : 0,
-              transform: visible ? "translateY(0)" : "translateY(16px)",
-              transitionDelay: `${i * 150}ms`,
-            }}
-          >
-            <div className="font-mono text-[12px] tracking-[0.1em] text-[#ffb27a] pt-1">
-              {x.years}
-            </div>
-            <div>
-              <div className="text-2xl md:text-3xl font-bold tracking-[-0.02em] text-[#f4efe7]">
-                {x.role}
+          <Reveal key={x.role} delay={i * 150}>
+            <article className="grid md:grid-cols-[180px_1fr] gap-6 md:gap-10 py-8 lg:py-10 border-t border-rule">
+              <div className="font-mono text-[12px] tracking-[0.1em] text-accent-2 pt-1">
+                {x.years}
               </div>
-              <div className="font-mono text-[12px] tracking-[0.04em] text-white/40 mt-1.5">
-                {x.org}
-              </div>
-              <div className="flex flex-wrap gap-2 mt-4">
-                {x.chips.map((c) => (
-                  <span
-                    key={c}
-                    className="font-mono text-[11px] px-2.5 py-1 rounded-full border border-white/10 text-white/62"
-                  >
-                    {c}
-                  </span>
-                ))}
-              </div>
-              <ul className="grid md:grid-cols-2 gap-x-8 gap-y-2 mt-5 list-none p-0">
-                {x.bullets.map((b) => (
-                  <li
-                    key={b}
-                    className="relative pl-4 text-sm text-white/62 leading-[1.5]"
-                  >
+              <div>
+                <h3 className="text-2xl md:text-3xl font-bold tracking-[-0.02em] text-ink">
+                  {x.role}
+                </h3>
+                <div className="font-mono text-[12px] tracking-[0.04em] text-ink-3 mt-1.5">
+                  {x.org}
+                </div>
+                <div className="flex flex-wrap gap-2 mt-4">
+                  {x.chips.map((c) => (
                     <span
-                      className="absolute left-0 top-2 w-1.5 h-1.5 rounded-full bg-[#ff6a3d]"
-                      aria-hidden
-                    />
-                    {b}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </article>
+                      key={c}
+                      className="font-mono text-[11px] px-2.5 py-1 rounded-full border border-rule text-ink-2"
+                    >
+                      {c}
+                    </span>
+                  ))}
+                </div>
+                <ul className="grid md:grid-cols-2 gap-x-8 gap-y-2 mt-5 list-none p-0">
+                  {x.bullets.map((b) => (
+                    <li
+                      key={b}
+                      className="relative pl-4 text-sm text-ink-2 leading-[1.5]"
+                    >
+                      <span
+                        className="absolute left-0 top-2 w-1.5 h-1.5 rounded-full bg-accent"
+                        aria-hidden
+                      />
+                      {b}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </article>
+          </Reveal>
         ))}
       </div>
     </section>

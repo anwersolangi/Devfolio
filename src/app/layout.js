@@ -129,10 +129,17 @@ export default function RootLayout({ children }) {
           href="/apple-touch-icon.png"
         />
         <AllSchemas />
+        {/* Scroll-reveal content must stay visible without JavaScript */}
+        <noscript>
+          <style>{`.reveal{opacity:1 !important;transform:none !important}`}</style>
+        </noscript>
       </head>
       <body className="antialiased">
+        <a href="#main-content" className="skip-link">
+          Skip to content
+        </a>
         <Header />
-        {children}
+        <div id="main-content">{children}</div>
         <Footer />
       </body>
     </html>
