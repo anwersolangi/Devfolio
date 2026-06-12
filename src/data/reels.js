@@ -1645,17 +1645,19 @@ Single-file TypeScript, zero UI kit, production-ready. Pure Reanimated + Gesture
       "expo-haptics",
       "TypeScript",
     ],
-    views: 0,
-    duration: 0,
-    publishTime: "",
+    views: 1000,
+    duration: 8,
+    publishTime: "June 11, 2026",
     permalink: "",
     links: {
-      facebook: "",
+      facebook: "https://www.facebook.com/reel/1727343511736648",
       github: "https://github.com/anwersolangi/rn-interface-kit",
-      youtube: "",
-      instagram: "",
-      tiktok: "",
-      pinterest: "",
+      youtube: "https://youtube.com/shorts/G0YQ7drFL54",
+      instagram:
+        "https://www.instagram.com/reel/DZaWcRpshBw/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      tiktok:
+        "https://www.tiktok.com/@anwersolangidev/video/7649803042002439432?is_from_webapp=1&sender_device=pc",
+      pinterest: "https://pin.it/7uJNrD3A1",
     },
     content: `
 # Ride-Hail Driver Arriving in React Native
@@ -1700,12 +1702,14 @@ Single-file TypeScript, zero UI kit, production-ready. Pure Reanimated.
     publishTime: "",
     permalink: "",
     links: {
-      facebook: "",
+      facebook: "https://www.facebook.com/share/r/1ijuaAspmw/",
       github: "https://github.com/anwersolangi/rn-interface-kit",
-      youtube: "",
-      instagram: "",
-      tiktok: "",
-      pinterest: "",
+      youtube: "https://youtube.com/shorts/9g2p_Uy-hIM",
+      instagram:
+        "https://www.instagram.com/reel/DZfzamyM5pn/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      tiktok:
+        "https://www.tiktok.com/@anwersolangidev/video/7650588171595451656?is_from_webapp=1&sender_device=pc",
+      pinterest: "https://pin.it/1WrjPiKB7",
     },
     content: `
 # Food Delivery Order Tracking in React Native
