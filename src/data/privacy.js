@@ -445,4 +445,123 @@ You can opt out of personalized advertising in your device settings.`,
       },
     ],
   },
+  memoriq: {
+    title: "Privacy Policy",
+    lastUpdated: "June 20, 2026",
+    appName: "MemorIQ",
+    sections: [
+      {
+        title: "Introduction",
+        content: `I ("Anwer Solangi", the developer) am committed to protecting your privacy. This Privacy Policy explains how I handle information when you use the MemorIQ mobile game (the "App").
+
+MemorIQ is a memory match brain-training game designed to be offline-first and privacy-conscious. The App requires no account, no email, and no personal information to play.`,
+      },
+      {
+        title: "Information I Collect",
+        content: `MemorIQ collects the absolute minimum needed to deliver notifications and keep the lives system working across devices:`,
+        subsections: [
+          {
+            title: "Anonymous Authentication",
+            content: `MemorIQ signs you in anonymously using Firebase Anonymous Authentication. This creates a random, anonymous user identifier on your device.
+• No email address, name, phone number, or password is requested or collected
+• The anonymous ID cannot be used to identify you personally
+• You are never asked to create or log into an account`,
+          },
+          {
+            title: "Minimal Gameplay Sync",
+            content: `Tied to your anonymous ID, the App writes only three fields to Firebase Firestore:
+• Device push token (to send notifications)
+• The time you last played
+• Your remaining lives
+
+This sync is write-only — the App does not read your data back — and is used solely to power push notifications and the lives system. No scores, gameplay content, or personal data are uploaded.`,
+          },
+        ],
+      },
+      {
+        title: "Information Stored Only on Your Device",
+        content: `The vast majority of your data never leaves your device. The following are stored locally using fast on-device MMKV storage:`,
+        items: [
+          "Game progress, scores, and best scores",
+          "Selected theme and background",
+          "Sound, difficulty, grid size, and timer preferences",
+          "Lives and refill timers",
+        ],
+        footer:
+          "This local data is completely removed when you uninstall the App.",
+      },
+      {
+        title: "Push Notifications",
+        content: `With your permission, MemorIQ sends push notifications (for example, when your lives have refilled) using Firebase Cloud Messaging and Notifee. To do this, your device's push token is stored as described above. You can disable notifications at any time in your device settings.`,
+      },
+      {
+        title: "Third-Party Services",
+        content: "MemorIQ uses the following third-party services:",
+        subsections: [
+          {
+            title: "Firebase (Google)",
+            content: `The App uses Firebase for backend infrastructure:
+• Firebase Anonymous Authentication — for an anonymous user ID
+• Firebase Firestore — for the minimal write-only sync described above
+• Firebase Cloud Messaging — for push notifications
+
+Firebase is operated by Google. Learn more at: https://firebase.google.com/support/privacy`,
+          },
+          {
+            title: "Google AdMob",
+            content: `Free versions of the App display a banner ad through Google AdMob. Premium users never see ads. AdMob may collect:
+• Device advertising identifiers
+• General location (country/region level, not precise GPS)
+• Device information for ad personalization
+
+You can opt out of personalized advertising in your device settings. Learn more: https://policies.google.com/privacy`,
+          },
+          {
+            title: "RevenueCat",
+            content: `I use RevenueCat to manage in-app purchases (premium themes and the ad-free upgrade). RevenueCat processes:
+• Purchase and entitlement status
+• Anonymous user identifiers for purchase verification
+• Transaction information necessary for billing
+
+RevenueCat does not have access to your gameplay data. Learn more at: https://www.revenuecat.com/privacy`,
+          },
+        ],
+      },
+      {
+        title: "Data Security",
+        content: `Appropriate security measures are implemented to protect your information:`,
+        items: [
+          "All data transmission is encrypted using HTTPS/TLS",
+          "Firebase provides enterprise-grade security for data storage",
+          "Only anonymous, non-identifying data is ever synced",
+          "Security practices are regularly reviewed and updated",
+        ],
+      },
+      {
+        title: "Your Choices",
+        content: `You have control over your data:`,
+        items: [
+          "You can disable push notifications in your device settings",
+          "You can opt out of personalized ads in your device settings",
+          "You can uninstall the App to remove all locally stored data",
+          "You can play entirely offline; sync simply pauses until you reconnect",
+        ],
+      },
+      {
+        title: "Children's Privacy",
+        content:
+          "MemorIQ is suitable for a general audience and does not knowingly collect personal information from children. As the App uses only anonymous identifiers and does not request names, emails, or other personal details, no personally identifiable information is collected from any user, including children.",
+      },
+      {
+        title: "Changes to This Policy",
+        content:
+          'I may update this Privacy Policy from time to time. I will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date.',
+      },
+      {
+        title: "Contact Me",
+        content: `If you have any questions about this Privacy Policy, please contact me at:`,
+        contactEmail: "me@anwersolangi.com",
+      },
+    ],
+  },
 };

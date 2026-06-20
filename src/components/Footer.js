@@ -5,6 +5,13 @@ const socials = [
   ["Medium", "https://medium.com/@anwersolangi"],
 ];
 
+// Absolute root-domain URLs so these resolve correctly from the apps subdomain too.
+const explore = [
+  ["Reels", "https://anwersolangi.com/reels"],
+  ["Apps", "https://apps.anwersolangi.com"],
+  ["Free Tools", "https://anwersolangi.com/tools"],
+];
+
 export default function Footer() {
   const year = new Date().getFullYear();
 
@@ -30,6 +37,23 @@ export default function Footer() {
 
           {/* Connect */}
           <div className="flex flex-col sm:flex-row gap-10 sm:gap-16">
+            <div>
+              <div className="font-mono text-[11px] tracking-[0.14em] uppercase text-ink-3 mb-3">
+                Explore
+              </div>
+              <ul className="space-y-2 list-none p-0">
+                {explore.map(([label, href]) => (
+                  <li key={label}>
+                    <a
+                      href={href}
+                      className="text-sm text-ink-2 hover:text-ink transition-colors"
+                    >
+                      {label}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
             <div>
               <div className="font-mono text-[11px] tracking-[0.14em] uppercase text-ink-3 mb-3">
                 Connect

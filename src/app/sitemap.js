@@ -1,4 +1,5 @@
 import { reelsData } from "@/data/reels";
+import { TOOLS } from "@/data/tools";
 
 export default function sitemap() {
   const baseUrl = (
@@ -9,6 +10,7 @@ export default function sitemap() {
     { path: "", changeFrequency: "monthly", priority: 1 },
     { path: "/reels", changeFrequency: "weekly", priority: 0.9 },
     { path: "/apps", changeFrequency: "monthly", priority: 0.8 },
+    { path: "/tools", changeFrequency: "weekly", priority: 0.8 },
     { path: "/projects/nearby", changeFrequency: "monthly", priority: 0.7 },
     { path: "/projects/whatsupfire", changeFrequency: "monthly", priority: 0.7 },
     { path: "/projects/reacttube", changeFrequency: "monthly", priority: 0.7 },
@@ -32,5 +34,12 @@ export default function sitemap() {
     priority: 0.6,
   }));
 
-  return [...staticRoutes, ...reelRoutes];
+  const toolRoutes = TOOLS.map((tool) => ({
+    url: `${baseUrl}/tools/${tool.slug}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: 0.7,
+  }));
+
+  return [...staticRoutes, ...reelRoutes, ...toolRoutes];
 }

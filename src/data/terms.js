@@ -485,4 +485,130 @@ These Terms constitute a legal agreement between you and Anwer Solangi ("I", "me
       },
     ],
   },
+  memoriq: {
+    title: "Terms of Service",
+    lastUpdated: "June 20, 2026",
+    appName: "MemorIQ",
+    sections: [
+      {
+        title: "Agreement to Terms",
+        content: `By downloading, installing, or using MemorIQ ("the App"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, please do not use the App.
+
+These Terms constitute a legal agreement between you and Anwer Solangi ("I", "me", "the developer").`,
+      },
+      {
+        title: "Description of Service",
+        content: `MemorIQ is a memory match brain-training game that provides:`,
+        items: [
+          "Card-matching gameplay across multiple grid sizes",
+          "Easy, Medium, and Hard difficulty levels",
+          "Configurable per-round timers and a lives system",
+          "9 themes and animated backgrounds",
+          "Sound effects, haptics, and score tracking",
+        ],
+        footer:
+          "The App is offline-first and stores your gameplay data locally on your device.",
+      },
+      {
+        title: "License Grant",
+        content: `Subject to your compliance with these Terms, I grant you a limited, non-exclusive, non-transferable, revocable license to:`,
+        items: [
+          "Download and install the App on your personal mobile device",
+          "Use the App for your personal, non-commercial entertainment",
+          "Access premium themes and features you have purchased",
+        ],
+      },
+      {
+        title: "Restrictions",
+        content: `You agree NOT to:`,
+        items: [
+          "Copy, modify, or distribute the App or its content",
+          "Reverse engineer, decompile, or disassemble the App",
+          "Remove any copyright or proprietary notices",
+          "Use the App for any illegal or unauthorized purpose",
+          "Attempt to bypass any security features, ads, or purchase restrictions",
+        ],
+      },
+      {
+        title: "In-App Purchases",
+        content: `MemorIQ offers optional purchases such as premium themes and an ad-free upgrade:`,
+        items: [
+          "Purchases are billed through the Apple App Store or Google Play Store",
+          "Purchases are managed and verified through RevenueCat",
+          "Entitlements can be restored on the same store account after reinstalling",
+          "Refunds are handled according to the respective app store policies",
+          "Prices may vary by region and are subject to change",
+        ],
+      },
+      {
+        title: "Virtual Items & Lives",
+        content: `The App may include virtual items such as lives and unlockable themes. Regarding these:`,
+        items: [
+          "Lives and other virtual items have no monetary value and cannot be exchanged for cash",
+          "Virtual items are non-transferable outside of the App",
+          "I may adjust, balance, or remove virtual items and game mechanics in updates",
+        ],
+      },
+      {
+        title: "Source Code License (CodeCanyon)",
+        content:
+          "In addition to the published App, the MemorIQ source code is distributed as a configurable template on CodeCanyon. Any use of that source code is governed by the Envato/CodeCanyon license you purchase, which is separate from these end-user Terms. These Terms apply to your use of the published App, not to the source-code template.",
+      },
+      {
+        title: "Disclaimer of Warranties",
+        content: `THE APP IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND. TO THE FULLEST EXTENT PERMITTED BY LAW, I DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO:`,
+        items: [
+          "Merchantability and fitness for a particular purpose",
+          "Uninterrupted or error-free operation",
+          "That progress, scores, or purchases will never be lost",
+          "Compatibility with your specific device or operating system version",
+        ],
+      },
+      {
+        title: "Limitation of Liability",
+        content: `TO THE MAXIMUM EXTENT PERMITTED BY LAW, I SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING BUT NOT LIMITED TO:`,
+        items: [
+          "Loss of game progress, scores, or purchased items",
+          "Device damage or battery consumption",
+          "Service interruptions affecting notifications or sync",
+          "Any other damages arising from the use of the App",
+        ],
+      },
+      {
+        title: "Third-Party Services",
+        content:
+          "MemorIQ uses Firebase (Google) for anonymous authentication, sync, and notifications, Google AdMob for advertising, and RevenueCat for in-app purchases. Your use of the App is also subject to the respective terms of these services. I am not responsible for any issues arising from third-party services.",
+      },
+      {
+        title: "Intellectual Property",
+        content: `The App and its original content, features, and functionality are owned by me and are protected by applicable intellectual property laws. You may not:`,
+        items: [
+          "Copy or reproduce the App or its assets",
+          "Modify, adapt, or create derivative works (except as permitted by a CodeCanyon license)",
+          "Reverse engineer, decompile, or disassemble the App",
+          "Remove any proprietary notices or labels",
+        ],
+      },
+      {
+        title: "Changes to Terms",
+        content:
+          "I reserve the right to modify these Terms at any time. Changes will be effective immediately upon posting. Your continued use of the App after any changes constitutes acceptance of the new Terms.",
+      },
+      {
+        title: "Termination",
+        content:
+          "I may terminate or suspend your access to the App at any time, without prior notice, for conduct that I believe violates these Terms. As MemorIQ requires no account, termination refers to your right to use the App under these Terms.",
+      },
+      {
+        title: "Governing Law",
+        content:
+          "These Terms shall be governed by and construed in accordance with applicable laws, without regard to conflict of law principles.",
+      },
+      {
+        title: "Contact",
+        content: `If you have any questions about these Terms, please contact me at:`,
+        contactEmail: "me@anwersolangi.com",
+      },
+    ],
+  },
 };

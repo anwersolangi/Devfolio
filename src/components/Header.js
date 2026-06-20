@@ -75,6 +75,7 @@ export default function Header() {
   const links = [
     { label: "Reels", href: mainHref("/reels") },
     { label: "Apps", href: appsHref },
+    { label: "Tools", href: mainHref("/tools") },
     { label: "Projects", href: mainHref("/#projects") },
     { label: "About", href: mainHref("/#about") },
     { label: "Experience", href: mainHref("/#experience") },

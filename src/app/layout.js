@@ -1,9 +1,15 @@
 import { Hanken_Grotesk, Geist_Mono, Instrument_Serif } from "next/font/google";
 import "./globals.css";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 import { AllSchemas } from "@/components/SEOComponents";
+
+// Set NEXT_PUBLIC_GA_ID (e.g. "G-XXXXXXXXXX") in your Vercel Production
+// environment. When it's absent (local dev, previews) analytics is skipped,
+// so localhost traffic never pollutes your reports. See docs/google-analytics.md.
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
 const hanken = Hanken_Grotesk({
   subsets: ["latin"],
@@ -142,6 +148,7 @@ export default function RootLayout({ children }) {
         <div id="main-content">{children}</div>
         <Footer />
       </body>
+      {GA_ID ? <GoogleAnalytics gaId={GA_ID} /> : null}
     </html>
   );
 }

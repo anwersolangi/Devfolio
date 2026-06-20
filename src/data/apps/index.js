@@ -7,6 +7,7 @@ import { youtubeFullscreenFocus } from "./youtube-fullscreen-focus";
 import { reacttube } from "./reacttube";
 import { convertiX } from "./convertix";
 import { tapMeal } from "./tapmeal";
+import { memorIQ } from "./memoriq";
 
 export const APPS_DATA = {
   nearby,
@@ -16,9 +17,16 @@ export const APPS_DATA = {
   reacttube,
   convertix: convertiX,
   tapmeal: tapMeal,
+  memoriq: memorIQ,
 };
 
 export const APPS_LIST = [
+  {
+    slug: memorIQ.slug,
+    name: memorIQ.name,
+    description: memorIQ.description,
+    icon: memorIQ.icon,
+  },
   {
     slug: nearby.slug,
     name: nearby.name,
@@ -72,4 +80,5 @@ export {
   reacttube,
   convertiX,
   tapMeal,
+  memorIQ,
 };
