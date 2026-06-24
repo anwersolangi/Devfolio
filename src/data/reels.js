@@ -1727,4 +1727,57 @@ Single-file TypeScript, zero UI kit, production-ready. Pure Reanimated.
 **Stack:** React Native · Reanimated · expo-haptics · TypeScript · Expo
   `,
   },
+  {
+    id: 153,
+    facebookPostId: "",
+    reelId: "",
+    title: "Real Estate Listing UI in React Native",
+    slug: "estate-listing-ui-react-native",
+    category: "Mobile UI",
+    description:
+      "Dark-themed real estate property detail screen with hero image, interior thumbnails, price drop indicator, spring heart animation, and Schedule Tour CTA. Built with React Native, Expo, and Reanimated v4.",
+    videoUrl: "",
+    coverImage: "${COVERS}/estate-listing-ui-react-native-reel.png",
+    coverImageReel: "${COVERS}/estate-listing-ui-react-native-reel.png",
+    coverImageOg: "${COVERS}/estate-listing-ui-react-native-og.png",
+    coverImagePin: "${COVERS}/estate-listing-ui-react-native-pin.png",
+    technologies: [
+      "React Native",
+      "Expo",
+      "Reanimated v4",
+      "expo-haptics",
+      "expo-linear-gradient",
+    ],
+    views: 0,
+    duration: 0,
+    publishTime: "",
+    permalink: "",
+    links: {
+      facebook: "",
+      github: "https://github.com/anwersolangi/rn-interface-kit",
+      youtube: "",
+      instagram: "",
+      tiktok: "",
+      pinterest: "",
+    },
+    content: `## Real Estate Listing UI in React Native
+
+Dark slate property detail screen with full-bleed hero photo, stacked interior thumbnails, price drop indicator, bed/bath/sqft spec row, and a working Schedule Tour button.
+
+### Stack
+- React Native + Expo
+- Reanimated v4 (spring heart animation)
+- expo-haptics (feedback on every tap)
+- expo-linear-gradient (hero image fade)
+- Real Unsplash photos (copyright-free)
+
+### Key details
+- Hero image fades into dark bottom sheet via 3-stop LinearGradient overlay
+- Interior thumbnails sit above the fold with +22 overflow chip
+- "For sale" + "$80k price drop" outlined status chips
+- Spring-animated heart: withSpring, damping 6, stiffness 240
+- "Listed by Anwer Solangi" agent row with avatar
+- Schedule Tour button fires notificationAsync Success haptic on confirm
+`,
+  },
 ];
