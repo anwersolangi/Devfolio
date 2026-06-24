@@ -1737,10 +1737,10 @@ Single-file TypeScript, zero UI kit, production-ready. Pure Reanimated.
     description:
       "Dark-themed real estate property detail screen with hero image, interior thumbnails, price drop indicator, spring heart animation, and Schedule Tour CTA. Built with React Native, Expo, and Reanimated v4.",
     videoUrl: "",
-    coverImage: "${COVERS}/estate-listing-ui-react-native-reel.png",
-    coverImageReel: "${COVERS}/estate-listing-ui-react-native-reel.png",
-    coverImageOg: "${COVERS}/estate-listing-ui-react-native-og.png",
-    coverImagePin: "${COVERS}/estate-listing-ui-react-native-pin.png",
+    coverImage: `${COVERS}/estate-listing-ui-react-native-reel.png`,
+    coverImageReel: `${COVERS}/estate-listing-ui-react-native-reel.png`,
+    coverImageOg: `${COVERS}/estate-listing-ui-react-native-og.png`,
+    coverImagePin: `${COVERS}/estate-listing-ui-react-native-pin.png`,
     technologies: [
       "React Native",
       "Expo",
