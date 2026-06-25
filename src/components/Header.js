@@ -3,13 +3,7 @@ import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
-// Apps live on their own subdomain in production; everything else on the root domain.
-const MAIN_DOMAIN = "anwersolangi.com";
-const MAIN_URL = "https://anwersolangi.com";
-const APPS_URL = "https://apps.anwersolangi.com";
-
-// Renders a same-origin Next link, or a plain anchor for cross-subdomain URLs
-// (Next's <Link> can't client-side navigate across origins).
+// Renders a same-origin Next link, or a plain anchor for absolute URLs.
 function NavLink({ href, className, onClick, children }) {
   if (href.startsWith("http")) {
     return (
@@ -28,17 +22,7 @@ function NavLink({ href, className, onClick, children }) {
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  // Default to relative links so the server render and first client render match
-  // (no hydration mismatch); the effect below upgrades them after mount.
-  const [isProd, setIsProd] = useState(false);
-  const [onAppsSubdomain, setOnAppsSubdomain] = useState(false);
   const pathname = usePathname();
-
-  useEffect(() => {
-    const host = window.location.hostname;
-    setIsProd(host === MAIN_DOMAIN || host.endsWith(`.${MAIN_DOMAIN}`));
-    setOnAppsSubdomain(host.startsWith("apps."));
-  }, []);
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 10);
@@ -63,23 +47,17 @@ export default function Header() {
     return () => window.removeEventListener("keydown", onKey);
   }, [menuOpen]);
 
-  // "Apps" always points at the apps subdomain in production.
-  const appsHref = isProd ? APPS_URL : "/apps";
-  // From the apps subdomain, main-site links must cross back to the root domain;
-  // anywhere else they stay relative.
-  const mainHref = (path) => (onAppsSubdomain ? `${MAIN_URL}${path}` : path);
-
-  const logoHref = mainHref("/");
-  const contactHref = mainHref("/#contact");
+  const logoHref = "/";
+  const hireHref = "/hire-react-native-developer-karachi";
 
   const links = [
-    { label: "Reels", href: mainHref("/reels") },
-    { label: "Apps", href: appsHref },
-    { label: "Tools", href: mainHref("/tools") },
-    { label: "Projects", href: mainHref("/#projects") },
-    { label: "About", href: mainHref("/#about") },
-    { label: "Experience", href: mainHref("/#experience") },
-    { label: "Contact", href: mainHref("/#contact") },
+    { label: "Reels", href: "/reels" },
+    { label: "Apps", href: "/apps" },
+    { label: "Tools", href: "/tools" },
+    { label: "Projects", href: "/#projects" },
+    { label: "About", href: "/#about" },
+    { label: "Experience", href: "/#experience" },
+    { label: "Contact", href: "/#contact" },
   ];
 
   return (
@@ -130,7 +108,7 @@ export default function Header() {
                 github ↗
               </a>
               <NavLink
-                href={contactHref}
+                href={hireHref}
                 className="px-4 py-2 rounded-full bg-ink text-bg text-xs font-semibold hover:bg-accent hover:text-[#1a0a02] transition-colors duration-200"
               >
                 Hire me
@@ -214,7 +192,7 @@ export default function Header() {
                 github ↗
               </a>
               <NavLink
-                href={contactHref}
+                href={hireHref}
                 onClick={() => setMenuOpen(false)}
                 className="block text-center px-4 py-3 bg-accent text-[#1a0a02] rounded-md text-sm font-semibold"
               >

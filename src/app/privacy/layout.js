@@ -10,6 +10,7 @@ export const metadata = {
     "admob",
     "data privacy",
   ],
+  alternates: { canonical: "/privacy" },
   openGraph: {
     title: "Privacy Policy | Anwer Solangi",
     description:

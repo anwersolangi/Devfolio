@@ -24,7 +24,7 @@ export const metadata = {
     url: "https://anwersolangi.com/extensions/youtube-fullscreen-focus",
     images: [
       {
-        url: "https://anwersolangi.com/extensions/youtube-fullscreen-focus-og.png",
+        url: "https://anwersolangi.com/og-image.png",
         width: 1200,
         height: 630,
         alt: "YouTube Fullscreen Focus Extension",
@@ -37,7 +37,7 @@ export const metadata = {
     description:
       "Free Chrome extension for protected YouTube viewing in fullscreen mode.",
     images: [
-      "https://anwersolangi.com/extensions/youtube-fullscreen-focus-og.png",
+      "https://anwersolangi.com/og-image.png",
     ],
   },
   alternates: {

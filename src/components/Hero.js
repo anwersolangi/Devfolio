@@ -63,10 +63,11 @@ export default function Hero() {
             </h1>
 
             <p className="text-lg md:text-xl text-ink-2 leading-[1.5] max-w-xl mt-7">
-              Senior React Native developer with 5+ years and 100K+ downloads
-              behind me. I take ideas from sketch to App Store — cleanly,
-              quickly, and with the kind of motion design that turns into a
-              reel.
+              I&rsquo;m <strong className="text-ink font-semibold">Anwer Solangi</strong>,
+              a senior <strong className="text-ink font-semibold">React Native developer in Karachi, Pakistan</strong>,
+              with 5+ years and 100K+ downloads behind me. I take ideas from
+              sketch to App Store — cleanly, quickly, and with the kind of motion
+              design that turns into a reel.
             </p>
 
             <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 mt-9">

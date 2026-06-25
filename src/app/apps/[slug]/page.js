@@ -18,9 +18,11 @@ export async function generateMetadata({ params }) {
   return {
     title: `${app.name} | Anwer Solangi`,
     description: app.description,
+    alternates: { canonical: `/apps/${slug}` },
     openGraph: {
       title: `${app.name} | Anwer Solangi`,
       description: app.description,
+      url: `/apps/${slug}`,
       type: "website",
     },
   };

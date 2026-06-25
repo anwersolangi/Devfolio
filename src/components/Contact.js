@@ -3,7 +3,7 @@ import Reveal from "@/components/Reveal";
 const socials = [
   ["GITHUB", "https://github.com/anwersolangi"],
   ["LINKEDIN", "https://linkedin.com/in/anwersolangi"],
-  ["TWITTER", "https://twitter.com/anwerxolangi"],
+  ["TWITTER", "https://twitter.com/anwersolangidev"],
   ["MEDIUM", "https://medium.com/@anwersolangi"],
 ];
 

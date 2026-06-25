@@ -14,8 +14,8 @@ export default function AppCard({ app }) {
   const showImage = iconIsImage && !imageError;
 
   // Use externalUrl if provided (e.g. TapMeal → tapmeal.anwersolangi.com),
-  // otherwise fall back to the standard portfolio sub-page.
-  const appUrl = app.externalUrl ?? `https://apps.anwersolangi.com/${app.slug}`;
+  // otherwise link to the first-party /apps/<slug> page.
+  const appUrl = app.externalUrl ?? `/apps/${app.slug}`;
   const isExternal = Boolean(app.externalUrl);
 
   return (

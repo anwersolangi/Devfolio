@@ -1,29 +1,31 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 
+// Canonical host everything consolidates onto. The apex (non-www) 301-redirects
+// here at the edge/hosting layer; this middleware folds the legacy `apps.`
+// subdomain into the `/apps/*` path on the same canonical host.
+const CANONICAL_ORIGIN = (
+  process.env.NEXT_PUBLIC_BASE_URL || "https://anwersolangi.com"
+).replace(/\/$/, "");
+
 export function proxy(request: NextRequest) {
   const url = request.nextUrl;
 
-  // Get hostname from headers to handle subdomains correctly
-  const host = request.headers.get("host") || "";
+  // Resolve the real hostname (honour the proxy's forwarded host first).
   const forwardedHost = request.headers.get("x-forwarded-host") || "";
-  const finalHost = forwardedHost || host;
+  const host = request.headers.get("host") || "";
+  const hostname = (forwardedHost || host).split(":")[0];
 
-  // Remove port if present (e.g. localhost:3000)
-  const hostname = finalHost.split(":")[0];
-
-  const subdomain = "apps";
-  // Check if hostname matches our subdomain
-  const isAppsSubdomain =
-    hostname === `apps.anwersolangi.com` ||
-    hostname.startsWith(`${subdomain}.`);
-
-  if (isAppsSubdomain) {
-    // Rewrites:
-    // apps.domain.com/ -> /apps
-    // apps.domain.com/slug -> /apps/slug
-    const newUrl = new URL(`/apps${url.pathname}`, request.url);
-    return NextResponse.rewrite(newUrl);
+  // Legacy apps subdomain → permanent redirect to the /apps/* path so all link
+  // equity consolidates on the canonical host (1:1 mapping, no redirect chain).
+  // NOTE: tapmeal.* is intentionally left alone (separate live app).
+  if (hostname === "apps.anwersolangi.com" || hostname.startsWith("apps.")) {
+    // apps.domain.com/         -> /apps
+    // apps.domain.com/slug     -> /apps/slug
+    // apps.domain.com/slug/sub -> /apps/slug/sub
+    const path = url.pathname === "/" ? "" : url.pathname;
+    const destination = `${CANONICAL_ORIGIN}/apps${path}${url.search}`;
+    return NextResponse.redirect(destination, 301);
   }
 
   return NextResponse.next();

@@ -5,9 +5,25 @@ import { APPS_LIST } from "@/data/apps";
 import { ArrowLeft } from "lucide-react";
 
 export const metadata = {
-  title: "Apps | Anwer Solangi",
+  title: "Apps by Anwer Solangi — React Native & iOS Apps",
   description:
-    "Mobile apps and extensions I've built — React Native apps, Chrome extensions, and open-source projects.",
+    "Mobile apps and extensions built by Anwer Solangi, a React Native developer in Karachi, Pakistan — React Native apps, Chrome extensions, and open-source projects with 100K+ downloads.",
+  keywords: [
+    "Anwer Solangi apps",
+    "React Native apps",
+    "React Native developer Karachi",
+    "mobile app developer Pakistan",
+    "Expo apps",
+    "Play Store apps",
+  ],
+  alternates: { canonical: "/apps" },
+  openGraph: {
+    title: "Apps by Anwer Solangi",
+    description:
+      "React Native apps, browser extensions, and open-source projects by Anwer Solangi.",
+    url: "/apps",
+    type: "website",
+  },
 };
 
 export default function AppsPage() {

@@ -1,15 +1,17 @@
 const socials = [
   ["GitHub", "https://github.com/anwersolangi"],
-  ["LinkedIn", "https://linkedin.com/in/anwersolangi"],
-  ["Twitter", "https://twitter.com/anwerxolangi"],
-  ["Medium", "https://medium.com/@anwersolangi"],
+  ["LinkedIn", "https://www.linkedin.com/in/anwersolangi"],
+  ["X", "https://x.com/anwersolangidev"],
+  ["Instagram", "https://www.instagram.com/anwersolangidev"],
+  ["YouTube", "https://www.youtube.com/@anwersolangidev"],
+  ["Medium", "https://medium.com/@anwersolangy"],
 ];
 
-// Absolute root-domain URLs so these resolve correctly from the apps subdomain too.
 const explore = [
-  ["Reels", "https://anwersolangi.com/reels"],
-  ["Apps", "https://apps.anwersolangi.com"],
-  ["Free Tools", "https://anwersolangi.com/tools"],
+  ["Hire me", "/hire-react-native-developer-karachi"],
+  ["Reels", "/reels"],
+  ["Apps", "/apps"],
+  ["Free Tools", "/tools"],
 ];
 
 export default function Footer() {

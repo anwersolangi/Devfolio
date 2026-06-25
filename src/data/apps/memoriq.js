@@ -138,7 +138,7 @@ export const memorIQ = {
       "https://play.google.com/store/apps/details?id=com.anwersolangi.memoriq",
     codecanyon: "https://codecanyon.net/item/memoriq",
     email: "mailto:me@anwersolangi.com",
-    website: "https://apps.anwersolangi.com/memoriq",
+    website: "/apps/memoriq",
   },
   ctaTitle: "Match. Memorize. Master.",
   ctaDescription:

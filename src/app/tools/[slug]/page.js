@@ -43,7 +43,7 @@ export async function generateMetadata({ params }) {
       card: "summary_large_image",
       title,
       description: tool.description,
-      creator: "@anwerxolangi",
+      creator: "@anwersolangidev",
     },
   };
 }

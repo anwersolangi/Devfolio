@@ -4,25 +4,29 @@ import { GoogleAnalytics } from "@next/third-parties/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-import { AllSchemas } from "@/components/SEOComponents";
+import { SiteSchemas } from "@/components/SEOComponents";
+import {
+  SITE_URL,
+  SITE_NAME,
+  SITE_DESCRIPTION,
+  TWITTER_HANDLE,
+  absUrl,
+} from "@/data/site";
 
-// Set NEXT_PUBLIC_GA_ID (e.g. "G-XXXXXXXXXX") in your Vercel Production
-// environment. When it's absent (local dev, previews) analytics is skipped,
-// so localhost traffic never pollutes your reports. See docs/google-analytics.md.
 const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
 
 const hanken = Hanken_Grotesk({
   subsets: ["latin"],
   display: "swap",
   weight: ["300", "400", "500", "600", "700", "800"],
-  variable: "--font-inter", // ← matches your existing var name
+  variable: "--font-inter",
 });
 
 const geistMono = Geist_Mono({
   subsets: ["latin"],
   display: "swap",
   weight: ["400", "500", "600"],
-  variable: "--font-mono", // ← matches your existing var name
+  variable: "--font-mono",
 });
 
 const instrumentSerif = Instrument_Serif({
@@ -30,22 +34,18 @@ const instrumentSerif = Instrument_Serif({
   display: "swap",
   weight: ["400"],
   style: ["normal", "italic"],
-  variable: "--font-instrument-serif", // ← new; only used by V1 accents
+  variable: "--font-instrument-serif",
 });
 
-const baseUrl = (
-  process.env.NEXT_PUBLIC_BASE_URL || "https://anwersolangi.com"
-).replace(/\/$/, "");
-
 export const metadata = {
-  metadataBase: new URL(baseUrl),
+  metadataBase: new URL(SITE_URL),
   title: {
     default:
-      "Anwer Solangi — React Native Developer building mobile apps that ship",
+      "Anwer Solangi — React Native Developer in Karachi, Pakistan",
     template: "%s · Anwer Solangi",
   },
   description:
-    "Senior React Native developer in Karachi. 50+ shipped mobile apps, 100K+ downloads, 5★ rating. Available for freelance & contract work. Browse the reels, see the projects, hire me.",
+    "Anwer Solangi is a senior React Native developer in Karachi, Pakistan — 50+ shipped mobile apps, 100K+ downloads. Available for freelance & contract app development. Hire me.",
   keywords: [
     "Anwer Solangi",
     "Anwer Ali Solangi",
@@ -58,24 +58,26 @@ export const metadata = {
     "Expo developer",
     "mobile UI reels",
   ],
-  authors: [{ name: "Anwer Solangi", url: "https://anwersolangi.com" }],
-  creator: "Anwer Solangi",
-  publisher: "Anwer Solangi",
-  alternates: { canonical: baseUrl },
+  authors: [{ name: SITE_NAME, url: SITE_URL }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  // NOTE: canonical is intentionally NOT set here. Setting it in the root layout
+  // makes every page canonicalize to the homepage. Each page sets its own
+  // self-referencing canonical via `alternates.canonical`.
   openGraph: {
     type: "profile",
     locale: "en_US",
-    url: baseUrl,
-    title: "Anwer Solangi — React Native Developer",
+    url: SITE_URL,
+    title: "Anwer Solangi — React Native Developer in Karachi, Pakistan",
     description:
-      "Senior React Native developer in Karachi. Available for freelance & contract work.",
-    siteName: "Anwer Solangi",
+      "Senior React Native developer in Karachi, Pakistan. Available for freelance & contract mobile app development.",
+    siteName: SITE_NAME,
     images: [
       {
-        url: `${baseUrl}/og-image.png`,
+        url: absUrl("/og-image.png"),
         width: 1200,
         height: 630,
-        alt: "Anwer Solangi",
+        alt: "Anwer Solangi — React Native Developer",
       },
     ],
     profile: {
@@ -87,11 +89,12 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Anwer Solangi — React Native Developer",
+    title: "Anwer Solangi — React Native Developer in Karachi, Pakistan",
     description:
-      "Senior React Native developer in Karachi. Available for freelance work.",
-    creator: "@anwerxolangi",
-    images: [`${baseUrl}/og-image.png`],
+      "Senior React Native developer in Karachi, Pakistan. Available for freelance work.",
+    site: TWITTER_HANDLE,
+    creator: TWITTER_HANDLE,
+    images: [absUrl("/og-image.png")],
   },
   robots: {
     index: true,
@@ -129,12 +132,7 @@ export default function RootLayout({ children }) {
     >
       <head>
         <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-        <link
-          rel="apple-touch-icon"
-          sizes="180x180"
-          href="/apple-touch-icon.png"
-        />
-        <AllSchemas />
+        <SiteSchemas />
         {/* Scroll-reveal content must stay visible without JavaScript */}
         <noscript>
           <style>{`.reveal{opacity:1 !important;transform:none !important}`}</style>

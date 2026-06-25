@@ -24,7 +24,7 @@ function cleanTitle(str) {
 
 const SITE_URL = "https://anwersolangi.com";
 const SITE_NAME = "Anwer Solangi";
-const TWITTER_HANDLE = "@anwerxolangi";
+const TWITTER_HANDLE = "@anwersolangidev";
 
 export const revalidate = 3600;
 

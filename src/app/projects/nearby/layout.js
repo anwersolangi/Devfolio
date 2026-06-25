@@ -25,7 +25,7 @@ export const metadata = {
     url: "https://anwersolangi.com/projects/nearby",
     images: [
       {
-        url: "https://anwersolangi.com/projects/nearby-og.png",
+        url: "https://anwersolangi.com/og-image.png",
         width: 1200,
         height: 630,
         alt: "Nearby App - Location-Based Social Discovery",
@@ -37,7 +37,7 @@ export const metadata = {
     title: "Nearby - Location-Based Social App",
     description:
       "Find and chat with people around you. 10,000+ downloads on Play Store.",
-    images: ["https://anwersolangi.com/projects/nearby-og.png"],
+    images: ["https://anwersolangi.com/og-image.png"],
   },
   alternates: {
     canonical: "https://anwersolangi.com/projects/nearby",

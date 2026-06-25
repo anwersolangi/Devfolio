@@ -89,7 +89,7 @@ export const velocityTrack = {
   links: {
     playstore: "#", // Placeholder
     email: "mailto:me@anwersolangi.com",
-    website: "https://apps.anwersolangi.com/velocity-track"
+    website: "/apps/velocity-track"
   },
   ctaTitle: "Experience True Privacy",
   ctaDescription:

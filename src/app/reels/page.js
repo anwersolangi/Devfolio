@@ -14,7 +14,8 @@ export const revalidate = 3600;
 export const metadata = {
   title: "UI Reels & Shorts | Anwer Solangi",
   description:
-    "Screen-recorded React Native UI builds — posted across YouTube, Instagram, TikTok, Facebook & Pinterest. Now with source code.",
+    "Screen-recorded React Native UI builds by Anwer Solangi — posted across YouTube, Instagram, TikTok, Facebook & Pinterest. Now with source code.",
+  alternates: { canonical: "/reels" },
   openGraph: {
     title: "UI Reels & Shorts | Anwer Solangi",
     description:
@@ -35,7 +36,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "UI Reels & Shorts | Anwer Solangi",
     description: "Screen-recorded React Native UI builds with full source.",
-    creator: "@anwerxolangi",
+    creator: "@anwersolangidev",
   },
 };
 

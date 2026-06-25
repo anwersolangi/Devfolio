@@ -126,7 +126,7 @@ export const convertiX = {
       "https://play.google.com/store/apps/details?id=com.anwersolangi.convertix",
     codecanyon: "https://codecanyon.net/item/convertix",
     email: "mailto:me@anwersolangi.com",
-    website: "https://apps.anwersolangi.com/convertix",
+    website: "/apps/convertix",
   },
   ctaTitle: "Convert Anything. In Any Language.",
   ctaDescription:

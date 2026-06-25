@@ -25,7 +25,7 @@ export const metadata = {
     url: "https://anwersolangi.com/projects/whatsupfire",
     images: [
       {
-        url: "https://anwersolangi.com/projects/whatsupfire-og.png",
+        url: "https://anwersolangi.com/og-image.png",
         width: 1200,
         height: 630,
         alt: "WhatsupFire - React Native Messenger",
@@ -37,7 +37,7 @@ export const metadata = {
     title: "WhatsupFire - React Native Messaging App",
     description:
       "Complete messaging app with chat, stories, and Firebase backend.",
-    images: ["https://anwersolangi.com/projects/whatsupfire-og.png"],
+    images: ["https://anwersolangi.com/og-image.png"],
   },
   alternates: {
     canonical: "https://anwersolangi.com/projects/whatsupfire",

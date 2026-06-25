@@ -5,11 +5,17 @@ import Apps from "@/components/Apps";
 import About from "@/components/About";
 import Skills from "@/components/Skills";
 import Experience from "@/components/Experience";
+import Faq from "@/components/Faq";
 import Contact from "@/components/Contact";
 import { reelsData } from "@/data/reels";
 import { getReelsStats } from "@/lib/reelStats";
+import { HomeSchemas } from "@/components/SEOComponents";
 
 export const revalidate = 3600;
+
+export const metadata = {
+  alternates: { canonical: "/" },
+};
 
 export default async function Home() {
   const featuredReels = [...reelsData].slice(-5).reverse();
@@ -17,6 +23,7 @@ export default async function Home() {
 
   return (
     <main>
+      <HomeSchemas />
       <Hero />
       <ReelsCarousel
         reels={featuredReels}
@@ -28,6 +35,7 @@ export default async function Home() {
       <About />
       <Skills />
       <Experience />
+      <Faq />
       <Contact />
     </main>
   );

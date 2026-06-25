@@ -44,7 +44,7 @@ export const metadata = {
     title: "Free Online Tools | Anwer Solangi",
     description:
       "Free, privacy-first browser tools — QR codes, app icons, PDF to image and more.",
-    creator: "@anwerxolangi",
+    creator: "@anwersolangidev",
   },
 };
 

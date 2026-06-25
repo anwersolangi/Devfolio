@@ -15,9 +15,7 @@ export default function AppTile({ app }) {
 
   return (
     <a
-      href={`https://apps.anwersolangi.com/${app.slug}`}
-      target="_blank"
-      rel="noopener noreferrer"
+      href={`/apps/${app.slug}`}
       className="group relative flex flex-col items-center justify-end aspect-square bg-bg-2 border border-rule hover:border-accent/40 rounded-3xl transition-all duration-300 hover:-translate-y-1 overflow-hidden"
     >
       {showImage ? (

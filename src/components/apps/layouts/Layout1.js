@@ -265,7 +265,7 @@ export default function Layout1({ app }) {
               </a>
             )}
             <Link
-              href="https://anwersolangi.com/#contact"
+              href="/#contact"
               className="px-6 py-3.5 rounded-xl border border-rule text-ink-2 text-[15px] font-medium hover:text-ink hover:bg-white/5 transition"
             >
               Contact developer
@@ -278,13 +278,13 @@ export default function Layout1({ app }) {
       <section className="py-10 px-6 lg:px-16 border-t border-rule">
         <div className="max-w-screen mx-auto flex flex-wrap gap-x-6 gap-y-2 justify-center text-xs font-mono text-ink-3 tracking-[0.08em]">
           <Link
-            href={`https://apps.anwersolangi.com/${app.slug}/privacy`}
+            href={`/apps/${app.slug}/privacy`}
             className="hover:text-ink transition-colors"
           >
             PRIVACY POLICY
           </Link>
           <Link
-            href={`https://apps.anwersolangi.com/${app.slug}/terms`}
+            href={`/apps/${app.slug}/terms`}
             className="hover:text-ink transition-colors"
           >
             TERMS OF SERVICE

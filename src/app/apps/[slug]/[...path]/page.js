@@ -21,6 +21,8 @@ export async function generateMetadata({ params }) {
   const app = APPS_DATA[slug];
   if (!app) return { title: "Not Found" };
 
+  const canonicalPath = `/apps/${slug}/${(path || []).join("/")}`;
+
   const map = {
     privacy: [
       "Privacy Policy",
@@ -48,12 +50,14 @@ export async function generateMetadata({ params }) {
     return {
       title: `${entry[0]} | ${app.name} | Anwer Solangi`,
       description: entry[1],
+      alternates: { canonical: canonicalPath },
     };
   }
   const pageName = path?.join(" / ");
   return {
     title: `${pageName} | ${app.name} | Anwer Solangi`,
     description: `${pageName} for ${app.name}`,
+    alternates: { canonical: canonicalPath },
   };
 }
 

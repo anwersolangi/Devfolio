@@ -1,33 +1,55 @@
-"use client";
+// Server-rendered JSON-LD. No "use client" — these only emit <script> tags, so
+// rendering on the server ships the structured data in the initial HTML (best
+// for crawlers and AI answer engines) with zero hydration cost.
 
+import {
+  SITE_URL,
+  SITE_NAME,
+  PERSON_ID,
+  WEBSITE_ID,
+  SERVICE_ID,
+  GEO,
+  CONTACT_EMAIL,
+  SOCIAL_PROFILES,
+  absUrl,
+} from "@/data/site";
+import { HOME_FAQS } from "@/data/faqs";
+
+function JsonLd({ schema }) {
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+    />
+  );
+}
+
+// The entity home. One stable @id, a rich sameAs graph, and an explicit
+// disambiguatingDescription so search/AI engines never conflate this Anwer
+// Solangi (the developer) with the late actor Anwar Solangi.
 export function PersonSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "Person",
-    "@id": "https://anwersolangi.com/#person",
+    "@id": PERSON_ID,
     name: "Anwer Solangi",
     alternateName: ["Anwer Ali Solangi", "Anwer Solangi Developer"],
-    url: "https://anwersolangi.com",
+    disambiguatingDescription:
+      "React Native and iOS mobile app developer based in Karachi, Pakistan (spelled Anwer, with an 'e'). Not to be confused with Anwar Solangi, the late Pakistani television actor (1944–2008).",
+    url: SITE_URL,
+    mainEntityOfPage: SITE_URL,
     image: {
       "@type": "ImageObject",
-      url: "https://anwersolangi.com/profile-picture.png",
-      caption: "Anwer Solangi - React Native Developer",
+      url: absUrl("/profile-picture.png"),
+      caption: "Anwer Solangi — React Native Developer",
     },
-    sameAs: [
-      "https://www.fiverr.com/anwer_solangi",
-      "https://x.com/anwerxolangi",
-      "https://twitter.com/anwerxolangi",
-      "https://github.com/anwersolangi",
-      "https://instagram.com/anwersolangi",
-      "https://medium.com/@anwersolangi",
-    ],
+    sameAs: SOCIAL_PROFILES,
     jobTitle: "Senior React Native Developer",
+    email: `mailto:${CONTACT_EMAIL}`,
     description:
       "Professional React Native and iOS developer based in Karachi, Pakistan, specializing in cross-platform mobile app development.",
-    worksFor: {
-      "@type": "Organization",
-      name: "Langoo",
-    },
+    worksFor: { "@type": "Organization", name: "Langoo" },
+    nationality: { "@type": "Country", name: "Pakistan" },
     address: {
       "@type": "PostalAddress",
       addressLocality: "Karachi",
@@ -42,47 +64,64 @@ export function PersonSchema() {
       "TypeScript",
       "Mobile App Development",
       "Cross-Platform Development",
+      "Expo",
       "Browser Extensions",
     ],
     knowsLanguage: ["English", "Urdu", "Sindhi"],
   };
+  return <JsonLd schema={schema} />;
+}
 
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
-  );
+export function WebsiteSchema() {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": WEBSITE_ID,
+    url: SITE_URL,
+    name: "Anwer Solangi — React Native Developer Portfolio",
+    description:
+      "Portfolio of Anwer Solangi, a React Native and iOS developer based in Karachi, Pakistan.",
+    publisher: { "@id": PERSON_ID },
+    inLanguage: "en",
+  };
+  return <JsonLd schema={schema} />;
 }
 
 export function ServiceSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "ProfessionalService",
-    "@id": "https://anwersolangi.com/#service",
-    name: "Anwer Solangi - Mobile App Development Services",
+    "@id": SERVICE_ID,
+    name: "Anwer Solangi — React Native App Development",
     description:
-      "Professional React Native and iOS development services in Karachi, Pakistan. Specializing in cross-platform mobile applications, browser extensions, and wearable apps.",
-    provider: {
-      "@id": "https://anwersolangi.com/#person",
+      "Freelance React Native and iOS app development in Karachi, Pakistan. Cross-platform mobile apps, browser extensions, and product builds for founders and teams worldwide.",
+    provider: { "@id": PERSON_ID },
+    url: SITE_URL,
+    image: absUrl("/og-image.png"),
+    email: `mailto:${CONTACT_EMAIL}`,
+    address: {
+      "@type": "PostalAddress",
+      addressLocality: "Karachi",
+      addressRegion: "Sindh",
+      addressCountry: "PK",
+    },
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: GEO.lat,
+      longitude: GEO.lng,
     },
     areaServed: [
       {
         "@type": "City",
         name: "Karachi",
-        containedIn: {
-          "@type": "State",
+        containedInPlace: {
+          "@type": "AdministrativeArea",
           name: "Sindh",
-          containedIn: {
-            "@type": "Country",
-            name: "Pakistan",
-          },
+          containedInPlace: { "@type": "Country", name: "Pakistan" },
         },
       },
-      {
-        "@type": "Country",
-        name: "Worldwide",
-      },
+      { "@type": "Country", name: "Pakistan" },
+      { "@type": "Place", name: "Worldwide (remote)" },
     ],
     serviceType: [
       "React Native App Development",
@@ -90,133 +129,46 @@ export function ServiceSchema() {
       "Mobile App Development",
       "Cross-Platform Development",
       "Browser Extension Development",
-      "Wearable App Development",
     ],
-    url: "https://anwersolangi.com",
     priceRange: "$$",
+    sameAs: SOCIAL_PROFILES,
   };
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
-  );
+  return <JsonLd schema={schema} />;
 }
 
 export function FAQSchema() {
   const schema = {
     "@context": "https://schema.org",
     "@type": "FAQPage",
-    mainEntity: [
-      {
-        "@type": "Question",
-        name: "Who is Anwer Solangi?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Anwer Solangi is a professional React Native and iOS developer based in Karachi, Pakistan. He is NOT the same person as Anwar Solangi (with 'a'), who was a Pakistani TV actor (1944-2008). Anwer Solangi specializes in mobile app development and has been working as a freelance developer since 2020.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "What is the difference between Anwer Solangi and Anwar Solangi?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Anwer Solangi (spelled with 'e') is a React Native developer from Karachi working since 2020. Anwar Solangi (spelled with 'a') was a Pakistani television actor who lived from 1944 to 2008. They are completely different people with different professions.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "Where is Anwer Solangi located?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Anwer Solangi is located in Karachi, Sindh, Pakistan. He works with clients both locally in Karachi and remotely from around the world.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "How can I hire Anwer Solangi for React Native development?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "You can hire Anwer Solangi through his website at anwersolangi.com, on Fiverr at fiverr.com/anwer_solangi, or by contacting him directly at me@anwersolangi.com for React Native and iOS app development projects.",
-        },
-      },
-      {
-        "@type": "Question",
-        name: "What services does Anwer Solangi offer?",
-        acceptedAnswer: {
-          "@type": "Answer",
-          text: "Anwer Solangi offers React Native app development, iOS development using Swift, cross-platform mobile app development, browser extension development (Chrome, Firefox, Safari), wearable app development, and mobile app consultation services.",
-        },
-      },
-    ],
+    "@id": `${SITE_URL}/#faq`,
+    mainEntity: HOME_FAQS.map((f) => ({
+      "@type": "Question",
+      name: f.q,
+      acceptedAnswer: { "@type": "Answer", text: f.a },
+    })),
   };
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
-  );
+  return <JsonLd schema={schema} />;
 }
 
-export function WebsiteSchema() {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "@id": "https://anwersolangi.com/#website",
-    url: "https://anwersolangi.com",
-    name: "Anwer Solangi - React Native Developer Portfolio",
-    description:
-      "Professional portfolio of Anwer Solangi, a React Native and iOS developer based in Karachi, Pakistan.",
-    publisher: {
-      "@id": "https://anwersolangi.com/#person",
-    },
-    inLanguage: "en-US",
-    potentialAction: {
-      "@type": "SearchAction",
-      target: {
-        "@type": "EntryPoint",
-        urlTemplate: "https://anwersolangi.com/?s={search_term_string}",
-      },
-      "query-input": "required name=search_term_string",
-    },
-  };
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
-  );
-}
-
-export function WebPageSchema() {
+// Generic WebPage node. Pass per-page values; defaults describe the homepage.
+export function WebPageSchema({
+  url = SITE_URL,
+  name = "Anwer Solangi | React Native Developer in Karachi, Pakistan",
+  description = "React Native and iOS developer based in Karachi, Pakistan. Cross-platform mobile apps, browser extensions, and free developer tools.",
+} = {}) {
   const schema = {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "@id": "https://anwersolangi.com/#webpage",
-    url: "https://anwersolangi.com",
-    name: "Anwer Solangi | React Native Developer in Karachi, Pakistan",
-    isPartOf: {
-      "@id": "https://anwersolangi.com/#website",
-    },
-    about: {
-      "@id": "https://anwersolangi.com/#person",
-    },
-    description:
-      "Professional React Native and iOS developer based in Karachi, Pakistan. Specializing in cross-platform mobile app development and browser extensions.",
-    inLanguage: "en-US",
-    datePublished: "2020-01-01",
+    "@id": `${url}#webpage`,
+    url,
+    name,
+    description,
+    isPartOf: { "@id": WEBSITE_ID },
+    about: { "@id": PERSON_ID },
+    inLanguage: "en",
     dateModified: new Date().toISOString().split("T")[0],
   };
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
-  );
+  return <JsonLd schema={schema} />;
 }
 
 export function BreadcrumbSchema({ items }) {
@@ -226,19 +178,11 @@ export function BreadcrumbSchema({ items }) {
     itemListElement: items.map((item, index) => ({
       "@type": "ListItem",
       position: index + 1,
-      item: {
-        "@id": item.url,
-        name: item.name,
-      },
+      name: item.name,
+      item: item.url,
     })),
   };
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
-  );
+  return <JsonLd schema={schema} />;
 }
 
 export function SoftwareApplicationSchema({
@@ -251,40 +195,42 @@ export function SoftwareApplicationSchema({
   const schema = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
-    name: name,
-    description: description,
-    url: url,
-    applicationCategory: applicationCategory,
-    operatingSystem: operatingSystem,
-    author: {
-      "@id": "https://anwersolangi.com/#person",
-    },
-    creator: {
-      "@id": "https://anwersolangi.com/#person",
-    },
-    offers: {
-      "@type": "Offer",
-      price: "0",
-      priceCurrency: "USD",
-    },
+    name,
+    description,
+    url,
+    applicationCategory,
+    operatingSystem,
+    author: { "@id": PERSON_ID },
+    creator: { "@id": PERSON_ID },
+    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
   };
-
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
-    />
-  );
+  return <JsonLd schema={schema} />;
 }
 
-export function AllSchemas() {
+// Site-wide entity graph — rendered once in the root layout. Person + Website
+// only (these describe the entity/site and are safe on every page). FAQ,
+// ProfessionalService and WebPage are NOT here on purpose — they belong to
+// specific pages (see HomeSchemas) to avoid repeating page-scoped schema on
+// every URL.
+export function SiteSchemas() {
   return (
     <>
       <PersonSchema />
-      <ServiceSchema />
-      <FAQSchema />
       <WebsiteSchema />
-      <WebPageSchema />
     </>
   );
 }
+
+// Homepage-only schema.
+export function HomeSchemas() {
+  return (
+    <>
+      <WebPageSchema />
+      <ServiceSchema />
+      <FAQSchema />
+    </>
+  );
+}
+
+// Backwards-compatible alias (older imports).
+export const AllSchemas = SiteSchemas;
