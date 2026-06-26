@@ -4,6 +4,13 @@ const socials = [
   ["X", "https://x.com/anwersolangidev"],
   ["Instagram", "https://www.instagram.com/anwersolangidev"],
   ["YouTube", "https://www.youtube.com/@anwersolangidev"],
+  ["TikTok", "https://www.tiktok.com/@anwersolangidev"],
+  ["Pinterest", "https://www.pinterest.com/anwersolangidev"],
+  [
+    "Facebook",
+    "https://www.facebook.com/anwersolangidev",
+    "Verified · 5K+ followers",
+  ],
   ["Medium", "https://medium.com/@anwersolangy"],
 ];
 
@@ -61,15 +68,20 @@ export default function Footer() {
                 Connect
               </div>
               <ul className="space-y-2 list-none p-0">
-                {socials.map(([label, href]) => (
+                {socials.map(([label, href, badge]) => (
                   <li key={label}>
                     <a
                       href={href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-sm text-ink-2 hover:text-ink transition-colors"
+                      className="inline-flex items-center gap-2 text-sm text-ink-2 hover:text-ink transition-colors"
                     >
-                      {label} ↗
+                      <span>{label} ↗</span>
+                      {badge && (
+                        <span className="inline-flex items-center rounded-full border border-accent/40 bg-accent/10 px-2 py-0.5 font-mono text-[9px] tracking-[0.08em] uppercase text-accent">
+                          {badge}
+                        </span>
+                      )}
                     </a>
                   </li>
                 ))}
