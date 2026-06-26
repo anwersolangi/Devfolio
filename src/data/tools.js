@@ -923,6 +923,27 @@ export const TOOLS_BY_SLUG = Object.fromEntries(
   TOOLS.map((tool) => [tool.slug, tool]),
 );
 
+// Tools surfaced on the homepage, ordered by search demand. app-icon-generator
+// leads because it already pulls organic impressions in Search Console; the rest
+// are the highest-volume utilities. Featuring them on the homepage gives the
+// individual tool pages a direct internal link from the site's strongest page,
+// which is what gets them crawled and indexed (instead of "crawled — currently
+// not indexed") and lifts their ranking.
+export const FEATURED_TOOL_SLUGS = [
+  "app-icon-generator",
+  "qr-code-generator",
+  "pdf-to-image",
+  "image-compressor",
+  "youtube-thumbnail-downloader",
+  "json-formatter",
+  "password-generator",
+  "css-gradient-generator",
+];
+
+export const FEATURED_TOOLS = FEATURED_TOOL_SLUGS.map(
+  (slug) => TOOLS_BY_SLUG[slug],
+).filter(Boolean);
+
 // Category groups in display order, derived from the tool list.
 export const TOOL_CATEGORIES = TOOLS.reduce((groups, tool) => {
   const group = groups.find((g) => g.name === tool.category);

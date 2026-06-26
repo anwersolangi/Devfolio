@@ -57,7 +57,7 @@ export default function Skills() {
     <section id="skills" className="py-16 md:py-24 lg:py-32 px-6 lg:px-16">
       <div className="max-w-screen mx-auto">
         <Reveal className="mb-10 lg:mb-12">
-          <div className="eyebrow">05 · STACK</div>
+          <div className="eyebrow">06 · STACK</div>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-extra-tight mt-3 text-ink">
             Tools I reach for.
           </h2>

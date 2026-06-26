@@ -40,3 +40,7 @@ yarn-error.log*
 next-env.d.ts
 
 /docs/
+
+# Google Search Console / analytics exports (local reference only)
+/anwersolangi.com-*/
+/Reports_snapshot.pdf

@@ -25,7 +25,7 @@ export default function Contact() {
 
       <div className="relative max-w-screen mx-auto text-center">
         <Reveal>
-          <div className="eyebrow">07 · LET’S BUILD</div>
+          <div className="eyebrow">08 · LET’S BUILD</div>
           <h2 className="font-display text-5xl md:text-7xl lg:text-8xl xl:text-[120px] font-extrabold tracking-tightest leading-[0.95] mt-5 text-ink">
             Got an app idea?
             <br />

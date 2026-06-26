@@ -2,6 +2,7 @@ import Hero from "@/components/Hero";
 import ReelsCarousel from "@/components/ReelsCarousel";
 import Projects from "@/components/Projects";
 import Apps from "@/components/Apps";
+import Tools from "@/components/Tools";
 import About from "@/components/About";
 import Skills from "@/components/Skills";
 import Experience from "@/components/Experience";
@@ -32,6 +33,7 @@ export default async function Home() {
       />
       <Projects />
       <Apps />
+      <Tools />
       <About />
       <Skills />
       <Experience />

@@ -37,7 +37,7 @@ export default function Experience() {
     >
       <div className="max-w-screen mx-auto">
         <Reveal className="mb-10 lg:mb-12">
-          <div className="eyebrow">06 · EXPERIENCE</div>
+          <div className="eyebrow">07 · EXPERIENCE</div>
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-extra-tight mt-3 text-ink">
             The track record.
           </h2>

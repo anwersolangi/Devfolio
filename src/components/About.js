@@ -13,7 +13,7 @@ export default function About() {
       <div className="max-w-screen mx-auto">
         <Reveal className="grid lg:grid-cols-2 gap-12 lg:gap-20">
           <div>
-            <div className="eyebrow">04 · ABOUT</div>
+            <div className="eyebrow">05 · ABOUT</div>
             <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-extra-tight leading-[1] mt-3 text-ink">
               Building things people use every day.
             </h2>
