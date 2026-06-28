@@ -42,7 +42,8 @@ export const metadata = {
   title: {
     default:
       "Anwer Solangi — React Native Developer in Karachi, Pakistan",
-    template: "%s · Anwer Solangi",
+    // Page titles already include the brand where needed; avoid duplicating it.
+    template: "%s",
   },
   description:
     "Anwer Solangi is a senior React Native developer in Karachi, Pakistan — 50+ shipped mobile apps, 100K+ downloads. Available for freelance & contract app development. Hire me.",

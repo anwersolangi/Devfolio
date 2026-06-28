@@ -111,9 +111,10 @@ function formatViews(n) {
 }
 
 function formatDuration(seconds) {
-  if (!Number.isFinite(Number(seconds))) return "";
+  const durationSeconds = Number(seconds);
+  if (!Number.isFinite(durationSeconds) || durationSeconds <= 0) return "";
 
-  const totalSeconds = Math.round(Number(seconds));
+  const totalSeconds = Math.round(durationSeconds);
   const minutes = Math.floor(totalSeconds / 60);
   const remainingSeconds = totalSeconds % 60;
 

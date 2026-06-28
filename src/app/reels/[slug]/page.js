@@ -25,6 +25,21 @@ function cleanTitle(str) {
 const SITE_URL = "https://anwersolangi.com";
 const SITE_NAME = "Anwer Solangi";
 const TWITTER_HANDLE = "@anwersolangidev";
+const SCHEMA_TIMEZONE_OFFSET = "+05:00";
+const MONTHS = {
+  january: 1,
+  february: 2,
+  march: 3,
+  april: 4,
+  may: 5,
+  june: 6,
+  july: 7,
+  august: 8,
+  september: 9,
+  october: 10,
+  november: 11,
+  december: 12,
+};
 
 export const revalidate = 3600;
 
@@ -117,7 +132,16 @@ function GitHubIcon({ className }) {
 }
 
 function getReelVideoUrl(reel) {
-  return (reel.videoUrl || reel.videoURL || "").trim();
+  return [
+    reel.videoUrl,
+    reel.videoURL,
+    reel.links?.youtube,
+    reel.links?.facebook,
+    reel.links?.instagram,
+    reel.links?.tiktok,
+  ]
+    .map((value) => (value || "").trim())
+    .find(Boolean) || "";
 }
 
 function getCoverImage(reel) {
@@ -127,6 +151,116 @@ function getCoverImage(reel) {
 function toAbsoluteUrl(path) {
   if (!path) return `${SITE_URL}/og-image.png`;
   return path.startsWith("http") ? path : `${SITE_URL}${path}`;
+}
+
+function padDatePart(value) {
+  return String(value).padStart(2, "0");
+}
+
+function normalizeTimezoneOffset(offset) {
+  if (!offset || offset === "Z") return offset || SCHEMA_TIMEZONE_OFFSET;
+  return offset.includes(":")
+    ? offset
+    : `${offset.slice(0, 3)}:${offset.slice(3)}`;
+}
+
+function formatSchemaDateTime({
+  year,
+  month,
+  day,
+  hour = 0,
+  minute = 0,
+  second = 0,
+  offset = SCHEMA_TIMEZONE_OFFSET,
+}) {
+  const date = new Date(Date.UTC(year, month - 1, day, hour, minute, second));
+  const valid =
+    date.getUTCFullYear() === year &&
+    date.getUTCMonth() === month - 1 &&
+    date.getUTCDate() === day &&
+    date.getUTCHours() === hour &&
+    date.getUTCMinutes() === minute &&
+    date.getUTCSeconds() === second;
+
+  if (!valid) return "";
+
+  return `${year}-${padDatePart(month)}-${padDatePart(day)}T${padDatePart(
+    hour,
+  )}:${padDatePart(minute)}:${padDatePart(second)}${normalizeTimezoneOffset(
+    offset,
+  )}`;
+}
+
+function toSchemaUploadDate(value) {
+  const input = (value || "").trim();
+  if (!input) return "";
+
+  const isoMatch = input.match(
+    /^(\d{4})-(\d{2})-(\d{2})(?:[T\s](\d{2}):(\d{2})(?::(\d{2}))?(?:\.\d+)?(Z|[+-]\d{2}:?\d{2})?)?$/,
+  );
+  if (isoMatch) {
+    const [, year, month, day, hour, minute, second, offset] = isoMatch;
+    return formatSchemaDateTime({
+      year: Number(year),
+      month: Number(month),
+      day: Number(day),
+      hour: Number(hour || 0),
+      minute: Number(minute || 0),
+      second: Number(second || 0),
+      offset: offset || SCHEMA_TIMEZONE_OFFSET,
+    });
+  }
+
+  const numericMatch = input.match(
+    /^(\d{1,2})\/(\d{1,2})\/(\d{4})(?:\s+(\d{1,2}):(\d{2})(?::(\d{2}))?)?$/,
+  );
+  if (numericMatch) {
+    const [, month, day, year, hour, minute, second] = numericMatch;
+    return formatSchemaDateTime({
+      year: Number(year),
+      month: Number(month),
+      day: Number(day),
+      hour: Number(hour || 0),
+      minute: Number(minute || 0),
+      second: Number(second || 0),
+    });
+  }
+
+  const dayMonthMatch = input.match(
+    /^(\d{1,2})\s+([A-Za-z]+)\s+(\d{4})(?:\s+(\d{1,2}):(\d{2})(?::(\d{2}))?)?$/,
+  );
+  if (dayMonthMatch) {
+    const [, day, monthName, year, hour, minute, second] = dayMonthMatch;
+    const month = MONTHS[monthName.toLowerCase()];
+    if (!month) return "";
+    return formatSchemaDateTime({
+      year: Number(year),
+      month,
+      day: Number(day),
+      hour: Number(hour || 0),
+      minute: Number(minute || 0),
+      second: Number(second || 0),
+    });
+  }
+
+  const monthDayMatch = input.match(
+    /^([A-Za-z]+)\s+(\d{1,2}),?\s+(\d{4})(?:\s+(\d{1,2}):(\d{2})(?::(\d{2}))?)?$/,
+  );
+  if (monthDayMatch) {
+    const [, monthName, day, year, hour, minute, second] = monthDayMatch;
+    const month = MONTHS[monthName.toLowerCase()];
+    if (!month) return "";
+    return formatSchemaDateTime({
+      year: Number(year),
+      month,
+      day: Number(day),
+      hour: Number(hour || 0),
+      minute: Number(minute || 0),
+      second: Number(second || 0),
+    });
+  }
+
+  return "";
 }
 
 function getYouTubeEmbedUrl(videoUrl) {
@@ -169,11 +303,15 @@ function getVideoSource(reel) {
     return { type: "iframe", src: videoUrl, platform: "Facebook" };
   }
 
-  if (/\.(mp4|webm|ogg)(?:[?#].*)?$/i.test(videoUrl)) {
+  if (isDirectVideoFileUrl(videoUrl)) {
     return { type: "video", src: videoUrl, platform: "Video" };
   }
 
   return { type: "external", src: videoUrl, platform: "Video" };
+}
+
+function isDirectVideoFileUrl(videoUrl) {
+  return /\.(mp4|webm|ogg)(?:[?#].*)?$/i.test(videoUrl);
 }
 
 function formatViews(count) {
@@ -182,9 +320,10 @@ function formatViews(count) {
 }
 
 function formatDuration(seconds) {
-  if (!Number.isFinite(Number(seconds))) return "—";
+  const durationSeconds = Number(seconds);
+  if (!Number.isFinite(durationSeconds) || durationSeconds <= 0) return "—";
 
-  const totalSeconds = Math.round(Number(seconds));
+  const totalSeconds = Math.round(durationSeconds);
   const hours = Math.floor(totalSeconds / 3600);
   const minutes = Math.floor((totalSeconds % 3600) / 60);
   const remainingSeconds = totalSeconds % 60;
@@ -203,8 +342,12 @@ function formatDuration(seconds) {
 }
 
 function toIsoDuration(seconds) {
-  if (!Number.isFinite(Number(seconds))) return undefined;
-  return `PT${Math.round(Number(seconds))}S`;
+  const durationSeconds = Number(seconds);
+  if (!Number.isFinite(durationSeconds) || durationSeconds <= 0) {
+    return undefined;
+  }
+
+  return `PT${Math.max(1, Math.round(durationSeconds))}S`;
 }
 
 export function generateStaticParams() {
@@ -219,6 +362,7 @@ export async function generateMetadata({ params }) {
   const title = cleanTitle(reel.title);
   const url = `${SITE_URL}/reels/${reel.slug}`;
   const cover = toAbsoluteUrl(getCoverImage(reel));
+  const uploadDate = toSchemaUploadDate(reel.publishTime);
 
   return {
     title: `${title} | ${SITE_NAME}`,
@@ -244,7 +388,7 @@ export async function generateMetadata({ params }) {
       url,
       siteName: SITE_NAME,
       type: "article",
-      publishedTime: reel.publishTime,
+      ...(uploadDate ? { publishedTime: uploadDate } : {}),
       authors: ["Anwer Solangi"],
       images: [
         {
@@ -265,7 +409,7 @@ export async function generateMetadata({ params }) {
       images: [cover],
     },
     other: {
-      "article:published_time": reel.publishTime,
+      ...(uploadDate ? { "article:published_time": uploadDate } : {}),
       "article:author": "Anwer Solangi",
       "article:section": reel.category,
       "article:tag": reel.technologies.join(","),
@@ -279,23 +423,30 @@ function VideoJsonLd({ reel, stats }) {
   const videoUrl = getReelVideoUrl(reel);
   const videoSource = getVideoSource(reel);
   const cover = toAbsoluteUrl(getCoverImage(reel));
+  const uploadDate = toSchemaUploadDate(reel.publishTime);
   const duration = toIsoDuration(stats.durationSeconds);
+
+  if (!videoUrl || !uploadDate) return null;
 
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "VideoObject",
     name: title,
     description: reel.description,
-    thumbnailUrl: cover,
-    uploadDate: reel.publishTime,
+    thumbnailUrl: [cover],
+    uploadDate,
     ...(duration ? { duration } : {}),
-    contentUrl: videoUrl,
-    embedUrl: videoSource.src || videoUrl,
-    interactionStatistic: {
-      "@type": "InteractionCounter",
-      interactionType: { "@type": "WatchAction" },
-      userInteractionCount: stats.views,
-    },
+    ...(isDirectVideoFileUrl(videoUrl) ? { contentUrl: videoUrl } : {}),
+    ...(videoSource.type === "iframe" ? { embedUrl: videoSource.src } : {}),
+    ...(Number.isFinite(Number(stats.views))
+      ? {
+          interactionStatistic: {
+            "@type": "InteractionCounter",
+            interactionType: { "@type": "WatchAction" },
+            userInteractionCount: Math.max(0, Math.round(Number(stats.views))),
+          },
+        }
+      : {}),
     author: {
       "@type": "Person",
       name: "Anwer Solangi",

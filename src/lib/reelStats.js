@@ -47,9 +47,9 @@ function getFallbackStats(reel) {
   const fallbackViews = Number.isFinite(Number(reel.views))
     ? Number(reel.views)
     : null;
-  const fallbackDurationSeconds = Number.isFinite(Number(reel.duration))
-    ? Number(reel.duration)
-    : null;
+  const reelDuration = Number(reel.duration);
+  const fallbackDurationSeconds =
+    Number.isFinite(reelDuration) && reelDuration > 0 ? reelDuration : null;
 
   return {
     provider: youtubeVideoId ? "youtube" : "static",
@@ -104,9 +104,10 @@ async function fetchYouTubeStats(videoIds) {
           provider: "youtube",
           videoId,
           views: Number.isFinite(viewCount) ? viewCount : null,
-          durationSeconds: Number.isFinite(durationSeconds)
-            ? durationSeconds
-            : null,
+          durationSeconds:
+            Number.isFinite(durationSeconds) && durationSeconds > 0
+              ? durationSeconds
+              : null,
         });
       }
     } catch {
@@ -181,9 +182,10 @@ export function formatReelViews(count, { compact = false } = {}) {
 }
 
 export function formatReelDuration(seconds) {
-  if (!Number.isFinite(Number(seconds))) return "";
+  const durationSeconds = Number(seconds);
+  if (!Number.isFinite(durationSeconds) || durationSeconds <= 0) return "";
 
-  const totalSeconds = Math.round(Number(seconds));
+  const totalSeconds = Math.round(durationSeconds);
   const hours = Math.floor(totalSeconds / 3600);
   const minutes = Math.floor((totalSeconds % 3600) / 60);
   const remainingSeconds = totalSeconds % 60;
