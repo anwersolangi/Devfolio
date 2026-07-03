@@ -1780,4 +1780,57 @@ Dark slate property detail screen with full-bleed hero photo, stacked interior t
 - Schedule Tour button fires notificationAsync Success haptic on confirm
 `,
   },
+  {
+    id: 51,
+    facebookPostId: "",
+    reelId: "",
+    title:
+      "Live Stock Chart in React Native — The chart draws itself while the price ticks live",
+    slug: "live-stock-chart-react-native-self-drawing-svg-price-ticker",
+    category: "Mobile UI",
+    description:
+      "A live stock-tracking screen where the chart line draws itself on mount using plain SVG, with a pulsing leading-edge dot and a price that keeps ticking. The chart draws itself the moment the screen loads.",
+    videoUrl: "",
+    coverImage: `${COVERS}/live-stock-chart-react-native-self-drawing-svg-price-ticker-reel.png`,
+    coverImageReel: `${COVERS}/live-stock-chart-react-native-self-drawing-svg-price-ticker-reel.png`,
+    coverImageOg: `${COVERS}/live-stock-chart-react-native-self-drawing-svg-price-ticker-og.png`,
+    coverImagePin: `${COVERS}/live-stock-chart-react-native-self-drawing-svg-price-ticker-pin.png`,
+    technologies: [
+      "React Native",
+      "react-native-svg",
+      "Reanimated",
+      "expo-haptics",
+      "TypeScript",
+      "Expo",
+    ],
+    views: 0,
+    duration: 0,
+    publishTime: "",
+    permalink: "",
+    links: {
+      facebook: "https://www.facebook.com/share/r/17LwcCEapk/",
+      github: "https://github.com/anwersolangi/rn-interface-kit",
+      youtube: "https://youtube.com/shorts/ZxxG7dFflI0?feature=share",
+      instagram:
+        "https://www.instagram.com/reel/DaQaKqVMPqM/?utm_source=ig_web_copy_link&igsh=MzRlODBiNWFlZA==",
+      tiktok:
+        "https://www.tiktok.com/@anwersolangidev/video/7657605903247494408",
+      pinterest: "",
+    },
+    content: `
+# Live Stock Chart in React Native
+ 
+A live stock-tracking screen where the chart line draws itself on mount using plain SVG, with a pulsing leading-edge dot and a price that keeps ticking.
+ 
+## The hook moment
+ 
+The chart draws itself the moment the screen loads — no chart library, just a revealed SVG path racing to the right.
+ 
+## Built from scratch
+ 
+Single-file TypeScript, zero UI kit, production-ready. Pure SVG and Reanimated.
+ 
+**Stack:** React Native · react-native-svg · Reanimated · expo-haptics · TypeScript · Expo
+  `,
+  },
 ];

@@ -16,9 +16,10 @@ export default function sitemap() {
     { path: "/reels", changeFrequency: "weekly", priority: 0.9 },
     { path: "/apps", changeFrequency: "monthly", priority: 0.8 },
     { path: "/tools", changeFrequency: "weekly", priority: 0.8 },
-    { path: "/projects/nearby", changeFrequency: "monthly", priority: 0.7 },
-    { path: "/projects/whatsupfire", changeFrequency: "monthly", priority: 0.7 },
-    { path: "/projects/reacttube", changeFrequency: "monthly", priority: 0.7 },
+    // NOTE: /projects/{nearby,whatsupfire,reacttube} were duplicates of the
+    // /apps/<slug> pages. They now 301-redirect to /apps/<slug> (see
+    // next.config.mjs) and are intentionally omitted here so the sitemap lists
+    // only the canonical /apps/* URLs.
     {
       path: "/extensions/youtube-fullscreen-focus",
       changeFrequency: "monthly",
