@@ -88,7 +88,7 @@ function ReelCard({ reel, stats, index }) {
 
       <h3 className="mt-4 text-[15px] font-semibold leading-[1.3] tracking-[-0.01em] text-ink group-hover:text-accent-2 transition-colors duration-200 line-clamp-2">
         {reel.title
-          .replace(/[🍝🥩🍛🔐💳📊🍔📱✨🚗📍🤖⚡🐦💎📈📻🎰🎵🍕☀️🌄🤖]/g, "")
+          .replace(/[🍝🥩🍛🔐💳📊🍔📱✨🚗📍🤖⚡🐦💎📈📻🎰🎵🍕☀️🌄🎙️]/gu, "")
           .trim()}
       </h3>
       <div className="mt-2 flex items-center justify-between text-[10px] font-mono tracking-[0.06em]">

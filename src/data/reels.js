@@ -1833,4 +1833,45 @@ Single-file TypeScript, zero UI kit, production-ready. Pure SVG and Reanimated.
 **Stack:** React Native · react-native-svg · Reanimated · expo-haptics · TypeScript · Expo
   `,
   },
+  {
+    id: 99,
+    facebookPostId: "",
+    reelId: "",
+    title: "Building an AI Voice Call UI using React Native 🎙️🤖",
+    slug: "building-an-ai-voice-call-ui-using-react-native",
+    category: "Mobile UI",
+    description: "Building an AI Voice Call UI using React Native 🎙️🤖",
+    videoUrl: "",
+    coverImage: `${COVERS}/ai-voice-call-ui-using-react-native-reel.png`,
+    coverImageReel: `${COVERS}/ai-voice-call-ui-using-react-native-reel.png`,
+    coverImageOg: `${COVERS}/ai-voice-call-ui-using-react-native-og.png`,
+    coverImagePin: `${COVERS}/ai-voice-call-ui-using-react-native-pin.png`,
+    technologies: ["React Native", "EXPO", "Reanimated", "TypeScript"],
+    views: 3000,
+    duration: 15,
+    publishTime: "2026-07-08T14:30:00+05:00",
+    permalink: "",
+    links: {
+      facebook: "https://www.facebook.com/reel/2024011208210150",
+      github: "https://github.com/anwersolangi/rn-interface-kit",
+      youtube: "https://youtube.com/shorts/GGGVy23A2dQ",
+      instagram: "https://www.instagram.com/reel/DZ8CIdmMSfM/",
+      tiktok:
+        "https://www.tiktok.com/@anwersolangidev/video/7654656878856703250",
+      pinterest: "https://pin.it/6pukstHD4",
+    },
+    content: `
+# Building an AI Voice Call UI using React Native 🎙️🤖
+
+In this reel I coded a live AI voice call interface step-by-step — the kind of screen you'd see in ChatGPT voice mode or an AI companion app.
+Animated voice orb, live waveform, mute/speaker controls, and a call timer — all built from scratch in a single file.
+If you're learning React Native, mobile app development, or UI design, this shows exactly how AI-driven interfaces are structured.
+Follow for more React Native tutorials, coding reels, and mobile app development tips.
+💻 Built with code
+📱 Designed for mobile
+🚀 Made for developers
+👇 Comment "APP" if you want the full tutorial!
+#reactnative #mobileappdevelopment #codingreels
+  `,
+  },
 ];

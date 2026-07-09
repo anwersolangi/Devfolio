@@ -65,6 +65,10 @@ const REGISTRY = {
     ssr: false,
     loading: Loading,
   }),
+  "cnic-lookup": dynamic(() => import("./widgets/CnicLookupTool"), {
+    ssr: false,
+    loading: Loading,
+  }),
   "css-gradient-generator": dynamic(
     () => import("./widgets/CssGradientTool"),
     { ssr: false, loading: Loading },

@@ -917,6 +917,78 @@ export const TOOLS = [
     ],
     related: ["uuid-generator", "hash-generator", "json-formatter"],
   },
+  // ───────────────────────────── Pakistan Tools ─────────────────────────────
+  {
+    slug: "cnic-lookup",
+    name: "CNIC Lookup & Decoder",
+    tagline: "Decode province, division, and gender from any CNIC",
+    category: "Pakistan Tools",
+    icon: "Map",
+    description:
+      "Free online Pakistani CNIC validator and decoder. Extract the province, division, district, family number, and gender from any 13-digit NADRA Computerized National Identity Card.",
+    keywords: [
+      "cnic lookup",
+      "cnic decoder",
+      "nadra cnic details",
+      "cnic validator",
+      "pakistan cnic",
+      "nida lookup",
+      "check cnic gender",
+      "cnic province code",
+      "verify cnic online",
+      "check cnic status online",
+      "nadra verisys alternative",
+      "check family tree nadra",
+      "cnic format meaning",
+      "nadra cnic tracking guide"
+    ],
+    intro:
+      "Every 13-digit Pakistani CNIC contains encoded information about the cardholder's origin and gender. Enter a CNIC number to instantly decode its geographic location (Province, Division, District, Tehsil, Union Council), the NADRA family tracking number, and gender. Everything runs locally in your browser — your CNIC number is never sent to any server.",
+    features: [
+      "Extracts Province, Division, and District codes",
+      "Determines the cardholder's gender",
+      "Validates 13-digit NADRA format",
+      "100% private: no server uploads",
+    ],
+    howTo: [
+      { title: "Enter CNIC", text: "Type or paste a 13-digit CNIC number. Dashes are optional." },
+      { title: "Validate", text: "The tool checks if the format matches NADRA's XXXXX-YYYYYYY-Z pattern." },
+      { title: "Decode", text: "Instantly view the province, location codes, family number, and gender." },
+    ],
+    faqs: [
+      {
+        question: "Does the CNIC contain the date of birth?",
+        answer:
+          "No, contrary to popular belief, the 13-digit CNIC number does not encode the cardholder's birth year or date of birth. It only contains geographic location, family tree tracking, and gender.",
+      },
+      {
+        question: "Is my CNIC number saved anywhere?",
+        answer:
+          "No. The decoding logic runs entirely on your device using JavaScript. Your CNIC number is never transmitted to any external server or database.",
+      },
+      {
+        question: "How is the gender determined?",
+        answer:
+          "The very last digit of the CNIC indicates gender: odd numbers (1, 3, 5, 7, 9) are for males, and even numbers (2, 4, 6, 8) are for females.",
+      },
+      {
+        question: "What do the first 5 digits mean?",
+        answer:
+          "The first digit represents the Province (e.g., 1 for KP, 4 for Sindh). The 2nd is the Division, 3rd is the District, 4th is the Tehsil, and 5th is the Union Council.",
+      },
+      {
+        question: "Can I check my CNIC details with a picture online?",
+        answer:
+          "No. NADRA does not provide public access to personal photographs or private database details due to strict privacy and security laws. You must use the official NADRA PakID app or visit a center for official verifications.",
+      },
+      {
+        question: "Can I track my CNIC status here?",
+        answer:
+          "No, this tool simply mathematically decodes the digits. To track your actual NADRA application status, use the official 8300 NADRA SMS service or check online via the PakID portal."
+      }
+    ],
+    related: [],
+  },
 ];
 
 export const TOOLS_BY_SLUG = Object.fromEntries(
