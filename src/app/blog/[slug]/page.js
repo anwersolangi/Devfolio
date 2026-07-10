@@ -145,13 +145,14 @@ export default async function BlogPostPage({ params }) {
             {post.title}
           </h1>
           <div className="mt-6 flex items-center gap-3 border-b border-rule pb-8">
-            <img
-              src="/profile-picture.png"
-              alt="Anwer Solangi"
-              width={40}
-              height={40}
-              className="h-10 w-10 rounded-full border border-rule object-cover"
-            />
+            {/* Brand mark, not a photo — /profile-picture.png is a dark
+                monogram tile that vanishes at 40px on this background. */}
+            <span
+              aria-hidden="true"
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent text-sm font-bold text-[#1a0a02]"
+            >
+              A
+            </span>
             <div>
               <div className="text-sm font-semibold text-ink">
                 Anwer Solangi
