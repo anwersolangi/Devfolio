@@ -19,6 +19,7 @@ const explore = [
   ["Reels", "/reels"],
   ["Apps", "/apps"],
   ["Free Tools", "/tools"],
+  ["Blog", "/blog"],
 ];
 
 export default function Footer() {

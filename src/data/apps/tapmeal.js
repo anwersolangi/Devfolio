@@ -133,9 +133,11 @@ export const tapMeal = {
   ],
   links: {
     playstore:
-      "https://play.google.com/store/apps/details?id=com.anwersolangi.tapmeal",
+      "https://play.google.com/store/apps/details?id=com.anwersolangi.tableau",
     website: "https://tapmeal.anwersolangi.com",
-    codecanyon: "https://codecanyon.net",
+    codecanyon:
+      "https://codecanyon.net/item/tapmeal-restaurant-management-qr-ordering-system-react-native-app/63557195",
+    gumroad: "https://anwersolangi.gumroad.com/l/tapmeal-qr-restaurant-manager",
     email: "mailto:me@anwersolangi.com",
   },
 

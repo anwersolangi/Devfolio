@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="420" viewBox="0 0 1200 420" role="img" aria-label="TapMeal order flow: scan the table QR, order in the browser, push notification to the owner, ticket on the kitchen display">
+  <rect width="1200" height="420" fill="#0d0c0b"/>
+  <text x="600" y="58" font-family="ui-monospace,Menlo,monospace" font-size="20" letter-spacing="4" fill="rgba(244,239,231,0.38)" text-anchor="middle">FROM TABLE TO KITCHEN · UNDER 5 SECONDS</text>
+
+  <!-- step cards -->
+  <g font-family="system-ui,-apple-system,'Segoe UI',sans-serif" text-anchor="middle">
+    <!-- 1: scan -->
+    <rect x="60" y="110" width="220" height="200" rx="20" fill="#161514" stroke="rgba(244,239,231,0.18)" stroke-width="2.5"/>
+    <g transform="translate(140,140)" fill="none" stroke="#ff6a3d" stroke-width="5">
+      <rect x="0" y="0" width="60" height="60" rx="10"/>
+      <rect x="16" y="16" width="28" height="28" rx="5" fill="#ff6a3d" stroke="none"/>
+      <line x1="-14" y1="30" x2="74" y2="30" stroke="#ffb27a" stroke-width="4"/>
+    </g>
+    <text x="170" y="252" font-size="22" font-weight="700" fill="#f4efe7">1 · Scan</text>
+    <text x="170" y="282" font-size="16" fill="rgba(244,239,231,0.62)">table QR opens the menu</text>
+
+    <!-- 2: order -->
+    <rect x="350" y="110" width="220" height="200" rx="20" fill="#161514" stroke="rgba(244,239,231,0.18)" stroke-width="2.5"/>
+    <g transform="translate(430,138)">
+      <rect x="0" y="0" width="58" height="66" rx="10" fill="none" stroke="#ff6a3d" stroke-width="5"/>
+      <line x1="12" y1="18" x2="46" y2="18" stroke="#ffb27a" stroke-width="4" stroke-linecap="round"/>
+      <line x1="12" y1="33" x2="46" y2="33" stroke="rgba(244,239,231,0.38)" stroke-width="4" stroke-linecap="round"/>
+      <line x1="12" y1="48" x2="34" y2="48" stroke="rgba(244,239,231,0.38)" stroke-width="4" stroke-linecap="round"/>
+    </g>
+    <text x="460" y="252" font-size="22" font-weight="700" fill="#f4efe7">2 · Order</text>
+    <text x="460" y="282" font-size="16" fill="rgba(244,239,231,0.62)">in the browser, no app</text>
+
+    <!-- 3: push -->
+    <rect x="640" y="110" width="220" height="200" rx="20" fill="#161514" stroke="rgba(244,239,231,0.18)" stroke-width="2.5"/>
+    <g transform="translate(722,138)">
+      <path d="M 28 0 C 13 0 6 12 6 26 L 6 42 L 0 52 L 56 52 L 50 42 L 50 26 C 50 12 43 0 28 0 Z" fill="none" stroke="#ff6a3d" stroke-width="5" stroke-linejoin="round"/>
+      <path d="M 20 60 A 8 8 0 0 0 36 60" fill="none" stroke="#ff6a3d" stroke-width="5" stroke-linecap="round"/>
+      <circle cx="48" cy="6" r="10" fill="#7af0a8"/>
+    </g>
+    <text x="750" y="252" font-size="22" font-weight="700" fill="#f4efe7">3 · Push</text>
+    <text x="750" y="282" font-size="16" fill="rgba(244,239,231,0.62)">owner&#8217;s phone pings live</text>
+
+    <!-- 4: kitchen -->
+    <rect x="930" y="110" width="220" height="200" rx="20" fill="#161514" stroke="rgba(244,239,231,0.18)" stroke-width="2.5"/>
+    <g transform="translate(1000,142)">
+      <rect x="0" y="0" width="80" height="52" rx="8" fill="none" stroke="#ff6a3d" stroke-width="5"/>
+      <line x1="12" y1="14" x2="42" y2="14" stroke="#ffb27a" stroke-width="4" stroke-linecap="round"/>
+      <line x1="12" y1="27" x2="68" y2="27" stroke="rgba(244,239,231,0.38)" stroke-width="4" stroke-linecap="round"/>
+      <line x1="12" y1="40" x2="55" y2="40" stroke="rgba(244,239,231,0.38)" stroke-width="4" stroke-linecap="round"/>
+      <line x1="40" y1="52" x2="40" y2="62" stroke="#ff6a3d" stroke-width="5"/>
+      <line x1="22" y1="62" x2="58" y2="62" stroke="#ff6a3d" stroke-width="5" stroke-linecap="round"/>
+    </g>
+    <text x="1040" y="252" font-size="22" font-weight="700" fill="#f4efe7">4 · Kitchen</text>
+    <text x="1040" y="282" font-size="16" fill="rgba(244,239,231,0.62)">ticket on the wall display</text>
+  </g>
+
+  <!-- arrows -->
+  <g stroke="#7af0a8" stroke-width="4" fill="none" stroke-linecap="round">
+    <line x1="290" y1="210" x2="338" y2="210"/>
+    <path d="M 328 202 L 342 210 L 328 218" fill="#7af0a8" stroke="none"/>
+    <line x1="580" y1="210" x2="628" y2="210"/>
+    <path d="M 618 202 L 632 210 L 618 218" fill="#7af0a8" stroke="none"/>
+    <line x1="870" y1="210" x2="918" y2="210"/>
+    <path d="M 908 202 L 922 210 L 908 218" fill="#7af0a8" stroke="none"/>
+  </g>
+
+  <text x="600" y="382" font-family="ui-monospace,Menlo,monospace" font-size="16" letter-spacing="3" fill="rgba(244,239,231,0.25)" text-anchor="middle">STATUS UPDATES FLOW BACK TO THE CUSTOMER&#8217;S BROWSER LIVE</text>
+</svg>

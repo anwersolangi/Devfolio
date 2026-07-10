@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="520" viewBox="0 0 1200 520" role="img" aria-label="Comparison of React Native's old bridge architecture, which serialised JSON between JavaScript and native, with the new JSI architecture where JavaScript calls native directly">
+  <rect width="1200" height="520" fill="#0d0c0b"/>
+
+  <!-- OLD -->
+  <g>
+    <text x="300" y="56" font-family="ui-monospace,Menlo,monospace" font-size="20" letter-spacing="4" fill="rgba(244,239,231,0.38)" text-anchor="middle">BEFORE · THE BRIDGE (RIP)</text>
+    <rect x="60" y="90" width="180" height="110" rx="16" fill="#161514" stroke="rgba(244,239,231,0.3)" stroke-width="2.5"/>
+    <text x="150" y="138" font-family="system-ui,sans-serif" font-size="22" font-weight="700" fill="#f4efe7" text-anchor="middle">JavaScript</text>
+    <text x="150" y="166" font-family="ui-monospace,Menlo,monospace" font-size="14" fill="rgba(244,239,231,0.38)" text-anchor="middle">your app code</text>
+
+    <rect x="360" y="90" width="180" height="110" rx="16" fill="#161514" stroke="rgba(244,239,231,0.3)" stroke-width="2.5"/>
+    <text x="450" y="138" font-family="system-ui,sans-serif" font-size="22" font-weight="700" fill="#f4efe7" text-anchor="middle">Native</text>
+    <text x="450" y="166" font-family="ui-monospace,Menlo,monospace" font-size="14" fill="rgba(244,239,231,0.38)" text-anchor="middle">iOS / Android</text>
+
+    <g stroke="rgba(255,106,61,0.7)" stroke-width="2.5" fill="none" stroke-dasharray="7 7">
+      <path d="M 240 125 L 360 125"/>
+      <path d="M 360 165 L 240 165"/>
+    </g>
+    <path d="M 350 120 L 362 125 L 350 130" fill="rgba(255,106,61,0.7)"/>
+    <path d="M 250 160 L 238 165 L 250 170" fill="rgba(255,106,61,0.7)"/>
+    <text x="300" y="106" font-family="ui-monospace,Menlo,monospace" font-size="14" fill="#ff6a3d" text-anchor="middle">serialise → JSON</text>
+    <text x="300" y="196" font-family="ui-monospace,Menlo,monospace" font-size="14" fill="#ff6a3d" text-anchor="middle">JSON → deserialise</text>
+
+    <g font-family="system-ui,sans-serif" font-size="17" fill="rgba(244,239,231,0.62)">
+      <text x="60" y="256">· every call queued &amp; batched</text>
+      <text x="60" y="288">· async only — no sync layout reads</text>
+      <text x="60" y="320">· JSON tax on every message</text>
+    </g>
+  </g>
+
+  <!-- divider -->
+  <line x1="600" y1="80" x2="600" y2="340" stroke="rgba(244,239,231,0.1)" stroke-width="1"/>
+
+  <!-- NEW -->
+  <g>
+    <text x="900" y="56" font-family="ui-monospace,Menlo,monospace" font-size="20" letter-spacing="4" fill="#7af0a8" text-anchor="middle">NOW · JSI + FABRIC + TURBOMODULES</text>
+    <rect x="660" y="90" width="180" height="110" rx="16" fill="#161514" stroke="rgba(244,239,231,0.3)" stroke-width="2.5"/>
+    <text x="750" y="138" font-family="system-ui,sans-serif" font-size="22" font-weight="700" fill="#f4efe7" text-anchor="middle">JavaScript</text>
+    <text x="750" y="166" font-family="ui-monospace,Menlo,monospace" font-size="14" fill="rgba(244,239,231,0.38)" text-anchor="middle">hermes engine</text>
+
+    <rect x="960" y="90" width="180" height="110" rx="16" fill="#161514" stroke="#7af0a8" stroke-width="2.5"/>
+    <text x="1050" y="138" font-family="system-ui,sans-serif" font-size="22" font-weight="700" fill="#f4efe7" text-anchor="middle">Native</text>
+    <text x="1050" y="166" font-family="ui-monospace,Menlo,monospace" font-size="14" fill="rgba(244,239,231,0.38)" text-anchor="middle">fabric renderer</text>
+
+    <line x1="840" y1="145" x2="960" y2="145" stroke="#7af0a8" stroke-width="5" stroke-linecap="round"/>
+    <path d="M 948 138 L 962 145 L 948 152" fill="#7af0a8"/>
+    <path d="M 852 152 L 838 145 L 852 138" fill="#7af0a8"/>
+    <text x="900" y="126" font-family="ui-monospace,Menlo,monospace" font-size="14" fill="#7af0a8" text-anchor="middle">direct C++ refs</text>
+
+    <g font-family="system-ui,sans-serif" font-size="17" fill="rgba(244,239,231,0.62)">
+      <text x="660" y="256">· JS holds references to native functions</text>
+      <text x="660" y="288">· sync when needed, async when smart</text>
+      <text x="660" y="320">· modules load lazily (TurboModules)</text>
+    </g>
+  </g>
+
+  <rect x="60" y="380" width="1080" height="90" rx="16" fill="#161514" stroke="rgba(244,239,231,0.1)" stroke-width="1"/>
+  <text x="600" y="418" font-family="system-ui,sans-serif" font-size="19" fill="rgba(244,239,231,0.62)" text-anchor="middle">The old architecture was removed from React Native entirely — as of 0.82 there is no opt-out,</text>
+  <text x="600" y="448" font-family="system-ui,sans-serif" font-size="19" fill="rgba(244,239,231,0.62)" text-anchor="middle">and 0.83 deleted the legacy code. Every RN app in 2026 runs on this model.</text>
+</svg>

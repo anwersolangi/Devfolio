@@ -988,6 +988,13 @@ export const TOOLS = [
       }
     ],
     related: [],
+    // Companion blog post, surfaced as a "deep dive" link on the tool page.
+    article: {
+      slug: "how-nadra-structures-the-cnic-number-in-pakistan",
+      title: "How NADRA Structures the CNIC Number in Pakistan",
+      description:
+        "The full story behind this tool — the 5–7–1 split, province codes, the family number, and the myths about what a CNIC reveals.",
+    },
   },
 ];
 

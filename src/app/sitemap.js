@@ -1,6 +1,7 @@
 import { reelsData } from "@/data/reels";
 import { TOOLS } from "@/data/tools";
 import { APPS_LIST } from "@/data/apps";
+import { BLOG_POSTS } from "@/data/blog";
 import { SITE_URL } from "@/data/site";
 
 export default function sitemap() {
@@ -16,6 +17,7 @@ export default function sitemap() {
     { path: "/reels", changeFrequency: "weekly", priority: 0.9 },
     { path: "/apps", changeFrequency: "monthly", priority: 0.8 },
     { path: "/tools", changeFrequency: "weekly", priority: 0.8 },
+    { path: "/blog", changeFrequency: "weekly", priority: 0.85 },
     // NOTE: /projects/{nearby,whatsupfire,reacttube} were duplicates of the
     // /apps/<slug> pages. They now 301-redirect to /apps/<slug> (see
     // next.config.mjs) and are intentionally omitted here so the sitemap lists
@@ -55,5 +57,20 @@ export default function sitemap() {
     priority: 0.7,
   }));
 
-  return [...staticRoutes, ...appRoutes, ...reelRoutes, ...toolRoutes];
+  // Blog posts carry their real publish/update dates instead of `now` so
+  // crawlers aren't told unchanged articles were modified on every build.
+  const blogRoutes = BLOG_POSTS.map((post) => ({
+    url: `${SITE_URL}/blog/${post.slug}`,
+    lastModified: new Date(post.updatedAt || post.publishedAt),
+    changeFrequency: "monthly",
+    priority: 0.75,
+  }));
+
+  return [
+    ...staticRoutes,
+    ...appRoutes,
+    ...reelRoutes,
+    ...toolRoutes,
+    ...blogRoutes,
+  ];
 }

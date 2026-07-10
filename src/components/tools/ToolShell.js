@@ -3,7 +3,7 @@
 // crawlable copy (intro, how-to, features, FAQ, related tools) lives here so
 // the page ranks even though the widget itself is a client island.
 import Link from "next/link";
-import { ArrowLeft, Check, ShieldCheck, Zap, Gift } from "lucide-react";
+import { ArrowLeft, BookOpen, Check, ShieldCheck, Zap, Gift } from "lucide-react";
 import ToolIcon from "./ToolIcon";
 import { getRelatedTools } from "@/data/tools";
 
@@ -73,6 +73,32 @@ export default function ToolShell({ tool, children }) {
         >
           {children}
         </section>
+
+        {/* Companion deep-dive article */}
+        {tool.article && (
+          <Link
+            href={`/blog/${tool.article.slug}`}
+            className="group mt-6 flex items-start gap-4 rounded-2xl border border-accent/25 bg-accent/[0.06] p-5 transition-all duration-300 hover:-translate-y-0.5 hover:border-accent/50 md:items-center"
+          >
+            <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl border border-accent/30 bg-bg text-accent">
+              <BookOpen className="h-5 w-5" />
+            </span>
+            <span className="min-w-0 flex-1">
+              <span className="block font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
+                ▸ Deep dive on the blog
+              </span>
+              <span className="mt-1 block text-[15px] font-semibold text-ink group-hover:text-accent">
+                {tool.article.title}
+              </span>
+              <span className="mt-0.5 block text-sm leading-relaxed text-ink-2">
+                {tool.article.description}
+              </span>
+            </span>
+            <span className="hidden shrink-0 font-mono text-sm text-accent md:block">
+              read →
+            </span>
+          </Link>
+        )}
 
         {/* Features */}
         {tool.features?.length > 0 && (

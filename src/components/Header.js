@@ -54,6 +54,7 @@ export default function Header() {
     { label: "Reels", href: "/reels" },
     { label: "Apps", href: "/apps" },
     { label: "Tools", href: "/tools" },
+    { label: "Blog", href: "/blog" },
     { label: "Projects", href: "/#projects" },
     { label: "About", href: "/#about" },
     { label: "Experience", href: "/#experience" },

@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Why your restaurant needs a QR digital menu system in 2026">
+  <rect width="1200" height="630" fill="#0d0c0b"/>
+  <g stroke="rgba(244,239,231,0.06)" stroke-width="1">
+    <line x1="0" y1="157" x2="1200" y2="157"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="472" x2="1200" y2="472"/>
+  </g>
+  <!-- QR code tile -->
+  <g transform="translate(880,150)">
+    <rect x="0" y="0" width="220" height="220" rx="24" fill="#161514" stroke="rgba(244,239,231,0.18)" stroke-width="3"/>
+    <g fill="#f4efe7">
+      <rect x="28" y="28" width="58" height="58" rx="8" fill="none" stroke="#ff6a3d" stroke-width="9"/>
+      <rect x="134" y="28" width="58" height="58" rx="8" fill="none" stroke="#ff6a3d" stroke-width="9"/>
+      <rect x="28" y="134" width="58" height="58" rx="8" fill="none" stroke="#ff6a3d" stroke-width="9"/>
+      <rect x="46" y="46" width="22" height="22" rx="4" fill="#ff6a3d"/>
+      <rect x="152" y="46" width="22" height="22" rx="4" fill="#ff6a3d"/>
+      <rect x="46" y="152" width="22" height="22" rx="4" fill="#ff6a3d"/>
+      <rect x="134" y="134" width="22" height="22" rx="4"/>
+      <rect x="170" y="134" width="22" height="22" rx="4" opacity="0.5"/>
+      <rect x="134" y="170" width="22" height="22" rx="4" opacity="0.5"/>
+      <rect x="170" y="170" width="22" height="22" rx="4"/>
+      <rect x="106" y="28" width="14" height="14" rx="3" opacity="0.5"/>
+      <rect x="106" y="60" width="14" height="14" rx="3"/>
+      <rect x="28" y="106" width="14" height="14" rx="3"/>
+      <rect x="60" y="106" width="14" height="14" rx="3" opacity="0.5"/>
+      <rect x="106" y="106" width="14" height="14" rx="3"/>
+      <rect x="152" y="106" width="14" height="14" rx="3" opacity="0.5"/>
+      <rect x="184" y="106" width="14" height="14" rx="3"/>
+      <rect x="106" y="152" width="14" height="14" rx="3" opacity="0.5"/>
+      <rect x="106" y="184" width="14" height="14" rx="3"/>
+    </g>
+  </g>
+  <text x="990" y="428" font-family="ui-monospace,Menlo,monospace" font-size="18" letter-spacing="3" fill="rgba(244,239,231,0.38)" text-anchor="middle">SCAN · ORDER · SERVED</text>
+  <text x="80" y="150" font-family="ui-monospace,Menlo,monospace" font-size="22" letter-spacing="6" fill="#ff6a3d">THE BUILD LOG · BUSINESS</text>
+  <text x="80" y="272" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="82" font-weight="800" letter-spacing="-3" fill="#f4efe7">Your restaurant needs</text>
+  <text x="80" y="360" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="82" font-weight="800" letter-spacing="-3" fill="#f4efe7">a <tspan fill="#ff6a3d">QR menu</tspan> in 2026</text>
+  <text x="80" y="438" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="30" fill="rgba(244,239,231,0.62)">A real ordering system — not a PDF behind a QR code.</text>
+  <text x="80" y="566" font-family="ui-monospace,Menlo,monospace" font-size="18" letter-spacing="3" fill="rgba(244,239,231,0.38)">ANWERSOLANGI.COM/BLOG</text>
+</svg>
