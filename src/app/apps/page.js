@@ -1,4 +1,3 @@
-// app/apps/page.js — V1 dark theme
 import Link from "next/link";
 import AppCard from "@/components/apps/AppCard";
 import { APPS_LIST } from "@/data/apps";
@@ -62,7 +61,6 @@ export default function AppsPage() {
           ))}
         </div>
 
-        {/* CTA */}
         <div className="mt-24 p-8 lg:p-12 rounded-2xl border border-rule bg-bg-2 grid md:grid-cols-[1.4fr_1fr] gap-8 items-center">
           <div>
             <div className="font-mono text-[11px] tracking-[0.14em] text-accent">
@@ -82,7 +80,7 @@ export default function AppsPage() {
           <div className="flex flex-wrap gap-3 md:justify-end">
             <Link
               href="/#contact"
-              className="px-5 py-3 rounded-lg bg-accent text-[#1a0a02] text-sm font-semibold hover:opacity-90 transition"
+              className="px-5 py-3 rounded-lg bg-accent-deep text-on-accent text-sm font-semibold hover:opacity-90 transition"
             >
               Start a project →
             </Link>

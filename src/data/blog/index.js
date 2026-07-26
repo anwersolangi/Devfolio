@@ -1,32 +1,3 @@
-// data/blog/index.js — one file per post, mirroring data/apps/.
-//
-// Post shape:
-//   slug          URL segment under /blog/
-//   title         H1 + <title>
-//   description   meta description (also used on cards)
-//   category      editorial label ("React Native", "Business", "Guides", "Pakistan")
-//   tags          extra keywords for metadata
-//   publishedAt   "YYYY-MM-DD"
-//   updatedAt     optional "YYYY-MM-DD"
-//   cover         path under /public (SVG/PNG), 1200×630
-//   coverAlt      alt text for the cover
-//   featured      optional — post takes the hero (top) slot on the listing
-//                 regardless of date (currently the React Native 2026 post)
-//   pinToBottom   optional — post always sorts LAST on the listing no matter
-//                 how new the others are (used by the CNIC explainer, which is
-//                 a tool companion rather than a feed post)
-//   content       array of blocks rendered by components/blog/BlogContent.js:
-//     { type: "p",       text }                          — inline markdown: [link](href), **bold**, `code`, _italic_
-//     { type: "h2"|"h3", text }
-//     { type: "list",    items: [text], ordered? }
-//     { type: "image",   src, alt, caption?, width, height }
-//     { type: "video",   src, title, caption?, aspect: "vertical"|"wide" }     — iframe embed URL
-//     { type: "quote",   text, cite? }
-//     { type: "code",    code, lang? }
-//     { type: "callout", title?, text }
-//     { type: "table",   head: [], rows: [[]] }
-//     { type: "hr" }
-
 import { restaurantQrMenu2026 } from "./restaurant-qr-menu-2026";
 import { reactNativeIn2026 } from "./react-native-in-2026";
 import { howToChooseStack } from "./how-to-choose-stack";
@@ -47,9 +18,6 @@ const ALL_POSTS = [
 
 const byDateDesc = (a, b) => new Date(b.publishedAt) - new Date(a.publishedAt);
 
-// Listing order: featured post(s) claim the hero slot first, then regular
-// posts newest-first, then pinned-to-bottom posts. The CNIC explainer stays
-// last even when nothing newer has shipped.
 export const BLOG_POSTS = [
   ...ALL_POSTS.filter((p) => p.featured && !p.pinToBottom).sort(byDateDesc),
   ...ALL_POSTS.filter((p) => !p.featured && !p.pinToBottom).sort(byDateDesc),
@@ -78,8 +46,6 @@ export function readingTimeMinutes(post) {
   return Math.max(2, Math.round(words / 220));
 }
 
-// Up to `limit` other posts for the "keep reading" rail, preserving listing
-// order (so the pinned CNIC post also comes last here).
 export function getOtherPosts(slug, limit = 3) {
   return BLOG_POSTS.filter((p) => p.slug !== slug).slice(0, limit);
 }

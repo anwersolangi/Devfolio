@@ -1,5 +1,111 @@
-// Terms of Service content for each app
 export const TERMS_OF_SERVICE = {
+  doculensai: {
+    title: "Terms of Service",
+    lastUpdated: "July 12, 2026",
+    appName: "DocuLensAI",
+    sections: [
+      {
+        title: "Agreement to Terms",
+        content: `By downloading, installing, or using DocuLensAI ("the App"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, please do not use the App.
+
+These Terms constitute a legal agreement between you and Anwer Solangi ("I", "me", "the developer").`,
+      },
+      {
+        title: "Description of Service",
+        content: `DocuLensAI is an offline document scanner and PDF maker that provides:`,
+        items: [
+          "Automatic edge detection with hands-free auto-capture",
+          "Perspective correction and manual crop, rotate, and flip",
+          "On-device text recognition (OCR) you can copy and search",
+          "Professional scan filters and brightness/contrast adjustment",
+          "One-tap export to PDF, image (JPG/PNG), and plain text",
+        ],
+        footer:
+          "The App operates entirely offline and stores all documents locally on your device.",
+      },
+      {
+        title: "License Grant",
+        content: `Subject to your compliance with these Terms, I grant you a limited, non-exclusive, non-transferable, revocable license to:`,
+        items: [
+          "Download and install the App on your personal mobile device",
+          "Use the App to scan, organise, and export your own documents",
+          "Access premium features if you have an active Pro entitlement",
+        ],
+      },
+      {
+        title: "Restrictions",
+        content: `You agree NOT to:`,
+        items: [
+          "Copy, modify, or distribute the App or its content",
+          "Reverse engineer, decompile, or disassemble the App",
+          "Remove any copyright or proprietary notices",
+          "Use the App to scan or process content you have no right to, or for any illegal purpose",
+          "Attempt to bypass any security features, ads, or purchase restrictions",
+        ],
+      },
+      {
+        title: "Your Content & Responsibility",
+        content: `Everything you scan belongs to you and stays on your device. You are solely responsible for:`,
+        items: [
+          "What you choose to scan and how you use the results",
+          "Keeping your own backups or exports of anything important",
+          "Ensuring you have the right to scan and store the documents",
+        ],
+        footer:
+          "Uninstalling the App permanently deletes the documents it stored — export anything you want to keep first.",
+      },
+      {
+        title: "In-App Purchases & Subscriptions",
+        content: `DocuLensAI offers an optional Pro upgrade through in-app purchases:`,
+        items: [
+          "The free plan includes a daily page allowance and shows ads",
+          "Pro is billed through the Apple App Store or Google Play Store",
+          "Subscriptions automatically renew unless cancelled before the renewal date",
+          "You can manage or cancel subscriptions in your device's account settings",
+          "Refunds are handled according to the respective app store policies",
+          "Prices are shown before purchase and may vary by region",
+        ],
+      },
+      {
+        title: "Accuracy Disclaimer",
+        content: `IMPORTANT: Document detection and text recognition (OCR) are automatic and may not always be accurate. Quality depends on lighting, camera focus, handwriting, and document condition.`,
+        items: [
+          "Always review scans and extracted text of anything important",
+          "Do not rely solely on the App for legally or financially critical documents",
+          "Verify recognised text against the original before acting on it",
+        ],
+        footer:
+          "DocuLensAI is provided for convenience and is not responsible for decisions made from a misread or mis-cropped document.",
+      },
+      {
+        title: "Third-Party Services",
+        content: `The App relies on third-party services that are governed by their own terms and privacy policies:`,
+        items: [
+          "Google AdMob — advertising on the free plan",
+          "RevenueCat — purchase and subscription management",
+          "Apple App Store / Google Play — billing and distribution",
+        ],
+      },
+      {
+        title: "Disclaimer of Warranties",
+        content: `The App is provided "AS IS" and "AS AVAILABLE", without warranties of any kind, whether express or implied, including but not limited to merchantability, fitness for a particular purpose, and non-infringement. I do not warrant that the App will be uninterrupted or error-free, or that detection and OCR will meet your requirements.`,
+      },
+      {
+        title: "Limitation of Liability",
+        content: `To the maximum extent permitted by law, Anwer Solangi shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of data, arising from or related to your use of the App — even if advised of the possibility of such damages.`,
+      },
+      {
+        title: "Changes to These Terms",
+        content:
+          'I may update these Terms from time to time. Continued use of the App after changes are posted constitutes acceptance of the updated Terms. The "Last Updated" date above always reflects the current version.',
+      },
+      {
+        title: "Contact Me",
+        content: `If you have any questions about these Terms, please contact me at:`,
+        contactEmail: "me@anwersolangi.com",
+      },
+    ],
+  },
   "velocity-track": {
     title: "Terms of Service",
     lastUpdated: "December 12, 2024",

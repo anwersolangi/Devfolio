@@ -1,10 +1,9 @@
-// app/blog/page.js — blog listing. Newest posts first; posts flagged
-// pinToBottom (the CNIC tool companion) always render last.
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import BlogCard from "@/components/blog/BlogCard";
 import { BLOG_POSTS } from "@/data/blog";
 import { SITE_URL, PERSON_ID, WEBSITE_ID } from "@/data/site";
+import { jsonLd } from "@/lib/jsonld";
 
 const url = `${SITE_URL}/blog`;
 const title = "Blog — React Native & Mobile App Development | Anwer Solangi";
@@ -78,11 +77,11 @@ export default function BlogPage() {
     <main className="min-h-screen px-6 pb-28 pt-28 lg:px-16">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(blogJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(blogJsonLd) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumbJsonLd) }}
       />
 
       <div className="mx-auto max-w-screen">
@@ -125,7 +124,6 @@ export default function BlogPage() {
           ))}
         </div>
 
-        {/* CTA */}
         <div className="mt-20 grid items-center gap-8 rounded-2xl border border-rule bg-bg-2 p-8 md:grid-cols-[1.4fr_1fr] lg:p-12">
           <div>
             <div className="font-mono text-[11px] tracking-[0.14em] text-accent">
@@ -145,7 +143,7 @@ export default function BlogPage() {
           <div className="flex flex-wrap gap-3 md:justify-end">
             <Link
               href="/#contact"
-              className="rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-[#1a0a02] transition hover:opacity-90"
+              className="rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-on-accent transition hover:opacity-90"
             >
               Start a project →
             </Link>

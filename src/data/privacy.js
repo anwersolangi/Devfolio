@@ -1,5 +1,120 @@
-// Privacy policy content for each app
 export const PRIVACY_POLICIES = {
+  doculensai: {
+    title: "Privacy Policy",
+    lastUpdated: "July 12, 2026",
+    appName: "DocuLensAI",
+    sections: [
+      {
+        title: "Introduction",
+        content: `I ("Anwer Solangi", the developer) am committed to protecting your privacy. This Privacy Policy explains how information is handled when you use the DocuLensAI mobile application (the "App").
+
+DocuLensAI is an offline document scanner. Your scans are yours: every page you capture stays on your device, and privacy is a core design principle of the App — not an afterthought.`,
+      },
+      {
+        title: "Information I Do NOT Collect",
+        content: `DocuLensAI is designed to be a privacy-first application. I do NOT collect, store, or share:`,
+        items: [
+          "Your scanned documents, images, or pages",
+          "The text recognised from your scans (OCR)",
+          "Document titles, tags, or folders you create",
+          "Your personal information (name, email, phone number)",
+          "Your location or precise GPS data",
+          "Usage analytics or behavioral data",
+        ],
+        footer:
+          "There is no account and no sign-up. Everything you scan is stored only in the App's private storage on your device — I run no servers and have no access to it.",
+      },
+      {
+        title: "On-Device Processing",
+        content: `All of the App's core work happens locally on your device, with nothing sent to a server:`,
+        items: [
+          "Camera capture, edge detection, and perspective correction",
+          "Image filters and brightness/contrast adjustments",
+          "Text recognition (OCR) via on-device Google ML Kit",
+          "Full-text search across your scans",
+          "PDF, image, and text export",
+        ],
+        footer:
+          "No image, page, or recognised text ever leaves your phone for processing.",
+      },
+      {
+        title: "Third-Party Services",
+        content: "DocuLensAI uses the following third-party services:",
+        subsections: [
+          {
+            title: "Google AdMob",
+            content: `The free plan displays advertisements through Google AdMob to support development. AdMob may collect certain information as described in Google's Privacy Policy: https://policies.google.com/privacy
+
+AdMob may use:
+• Device advertising identifiers
+• General location (country/region level, not precise GPS)
+• Device information and ad-interaction data for ad personalization
+
+You can opt out of personalized advertising in your device settings, or upgrade to Pro to remove all ads — and this data flow — entirely.`,
+          },
+          {
+            title: "RevenueCat",
+            content: `I use RevenueCat to manage in-app purchases and subscriptions for DocuLensAI Pro. RevenueCat processes:
+• Purchase and subscription status
+• Anonymous user identifiers for purchase verification
+• Transaction information necessary for billing
+
+RevenueCat never receives your documents or scanned text. Learn more at: https://www.revenuecat.com/privacy`,
+          },
+          {
+            title: "Apple App Store & Google Play",
+            content: `Purchases are processed by Apple or Google depending on your platform. I receive only an anonymous receipt used to unlock Pro — never your name, card number, or billing address. These transactions are governed by Apple's and Google's respective privacy policies.`,
+          },
+        ],
+      },
+      {
+        title: "Camera & Photo Permissions",
+        content: `DocuLensAI requests only the permissions it needs to scan:`,
+        items: [
+          "Camera — used solely to capture the documents you scan",
+          "Photo library — requested only when you choose to import an existing image yourself",
+        ],
+        footer:
+          "Nothing is read in the background, and the App does not access your contacts, location, or other libraries.",
+      },
+      {
+        title: "Data Storage",
+        content: `All app data — your scanned pages, recognised text, titles, tags, and settings — is stored locally on your device (an on-device SQLite database and private files). This data:`,
+        items: [
+          "Never leaves your device",
+          "Is not transmitted to any server",
+          "Is not backed up to any cloud service by me",
+          "Is completely deleted when you delete a document or uninstall the App",
+        ],
+      },
+      {
+        title: "Your Choices",
+        content: `You have complete control over your data:`,
+        items: [
+          "Delete any document in the App to remove it immediately",
+          "Uninstall the App to erase everything it stored",
+          "Opt out of personalized ads in your device settings",
+          "Upgrade to Pro to remove ads entirely",
+          "Use the App fully offline — an internet connection is only ever used for ads and purchases",
+        ],
+      },
+      {
+        title: "Children's Privacy",
+        content:
+          "DocuLensAI is a general-purpose utility and is not directed at children under 13. I do not knowingly collect any personal information from children. Since I don't collect personal information from any users, this applies universally.",
+      },
+      {
+        title: "Changes to This Policy",
+        content:
+          'I may update this Privacy Policy from time to time. I will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date.',
+      },
+      {
+        title: "Contact Me",
+        content: `If you have any questions about this Privacy Policy, please contact me at:`,
+        contactEmail: "me@anwersolangi.com",
+      },
+    ],
+  },
   "velocity-track": {
     title: "Privacy Policy",
     lastUpdated: "December 12, 2024",

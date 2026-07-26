@@ -1,12 +1,5 @@
-// Legacy app slugs that used to live on the `apps.anwersolangi.com` subdomain.
-// Vercel's domain redirect can only target another *domain* (the apex) — it
-// can't prepend `/apps` — so `apps.anwersolangi.com/nearby/terms` lands on the
-// apex as the bare path `anwersolangi.com/nearby/terms`, which 404s because app
-// pages now live under `/apps/<slug>`. These redirects catch that bare path
-// (both the slug root AND sub-paths like /nearby/terms used in Play Store
-// listings) and forward it to the real page, so the legacy chain lands on a 200
-// instead of a 404. See notes on the one-hop alternative (assign apps.* to the
-// project so src/proxy.ts maps it directly).
+// Vercel's domain redirect can't prepend `/apps`, so apps.* traffic lands on
+// the apex as a bare path that would 404. These rules forward it to /apps/<slug>.
 const LEGACY_APP_SLUGS = [
   "memoriq",
   "nearby",
@@ -18,9 +11,7 @@ const LEGACY_APP_SLUGS = [
   "tapmeal",
 ];
 
-// Apps that were also documented at /projects/<slug>. We consolidate onto the
-// canonical /apps/<slug> URL (single ranking surface) and 301 the old
-// /projects/<slug> page to it. Keep this in sync with the sitemap, which no
+// Consolidated onto /apps/<slug>. Keep in sync with sitemap.js, which no
 // longer lists these /projects/* URLs.
 const PROJECTS_CONSOLIDATED_TO_APPS = [
   "nearby",
@@ -32,9 +23,7 @@ const PROJECTS_CONSOLIDATED_TO_APPS = [
 const nextConfig = {
   async redirects() {
     return [
-      // Legacy app URLs: bare slug + any sub-path (/nearby, /nearby/terms, …).
-      // Exact match is listed first so the bare slug redirects cleanly; the
-      // wildcard catches /privacy, /terms, /help, /contact, /child-safety.
+      // Exact match must precede the wildcard so the bare slug redirects cleanly.
       ...LEGACY_APP_SLUGS.flatMap((slug) => [
         {
           source: `/${slug}`,
@@ -73,16 +62,65 @@ const nextConfig = {
     ],
   },
   async headers() {
+    // REPORT-ONLY on purpose: an over-tight CSP fails silently in production,
+    // so violations go to the browser console first. Once it's clean, rename the
+    // header below to "Content-Security-Policy" to enforce it.
+    // 'unsafe-inline'/'unsafe-eval' cover Next's inline bootstrap and pdfjs;
+    // tightening them needs a nonce pipeline.
+    const csp = [
+      "default-src 'self'",
+      "base-uri 'self'",
+      "object-src 'none'",
+      "frame-ancestors 'self'",
+      "form-action 'self'",
+      "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://www.googletagmanager.com",
+      "style-src 'self' 'unsafe-inline'",
+      "img-src 'self' data: blob: https://i.ytimg.com https://img.youtube.com https://www.googletagmanager.com https://*.google-analytics.com",
+      "font-src 'self' data:",
+      "connect-src 'self' https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com",
+      // blob: covers the tools' Web Workers (regex timeout guard, pdfjs).
+      "worker-src 'self' blob:",
+      "child-src 'self' blob:",
+      "frame-src https://www.youtube.com https://www.youtube-nocookie.com",
+      "media-src 'self' blob: data:",
+      "manifest-src 'self'",
+      "upgrade-insecure-requests",
+    ].join("; ");
+
     return [
       {
-        // The resume PDF was ~93% of all search impressions at ~0.03% CTR,
-        // ranking instead of real HTML pages. Keep it downloadable for humans
-        // but tell search engines not to index it (and not to follow it as a
-        // ranking surface). Must NOT be blocked in robots.txt or Google can't
-        // crawl it to see this header.
+        source: "/:path*",
+        headers: [
+          { key: "X-Content-Type-Options", value: "nosniff" },
+          { key: "Referrer-Policy", value: "strict-origin-when-cross-origin" },
+          { key: "X-Frame-Options", value: "SAMEORIGIN" },
+          {
+            key: "Permissions-Policy",
+            value: "camera=(), microphone=(), geolocation=(), interest-cohort=()",
+          },
+          {
+            // No includeSubDomains: tapmeal.* and apps.* are separate hosts and
+            // must not inherit this policy without being checked first.
+            key: "Strict-Transport-Security",
+            value: "max-age=31536000",
+          },
+          { key: "Content-Security-Policy-Report-Only", value: csp },
+        ],
+      },
+      {
+        // Must NOT be blocked in robots.txt or Google can't crawl it to see
+        // this header.
         source: "/anwer-solangi-resume.pdf",
         headers: [
           { key: "X-Robots-Tag", value: "noindex, nofollow" },
+        ],
+      },
+      {
+        // Next emits /favicon.ico?favicon.<hash>.ico in the icon <link>; GSC
+        // indexed it. Must NOT be blocked in robots.txt (see above).
+        source: "/favicon.ico",
+        headers: [
+          { key: "X-Robots-Tag", value: "noindex" },
         ],
       },
     ];

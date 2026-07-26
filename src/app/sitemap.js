@@ -35,7 +35,6 @@ export default function sitemap() {
     priority,
   }));
 
-  // Individual app detail pages (now first-party /apps/<slug> URLs).
   const appRoutes = APPS_LIST.map((app) => ({
     url: `${SITE_URL}/apps/${app.slug}`,
     lastModified: now,
@@ -57,8 +56,6 @@ export default function sitemap() {
     priority: 0.7,
   }));
 
-  // Blog posts carry their real publish/update dates instead of `now` so
-  // crawlers aren't told unchanged articles were modified on every build.
   const blogRoutes = BLOG_POSTS.map((post) => ({
     url: `${SITE_URL}/blog/${post.slug}`,
     lastModified: new Date(post.updatedAt || post.publishedAt),

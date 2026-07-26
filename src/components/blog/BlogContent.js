@@ -1,8 +1,3 @@
-// components/blog/BlogContent.js — server-rendered article body.
-// Renders the content-block array documented in data/blog/index.js. Text
-// fields support a small inline-markdown subset: [label](href), **bold**,
-// `code`, and _italic_. Internal hrefs ("/..." or "#...") become <Link>,
-// everything else opens in a new tab.
 import Link from "next/link";
 
 const TOKEN_RE = /(\[[^\]]+\]\([^)]+\)|\*\*[^*]+\*\*|`[^`]+`|_[^_]+_)/g;

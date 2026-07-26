@@ -185,9 +185,6 @@ function PrivacyPolicyPage({ policy, appSlug }) {
   );
 }
 
-// ─────────────────────────────────────────────────────────────────────────
-// Terms of Service
-// ─────────────────────────────────────────────────────────────────────────
 function TermsOfServicePage({ terms, appSlug }) {
   return (
     <main className="min-h-screen pt-28 pb-20 px-6 lg:px-16">
@@ -217,9 +214,6 @@ function TermsOfServicePage({ terms, appSlug }) {
   );
 }
 
-// ─────────────────────────────────────────────────────────────────────────
-// Help & Support
-// ─────────────────────────────────────────────────────────────────────────
 function HelpPage({ help, appSlug }) {
   const createMailtoLink = (option) => {
     const subject = encodeURIComponent(option.subject);
@@ -245,7 +239,6 @@ function HelpPage({ help, appSlug }) {
           </p>
         </header>
 
-        {/* Immediate-help banner */}
         <div className="relative rounded-2xl p-8 mb-16 overflow-hidden border border-rule bg-bg-2">
           <div
             className="absolute inset-0 pointer-events-none opacity-40"
@@ -268,14 +261,13 @@ function HelpPage({ help, appSlug }) {
             </div>
             <a
               href={`mailto:${help.supportEmail}?subject=${encodeURIComponent(help.appName + " Support Request")}`}
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-accent text-[#1a0a02] text-sm font-bold hover:opacity-90 transition shrink-0"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-accent-deep text-on-accent text-sm font-bold hover:opacity-90 transition shrink-0"
             >
               <Mail className="w-4 h-4" /> Email support
             </a>
           </div>
         </div>
 
-        {/* FAQs */}
         <section className="mb-20">
           <div className="font-mono text-[11px] tracking-[0.14em] text-accent mb-3 uppercase">
             01 · FAQ
@@ -308,7 +300,6 @@ function HelpPage({ help, appSlug }) {
           </div>
         </section>
 
-        {/* Troubleshooting */}
         <section className="mb-20">
           <div className="font-mono text-[11px] tracking-[0.14em] text-accent mb-3 uppercase">
             02 · TROUBLESHOOTING
@@ -348,7 +339,6 @@ function HelpPage({ help, appSlug }) {
           </div>
         </section>
 
-        {/* Contact options */}
         <section className="mb-12">
           <div className="font-mono text-[11px] tracking-[0.14em] text-accent mb-3 uppercase">
             03 · GET IN TOUCH
@@ -399,9 +389,6 @@ function HelpPage({ help, appSlug }) {
   );
 }
 
-// ─────────────────────────────────────────────────────────────────────────
-// Contact (standalone)
-// ─────────────────────────────────────────────────────────────────────────
 function ContactPage({ contactOptions, appSlug, supportEmail }) {
   const createMailtoLink = (option) => {
     const subject = encodeURIComponent(option.subject);
@@ -469,16 +456,12 @@ function ContactPage({ contactOptions, appSlug, supportEmail }) {
   );
 }
 
-// ─────────────────────────────────────────────────────────────────────────
-// Child Safety
-// ─────────────────────────────────────────────────────────────────────────
 function ChildSafetyPolicyPage({ policy, appSlug }) {
   return (
     <main className="min-h-screen pt-28 pb-20 px-6 lg:px-16">
       <div className="max-w-4xl mx-auto">
         <BackLink appSlug={appSlug} appName={policy.appName} />
 
-        {/* Critical safety banner — red, but tuned for the dark theme */}
         <div className="bg-[#3a1a14] border border-[#f06a5a]/40 border-l-4 border-l-[#f06a5a] p-6 rounded-xl mb-12 flex items-start gap-4">
           <ShieldAlert className="w-6 h-6 text-[#f06a5a] shrink-0 mt-0.5" />
           <div>
@@ -504,7 +487,6 @@ function ChildSafetyPolicyPage({ policy, appSlug }) {
           ))}
         </article>
 
-        {/* Report section */}
         <div className="mt-12 p-7 rounded-xl border border-[#f06a5a]/40 bg-[#221311]">
           <div className="flex items-center gap-3 mb-3">
             <AlertTriangle className="w-5 h-5 text-[#f06a5a]" />
@@ -541,9 +523,6 @@ function ChildSafetyPolicyPage({ policy, appSlug }) {
   );
 }
 
-// ─────────────────────────────────────────────────────────────────────────
-// Generic fallback
-// ─────────────────────────────────────────────────────────────────────────
 function GenericSubPage({ slug, path, app }) {
   const pageName = path?.join(" / ");
   return (
@@ -560,9 +539,6 @@ function GenericSubPage({ slug, path, app }) {
   );
 }
 
-// ─────────────────────────────────────────────────────────────────────────
-// Router
-// ─────────────────────────────────────────────────────────────────────────
 export default async function AppSubPage({ params }) {
   const { slug, path } = await params;
   const app = APPS_DATA[slug];

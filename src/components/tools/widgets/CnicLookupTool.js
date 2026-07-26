@@ -12,7 +12,6 @@ const PROVINCE_MAP = {
   7: "Gilgit-Baltistan",
 };
 
-// Known NADRA district prefixes (First 3 digits of CNIC)
 const KNOWN_DISTRICTS = {
   "111": "Bannu",
   "121": "D.I. Khan",
@@ -90,7 +89,6 @@ export default function CnicLookupTool() {
 
   return (
     <div className="space-y-6">
-      {/* Input Section */}
       <div className="space-y-2">
         <label htmlFor="cnic-input" className="block text-sm font-medium text-ink-2">
           Enter 13-Digit CNIC Number
@@ -124,7 +122,6 @@ export default function CnicLookupTool() {
         </div>
       </div>
 
-      {/* Results Section */}
       {decoded && (
         <div className="bg-bg-2 border border-border rounded-2xl p-6 overflow-hidden relative">
           <div className="absolute top-0 left-0 w-1 h-full bg-accent" />

@@ -4,10 +4,9 @@ import { TOOLS, FEATURED_TOOLS } from "@/data/tools";
 import { SITE_URL } from "@/data/site";
 import ToolCard from "@/components/tools/ToolCard";
 import Reveal from "@/components/Reveal";
+import { jsonLd } from "@/lib/jsonld";
 
 export default function Tools() {
-  // Structured data that mirrors what's visible in this section, so search and
-  // AI answer engines can attribute these free tools to Anwer Solangi.
   const itemListJsonLd = {
     "@context": "https://schema.org",
     "@type": "ItemList",
@@ -29,7 +28,7 @@ export default function Tools() {
     >
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(itemListJsonLd) }}
       />
       <div className="max-w-screen mx-auto">
         <Reveal className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 lg:mb-12">

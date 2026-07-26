@@ -15,7 +15,7 @@ export default function JsonFormatterTool() {
   const [input, setInput] = useState(SAMPLE);
   const [output, setOutput] = useState("");
   const [indent, setIndent] = useState("2");
-  const [status, setStatus] = useState(null); // { ok, message }
+  const [status, setStatus] = useState(null);
 
   const parse = () => {
     try {

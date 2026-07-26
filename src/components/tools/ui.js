@@ -1,14 +1,23 @@
 "use client";
-// components/tools/ui.js — shared client primitives + helpers for tool widgets.
 import { useCallback, useRef, useState } from "react";
 import { Copy, Check, UploadCloud } from "lucide-react";
 
-/* ─────────────────────────── helpers ─────────────────────────── */
+export function downloadText(text, filename, type = "text/plain") {
+  downloadBlob(new Blob([text], { type: `${type};charset=utf-8` }), filename);
+}
+
+export function readTextFile(file) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = () => resolve(String(reader.result).replace(/^\uFEFF/, ""));
+    reader.onerror = () => reject(reader.error || new Error("Could not read file"));
+    reader.readAsText(file);
+  });
+}
 
 export function downloadBlob(blob, filename) {
   const url = URL.createObjectURL(blob);
   downloadUrl(url, filename);
-  // Revoke on the next tick so the download has a chance to start.
   setTimeout(() => URL.revokeObjectURL(url), 1000);
 }
 
@@ -33,8 +42,6 @@ export function formatBytes(bytes) {
   }
   return `${value.toFixed(value < 10 ? 1 : 0)} ${units[i]}`;
 }
-
-/* ─────────────────────────── copy ─────────────────────────── */
 
 export function useCopy() {
   const [copied, setCopied] = useState(false);
@@ -72,8 +79,6 @@ export function CopyButton({ value, disabled, className = "", label = "Copy" }) 
   );
 }
 
-/* ─────────────────────────── controls ─────────────────────────── */
-
 export function Segmented({ options, value, onChange, className = "" }) {
   return (
     <div
@@ -93,7 +98,7 @@ export function Segmented({ options, value, onChange, className = "" }) {
             onClick={() => onChange(val)}
             className={`rounded-lg px-3 py-1.5 text-xs font-semibold transition ${
               active
-                ? "bg-accent text-[#1a0a02]"
+                ? "bg-accent-deep text-on-accent"
                 : "text-ink-2 hover:text-ink"
             }`}
           >
@@ -117,7 +122,88 @@ export function Field({ label, hint, children }) {
   );
 }
 
-/* ─────────────────────────── file drop ─────────────────────────── */
+export function CheckOption({ checked, onChange, label, hint }) {
+  return (
+    <label className="inline-flex cursor-pointer select-none items-start gap-2">
+      <input
+        type="checkbox"
+        checked={checked}
+        onChange={(e) => onChange(e.target.checked)}
+        className="peer sr-only"
+      />
+      <span
+        aria-hidden="true"
+        className={`mt-px flex h-4 w-4 shrink-0 items-center justify-center rounded border transition peer-focus-visible:ring-2 peer-focus-visible:ring-accent/60 ${
+          checked
+            ? "border-accent bg-accent-deep text-on-accent"
+            : "border-rule bg-bg"
+        }`}
+      >
+        {checked && <Check className="h-3 w-3" strokeWidth={3.5} />}
+      </span>
+      <span className="leading-tight">
+        <span className="block text-xs font-medium text-ink-2">{label}</span>
+        {hint && <span className="block text-[11px] text-ink-3">{hint}</span>}
+      </span>
+    </label>
+  );
+}
+
+export function Metric({ label, value, tone = "default" }) {
+  const toneClass = {
+    default: "text-ink",
+    accent: "text-accent",
+    good: "text-good",
+    bad: "text-[#ff7a7a]",
+  }[tone];
+  return (
+    <div className="rounded-lg border border-rule bg-bg px-3 py-2">
+      <div className="font-mono text-[9px] uppercase tracking-[0.16em] text-ink-3">
+        {label}
+      </div>
+      <div className={`mt-0.5 text-sm font-bold tabular-nums ${toneClass}`}>
+        {value}
+      </div>
+    </div>
+  );
+}
+
+export function useDropZone(onFiles, { multiple = false } = {}) {
+  const [dragging, setDragging] = useState(false);
+  const depth = useRef(0);
+
+  const emit = useCallback(
+    (fileList) => {
+      const files = Array.from(fileList || []);
+      if (files.length) onFiles(multiple ? files : [files[0]]);
+    },
+    [onFiles, multiple],
+  );
+
+  const dropHandlers = {
+    onDragEnter: (e) => {
+      e.preventDefault();
+      depth.current += 1;
+      if (Array.from(e.dataTransfer?.types || []).includes("Files")) {
+        setDragging(true);
+      }
+    },
+    onDragOver: (e) => e.preventDefault(),
+    onDragLeave: (e) => {
+      e.preventDefault();
+      depth.current = Math.max(0, depth.current - 1);
+      if (depth.current === 0) setDragging(false);
+    },
+    onDrop: (e) => {
+      e.preventDefault();
+      depth.current = 0;
+      setDragging(false);
+      emit(e.dataTransfer?.files);
+    },
+  };
+
+  return { dragging, dropHandlers, emit };
+}
 
 export function FileDrop({
   accept,
@@ -127,25 +213,11 @@ export function FileDrop({
   hint,
 }) {
   const inputRef = useRef(null);
-  const [dragging, setDragging] = useState(false);
-
-  const handleFiles = (fileList) => {
-    const files = Array.from(fileList || []);
-    if (files.length) onFiles(multiple ? files : [files[0]]);
-  };
+  const { dragging, dropHandlers, emit } = useDropZone(onFiles, { multiple });
 
   return (
     <div
-      onDragOver={(e) => {
-        e.preventDefault();
-        setDragging(true);
-      }}
-      onDragLeave={() => setDragging(false)}
-      onDrop={(e) => {
-        e.preventDefault();
-        setDragging(false);
-        handleFiles(e.dataTransfer.files);
-      }}
+      {...dropHandlers}
       onClick={() => inputRef.current?.click()}
       onKeyDown={(e) => {
         if (e.key === "Enter" || e.key === " ") {
@@ -174,19 +246,17 @@ export function FileDrop({
         accept={accept}
         multiple={multiple}
         className="hidden"
-        onChange={(e) => handleFiles(e.target.files)}
+        onChange={(e) => emit(e.target.files)}
       />
     </div>
   );
 }
 
-/* ─────────────────────────── misc ─────────────────────────── */
-
 export function PrimaryButton({ className = "", ...props }) {
   return (
     <button
       type="button"
-      className={`inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-[#1a0a02] transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40 ${className}`}
+      className={`inline-flex items-center justify-center gap-2 rounded-lg bg-accent px-5 py-2.5 text-sm font-semibold text-on-accent transition hover:opacity-90 disabled:cursor-not-allowed disabled:opacity-40 ${className}`}
       {...props}
     />
   );

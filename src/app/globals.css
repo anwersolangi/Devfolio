@@ -3,7 +3,7 @@
 
 @layer base {
   :root {
-    /* V1 palette */
+    /* V1 palette — warm charcoal + orange */
     --bg: #0d0c0b;
     --bg-2: #161514;
     --bg-3: #1f1d1b;
@@ -11,9 +11,21 @@
     --ink-2: rgba(244, 239, 231, 0.62);
     --ink-3: rgba(244, 239, 231, 0.38);
     --rule: rgba(244, 239, 231, 0.1);
+
+    /* Orange is light enough that solid fills take *dark* label text — white
+       on --accent is only 2.84:1, the near-black is 6.8:1. --accent-deep is
+       kept as a separate name (it's referenced across the app) but points at
+       --accent here; it only diverges for accents too dark to label in ink. */
     --accent: #ff6a3d;
+    --accent-deep: #ff6a3d;
     --accent-2: #ffb27a;
+    --on-accent: #1a0a02;
     --good: #7af0a8;
+
+    /* Hot core for travelling highlights. --accent and --accent-2 sit a shade
+       apart, so a two-stop sweep between them reads as a flat line; this is
+       the near-white the beams pass through at their brightest point. */
+    --accent-hot: #fff0dc;
 
     /* Map to your existing CSS variables so any older component that uses
        var(--background) / var(--foreground) keeps working with the dark theme */
@@ -25,6 +37,12 @@
     scroll-behavior: smooth;
     /* Anchor targets (#about, #contact, …) clear the fixed header */
     scroll-padding-top: 6rem;
+  }
+
+  /* Lenis is driving. Native smooth scroll would fight its rAF loop, so hand
+     the animation over entirely — `smooth` above stays as the no-JS fallback. */
+  html.lenis {
+    scroll-behavior: auto;
   }
 
   body {
@@ -55,8 +73,8 @@
            font-semibold rounded-xl
            focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#0d0c0b]
            transition-all duration-200;
-    background: var(--accent);
-    color: #1a0a02;
+    background: var(--accent-deep);
+    color: var(--on-accent);
   }
   .btn-primary:hover {
     opacity: 0.92;
@@ -132,22 +150,12 @@
     font-style: italic;
   }
 
+  /* Track motion lives in VelocityMarquee — it's driven by scroll velocity,
+     not a fixed-duration keyframe. */
   .marquee {
     display: flex;
     overflow: hidden;
     white-space: nowrap;
-  }
-  .marquee-track {
-    display: inline-flex;
-    animation: marquee 60s linear infinite;
-  }
-  @keyframes marquee {
-    from {
-      transform: translateX(0);
-    }
-    to {
-      transform: translateX(-50%);
-    }
   }
 
   .no-scrollbar::-webkit-scrollbar {
@@ -171,12 +179,14 @@
   }
 
   /* Scroll-reveal primitive — toggled by the Reveal component */
+  /* Shorter travel and a quicker curve than before — at 700ms/20px sections
+     were still settling well after the scroll had moved on, which read as lag. */
   .reveal {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(14px);
     transition:
-      opacity 700ms cubic-bezier(0.2, 0.7, 0.3, 1),
-      transform 700ms cubic-bezier(0.2, 0.7, 0.3, 1);
+      opacity 480ms cubic-bezier(0.2, 0.7, 0.3, 1),
+      transform 480ms cubic-bezier(0.2, 0.7, 0.3, 1);
   }
   .reveal.is-visible {
     opacity: 1;
@@ -201,6 +211,269 @@
     }
   }
 
+  /* ---------------------------------------------------------------------
+     Spotlight — dim dot grid, plus a bright accent grid revealed through a
+     radial mask that follows the pointer. Coordinates come from Spotlight.js.
+     --------------------------------------------------------------------- */
+  .spotlight {
+    position: absolute;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    --spot-x: 50%;
+    --spot-y: 0px;
+    --spot-opacity: 0;
+  }
+  .spotlight-grid,
+  .spotlight-reveal {
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(
+      circle at center,
+      var(--dot-color) 1px,
+      transparent 1px
+    );
+    background-size: 26px 26px;
+  }
+  /* Base layer: barely there, and faded out top and bottom so the grid never
+     collides with the header or the section below. */
+  .spotlight-grid {
+    --dot-color: rgba(244, 239, 231, 0.09);
+    mask-image: linear-gradient(
+      to bottom,
+      transparent,
+      black 18%,
+      black 72%,
+      transparent
+    );
+  }
+  /* Reveal layer: same grid in accent orange, clipped to a disc at the cursor. */
+  .spotlight-reveal {
+    --dot-color: rgba(255, 178, 122, 0.85);
+    opacity: var(--spot-opacity);
+    transition: opacity 400ms ease;
+    mask-image: radial-gradient(
+      var(--spot-size) circle at var(--spot-x) var(--spot-y),
+      black 0%,
+      transparent 65%
+    );
+  }
+  .spotlight-glow {
+    position: absolute;
+    inset: 0;
+    opacity: var(--spot-opacity);
+    transition: opacity 400ms ease;
+    background: radial-gradient(
+      calc(var(--spot-size) * 1.3) circle at var(--spot-x) var(--spot-y),
+      rgba(255, 106, 61, 0.14),
+      transparent 70%
+    );
+  }
+
+  /* ---------------------------------------------------------------------
+     Border beam — ported from Inspira UI (MIT).
+     The element is a ring: two masks (padding-box + border-box) intersect so
+     only the transparent border area paints, and ::after rides a rounded-rect
+     offset-path around it. Both of those properties are recent, so the beam
+     only exists inside @supports — without them you get the plain border.
+     --------------------------------------------------------------------- */
+  .border-beam {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+  }
+  @supports (mask-composite: intersect) and
+    (offset-path: rect(0 auto auto 0 round 1px)) {
+    .border-beam {
+      border: calc(var(--beam-border-width) * 1px) solid transparent;
+      mask:
+        linear-gradient(transparent, transparent),
+        linear-gradient(white, white);
+      mask-clip: padding-box, border-box;
+      mask-composite: intersect;
+    }
+    .border-beam::after {
+      content: "";
+      position: absolute;
+      aspect-ratio: 1;
+      width: calc(var(--beam-size) * 1px);
+      /* Same three-stop ramp as AnimatedBeam so both beams read as one system. */
+      background: linear-gradient(
+        to left,
+        var(--beam-from),
+        var(--accent-hot) 40%,
+        var(--beam-to) 70%,
+        transparent
+      );
+      offset-anchor: calc(var(--beam-anchor) * 1%) 50%;
+      offset-path: rect(0 auto auto 0 round calc(var(--beam-size) * 1px));
+      animation: border-beam var(--beam-duration) var(--beam-delay) infinite
+        linear;
+    }
+    @keyframes border-beam {
+      to {
+        offset-distance: 100%;
+      }
+    }
+  }
+
+  /* ---------------------------------------------------------------------
+     Ripple background — ported from Inspira UI (MIT). Rings pulse between
+     full and 90% scale on a stagger; the mask keeps them from hitting the
+     section edges as hard lines.
+     --------------------------------------------------------------------- */
+  .ripple-bg {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    mask-image: radial-gradient(
+      circle at center,
+      black 30%,
+      transparent 72%
+    );
+  }
+  .ripple-circle {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    border-radius: 9999px;
+    border: 1px solid var(--accent);
+    transform: translate(-50%, -50%) scale(1);
+    animation: ripple-circle 3s ease-in-out infinite;
+  }
+  @keyframes ripple-circle {
+    0%,
+    100% {
+      transform: translate(-50%, -50%) scale(1);
+    }
+    50% {
+      transform: translate(-50%, -50%) scale(0.9);
+    }
+  }
+
+  /* ---------------------------------------------------------------------
+     Shimmer button — ported from Inspira UI (MIT). The spark layer sits at
+     z-index -30 so it paints above the button's own background but below the
+     inset panel at -20; the gap between the button edge and that panel
+     (--shimmer-cut) is the only place the gradient shows through.
+     --------------------------------------------------------------------- */
+  .shimmer-btn {
+    --shimmer-spread: 90deg;
+    position: relative;
+    z-index: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    white-space: nowrap;
+    border-radius: var(--shimmer-radius);
+    background: var(--shimmer-bg);
+    transform: translateZ(0);
+    transition: transform 200ms ease;
+  }
+  .shimmer-btn:active {
+    transform: translateY(1px);
+  }
+  .shimmer-btn__spark {
+    position: absolute;
+    inset: 0;
+    z-index: -30;
+    overflow: visible;
+    filter: blur(2px);
+    container-type: size;
+  }
+  .shimmer-btn__slide {
+    position: absolute;
+    inset: 0;
+    aspect-ratio: 1;
+    height: 100cqh;
+    animation: shimmer-slide var(--shimmer-speed) ease-in-out infinite alternate;
+  }
+  .shimmer-btn__spin {
+    position: absolute;
+    inset: -100%;
+    width: auto;
+    background: conic-gradient(
+      from calc(270deg - (var(--shimmer-spread) * 0.5)),
+      transparent 0,
+      var(--shimmer-color) var(--shimmer-spread),
+      transparent var(--shimmer-spread)
+    );
+    animation: shimmer-spin calc(var(--shimmer-speed) * 2) infinite linear;
+  }
+  .shimmer-btn__inset {
+    position: absolute;
+    inset: var(--shimmer-cut);
+    z-index: -20;
+    border-radius: var(--shimmer-radius);
+    background: var(--shimmer-bg);
+  }
+  .shimmer-btn__label {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.375rem;
+  }
+  @keyframes shimmer-slide {
+    to {
+      transform: translate(calc(100cqw - 100%), 0);
+    }
+  }
+  @keyframes shimmer-spin {
+    0% {
+      transform: translateZ(0) rotate(0);
+    }
+    15%,
+    35% {
+      transform: translateZ(0) rotate(90deg);
+    }
+    65%,
+    85% {
+      transform: translateZ(0) rotate(270deg);
+    }
+    100% {
+      transform: translateZ(0) rotate(360deg);
+    }
+  }
+
+  /* ---------------------------------------------------------------------
+     FAQ accordion. `interpolate-size` is scoped to the item rather than
+     :root so enabling keyword transitions can't leak into other components.
+     --------------------------------------------------------------------- */
+  .faq-item {
+    interpolate-size: allow-keywords;
+  }
+  @supports (interpolate-size: allow-keywords) {
+    .faq-item::details-content {
+      block-size: 0;
+      overflow: hidden;
+      transition:
+        block-size 320ms cubic-bezier(0.2, 0.7, 0.3, 1),
+        content-visibility 320ms allow-discrete;
+    }
+    .faq-item[open]::details-content {
+      block-size: auto;
+    }
+  }
+
+  /* Ripple on press — the Animate UI interaction, without pulling in Motion. */
+  .ripple-layer {
+    position: absolute;
+    border-radius: 9999px;
+    transform: translate(-50%, -50%) scale(0);
+    background: currentColor;
+    opacity: 0.45;
+    pointer-events: none;
+    animation: ripple 600ms ease-out forwards;
+  }
+  @keyframes ripple {
+    to {
+      transform: translate(-50%, -50%) scale(1);
+      opacity: 0;
+    }
+  }
+
   .skip-link {
     position: fixed;
     top: -100px;
@@ -208,8 +481,8 @@
     z-index: 200;
     padding: 10px 16px;
     border-radius: 10px;
-    background: var(--accent);
-    color: #1a0a02;
+    background: var(--accent-deep);
+    color: var(--on-accent);
     font-weight: 700;
     font-size: 14px;
     transition: top 150ms ease;
@@ -232,8 +505,19 @@
     transition: none;
     animation: none;
   }
-  .marquee-track {
+  .border-beam::after,
+  .ripple-layer,
+  .ripple-circle,
+  .shimmer-btn__slide,
+  .shimmer-btn__spin {
     animation: none;
+  }
+  .faq-item::details-content {
+    transition: none;
+  }
+  .spotlight-reveal,
+  .spotlight-glow {
+    display: none;
   }
 }
 
@@ -262,8 +546,8 @@
 }
 
 ::selection {
-  background: var(--accent);
-  color: #1a0a02;
+  background: var(--accent-deep);
+  color: var(--on-accent);
 }
 
 @media print {

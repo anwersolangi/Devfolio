@@ -13,8 +13,6 @@ import {
   formatBytes,
 } from "../ui";
 
-// Resolve the worker that ships with the installed pdfjs-dist version so it
-// always matches the library and works offline (no CDN dependency).
 pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
   "pdfjs-dist/build/pdf.worker.min.mjs",
   import.meta.url,
@@ -25,7 +23,7 @@ export default function PdfToImageTool() {
   const [format, setFormat] = useState("image/png");
   const [scale, setScale] = useState(2);
   const [quality, setQuality] = useState(0.92);
-  const [pages, setPages] = useState([]); // { num, url, blob }
+  const [pages, setPages] = useState([]);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState("");
   const [buffer, setBuffer] = useState(null);
@@ -53,7 +51,6 @@ export default function PdfToImageTool() {
     setError("");
     reset();
     try {
-      // pdf.js can detach the ArrayBuffer, so hand it a copy each run.
       const pdf = await pdfjsLib.getDocument({ data: buffer.slice(0) }).promise;
       const ext = format === "image/png" ? "png" : "jpg";
       const out = [];

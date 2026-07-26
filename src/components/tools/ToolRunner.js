@@ -101,6 +101,30 @@ const REGISTRY = {
     ssr: false,
     loading: Loading,
   }),
+  "salary-tax-calculator": dynamic(() => import("./widgets/SalaryTaxTool"), {
+    ssr: false,
+    loading: Loading,
+  }),
+  "pta-tax-calculator": dynamic(() => import("./widgets/PtaTaxTool"), {
+    ssr: false,
+    loading: Loading,
+  }),
+  "zakat-calculator": dynamic(() => import("./widgets/ZakatCalculatorTool"), {
+    ssr: false,
+    loading: Loading,
+  }),
+  "diff-checker": dynamic(() => import("./widgets/DiffCheckerTool"), {
+    ssr: false,
+    loading: Loading,
+  }),
+  "regex-tester": dynamic(() => import("./widgets/RegexTesterTool"), {
+    ssr: false,
+    loading: Loading,
+  }),
+  "csv-to-json": dynamic(() => import("./widgets/CsvJsonTool"), {
+    ssr: false,
+    loading: Loading,
+  }),
 };
 
 export default function ToolRunner({ slug }) {

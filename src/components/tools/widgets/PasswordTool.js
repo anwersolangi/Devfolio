@@ -12,7 +12,6 @@ const SETS = {
 const SIMILAR = /[il1Lo0O]/g;
 
 function pick(charset) {
-  // Rejection sampling to avoid modulo bias.
   const max = Math.floor(256 / charset.length) * charset.length;
   const buf = new Uint8Array(1);
   let x;

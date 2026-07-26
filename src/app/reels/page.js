@@ -1,4 +1,3 @@
-// app/reels/page.js — V2 dark theme, updated for square (1080x1080) reel covers
 import Link from "next/link";
 import Image from "next/image";
 import { reelsData } from "@/data/reels";
@@ -84,7 +83,6 @@ export default async function ReelsPage() {
           </p>
         </div>
 
-        {/* Featured */}
         {featured && (
           <div className="mb-20">
             <div className="flex items-center gap-3 mb-5">
@@ -142,7 +140,7 @@ export default async function ReelsPage() {
                     </p>
                     <div className="flex items-center gap-5 flex-wrap">
                       <div className="inline-flex items-center gap-2 text-ink text-sm font-medium">
-                        <div className="w-10 h-10 rounded-full bg-accent text-[#1a0a02] flex items-center justify-center">
+                        <div className="w-10 h-10 rounded-full bg-accent-deep text-on-accent flex items-center justify-center">
                           <Play
                             className="w-3.5 h-3.5 ml-0.5"
                             fill="currentColor"
@@ -185,7 +183,6 @@ export default async function ReelsPage() {
           </span>
         </div>
 
-        {/* GRID — updated for square covers */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
           {rest.map((reel, index) => (
             <GridReelCard
@@ -208,7 +205,6 @@ function GridReelCard({ reel, stats, displayIndex }) {
   return (
     <Link href={`/reels/${reel.slug}`}>
       <div className="group relative rounded-2xl overflow-hidden cursor-pointer border border-rule hover:border-accent/40 transition-all duration-500 hover:-translate-y-1 bg-bg-2">
-        {/* Square cover (1080x1080 covers fit perfectly here) */}
         <div className="relative aspect-square w-full overflow-hidden">
           {reel.coverImage ? (
             <Image
@@ -232,14 +228,12 @@ function GridReelCard({ reel, stats, displayIndex }) {
             </div>
           )}
 
-          {/* Play overlay on hover */}
           <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300 scale-90 group-hover:scale-100">
-            <div className="w-14 h-14 rounded-full bg-accent text-[#1a0a02] flex items-center justify-center shadow-xl">
+            <div className="w-14 h-14 rounded-full bg-accent-deep text-on-accent flex items-center justify-center shadow-xl">
               <Play className="w-5 h-5 ml-0.5" fill="currentColor" />
             </div>
           </div>
 
-          {/* Category + index */}
           <div className="absolute top-4 left-4 right-4 flex items-start justify-between">
             <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-accent-2 bg-bg/60 backdrop-blur-sm border border-rule px-2 py-1 rounded">
               {reel.category}
@@ -250,7 +244,6 @@ function GridReelCard({ reel, stats, displayIndex }) {
           </div>
         </div>
 
-        {/* Bottom info BELOW the cover (since the cover is square + self-contained) */}
         <div className="p-5">
           <h3 className="text-ink font-semibold text-[15px] leading-[1.3] tracking-[-0.01em] mb-3 transition-transform duration-300 group-hover:-translate-y-0.5 line-clamp-2">
             {cleanTitle(reel.title)}

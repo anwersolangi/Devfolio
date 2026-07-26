@@ -27,10 +27,10 @@ function compress(img, format, quality) {
 }
 
 export default function ImageCompressorTool() {
-  const [src, setSrc] = useState(null); // { url, img, name, size }
+  const [src, setSrc] = useState(null);
   const [format, setFormat] = useState("image/webp");
   const [quality, setQuality] = useState(0.7);
-  const [result, setResult] = useState(null); // { url, blob }
+  const [result, setResult] = useState(null);
 
   const onFiles = ([file]) => {
     if (!file || !file.type.startsWith("image/")) return;

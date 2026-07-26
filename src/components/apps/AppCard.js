@@ -43,7 +43,6 @@ export default function AppCard({ app }) {
               {app.name}
             </h2>
           </div>
-          {/* hover hint */}
           <div className="absolute top-3 right-3 opacity-0 group-hover:opacity-100 transition-opacity duration-200">
             <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent bg-bg/70 backdrop-blur-sm px-2 py-1 rounded border border-accent/30">
               open ↗

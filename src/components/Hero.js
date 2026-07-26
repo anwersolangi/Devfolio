@@ -1,4 +1,9 @@
 import PhoneFrame from "@/components/PhoneFrame";
+import Parallax from "@/components/Parallax";
+import VelocityMarquee from "@/components/VelocityMarquee";
+import Spotlight from "@/components/ui/Spotlight";
+import BorderBeam from "@/components/ui/BorderBeam";
+import RippleLink from "@/components/ui/RippleLink";
 import { reelsData } from "@/data/reels";
 
 const TICKER = [
@@ -24,31 +29,33 @@ const PROOF = [
 ];
 
 export default function Hero() {
-  // Hero collage: the newest reel as centerpiece + two flanking ones.
   const center = reelsData[reelsData.length - 1] || null;
   const left = reelsData[reelsData.length - 2] || null;
   const right = reelsData[reelsData.length - 3] || null;
 
   return (
     <section className="relative pt-28 lg:pt-32 pb-16 lg:pb-24 overflow-hidden">
-      {/* Ambient orb */}
-      <div
+      <Spotlight size={560} />
+
+      <Parallax
+        speed={0.22}
         className="glow-orb"
-        style={{ top: -200, right: -200, width: 800, height: 800 }}
+        style={{ top: -220, right: -220, width: 820, height: 820 }}
       />
 
-      <div className="max-w-screen mx-auto px-6 lg:px-16">
+      {/* Above the spotlight and orb, both of which are absolutely positioned. */}
+      <div className="relative z-10 max-w-screen mx-auto px-6 lg:px-16">
         <div className="grid lg:grid-cols-[1.4fr_1fr] gap-12 lg:gap-16 items-center">
-          {/* Left: claim + CTAs */}
           <div className="hero-enter">
-            <p className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/25 font-mono text-[11px] tracking-[0.06em] text-accent-2">
+            <div className="relative inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/25 font-mono text-[11px] tracking-[0.06em] text-accent-2">
               <span
                 className="w-1.5 h-1.5 rounded-full bg-good"
                 style={{ boxShadow: "0 0 8px #7af0a8" }}
                 aria-hidden
               />
               AVAILABLE FOR FREELANCE · KARACHI
-            </p>
+              <BorderBeam size={60} duration={8} borderWidth={1} />
+            </div>
 
             <h1 className="font-display text-5xl sm:text-6xl md:text-7xl lg:text-8xl xl:text-[108px] font-extrabold leading-[0.92] tracking-tightest mt-6 text-ink">
               I build
@@ -71,15 +78,17 @@ export default function Hero() {
             </p>
 
             <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 mt-9">
-              <a
+              <RippleLink
                 href="#contact"
-                className="inline-flex items-center justify-center px-5 py-3.5 rounded-xl bg-accent text-[#1a0a02] font-bold text-sm hover:opacity-90 transition"
+                color="var(--on-accent)"
+                className="inline-flex items-center justify-center px-5 py-3.5 rounded-xl bg-accent-deep text-on-accent font-bold text-sm hover:bg-accent transition-colors"
               >
                 Start a project →
-              </a>
+                <BorderBeam size={70} duration={6} borderWidth={1.5} colorFrom="var(--on-accent)" colorTo="var(--accent-2)" />
+              </RippleLink>
               <a
                 href="#reels"
-                className="inline-flex items-center justify-center px-5 py-3.5 rounded-xl border border-rule text-ink font-semibold text-sm hover:bg-white/5 transition"
+                className="relative inline-flex items-center justify-center px-5 py-3.5 rounded-xl border border-rule text-ink font-semibold text-sm hover:bg-white/5 transition"
               >
                 See the reels
               </a>
@@ -102,64 +111,66 @@ export default function Hero() {
             </dl>
           </div>
 
-          {/* Right: phone collage (desktop only — mobile gets reels below) */}
           <div className="relative hidden md:flex justify-center items-center min-h-[640px] hero-enter-late">
+            {/* Each phone lags the scroll by a different amount, so the stack
+                separates into three planes as the page moves. */}
             {left ? (
               <div className="absolute top-12 -left-6 opacity-60">
-                <PhoneFrame
-                  width={170}
-                  src={left.coverImage || null}
-                  alt={left.title}
-                  placeholder={left.title}
-                  rotate={-8}
-                />
+                <Parallax speed={0.14}>
+                  <PhoneFrame
+                    width={170}
+                    src={left.coverImage || null}
+                    alt={left.title}
+                    placeholder={left.title}
+                    rotate={-8}
+                  />
+                </Parallax>
               </div>
             ) : null}
 
             {center ? (
-              <PhoneFrame
-                width={280}
-                src={center.coverImage || null}
-                alt={center.title}
-                placeholder={center.title}
-                glow
-                priority
-              />
+              <Parallax speed={0.04}>
+                <div className="relative rounded-[44px]">
+                  <PhoneFrame
+                    width={280}
+                    src={center.coverImage || null}
+                    alt={center.title}
+                    placeholder={center.title}
+                    glow
+                    priority
+                  />
+                  <BorderBeam size={220} duration={11} borderWidth={2} />
+                </div>
+              </Parallax>
             ) : null}
 
             {right ? (
               <div className="absolute bottom-12 -right-6 opacity-60">
-                <PhoneFrame
-                  width={170}
-                  src={right.coverImage || null}
-                  alt={right.title}
-                  placeholder={right.title}
-                  rotate={8}
-                />
+                <Parallax speed={0.2}>
+                  <PhoneFrame
+                    width={170}
+                    src={right.coverImage || null}
+                    alt={right.title}
+                    placeholder={right.title}
+                    rotate={8}
+                  />
+                </Parallax>
               </div>
             ) : null}
           </div>
         </div>
       </div>
 
-      {/* Marquee */}
-      <div
-        className="mt-16 lg:mt-24 border-t border-b border-rule py-4 marquee font-mono text-sm text-ink-2 tracking-[0.06em]"
-        aria-hidden
-      >
-        <div className="marquee-track">
-          {Array.from({ length: 2 }).map((_, k) => (
-            <span key={k} className="inline-flex">
-              {TICKER.map((t, i) => (
-                <span key={i} className="px-6">
-                  {t}
-                  {i % 3 === 0 ? <span className="text-accent"> ●</span> : null}
-                </span>
-              ))}
+      <VelocityMarquee className="relative z-10 mt-16 lg:mt-24 border-t border-b border-rule py-4 font-mono text-sm text-ink-2 tracking-[0.06em]">
+        <span className="inline-flex">
+          {TICKER.map((t, i) => (
+            <span key={i} className="px-6">
+              {t}
+              {i % 3 === 0 ? <span className="text-accent"> ●</span> : null}
             </span>
           ))}
-        </div>
-      </div>
+        </span>
+      </VelocityMarquee>
     </section>
   );
 }

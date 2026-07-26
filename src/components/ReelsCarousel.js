@@ -3,10 +3,6 @@ import { ArrowRight, Play } from "lucide-react";
 import PhoneFrame from "@/components/PhoneFrame";
 import Reveal from "@/components/Reveal";
 
-/**
- * Hero-level reels section — grid of 5 phones for desktop, horizontal
- * scroll for mobile. Reels and live/fallback stats are passed from the server.
- */
 export default function ReelsCarousel({
   reels = [],
   statsBySlug = {},
@@ -15,7 +11,6 @@ export default function ReelsCarousel({
   return (
     <section id="reels" className="relative py-16 md:py-24 lg:py-32 px-6 lg:px-16">
       <div className="max-w-screen mx-auto">
-        {/* Header */}
         <Reveal className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 lg:mb-12">
           <div className="max-w-3xl">
             <div className="eyebrow">01 · UI SHORTS</div>
@@ -37,7 +32,6 @@ export default function ReelsCarousel({
           </Link>
         </Reveal>
 
-        {/* Grid (desktop) / horizontal scroll (mobile) */}
         <div className="flex md:grid md:grid-cols-5 gap-6 lg:gap-8 overflow-x-auto md:overflow-visible no-scrollbar snap-x snap-mandatory -mx-6 px-6 md:mx-0 md:px-0 pb-2">
           {reels.map((reel, index) => (
             <Reveal
@@ -78,7 +72,6 @@ function ReelCard({ reel, stats, index }) {
           alt={reel.title}
           placeholder={reel.title}
         />
-        {/* hover play overlay */}
         <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-300">
           <div className="w-14 h-14 rounded-full bg-bg/60 backdrop-blur-md border border-white/30 flex items-center justify-center">
             <Play className="w-5 h-5 text-ink ml-0.5" fill="currentColor" />

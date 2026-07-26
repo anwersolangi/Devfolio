@@ -1,8 +1,8 @@
-// app/tools/page.js — free browser tools listing
 import Link from "next/link";
 import { ArrowLeft, ShieldCheck, Zap, Gift } from "lucide-react";
 import ToolCard from "@/components/tools/ToolCard";
 import { TOOLS, TOOL_CATEGORIES } from "@/data/tools";
+import { jsonLd } from "@/lib/jsonld";
 
 const baseUrl = (
   process.env.NEXT_PUBLIC_BASE_URL || "https://anwersolangi.com"
@@ -92,11 +92,11 @@ export default function ToolsPage() {
     <main className="min-h-screen px-6 pb-28 pt-28 lg:px-16">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(itemListJsonLd) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumbJsonLd) }}
       />
 
       <div className="mx-auto max-w-screen">
@@ -157,7 +157,6 @@ export default function ToolsPage() {
           </section>
         ))}
 
-        {/* CTA */}
         <div className="mt-20 grid items-center gap-8 rounded-2xl border border-rule bg-bg-2 p-8 md:grid-cols-[1.4fr_1fr] lg:p-12">
           <div>
             <div className="font-mono text-[11px] tracking-[0.14em] text-accent">
@@ -177,7 +176,7 @@ export default function ToolsPage() {
           <div className="flex flex-wrap gap-3 md:justify-end">
             <Link
               href="/#contact"
-              className="rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-[#1a0a02] transition hover:opacity-90"
+              className="rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-on-accent transition hover:opacity-90"
             >
               Start a project →
             </Link>

@@ -1,13 +1,10 @@
-// components/Blog.js — homepage teaser for the blog. Mirrors the Tools
-// section: eyebrow header, three latest posts (listing order, so the featured
-// RN-2026 post leads), and an ItemList JSON-LD so the posts get attributed
-// internal links from the site's strongest page.
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { BLOG_POSTS } from "@/data/blog";
 import { SITE_URL } from "@/data/site";
 import BlogCard from "@/components/blog/BlogCard";
 import Reveal from "@/components/Reveal";
+import { jsonLd } from "@/lib/jsonld";
 
 export default function Blog() {
   const posts = BLOG_POSTS.slice(0, 3);
@@ -33,7 +30,7 @@ export default function Blog() {
     >
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(itemListJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(itemListJsonLd) }}
       />
       <div className="max-w-screen mx-auto">
         <Reveal className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 lg:mb-12">

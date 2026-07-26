@@ -1,4 +1,5 @@
 import Reveal from "@/components/Reveal";
+import Ripple from "@/components/ui/Ripple";
 
 const socials = [
   ["GITHUB", "https://github.com/anwersolangi"],
@@ -13,11 +14,14 @@ export default function Contact() {
       id="contact"
       className="relative py-24 lg:py-32 px-6 lg:px-16 overflow-hidden"
     >
+      <Ripple count={8} baseSize={240} spacing={90} baseOpacity={0.26} />
+
+      {/* Kept behind the rings so the section still has some warmth in it. */}
       <div
         className="absolute left-1/2 -bottom-[300px] -translate-x-1/2 w-[1000px] h-[600px] rounded-full pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse, rgba(255,106,61,0.22), transparent 60%)",
+            "radial-gradient(ellipse, rgba(255,106,61,0.14), transparent 60%)",
           filter: "blur(40px)",
         }}
         aria-hidden
@@ -41,7 +45,7 @@ export default function Contact() {
           <div className="flex flex-col sm:flex-row justify-center gap-3 mt-9">
             <a
               href="mailto:me@anwersolangi.com"
-              className="px-7 py-4 rounded-xl bg-ink text-bg font-bold text-[15px] hover:bg-accent hover:text-[#1a0a02] transition"
+              className="px-7 py-4 rounded-xl bg-ink text-bg font-bold text-[15px] hover:bg-accent-deep hover:text-on-accent transition"
             >
               me@anwersolangi.com
             </a>

@@ -1,7 +1,3 @@
-// components/tools/ToolShell.js
-// Server-rendered SEO wrapper around an interactive tool widget. All the
-// crawlable copy (intro, how-to, features, FAQ, related tools) lives here so
-// the page ranks even though the widget itself is a client island.
 import Link from "next/link";
 import { ArrowLeft, BookOpen, Check, ShieldCheck, Zap, Gift } from "lucide-react";
 import ToolIcon from "./ToolIcon";
@@ -19,7 +15,6 @@ export default function ToolShell({ tool, children }) {
   return (
     <main className="min-h-screen px-6 pb-28 pt-28 lg:px-16">
       <div className="mx-auto max-w-5xl">
-        {/* Breadcrumb */}
         <nav
           aria-label="Breadcrumb"
           className="mb-10 flex items-center gap-2 font-mono text-xs text-ink-3"
@@ -35,7 +30,6 @@ export default function ToolShell({ tool, children }) {
           <span className="text-ink-2">{tool.slug}</span>
         </nav>
 
-        {/* Header */}
         <header className="mb-10">
           <div className="flex items-start gap-4">
             <div className="flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl border border-rule bg-bg-2 text-accent">
@@ -66,7 +60,6 @@ export default function ToolShell({ tool, children }) {
           </div>
         </header>
 
-        {/* Interactive widget */}
         <section
           aria-label={`${tool.name} tool`}
           className="rounded-2xl border border-rule bg-bg-2 p-5 md:p-7"
@@ -74,7 +67,6 @@ export default function ToolShell({ tool, children }) {
           {children}
         </section>
 
-        {/* Companion deep-dive article */}
         {tool.article && (
           <Link
             href={`/blog/${tool.article.slug}`}
@@ -100,7 +92,6 @@ export default function ToolShell({ tool, children }) {
           </Link>
         )}
 
-        {/* Features */}
         {tool.features?.length > 0 && (
           <section className="mt-16">
             <div className="mb-6 flex items-center gap-3">
@@ -123,7 +114,6 @@ export default function ToolShell({ tool, children }) {
           </section>
         )}
 
-        {/* How to use */}
         {tool.howTo?.length > 0 && (
           <section className="mt-16">
             <h2 className="text-2xl font-bold tracking-[-0.02em] text-ink">
@@ -150,7 +140,6 @@ export default function ToolShell({ tool, children }) {
           </section>
         )}
 
-        {/* FAQ */}
         {tool.faqs?.length > 0 && (
           <section className="mt-16">
             <h2 className="text-2xl font-bold tracking-[-0.02em] text-ink">
@@ -174,7 +163,6 @@ export default function ToolShell({ tool, children }) {
           </section>
         )}
 
-        {/* Related tools */}
         {related.length > 0 && (
           <section className="mt-16">
             <div className="mb-6 flex items-center gap-3">
@@ -207,7 +195,6 @@ export default function ToolShell({ tool, children }) {
           </section>
         )}
 
-        {/* CTA */}
         <section className="mt-20 grid items-center gap-8 rounded-2xl border border-rule bg-bg-2 p-8 md:grid-cols-[1.5fr_1fr] lg:p-12">
           <div>
             <div className="font-mono text-[11px] tracking-[0.14em] text-accent">
@@ -227,7 +214,7 @@ export default function ToolShell({ tool, children }) {
           <div className="flex flex-wrap gap-3 md:justify-end">
             <Link
               href="/#contact"
-              className="rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-[#1a0a02] transition hover:opacity-90"
+              className="rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-on-accent transition hover:opacity-90"
             >
               Start a project →
             </Link>
@@ -241,7 +228,6 @@ export default function ToolShell({ tool, children }) {
           </div>
         </section>
 
-        {/* Footer nav */}
         <div className="mt-12">
           <Link
             href="/tools"

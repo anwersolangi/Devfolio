@@ -59,7 +59,7 @@ function renderIcon(img, size) {
 }
 
 export default function AppIconTool() {
-  const [src, setSrc] = useState(null); // { url, img, name }
+  const [src, setSrc] = useState(null);
   const [selected, setSelected] = useState({
     ios: true,
     android: true,

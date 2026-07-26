@@ -1,4 +1,3 @@
-// app/reels/[slug]/page.js — V2 dark theme with full OG metadata + all social links
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { reelsData } from "@/data/reels";
@@ -10,8 +9,8 @@ import {
   Clock,
   Calendar,
 } from "lucide-react";
+import { jsonLd } from "@/lib/jsonld";
 
-// Strip emoji helper (used for clean OG title + heading)
 function cleanTitle(str) {
   if (!str) return "";
   return str
@@ -417,7 +416,6 @@ export async function generateMetadata({ params }) {
   };
 }
 
-// JSON-LD structured data for rich search results
 function VideoJsonLd({ reel, stats }) {
   const title = cleanTitle(reel.title);
   const videoUrl = getReelVideoUrl(reel);
@@ -428,7 +426,7 @@ function VideoJsonLd({ reel, stats }) {
 
   if (!videoUrl || !uploadDate) return null;
 
-  const jsonLd = {
+  const videoSchema = {
     "@context": "https://schema.org",
     "@type": "VideoObject",
     name: title,
@@ -470,7 +468,7 @@ function VideoJsonLd({ reel, stats }) {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      dangerouslySetInnerHTML={{ __html: jsonLd(videoSchema) }}
     />
   );
 }
@@ -520,7 +518,6 @@ function CodeBlock({ code, language }) {
   );
 }
 
-// Minimal markdown renderer for reel write-ups, including fenced code blocks.
 function renderContent(markdown) {
   if (!markdown) return null;
   const lines = markdown.trim().split(/\r?\n/);
@@ -699,7 +696,7 @@ function SocialLinkPill({ link }) {
         href={link.url}
         target="_blank"
         rel="noopener noreferrer"
-        className={`${base} bg-accent text-[#1a0a02] font-semibold hover:opacity-90`}
+        className={`${base} bg-accent-deep text-on-accent font-semibold hover:opacity-90`}
         title={`Watch on ${link.label}`}
       >
         <Icon className="w-4 h-4" />
@@ -746,7 +743,6 @@ export default async function ReelDetailPage({ params }) {
   const stats = await getReelStats(reel);
   const durationLabel = formatDuration(stats.durationSeconds);
 
-  // Build the active social links in the configured order
   const activeLinks = SOCIAL_PLATFORMS.map((p) => ({
     ...p,
     url: reel.links?.[p.key],
@@ -765,7 +761,6 @@ export default async function ReelDetailPage({ params }) {
           back to reels
         </Link>
 
-          {/* Header */}
         <div className="mb-10 max-w-3xl">
           <div className="font-mono text-[11px] tracking-[0.14em] text-accent">
             {reel.category} · {durationLabel}
@@ -777,7 +772,6 @@ export default async function ReelDetailPage({ params }) {
             {renderInlineContent(reel.description, "description")}
           </p>
 
-          {/* Quick stats */}
           <div className="flex flex-wrap items-center gap-5 mt-6 text-xs font-mono text-ink-3">
             {Number.isFinite(Number(stats.views)) && (
               <span className="inline-flex items-center gap-1.5">
@@ -803,7 +797,6 @@ export default async function ReelDetailPage({ params }) {
           </div>
         </div>
 
-        {/* WATCH ON section — all social platforms */}
         <div className="mb-12">
           <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-3 mb-3">
             ▸ Watch on
@@ -816,7 +809,6 @@ export default async function ReelDetailPage({ params }) {
         </div>
 
         <div className="flex flex-col md:flex-row gap-12">
-          {/* Sticky video column */}
           <div className="w-full md:w-[340px] order-2 md:order-1 shrink-0">
             <div className="md:sticky md:top-28 space-y-8">
               {videoSource.type === "iframe" ? (
@@ -860,7 +852,7 @@ export default async function ReelDetailPage({ params }) {
                         href={videoSource.src || reel.links.facebook}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-accent text-[#1a0a02] text-sm font-semibold"
+                        className="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-lg bg-accent-deep text-on-accent text-sm font-semibold"
                       >
                         <Play className="w-4 h-4" fill="currentColor" /> Open
                         reel
@@ -921,7 +913,6 @@ export default async function ReelDetailPage({ params }) {
                 </div>
               </div>
 
-              {/* All-social mini grid in sidebar */}
               {activeLinks.length > 0 && (
                 <div>
                   <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-3 mb-3">
@@ -950,14 +941,12 @@ export default async function ReelDetailPage({ params }) {
             </div>
           </div>
 
-          {/* Content column */}
           <div className="flex-1 order-1 md:order-2">
             <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-3 mb-6">
               ▸ Write-up
             </div>
             <div>{renderContent(reel.content)}</div>
 
-            {/* CTA card */}
             <div className="mt-16 p-6 rounded-xl bg-bg-2 border border-rule">
               <div className="font-mono text-[11px] tracking-[0.14em] text-accent mb-2">
                 LIKE WHAT YOU SEE?
@@ -969,7 +958,7 @@ export default async function ReelDetailPage({ params }) {
               <div className="flex flex-wrap gap-3">
                 <Link
                   href="/#contact"
-                  className="px-5 py-2.5 rounded-lg bg-accent text-[#1a0a02] text-sm font-semibold hover:opacity-90 transition"
+                  className="px-5 py-2.5 rounded-lg bg-accent-deep text-on-accent text-sm font-semibold hover:opacity-90 transition"
                 >
                   Start a project →
                 </Link>

@@ -1,12 +1,6 @@
 "use client";
 import { useEffect, useRef, useState } from "react";
 
-/**
- * Lightweight scroll-reveal wrapper. Sections stay server components and
- * only this tiny client component ships to the browser.
- *
- * Usage: <Reveal delay={150} className="...">…</Reveal>
- */
 export default function Reveal({ delay = 0, className = "", children }) {
   const ref = useRef(null);
   const [visible, setVisible] = useState(false);

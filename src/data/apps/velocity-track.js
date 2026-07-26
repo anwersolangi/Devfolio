@@ -87,7 +87,7 @@ export const velocityTrack = {
     }
   ],
   links: {
-    playstore: "#", // Placeholder
+    playstore: "#",
     email: "mailto:me@anwersolangi.com",
     website: "/apps/velocity-track"
   },

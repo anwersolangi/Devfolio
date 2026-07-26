@@ -30,7 +30,9 @@ module.exports = {
           900: "#111827",
           950: "#030712",
         },
-        // V1 palette — added without colliding with anything above
+        // V1 palette — warm charcoal + orange.
+        // Mirrors the custom properties in globals.css; see the comment there
+        // for why accent / accent-deep / on-accent are separate tokens.
         bg: "#0d0c0b",
         "bg-2": "#161514",
         "bg-3": "#1f1d1b",
@@ -39,7 +41,10 @@ module.exports = {
         "ink-3": "rgba(244, 239, 231, 0.38)",
         rule: "rgba(244, 239, 231, 0.10)",
         accent: "#ff6a3d",
+        "accent-deep": "#ff6a3d",
         "accent-2": "#ffb27a",
+        "on-accent": "#1a0a02",
+        "accent-hot": "#fff0dc",
         good: "#7af0a8",
       },
       letterSpacing: {
@@ -60,10 +65,12 @@ module.exports = {
         "fade-in": "fadeIn 0.5s ease-out forwards",
         float: "float 5s ease-in-out infinite",
         "pulse-slow": "pulse-slow 3s infinite",
-        // New: marquee for the hero tech ticker
-        marquee: "marquee 60s linear infinite",
+        "border-beam": "border-beam var(--beam-duration, 14s) infinite linear",
       },
       keyframes: {
+        "border-beam": {
+          to: { "offset-distance": "100%" },
+        },
         gradient: {
           "0%, 100%": { "background-position": "0% 50%" },
           "50%": { "background-position": "100% 50%" },
@@ -92,10 +99,6 @@ module.exports = {
         "pulse-slow": {
           "0%, 100%": { opacity: 0.6 },
           "50%": { opacity: 1 },
-        },
-        marquee: {
-          from: { transform: "translateX(0)" },
-          to: { transform: "translateX(-50%)" },
         },
       },
       backgroundSize: {

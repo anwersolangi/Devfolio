@@ -1,4 +1,3 @@
-// Child Safety Policy content for apps
 export const CHILD_SAFETY_POLICIES = {
   nearby: {
     title: "Child Safety Standards Policy",

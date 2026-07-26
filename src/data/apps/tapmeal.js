@@ -1,5 +1,3 @@
-// data/apps/tapmeal.js
-
 export const tapMeal = {
   slug: "tapmeal",
   name: "TapMeal",
@@ -141,7 +139,6 @@ export const tapMeal = {
     email: "mailto:me@anwersolangi.com",
   },
 
-  // External URL — AppCard will open this directly instead of the internal /apps/tapmeal page
   externalUrl: "https://tapmeal.anwersolangi.com",
 
   ctaTitle: "Run Your Restaurant Digitally",

@@ -18,7 +18,7 @@ const FORMATS = [
 ];
 
 export default function ImageResizerTool() {
-  const [src, setSrc] = useState(null); // { url, img, name, type }
+  const [src, setSrc] = useState(null);
   const [w, setW] = useState(0);
   const [h, setH] = useState(0);
   const [lock, setLock] = useState(true);

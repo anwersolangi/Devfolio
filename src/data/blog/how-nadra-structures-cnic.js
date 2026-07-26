@@ -1,5 +1,3 @@
-// Companion article for /tools/cnic-lookup. Pinned to the bottom of the blog
-// listing so feed posts always sit above it.
 export const howNadraStructuresCnic = {
   slug: "how-nadra-structures-the-cnic-number-in-pakistan",
   title: "How NADRA Structures the CNIC Number in Pakistan",

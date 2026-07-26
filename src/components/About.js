@@ -48,7 +48,6 @@ export default function About() {
           </div>
         </Reveal>
 
-        {/* Stats banner */}
         <div className="mt-14 lg:mt-20 border-t border-b border-rule py-10 lg:py-12">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-0">
             {stats.map(([v, l], i) => (

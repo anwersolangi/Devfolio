@@ -44,10 +44,10 @@ function convert(img, format, quality) {
 }
 
 export default function ImageConverterTool() {
-  const [files, setFiles] = useState([]); // raw File[]
+  const [files, setFiles] = useState([]);
   const [format, setFormat] = useState("image/webp");
   const [quality, setQuality] = useState(0.9);
-  const [results, setResults] = useState([]); // { name, blob, url, originalSize }
+  const [results, setResults] = useState([]);
   const [busy, setBusy] = useState(false);
 
   const meta = FORMATS.find((f) => f.value === format);

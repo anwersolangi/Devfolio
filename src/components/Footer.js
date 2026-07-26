@@ -29,10 +29,9 @@ export default function Footer() {
     <footer className="border-t border-rule">
       <div className="max-w-screen mx-auto px-6 lg:px-16 py-12">
         <div className="flex flex-col md:flex-row md:items-start justify-between gap-10">
-          {/* Brand */}
           <div className="max-w-sm">
             <div className="inline-flex items-center gap-2.5">
-              <span className="w-7 h-7 rounded-md bg-accent text-[#1a0a02] font-bold text-sm flex items-center justify-center">
+              <span className="w-7 h-7 rounded-md bg-accent-deep text-on-accent font-bold text-sm flex items-center justify-center">
                 A
               </span>
               <span className="font-medium text-[15px] tracking-tight text-ink">
@@ -45,7 +44,6 @@ export default function Footer() {
             </p>
           </div>
 
-          {/* Connect */}
           <div className="flex flex-col sm:flex-row gap-10 sm:gap-16">
             <div>
               <div className="font-mono text-[11px] tracking-[0.14em] uppercase text-ink-3 mb-3">

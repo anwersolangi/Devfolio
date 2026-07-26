@@ -1,5 +1,3 @@
-// components/blog/BlogCard.js — post card for the /blog listing.
-// `featured` renders the wide two-column variant used for the newest post.
 import Link from "next/link";
 import { readingTimeMinutes } from "@/data/blog";
 

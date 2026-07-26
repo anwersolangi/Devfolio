@@ -2,8 +2,9 @@
 import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useLenis } from "@/components/SmoothScroll";
+import ShimmerButton from "@/components/ui/ShimmerButton";
 
-// Renders a same-origin Next link, or a plain anchor for absolute URLs.
 function NavLink({ href, className, onClick, children }) {
   if (href.startsWith("http")) {
     return (
@@ -23,6 +24,7 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
   const pathname = usePathname();
+  const lenis = useLenis();
 
   useEffect(() => {
     const onScroll = () => setIsScrolled(window.scrollY > 10);
@@ -33,13 +35,19 @@ export default function Header() {
   useEffect(() => setMenuOpen(false), [pathname]);
 
   useEffect(() => {
+    // Lenis owns the page scroll when it's running; body overflow alone won't
+    // stop its rAF loop from scrolling underneath the open menu.
+    if (lenis) {
+      if (menuOpen) lenis.stop();
+      else lenis.start();
+      return () => lenis.start();
+    }
     document.body.style.overflow = menuOpen ? "hidden" : "unset";
     return () => {
       document.body.style.overflow = "unset";
     };
-  }, [menuOpen]);
+  }, [menuOpen, lenis]);
 
-  // Close the mobile sheet on Escape
   useEffect(() => {
     if (!menuOpen) return;
     const onKey = (e) => e.key === "Escape" && setMenuOpen(false);
@@ -72,9 +80,8 @@ export default function Header() {
       >
         <nav className="max-w-screen mx-auto px-6 lg:px-16">
           <div className="flex items-center justify-between h-20">
-            {/* Logo */}
             <NavLink href={logoHref} className="group inline-flex items-center gap-2.5">
-              <span className="w-7 h-7 rounded-md bg-accent text-[#1a0a02] font-bold text-sm flex items-center justify-center">
+              <span className="w-7 h-7 rounded-md bg-accent-deep text-on-accent font-bold text-sm flex items-center justify-center">
                 A
               </span>
               <span className="font-medium text-[15px] tracking-tight text-ink">
@@ -85,7 +92,6 @@ export default function Header() {
               </span>
             </NavLink>
 
-            {/* Desktop links */}
             <div className="hidden lg:flex items-center gap-7 text-sm text-ink-2">
               {links.map((l) => (
                 <NavLink
@@ -98,7 +104,6 @@ export default function Header() {
               ))}
             </div>
 
-            {/* Right side actions */}
             <div className="hidden lg:flex items-center gap-4">
               <a
                 href="https://github.com/anwersolangi"
@@ -108,15 +113,15 @@ export default function Header() {
               >
                 github ↗
               </a>
-              <NavLink
+              <ShimmerButton
+                as={Link}
                 href={hireHref}
-                className="px-4 py-2 rounded-full bg-ink text-bg text-xs font-semibold hover:bg-accent hover:text-[#1a0a02] transition-colors duration-200"
+                className="px-4 py-2 text-xs font-semibold text-on-accent"
               >
                 Hire me
-              </NavLink>
+              </ShimmerButton>
             </div>
 
-            {/* Mobile burger */}
             <button
               onClick={() => setMenuOpen((v) => !v)}
               className="lg:hidden relative w-10 h-10 text-ink"
@@ -144,7 +149,6 @@ export default function Header() {
         </nav>
       </header>
 
-      {/* Mobile sheet */}
       <div
         className={`fixed inset-0 z-[105] lg:hidden bg-black/60 backdrop-blur-sm transition-opacity duration-300 ${
           menuOpen ? "opacity-100" : "opacity-0 pointer-events-none"
@@ -171,7 +175,10 @@ export default function Header() {
               ✕
             </button>
           </div>
-          <nav className="flex-1 overflow-y-auto px-6 py-6 space-y-1">
+          <nav
+            data-lenis-prevent
+            className="flex-1 overflow-y-auto px-6 py-6 space-y-1"
+          >
             {links.map((l) => (
               <NavLink
                 key={l.href}
@@ -192,13 +199,15 @@ export default function Header() {
               >
                 github ↗
               </a>
-              <NavLink
+              <ShimmerButton
+                as={Link}
                 href={hireHref}
                 onClick={() => setMenuOpen(false)}
-                className="block text-center px-4 py-3 bg-accent text-[#1a0a02] rounded-md text-sm font-semibold"
+                borderRadius="0.375rem"
+                className="w-full px-4 py-3 text-sm font-semibold text-on-accent"
               >
                 Hire me
-              </NavLink>
+              </ShimmerButton>
             </div>
           </nav>
           <div className="px-6 py-5 border-t border-rule font-mono text-[11px] text-ink-3 tracking-[0.06em]">

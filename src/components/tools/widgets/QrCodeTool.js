@@ -117,7 +117,6 @@ export default function QrCodeTool() {
 
   return (
     <div className="grid gap-8 md:grid-cols-[1fr_auto]">
-      {/* Controls */}
       <div className="space-y-5">
         <Segmented options={TYPES} value={type} onChange={setType} />
 
@@ -232,7 +231,6 @@ export default function QrCodeTool() {
         </Field>
       </div>
 
-      {/* Preview */}
       <div className="flex flex-col items-center gap-4 md:w-64">
         <div className="flex aspect-square w-full items-center justify-center rounded-2xl border border-rule bg-white p-4">
           {dataUrl ? (

@@ -1,10 +1,5 @@
-// Server-rendered JSON-LD. No "use client" — these only emit <script> tags, so
-// rendering on the server ships the structured data in the initial HTML (best
-// for crawlers and AI answer engines) with zero hydration cost.
-
 import {
   SITE_URL,
-  SITE_NAME,
   PERSON_ID,
   WEBSITE_ID,
   SERVICE_ID,
@@ -14,12 +9,13 @@ import {
   absUrl,
 } from "@/data/site";
 import { HOME_FAQS } from "@/data/faqs";
+import { jsonLd } from "@/lib/jsonld";
 
 function JsonLd({ schema }) {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{ __html: jsonLd(schema) }}
     />
   );
 }
@@ -150,7 +146,6 @@ export function FAQSchema() {
   return <JsonLd schema={schema} />;
 }
 
-// Generic WebPage node. Pass per-page values; defaults describe the homepage.
 export function WebPageSchema({
   url = SITE_URL,
   name = "Anwer Solangi | React Native Developer in Karachi, Pakistan",
@@ -207,11 +202,6 @@ export function SoftwareApplicationSchema({
   return <JsonLd schema={schema} />;
 }
 
-// Site-wide entity graph — rendered once in the root layout. Person + Website
-// only (these describe the entity/site and are safe on every page). FAQ,
-// ProfessionalService and WebPage are NOT here on purpose — they belong to
-// specific pages (see HomeSchemas) to avoid repeating page-scoped schema on
-// every URL.
 export function SiteSchemas() {
   return (
     <>
@@ -221,7 +211,6 @@ export function SiteSchemas() {
   );
 }
 
-// Homepage-only schema.
 export function HomeSchemas() {
   return (
     <>
@@ -231,6 +220,3 @@ export function HomeSchemas() {
     </>
   );
 }
-
-// Backwards-compatible alias (older imports).
-export const AllSchemas = SiteSchemas;

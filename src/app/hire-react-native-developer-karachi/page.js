@@ -6,6 +6,7 @@ import {
   WebPageSchema,
 } from "@/components/SEOComponents";
 import { SITE_URL, CONTACT_EMAIL } from "@/data/site";
+import { jsonLd } from "@/lib/jsonld";
 
 const PATH = "/hire-react-native-developer-karachi";
 const URL = `${SITE_URL}${PATH}`;
@@ -42,8 +43,6 @@ export const metadata = {
   },
 };
 
-// AEO: each answer leads with a direct, self-contained 1–2 sentence response so
-// answer engines can extract it cleanly.
 const FAQS = [
   {
     q: "How do I hire a React Native developer in Karachi?",
@@ -106,7 +105,7 @@ function FaqJsonLd() {
   return (
     <script
       type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+      dangerouslySetInnerHTML={{ __html: jsonLd(schema) }}
     />
   );
 }
@@ -138,7 +137,6 @@ export default function HirePage() {
           back to home
         </Link>
 
-        {/* Hero */}
         <header className="max-w-3xl">
           <p className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/25 font-mono text-[11px] tracking-[0.06em] text-accent-2">
             <MapPin className="w-3 h-3" /> KARACHI · PAKISTAN · REMOTE WORLDWIDE
@@ -163,7 +161,7 @@ export default function HirePage() {
               href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
                 "React Native project enquiry",
               )}`}
-              className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-accent text-[#1a0a02] font-bold text-sm hover:opacity-90 transition"
+              className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-accent-deep text-on-accent font-bold text-sm hover:opacity-90 transition"
             >
               <Mail className="w-4 h-4" /> Start a project
             </a>
@@ -198,7 +196,6 @@ export default function HirePage() {
           </dl>
         </header>
 
-        {/* Services */}
         <section className="mt-24">
           <div className="font-mono text-[11px] tracking-[0.14em] text-accent">
             ▸ WHAT I BUILD
@@ -228,7 +225,6 @@ export default function HirePage() {
           </div>
         </section>
 
-        {/* Why local */}
         <section className="mt-24 grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
           <div>
             <div className="font-mono text-[11px] tracking-[0.14em] text-accent">
@@ -263,7 +259,6 @@ export default function HirePage() {
           </div>
         </section>
 
-        {/* Process */}
         <section className="mt-24">
           <div className="font-mono text-[11px] tracking-[0.14em] text-accent">
             ▸ HOW IT WORKS
@@ -289,7 +284,6 @@ export default function HirePage() {
           </div>
         </section>
 
-        {/* FAQ */}
         <section className="mt-24 max-w-3xl">
           <div className="font-mono text-[11px] tracking-[0.14em] text-accent">
             ▸ FAQ
@@ -319,7 +313,6 @@ export default function HirePage() {
           </div>
         </section>
 
-        {/* CTA */}
         <section className="mt-24 p-8 lg:p-12 rounded-2xl border border-rule bg-bg-2 text-center">
           <h2 className="text-3xl md:text-4xl font-bold tracking-[-0.03em] text-ink">
             Got an app to build?
@@ -331,7 +324,7 @@ export default function HirePage() {
             href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
               "React Native project enquiry",
             )}`}
-            className="inline-flex items-center gap-2 mt-7 px-6 py-3.5 rounded-xl bg-accent text-[#1a0a02] font-bold text-sm hover:opacity-90 transition"
+            className="inline-flex items-center gap-2 mt-7 px-6 py-3.5 rounded-xl bg-accent-deep text-on-accent font-bold text-sm hover:opacity-90 transition"
           >
             <Mail className="w-4 h-4" /> {CONTACT_EMAIL}
           </a>

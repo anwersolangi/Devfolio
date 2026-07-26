@@ -24,7 +24,7 @@ const MODES = [
 export default function Base64Tool() {
   const [mode, setMode] = useState("encode");
   const [input, setInput] = useState("");
-  const [fileResult, setFileResult] = useState(null); // { dataUrl, name }
+  const [fileResult, setFileResult] = useState(null);
 
   const { output, error } = useMemo(() => {
     if (mode === "file" || !input) return { output: "", error: "" };

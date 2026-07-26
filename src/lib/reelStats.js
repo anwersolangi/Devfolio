@@ -203,7 +203,3 @@ export function formatReelDuration(seconds) {
     String(remainingSeconds).padStart(2, "0"),
   ].join(":");
 }
-
-export function getStaticReelStats(reel) {
-  return getFallbackStats(reel);
-}

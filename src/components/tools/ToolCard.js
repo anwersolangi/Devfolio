@@ -1,4 +1,3 @@
-// components/tools/ToolCard.js — listing card for /tools (server component)
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import ToolIcon from "./ToolIcon";

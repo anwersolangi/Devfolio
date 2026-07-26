@@ -1,9 +1,3 @@
-// app/api/youtube-thumbnail/route.js
-// Same-origin proxy so the YouTube Thumbnail Downloader can force a real file
-// download. Browsers ignore the `download` attribute on cross-origin links, so
-// we fetch the image server-side and re-serve it with an attachment header.
-// (This route is disallowed in robots.js so it won't be indexed.)
-
 const ALLOWED = new Set([
   "maxresdefault",
   "sddefault",

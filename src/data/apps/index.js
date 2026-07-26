@@ -1,5 +1,3 @@
-// data/apps/index.js
-
 import { nearby } from "./nearby";
 import { whatsupfire } from "./whatsupfire";
 import { velocityTrack } from "./velocity-track";
@@ -8,8 +6,10 @@ import { reacttube } from "./reacttube";
 import { convertiX } from "./convertix";
 import { tapMeal } from "./tapmeal";
 import { memorIQ } from "./memoriq";
+import { docuLensAI } from "./doculensai";
 
 export const APPS_DATA = {
+  doculensai: docuLensAI,
   nearby,
   whatsupfire,
   "velocity-track": velocityTrack,
@@ -21,6 +21,12 @@ export const APPS_DATA = {
 };
 
 export const APPS_LIST = [
+  {
+    slug: docuLensAI.slug,
+    name: docuLensAI.name,
+    description: docuLensAI.description,
+    icon: docuLensAI.icon,
+  },
   {
     slug: memorIQ.slug,
     name: memorIQ.name,
@@ -73,6 +79,7 @@ export const APPS_LIST = [
 ];
 
 export {
+  docuLensAI,
   nearby,
   whatsupfire,
   velocityTrack,

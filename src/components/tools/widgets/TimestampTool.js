@@ -69,7 +69,6 @@ export default function TimestampTool() {
       </div>
 
       <div className="grid gap-6 lg:grid-cols-2">
-        {/* Timestamp → Date */}
         <div className="space-y-3">
           <Field label="Timestamp → date">
             <input
@@ -100,7 +99,6 @@ export default function TimestampTool() {
           )}
         </div>
 
-        {/* Date → Timestamp */}
         <div className="space-y-3">
           <Field label="Date → timestamp">
             <input

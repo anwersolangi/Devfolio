@@ -1,9 +1,6 @@
 import Reveal from "@/components/Reveal";
+import PoweredBy from "@/components/PoweredBy";
 
-/**
- * Capability-first stack section. No skill percentages — each category
- * leads with what the tool is actually used for in shipped work.
- */
 const categories = [
   {
     title: "Mobile Engineering",
@@ -65,6 +62,10 @@ export default function Skills() {
             The stack behind everything in the sections above — organized by
             what it’s actually used for, not by buzzword count.
           </p>
+        </Reveal>
+
+        <Reveal className="mb-12 lg:mb-16">
+          <PoweredBy />
         </Reveal>
 
         <div className="grid md:grid-cols-3 gap-5 lg:gap-6">

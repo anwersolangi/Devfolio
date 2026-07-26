@@ -1,4 +1,3 @@
-// app/blog/[slug]/page.js — individual blog post.
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft } from "lucide-react";
@@ -11,6 +10,7 @@ import {
   readingTimeMinutes,
 } from "@/data/blog";
 import { SITE_URL, SITE_NAME, PERSON_ID, WEBSITE_ID } from "@/data/site";
+import { jsonLd } from "@/lib/jsonld";
 
 export function generateStaticParams() {
   return BLOG_POSTS.map((post) => ({ slug: post.slug }));
@@ -106,15 +106,14 @@ export default async function BlogPostPage({ params }) {
     <main className="min-h-screen px-6 pb-28 pt-28 lg:px-16">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(articleJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(articleJsonLd) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumbJsonLd) }}
       />
 
       <article className="mx-auto max-w-3xl">
-        {/* Breadcrumb */}
         <nav
           aria-label="Breadcrumb"
           className="mb-10 flex items-center gap-2 font-mono text-xs text-ink-3"
@@ -130,7 +129,6 @@ export default async function BlogPostPage({ params }) {
           <span className="truncate text-ink-2">{post.slug}</span>
         </nav>
 
-        {/* Header */}
         <header>
           <div className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] uppercase tracking-[0.14em] text-ink-3">
             <span className="text-accent">{post.category}</span>
@@ -145,11 +143,9 @@ export default async function BlogPostPage({ params }) {
             {post.title}
           </h1>
           <div className="mt-6 flex items-center gap-3 border-b border-rule pb-8">
-            {/* Brand mark, not a photo — /profile-picture.png is a dark
-                monogram tile that vanishes at 40px on this background. */}
             <span
               aria-hidden="true"
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent text-sm font-bold text-[#1a0a02]"
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent text-sm font-bold text-on-accent"
             >
               A
             </span>
@@ -164,10 +160,8 @@ export default async function BlogPostPage({ params }) {
           </div>
         </header>
 
-        {/* Body */}
         <BlogContent content={post.content} />
 
-        {/* Author CTA */}
         <section className="mt-16 rounded-2xl border border-rule bg-bg-2 p-7 md:p-9">
           <div className="font-mono text-[11px] tracking-[0.14em] text-accent">
             ▸ WRITTEN BY ANWER SOLANGI
@@ -185,7 +179,7 @@ export default async function BlogPostPage({ params }) {
           <div className="mt-5 flex flex-wrap gap-3">
             <Link
               href="/#contact"
-              className="rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-[#1a0a02] transition hover:opacity-90"
+              className="rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-on-accent transition hover:opacity-90"
             >
               Start a project →
             </Link>
@@ -200,7 +194,6 @@ export default async function BlogPostPage({ params }) {
         </section>
       </article>
 
-      {/* Keep reading */}
       {others.length > 0 && (
         <section className="mx-auto mt-20 max-w-screen">
           <div className="mb-6 flex items-center gap-3">

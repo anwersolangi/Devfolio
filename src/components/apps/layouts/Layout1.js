@@ -39,7 +39,6 @@ export default function Layout1({ app }) {
 
   return (
     <div>
-      {/* HERO */}
       <section className="relative min-h-screen flex items-center pt-24 pb-16 px-6 lg:px-16 overflow-hidden">
         <div
           className="glow-orb"
@@ -79,7 +78,7 @@ export default function Layout1({ app }) {
                     href={app.links.playstore}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-accent text-[#1a0a02] text-sm font-bold hover:opacity-90 transition"
+                    className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-accent-deep text-on-accent text-sm font-bold hover:opacity-90 transition"
                   >
                     <svg
                       className="w-4 h-4"
@@ -114,7 +113,6 @@ export default function Layout1({ app }) {
               </div>
             </div>
 
-            {/* App icon */}
             {app.icon && (
               <div className="flex justify-center lg:justify-end">
                 <div className="relative">
@@ -136,7 +134,6 @@ export default function Layout1({ app }) {
         </div>
       </section>
 
-      {/* FEATURES */}
       {app.features?.length > 0 && (
         <section
           ref={sectionRef}
@@ -179,7 +176,6 @@ export default function Layout1({ app }) {
         </section>
       )}
 
-      {/* SECTIONS (long-form) */}
       {app.sections?.length > 0 && (
         <section className="py-24 lg:py-32 px-6 lg:px-16">
           <div className="max-w-4xl mx-auto space-y-16">
@@ -221,7 +217,6 @@ export default function Layout1({ app }) {
         </section>
       )}
 
-      {/* CTA */}
       <section className="py-24 lg:py-32 px-6 lg:px-16 relative overflow-hidden">
         <div
           className="absolute left-1/2 -bottom-[300px] -translate-x-1/2 w-[900px] h-[500px] rounded-full pointer-events-none"
@@ -249,7 +244,7 @@ export default function Layout1({ app }) {
                 href={app.links.playstore}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3.5 rounded-xl bg-accent text-[#1a0a02] text-[15px] font-bold hover:opacity-90 transition"
+                className="px-6 py-3.5 rounded-xl bg-accent-deep text-on-accent text-[15px] font-bold hover:opacity-90 transition"
               >
                 Download on Play Store ↗
               </a>
@@ -274,7 +269,6 @@ export default function Layout1({ app }) {
         </div>
       </section>
 
-      {/* Footer-ish legal links */}
       <section className="py-10 px-6 lg:px-16 border-t border-rule">
         <div className="max-w-screen mx-auto flex flex-wrap gap-x-6 gap-y-2 justify-center text-xs font-mono text-ink-3 tracking-[0.08em]">
           <Link

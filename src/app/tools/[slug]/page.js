@@ -1,8 +1,8 @@
-// app/tools/[slug]/page.js
 import { notFound } from "next/navigation";
 import ToolShell from "@/components/tools/ToolShell";
 import ToolRunner from "@/components/tools/ToolRunner";
 import { TOOLS, getTool } from "@/data/tools";
+import { jsonLd } from "@/lib/jsonld";
 
 const baseUrl = (
   process.env.NEXT_PUBLIC_BASE_URL || "https://anwersolangi.com"
@@ -121,7 +121,7 @@ export default async function ToolPage({ params }) {
         <script
           key={i}
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+          dangerouslySetInnerHTML={{ __html: jsonLd(schema) }}
         />
       ))}
       <ToolShell tool={tool}>

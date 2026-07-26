@@ -30,12 +30,10 @@ export default function BrowserFrame({
             : "0 30px 80px -30px rgba(0,0,0,0.9)",
         }}
       >
-        {/* Tab bar */}
         <div
           className="flex items-end gap-2 pl-4 pr-3 pt-3"
           style={{ background: "#0d0c0b" }}
         >
-          {/* Traffic lights */}
           <div className="flex gap-1.5 mb-2 mr-2">
             <span
               className="w-3 h-3 rounded-full"
@@ -51,7 +49,6 @@ export default function BrowserFrame({
             />
           </div>
 
-          {/* Active tab */}
           <div
             className="flex items-center gap-2 px-3 py-2 rounded-t-lg max-w-[200px]"
             style={{
@@ -74,12 +71,10 @@ export default function BrowserFrame({
             <span className="text-ink-3 text-xs leading-none">×</span>
           </div>
 
-          {/* Spacer + new-tab button */}
           <div className="flex-1" />
           <div className="text-ink-3 text-base mb-1 leading-none">+</div>
         </div>
 
-        {/* URL bar */}
         <div
           className="flex items-center gap-2 px-3 py-2 border-b"
           style={{
@@ -102,13 +97,11 @@ export default function BrowserFrame({
             <LockGlyph />
             <span className="truncate">{url}</span>
           </div>
-          {/* Extension puzzle icon — the meta wink */}
           <div className="text-ink-2">
             <PuzzleGlyph />
           </div>
         </div>
 
-        {/* Content */}
         <div
           className="relative bg-black w-full"
           style={{ aspectRatio: aspect }}
@@ -183,7 +176,6 @@ function LockGlyph() {
 }
 
 function PuzzleGlyph() {
-  // Chrome's extensions icon, simplified
   return (
     <svg
       viewBox="0 0 24 24"

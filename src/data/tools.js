@@ -1,13 +1,291 @@
-// data/tools.js
-// Metadata + SEO copy for the free browser tools at /tools.
-// This file is server-safe (no JSX, no browser APIs) so it can power the
-// listing page, per-tool metadata, JSON-LD, and the sitemap.
-//
-// Each tool's interactive widget lives in src/components/tools/widgets and is
-// wired by `slug` in src/components/tools/ToolRunner.js.
-
 export const TOOLS = [
-  // ───────────────────────────── Generators ─────────────────────────────
+  {
+    slug: "diff-checker",
+    name: "Diff Checker",
+    tagline: "Compare two texts or files and highlight every difference",
+    category: "Developer Tools",
+    icon: "ArrowLeftRight",
+    description:
+      "Free online Diff Checker. Compare two texts or files side by side, unified or inline, with word and character highlighting. Export a .diff patch. Runs 100% in your browser.",
+    keywords: [
+      "diff checker",
+      "text compare",
+      "compare text online",
+      "text difference finder",
+      "online diff tool",
+      "code diff",
+      "compare two texts",
+      "compare two files online",
+      "side by side text comparison",
+      "unified diff generator",
+    ],
+    intro:
+      "Paste two blocks of text — or drop two files — and see every change lined up with numbered rows. Read it side by side, as a unified diff, or inline, and drill down to the exact word or character that moved. You can tell it to ignore case, whitespace or blank lines, collapse the untouched parts, and export the whole thing as a standard .diff patch. Everything runs inside your browser, so confidential code and contracts never leave your machine.",
+    features: [
+      "Side-by-side, unified and inline views",
+      "Numbered lines with word- or character-level highlighting",
+      "Drag and drop a file onto either side",
+      "Ignore case, whitespace or blank lines",
+      "Collapse unchanged lines to focus on what moved",
+      "Added, removed and similarity statistics",
+      "Export a standard .diff patch or copy it",
+      "100% local — no data leaves your browser",
+    ],
+    howTo: [
+      {
+        title: "Add both texts",
+        text: "Paste into the two boxes, or drag a file onto either one.",
+      },
+      {
+        title: "Pick a view",
+        text: "Side by side, unified, or inline — plus word or character detail.",
+      },
+      {
+        title: "Tune the comparison",
+        text: "Ignore case, whitespace or blank lines so only real changes show.",
+      },
+      {
+        title: "Read or export",
+        text: "Green is added, red is removed. Copy or download the .diff patch.",
+      },
+    ],
+    faqs: [
+      {
+        question: "What is a diff checker?",
+        answer:
+          "A diff checker compares two blocks of text and highlights exactly what changed between them. Additions appear in green, deletions in red, and matched lines stay neutral, so you can see at a glance what a rewrite, an edit or a code change actually did.",
+      },
+      {
+        question: "What is the difference between the side-by-side, unified and inline views?",
+        answer:
+          "Side by side puts the original and the modified version in two numbered columns, which is easiest for reviewing edits. Unified stacks everything into one column with + and − markers, the same format Git and code reviews use. Inline merges both versions into a single flowing block, which reads well for prose where you want to see the old and new wording together.",
+      },
+      {
+        question: "What is the difference between word diff and character diff?",
+        answer:
+          "Both compare line by line first, then look inside the lines that changed. Word detail highlights whole words, which keeps prose readable. Character detail highlights individual characters, which is better for catching a typo, a flipped digit or a single-character code change.",
+      },
+      {
+        question: "Can I compare two files instead of pasting text?",
+        answer:
+          "Yes. Drag a file onto either box, or use the File button to browse. Any plain-text format works — .txt, .md, .json, .csv, .log, and source files like .js, .ts, .css or .html. The file is read locally in your browser and never uploaded.",
+      },
+      {
+        question: "What do the ignore options do?",
+        answer:
+          "Ignore case treats Name and name as the same. Ignore whitespace collapses runs of spaces and tabs, so re-indented code stops showing up as a change. Ignore blank lines skips empty lines on both sides while keeping the original line numbers intact. Turn them on to strip out cosmetic noise and leave only meaningful differences.",
+      },
+      {
+        question: "What can I do with the .diff file?",
+        answer:
+          "The download is a standard unified diff with @@ hunk headers and three lines of context. You can attach it to a ticket or pull request, share it as a review artefact, or apply it to a copy of the original with git apply or the patch command.",
+      },
+      {
+        question: "How is the similarity percentage calculated?",
+        answer:
+          "It compares how many characters the two texts still have in common against their combined length. 100% means the texts are identical under your current ignore settings, and the number drops as more of the content differs.",
+      },
+      {
+        question: "Is my text private?",
+        answer:
+          "Yes. The comparison runs entirely in your browser using client-side JavaScript. Nothing you paste or drop is sent to a server, logged, or stored anywhere.",
+      },
+    ],
+    related: ["json-formatter", "regex-tester", "csv-to-json"],
+  },
+  {
+    slug: "regex-tester",
+    name: "Regex Tester",
+    tagline: "Test, debug and actually understand regular expressions",
+    category: "Developer Tools",
+    icon: "Code",
+    description:
+      "Free online Regex Tester with a plain-English explainer. See matches highlighted live, inspect capture groups, preview replacements, and learn what every part of your pattern does.",
+    keywords: [
+      "regex tester",
+      "regex tester online",
+      "test regex",
+      "regular expression tester",
+      "regex checker",
+      "regex debugger",
+      "javascript regex",
+      "regex explainer",
+      "explain regular expression",
+      "regex cheat sheet",
+    ],
+    intro:
+      "Write or paste a regular expression and watch every match light up in your test string as you type. The part most testers leave out is here too: an explanation panel that breaks your pattern down piece by piece and tells you, in plain English, what each bracket, quantifier and escape is actually doing. You also get a match inspector with capture groups, a search-and-replace preview, ready-made patterns and a cheat sheet. It runs on JavaScript's native RegExp engine, so what you see is exactly what your code will do.",
+    features: [
+      "Plain-English explanation of every part of your pattern",
+      "Live highlighting as you type, with each match coloured",
+      "Clickable flag toggles that say what each flag does",
+      "Match inspector with positions, capture groups and named groups",
+      "Search-and-replace preview with $1 substitutions",
+      "Ready-made patterns: email, URL, IPv4, CNIC, PK mobile and more",
+      "Built-in cheat sheet for when you forget the syntax",
+      "Native JavaScript engine — identical to Node and the browser",
+    ],
+    howTo: [
+      {
+        title: "Write or pick a pattern",
+        text: "Type your regex, or start from one of the ready-made patterns.",
+      },
+      {
+        title: "Set your flags",
+        text: "Click g, i, m, s, u or y — each chip explains what it changes.",
+      },
+      {
+        title: "Add test text",
+        text: "Paste the string you want to match against and watch it highlight.",
+      },
+      {
+        title: "Read the breakdown",
+        text: "Open Explanation to see what your pattern does, token by token.",
+      },
+    ],
+    faqs: [
+      {
+        question: "What is a regular expression (regex)?",
+        answer:
+          "A regular expression is a compact way of describing a search pattern for text. Instead of looking for one fixed string, you describe a shape — three digits, then a dash, then seven digits — and the engine finds everything that fits. Regex is used everywhere for searching, validating input and reformatting text.",
+      },
+      {
+        question: "How does the explanation panel work?",
+        answer:
+          "It walks through your pattern from left to right and describes every construct it finds: character classes, quantifiers, anchors, groups, lookarounds, back-references and escapes. Nested groups are indented so you can see the structure, and each row shows the exact snippet it is describing. It is the fastest way to understand a regex you inherited from someone else.",
+      },
+      {
+        question: "What do the g, i, m, s, u and y flags mean?",
+        answer:
+          "g (global) finds every match instead of stopping at the first. i ignores case. m (multiline) makes ^ and $ match at each line break rather than only at the ends of the string. s (dotAll) lets the dot match line breaks too. u enables full Unicode escapes like \\p{L}. y (sticky) matches only at the current position instead of searching ahead.",
+      },
+      {
+        question: "Why is only one match highlighted?",
+        answer:
+          "Because the g flag is off. Without it, JavaScript returns the first match and stops. Click the g chip to turn global matching on and every occurrence will be highlighted.",
+      },
+      {
+        question: "What is the difference between (abc) and (?:abc)?",
+        answer:
+          "Both group the expression so a quantifier can apply to the whole thing. (abc) also captures — it remembers what it matched so you can reference it as $1 in a replacement or in the match inspector. (?:abc) groups without capturing, which keeps your group numbers clean and is slightly faster when you do not need the captured text.",
+      },
+      {
+        question: "How do I use capture groups in the replacement?",
+        answer:
+          "In the Replace tab, use $1, $2 and so on for numbered capture groups, $<name> for named groups like (?<year>\\d{4}), and $& for the entire match. The preview updates live so you can confirm the result before pasting it into your code.",
+      },
+      {
+        question: "Which regex flavour does this tester use?",
+        answer:
+          "JavaScript's built-in RegExp engine, running in your own browser. The behaviour is identical to what you get in Node.js, React or any modern browser. Patterns from other flavours — PCRE, Python, Java — are usually close but not always identical, so a pattern copied from another language may need small adjustments.",
+      },
+      {
+        question: "Is my test data saved?",
+        answer:
+          "No. Everything happens locally in your browser. Your patterns and test strings are never sent to a server, so it is safe to test against real log lines or customer data.",
+      },
+    ],
+    related: ["diff-checker", "json-formatter", "base64-encoder"],
+  },
+  {
+    slug: "csv-to-json",
+    name: "CSV to JSON Converter",
+    tagline: "Drop a CSV file, get JSON back — and download it",
+    category: "Developer Tools",
+    icon: "ArrowLeftRight",
+    description:
+      "Free CSV to JSON converter. Drag and drop a CSV, TSV or JSON file, convert it instantly and download the result. Handles quoted fields and any delimiter. Runs in your browser.",
+    keywords: [
+      "csv to json",
+      "convert csv to json",
+      "csv to json converter",
+      "json to csv",
+      "csv converter online",
+      "csv to json online free",
+      "convert json to csv",
+      "csv to json file upload",
+      "download json from csv",
+      "tsv to json",
+    ],
+    intro:
+      "Drop a CSV file straight onto the page — or paste the rows — and get a clean JSON array back, ready to download. It goes the other way too: nested JSON flattens into proper spreadsheet columns. The parser deals with the things that usually break converters: quoted fields, commas and line breaks inside values, semicolon and tab delimiters, and phone numbers whose leading zeros must survive. Nothing is uploaded — your file is read and converted right here in the browser.",
+    features: [
+      "Drag and drop a CSV, TSV, TXT or JSON file",
+      "Download the result as a .json or .csv file",
+      "Auto-detects comma, semicolon, tab and pipe delimiters",
+      "Handles quoted fields, embedded commas and line breaks",
+      "Keeps leading zeros so phone numbers and IDs stay intact",
+      "Flattens nested JSON into dot-notation columns",
+      "Table preview so you can check the data before exporting",
+      "Runs locally — your file never leaves your browser",
+    ],
+    howTo: [
+      {
+        title: "Add your data",
+        text: "Drag a file onto the input box, browse for one, or just paste.",
+      },
+      {
+        title: "Choose the direction",
+        text: "CSV → JSON or JSON → CSV. Dropped files pick this for you.",
+      },
+      {
+        title: "Adjust the options",
+        text: "Set the delimiter, header row and how values should be converted.",
+      },
+      {
+        title: "Copy or download",
+        text: "Check the table preview, then export a .json or .csv file.",
+      },
+    ],
+    faqs: [
+      {
+        question: "What is CSV format?",
+        answer:
+          "CSV (Comma-Separated Values) is a plain-text table. Each line is a row, values inside a row are separated by commas, and the first line usually holds the column headers. Because it is just text, nearly every spreadsheet, database and analytics tool can read and write it.",
+      },
+      {
+        question: "Can I upload a CSV file instead of pasting?",
+        answer:
+          "Yes. Drag a .csv, .tsv, .txt or .json file anywhere onto the input box, or click Browse to pick one. The converter reads it with the browser's own file reader, works out whether it is CSV or JSON, and converts it immediately. The file is never sent anywhere.",
+      },
+      {
+        question: "Can I download the converted result as a file?",
+        answer:
+          "Yes. The Download button saves the output as a .json or .csv file, named after the file you dropped in. There is also a Copy button if you would rather paste the result straight into your editor.",
+      },
+      {
+        question: "My CSV uses semicolons or tabs. Will that work?",
+        answer:
+          "Yes. Delimiter detection is automatic — the tool inspects the first row and picks whichever of comma, semicolon, tab or pipe is being used, which covers European exports and TSV files. You can also override it manually if the guess is wrong.",
+      },
+      {
+        question: "Why do my phone numbers keep their leading zeros?",
+        answer:
+          "Because converting 03001234567 to a number would silently drop the leading zero and corrupt the data. Values with a leading zero, and numbers too long to represent exactly, are deliberately kept as strings. Everything else converts normally, and you can switch number conversion off entirely if you want every value as text.",
+      },
+      {
+        question: "What happens to nested JSON when I convert it to CSV?",
+        answer:
+          "Nested objects are flattened into dot-notation columns, so { \"address\": { \"city\": \"Karachi\" } } becomes a column called address.city. Arrays are flattened by index. If you would rather keep the raw structure, turn flattening off and nested values are written as JSON inside a single cell.",
+      },
+      {
+        question: "What if some rows have extra fields?",
+        answer:
+          "Every key found anywhere in the data becomes a column, in the order it first appears, and rows that do not have that field get an empty cell. Going the other way, short CSV rows are padded so each record has the full set of keys.",
+      },
+      {
+        question: "Can this tool handle large CSV files?",
+        answer:
+          "It comfortably handles files with thousands of rows, since the conversion is native JavaScript running on your own machine with no network round trip. Files up to 15 MB can be dropped in; beyond that a streaming or command-line tool is a better fit.",
+      },
+      {
+        question: "Is my data secure?",
+        answer:
+          "Yes. All parsing and conversion happens locally in your browser. Nothing is uploaded, logged or stored, so it is safe to use with customer exports and internal reports.",
+      },
+    ],
+    related: ["json-formatter", "diff-checker", "base64-encoder"],
+  },
   {
     slug: "qr-code-generator",
     name: "QR Code Generator",
@@ -194,7 +472,6 @@ export const TOOLS = [
     related: ["uuid-generator", "base64-encoder", "qr-code-generator"],
   },
 
-  // ───────────────────────────── Image & PDF ─────────────────────────────
   {
     slug: "pdf-to-image",
     name: "PDF to Image",
@@ -333,7 +610,6 @@ export const TOOLS = [
     related: ["image-compressor", "app-icon-generator", "pdf-to-image"],
   },
 
-  // ───────────────────────────── Text & Code ─────────────────────────────
   {
     slug: "json-formatter",
     name: "JSON Formatter & Validator",
@@ -555,7 +831,6 @@ export const TOOLS = [
     related: ["word-counter", "json-formatter", "base64-encoder"],
   },
 
-  // ───────────────────────── Generators (more) ─────────────────────────
   {
     slug: "css-gradient-generator",
     name: "CSS Gradient Generator",
@@ -645,7 +920,6 @@ export const TOOLS = [
     related: ["word-counter", "case-converter", "css-gradient-generator"],
   },
 
-  // ───────────────────────── Image & PDF (more) ─────────────────────────
   {
     slug: "image-resizer",
     name: "Image Resizer",
@@ -740,7 +1014,6 @@ export const TOOLS = [
     related: ["image-resizer", "image-converter", "qr-code-generator"],
   },
 
-  // ───────────────────────── Text & Code (more) ─────────────────────────
   {
     slug: "hash-generator",
     name: "Hash Generator",
@@ -917,7 +1190,6 @@ export const TOOLS = [
     ],
     related: ["uuid-generator", "hash-generator", "json-formatter"],
   },
-  // ───────────────────────────── Pakistan Tools ─────────────────────────────
   {
     slug: "cnic-lookup",
     name: "CNIC Lookup & Decoder",
@@ -988,7 +1260,6 @@ export const TOOLS = [
       }
     ],
     related: [],
-    // Companion blog post, surfaced as a "deep dive" link on the tool page.
     article: {
       slug: "how-nadra-structures-the-cnic-number-in-pakistan",
       title: "How NADRA Structures the CNIC Number in Pakistan",
@@ -996,18 +1267,143 @@ export const TOOLS = [
         "The full story behind this tool — the 5–7–1 split, province codes, the family number, and the myths about what a CNIC reveals.",
     },
   },
+  {
+    slug: "salary-tax-calculator",
+    name: "Salary Tax Calculator",
+    tagline: "Calculate income tax for salaried individuals (FBR 2026-27)",
+    category: "Pakistan Tools",
+    icon: "Calculator",
+    description:
+      "Free FBR Salary Tax Calculator for Pakistan 2026-2027. Enter your monthly or annual salary to instantly calculate income tax, gross salary, and net take-home pay.",
+    keywords: [
+      "salary tax calculator",
+      "salary tax calculator 2026-27",
+      "fbr tax calculator",
+      "income tax calculator pakistan",
+      "pakistan salary tax",
+      "tax slabs 2026",
+    ],
+    intro:
+      "Calculate your exact monthly and yearly income tax according to the latest Federal Board of Revenue (FBR) budget slabs for 2026-2027. Simply enter your gross salary to see the breakdown of your tax deductions and net take-home pay. All calculations happen securely in your browser—no financial data is ever sent to a server.",
+    features: [
+      "Latest FBR 2026-2027 Tax Slabs",
+      "Monthly & Yearly breakdown",
+      "Effective tax rate calculation",
+      "100% private, runs locally",
+    ],
+    howTo: [
+      { title: "Enter Salary", text: "Type your gross income in PKR." },
+      { title: "Select Period", text: "Choose whether the amount is monthly or yearly." },
+      { title: "Review Deductions", text: "See your exact tax liability." },
+      { title: "Check Net Income", text: "View your take-home salary after taxes." },
+    ],
+    faqs: [
+      {
+        question: "Are these the latest tax slabs?",
+        answer:
+          "Yes, this calculator uses the most recent FBR tax slabs introduced in the Pakistan Federal Budget 2026-2027 for salaried individuals.",
+      },
+      {
+        question: "Is my salary data saved?",
+        answer:
+          "No. The calculation runs entirely locally on your device inside the browser. Your financial data is never transmitted or saved.",
+      },
+    ],
+    related: ["pta-tax-calculator", "zakat-calculator", "cnic-lookup"],
+  },
+  {
+    slug: "pta-tax-calculator",
+    name: "PTA Mobile Tax Calculator",
+    tagline: "Estimate PTA tax on imported mobile phones in Pakistan",
+    category: "Pakistan Tools",
+    icon: "Smartphone",
+    description:
+      "Estimate the PTA tax for importing mobile phones in Pakistan on both Passport (Baggage Rule) and CNIC. Instant, offline calculator.",
+    keywords: [
+      "pta tax calculator",
+      "mobile tax pakistan",
+      "iphone pta tax",
+      "pta tax 2026",
+      "fbr mobile tax",
+      "custom duty on mobile",
+    ],
+    intro:
+      "Instantly estimate the PTA tax for any mobile phone imported into Pakistan. Enter the device's approximate value in USD to see the estimated tax under both the Passport (Baggage Rule) and CNIC categories. Values are based on the latest FBR standard slabs.",
+    features: [
+      "Calculates Passport & CNIC tax rates",
+      "Uses standard FBR slab structures",
+      "Instant USD value mapping",
+      "Private and fully local",
+    ],
+    howTo: [
+      { title: "Enter Device Value", text: "Input the approximate price of the phone in USD." },
+      { title: "Check Passport Tax", text: "View the tax rate if registering on a recent passport." },
+      { title: "Check CNIC Tax", text: "View the standard commercial rate." },
+    ],
+    faqs: [
+      {
+        question: "Is the calculated tax 100% accurate?",
+        answer:
+          "Yes. This tool provides a close estimation based on FBR slabs. The final tax generated by the DIRBS system may vary slightly depending on the exact phone model and daily exchange rates.",
+      },
+      {
+        question: "What is the Baggage Rule?",
+        answer:
+          "If you have traveled internationally within the last 60 days, you can register one mobile phone on your passport at a discounted tax rate under the baggage rule.",
+      },
+    ],
+    related: ["salary-tax-calculator", "cnic-lookup", "zakat-calculator"],
+  },
+  {
+    slug: "zakat-calculator",
+    name: "Zakat Calculator",
+    tagline: "Calculate your Zakat accurately in PKR",
+    category: "Pakistan Tools",
+    icon: "Coins",
+    description:
+      "Free online Zakat Calculator for Pakistan. Calculate 2.5% Zakat on your cash, gold, silver, and assets minus liabilities. 100% private.",
+    keywords: [
+      "zakat calculator",
+      "zakat calculator pakistan",
+      "zakat in pkr",
+      "calculate zakat online",
+      "zakat on gold",
+      "nisab zakat",
+    ],
+    intro:
+      "A simple, secure, and accurate Zakat calculator for Muslims in Pakistan. Enter the value of your cash, gold, silver, and business assets in PKR, deduct your liabilities, and instantly calculate your obligatory 2.5% Zakat. The tool runs completely offline in your browser, keeping your wealth details entirely private.",
+    features: [
+      "Fields for Gold, Silver, Cash & Assets",
+      "Deduction of Liabilities",
+      "Standard 2.5% Calculation",
+      "Complete data privacy",
+    ],
+    howTo: [
+      { title: "Enter Assets", text: "Input the current PKR value of your Zakatable wealth." },
+      { title: "Enter Liabilities", text: "Add any debts or unpaid loans." },
+      { title: "Check Net Wealth", text: "Review your total zakatable amount." },
+      { title: "View Zakat", text: "Instantly see the 2.5% amount to pay." },
+    ],
+    faqs: [
+      {
+        question: "Who is required to pay Zakat?",
+        answer:
+          "Yes. Zakat is obligatory on adult Muslims whose net wealth meets or exceeds the Nisab threshold (typically the value of 52.5 tolas of silver) and has been in their possession for one lunar year.",
+      },
+      {
+        question: "Is my financial data secure?",
+        answer:
+          "Yes. This calculator is completely client-side. Your inputs never leave your device and are cleared as soon as you refresh or close the page.",
+      },
+    ],
+    related: ["salary-tax-calculator", "pta-tax-calculator"],
+  },
 ];
 
 export const TOOLS_BY_SLUG = Object.fromEntries(
   TOOLS.map((tool) => [tool.slug, tool]),
 );
 
-// Tools surfaced on the homepage, ordered by search demand. app-icon-generator
-// leads because it already pulls organic impressions in Search Console; the rest
-// are the highest-volume utilities. Featuring them on the homepage gives the
-// individual tool pages a direct internal link from the site's strongest page,
-// which is what gets them crawled and indexed (instead of "crawled — currently
-// not indexed") and lifts their ranking.
 export const FEATURED_TOOL_SLUGS = [
   "app-icon-generator",
   "qr-code-generator",
@@ -1023,7 +1419,6 @@ export const FEATURED_TOOLS = FEATURED_TOOL_SLUGS.map(
   (slug) => TOOLS_BY_SLUG[slug],
 ).filter(Boolean);
 
-// Category groups in display order, derived from the tool list.
 export const TOOL_CATEGORIES = TOOLS.reduce((groups, tool) => {
   const group = groups.find((g) => g.name === tool.category);
   if (group) {

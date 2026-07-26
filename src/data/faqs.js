@@ -1,6 +1,3 @@
-// Single source for the homepage FAQ — consumed by BOTH the visible <Faq />
-// section and the FAQPage JSON-LD, so the structured data always matches the
-// rendered content (a Google requirement for FAQ rich results / AEO).
 export const HOME_FAQS = [
   {
     q: "Who is Anwer Solangi?",

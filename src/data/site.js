@@ -1,7 +1,3 @@
-// Single source of truth for site identity, canonical URLs, and brand handles.
-// Change the canonical host or a social profile in ONE place here and it flows
-// into metadata, sitemap, robots, and all schema.org (sameAs) output.
-
 // Canonical host = the bare non-www apex. Vercel must redirect www -> apex so
 // canonicals never point at a redirecting URL.
 export const SITE_URL = (
@@ -14,15 +10,12 @@ export const SITE_DESCRIPTION =
 export const TWITTER_HANDLE = "@anwersolangidev";
 export const CONTACT_EMAIL = "me@anwersolangi.com";
 
-// Stable, domain-owned schema @ids (entity graph anchors). Keep these constant.
 export const PERSON_ID = `${SITE_URL}/#person`;
 export const WEBSITE_ID = `${SITE_URL}/#website`;
 export const SERVICE_ID = `${SITE_URL}/#service`;
 
-// Karachi, PK
 export const GEO = { lat: 24.8607, lng: 67.0011, region: "PK-SD" };
 
-// Build an absolute URL from a path ("/foo" or "foo").
 export const absUrl = (path = "") => {
   if (!path) return SITE_URL;
   return `${SITE_URL}${path.startsWith("/") ? path : `/${path}`}`;
@@ -37,7 +30,6 @@ export const absUrl = (path = "") => {
 // Q-item (the single highest-impact entry — a direct feed into Google's
 // Knowledge Graph; create one with occupation=software developer, then add it).
 export const SOCIAL_PROFILES = [
-  // Dev / professional (handle: anwersolangi)
   "https://github.com/anwersolangi",
   "https://www.linkedin.com/in/anwersolangi",
   "https://stackoverflow.com/users/12190206/anwer-solangi",
@@ -45,7 +37,6 @@ export const SOCIAL_PROFILES = [
   "https://codecanyon.net/user/anwersolangi",
   "https://www.fiverr.com/anwer_solangi",
   "https://play.google.com/store/apps/developer?id=Anwer+Solangi",
-  // Content / social (handle: anwersolangidev)
   "https://x.com/anwersolangidev",
   "https://www.youtube.com/@anwersolangidev",
   "https://www.instagram.com/anwersolangidev",
@@ -54,5 +45,4 @@ export const SOCIAL_PROFILES = [
   "https://www.pinterest.com/anwersolangidev",
   "https://www.facebook.com/anwersolangidev",
   "https://medium.com/@anwersolangy",
-  // "https://www.wikidata.org/wiki/<Qid>",  // add once created (see notes)
 ];

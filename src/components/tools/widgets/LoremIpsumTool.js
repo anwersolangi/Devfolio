@@ -15,7 +15,6 @@ function makeSentence() {
   const len = 8 + rand(8);
   const words = Array.from({ length: len }, () => WORDS[rand(WORDS.length)]);
   let s = words.join(" ");
-  // sprinkle a comma
   if (len > 9) {
     const c = 3 + rand(len - 6);
     words[c] = words[c] + ",";
@@ -33,7 +32,7 @@ export default function LoremIpsumTool() {
   const [unit, setUnit] = useState("paragraphs");
   const [count, setCount] = useState(3);
   const [startClassic, setStartClassic] = useState(true);
-  const [seed, setSeed] = useState(0); // bump to regenerate
+  const [seed, setSeed] = useState(0);
 
   const text = useMemo(() => {
     const n = Math.min(100, Math.max(1, count || 1));

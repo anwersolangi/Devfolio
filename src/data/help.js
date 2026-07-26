@@ -1,4 +1,3 @@
-// Help content for each app
 export const HELP_CONTENT = {
     "velocity-track": {
         title: "Help & Support",

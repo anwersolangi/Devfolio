@@ -32,12 +32,10 @@ function parseId(input) {
 
 export default function YoutubeThumbnailTool() {
   const [input, setInput] = useState("");
-  // Keys whose loaded image was actually YouTube's 120px placeholder.
   const [unavailable, setUnavailable] = useState(new Set());
 
   const id = useMemo(() => parseId(input), [input]);
 
-  // Reset availability when the id changes.
   const [lastId, setLastId] = useState("");
   if (id !== lastId) {
     setLastId(id);
@@ -84,8 +82,6 @@ export default function YoutubeThumbnailTool() {
                     className="h-full w-full object-cover"
                     onError={() => markUnavailable(qq.key)}
                     onLoad={(e) => {
-                      // YouTube serves a 120px grey placeholder for missing
-                      // high-res sizes — treat that as unavailable.
                       if (
                         qq.key !== "default" &&
                         e.currentTarget.naturalWidth <= 120
@@ -122,7 +118,7 @@ export default function YoutubeThumbnailTool() {
                           `${id}-${qq.key}.jpg`,
                         )
                       }
-                      className="rounded-lg bg-accent p-2 text-[#1a0a02] transition hover:opacity-90"
+                      className="rounded-lg bg-accent p-2 text-on-accent transition hover:opacity-90"
                       aria-label="Download thumbnail"
                     >
                       <Download className="h-4 w-4" />

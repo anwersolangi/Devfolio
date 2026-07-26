@@ -1,6 +1,3 @@
-// components/tools/ToolIcon.js
-// Maps a tool's `icon` string (see src/data/tools.js) to a lucide icon.
-// Server-safe: lucide icons render fine inside React Server Components.
 import {
   QrCode,
   Smartphone,

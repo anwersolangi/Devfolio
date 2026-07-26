@@ -1,4 +1,3 @@
-// data/reels.js — updated for v2 schema
 const COVERS = "/reels/covers";
 
 export const reelsData = [

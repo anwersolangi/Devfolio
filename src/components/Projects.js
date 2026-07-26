@@ -34,28 +34,24 @@ const projects = [
     detailsLink: "/apps/nearby",
   },
   {
-    title: "WhatsupFire",
-    slug: "whatsupfire",
+    title: "DocuLensAI",
+    slug: "doculensai",
     n: "02",
-    tag: "Messaging app · template",
-    pitch: "A WhatsApp-shaped messenger you can buy.",
+    tag: "AI document scanner",
+    pitch: "A private, offline scanner in your pocket.",
     description:
-      "Real-time chat, 24-hour stories and Firebase phone auth. Sold as a commercial React Native template on CodeCanyon.",
-    image: "/whatsupfire.png",
+      "Auto edge-detection, on-device OCR and one-tap PDF, image & text export — every scan runs entirely on the phone. No cloud, no account. Built in React Native with VisionCamera + OpenCV and Google ML Kit.",
+    image: "/doculensai_screenshot_01.png",
     layout: "mobile",
-    stage: "linear-gradient(135deg, #2d180f 0%, #1c0e07 100%)",
-    accent: "#ffb27a",
-    stack: ["React Native", "Firebase", "Phone Auth", "Stories"],
+    stage: "linear-gradient(135deg, #16263f 0%, #0e1626 100%)",
+    accent: "#3fd0c9",
+    stack: ["React Native", "VisionCamera + OpenCV", "ML Kit OCR", "SQLite"],
     stats: [
-      ["Commercial", "template"],
-      ["iOS+AND", "platforms"],
-      ["Live", "CodeCanyon"],
+      ["On-device", "OCR"],
+      ["10", "pro filters"],
+      ["100%", "offline"],
     ],
-    primary: {
-      label: "CodeCanyon",
-      href: "https://codecanyon.net/item/whatsupfire-react-native-messenger/30632195",
-    },
-    detailsLink: "/apps/whatsupfire",
+    detailsLink: "/apps/doculensai",
   },
   {
     title: "YouTube Fullscreen Focus",
@@ -66,7 +62,7 @@ const projects = [
     description:
       "Locks YouTube into a distraction-free fullscreen — kills accidental keypresses, hides chrome, remembers your last state. Published on the Chrome Web Store, source on GitHub.",
     image: "/youtube-fullscreen-focus.jpg",
-    layout: "billboard", // full-width cinematic strip
+    layout: "billboard",
     stage: "linear-gradient(135deg, #1f0e0c 0%, #15090a 50%, #2a0f0e 100%)",
     accent: "#ff5a4a",
     stack: ["JavaScript", "Chrome APIs", "LocalStorage", "CSS3"],
@@ -86,28 +82,52 @@ const projects = [
     detailsLink: "/apps/youtube-fullscreen-focus",
   },
   {
-    title: "ReactTube",
-    slug: "reacttube",
+    title: "TapMeal",
+    slug: "tapmeal",
     n: "04",
-    tag: "Open-source UI clone",
-    pitch: "A YouTube clone you can read.",
+    tag: "Restaurant SaaS · QR ordering",
+    pitch: "Scan the table. Order from the browser.",
     description:
-      "Front-end in React Native — video browsing, comments, profiles, earnings. Public on GitHub as a reference for modern UI patterns and reusable components.",
-    image:
-      "https://raw.githubusercontent.com/anwersolangi/ReactTube-Youtube-clone-in-React-Native/master/screenshots/Cover_1.png",
-    layout: "mobile",
-    stage: "linear-gradient(135deg, #16181c 0%, #0f1115 100%)",
-    accent: "#7af0a8",
-    stack: ["React Native", "Navigation", "Reusable components"],
+      "A three-app restaurant suite on one Firebase backend — customers order by QR with no install, while owners run orders, kitchen and staff live from their phone. Full TypeScript source on CodeCanyon.",
+    image: "/tabletap_featured.jpg",
+    layout: "billboard",
+    stage: "linear-gradient(135deg, #2b2213 0%, #1a1409 100%)",
+    accent: "#e5b962",
+    stack: ["React Native", "Firebase", "Next.js", "TypeScript"],
     stats: [
-      ["Open source", "GitHub"],
-      ["Reusable", "components"],
+      ["3 apps", "1 backend"],
+      ["Live", "Play Store"],
+      ["Source", "CodeCanyon"],
     ],
     primary: {
-      label: "View on GitHub",
-      href: "https://github.com/anwersolangi/ReactTube-Youtube-clone-in-React-Native",
+      label: "Play Store",
+      href: "https://play.google.com/store/apps/details?id=com.anwersolangi.tableau",
     },
-    detailsLink: "/apps/reacttube",
+    secondary: {
+      label: "CodeCanyon",
+      href: "https://codecanyon.net/item/tapmeal-restaurant-management-qr-ordering-system-react-native-app/63557195",
+    },
+    detailsLink: "/apps/tapmeal",
+  },
+  {
+    title: "MemorIQ",
+    slug: "memoriq",
+    n: "05",
+    tag: "Memory game · rebrandable",
+    pitch: "Flip, match, beat the clock.",
+    description:
+      "A polished memory-match brain trainer — 9 themes, animated backgrounds, a lives system and per-round timers, all offline-first. Sold on CodeCanyon as a script you can rebrand from a single config file.",
+    image: "/memoriq_featured.png",
+    layout: "mobile",
+    stage: "linear-gradient(135deg, #241436 0%, #160c22 100%)",
+    accent: "#b794f6",
+    stack: ["React Native", "Reanimated", "MMKV", "TypeScript"],
+    stats: [
+      ["9", "themes"],
+      ["Offline", "first"],
+      ["1 file", "rebrand"],
+    ],
+    detailsLink: "/apps/memoriq",
   },
 ];
 
@@ -126,7 +146,7 @@ export default function Projects() {
               .
             </h2>
             <p className="text-base md:text-lg text-ink-2 leading-relaxed mt-5 max-w-2xl">
-              Four selected case studies. The full list — six apps, multiple
+              Five selected case studies. The full catalog — apps, commercial
               templates, and a handful of open-source side quests — lives in the
               Apps section below.
             </p>
@@ -149,17 +169,12 @@ export default function Projects() {
   );
 }
 
-/* ─────────────────────────────────────────────────────────────────────
-   Mobile project card — screenshot floats bare with rounded corners +
-   heavy shadow on a warm-tinted stage. Project name + copy on the side.
-   ───────────────────────────────────────────────────────────────────── */
 function MobileCard({ project, reverse }) {
   return (
     <article
       className="group relative rounded-3xl overflow-hidden border border-rule"
       style={{ background: project.stage }}
     >
-      {/* Ghost numeral baked into the stage */}
       <div
         className="absolute -top-6 right-6 lg:right-10 select-none pointer-events-none font-display font-extrabold leading-none"
         style={{
@@ -174,7 +189,6 @@ function MobileCard({ project, reverse }) {
       </div>
 
       <div className="relative grid md:grid-cols-[1fr_1fr] gap-8 lg:gap-12 items-center px-6 sm:px-8 lg:px-14 py-10 sm:py-14 lg:py-20">
-        {/* Screenshot — no frame, just clean image + heavy shadow */}
         <div
           className={`flex justify-center ${reverse ? "md:order-2" : "md:order-1"}`}
         >
@@ -199,7 +213,6 @@ function MobileCard({ project, reverse }) {
           </div>
         </div>
 
-        {/* Copy */}
         <div className={reverse ? "md:order-1" : "md:order-2"}>
           <div className="flex items-center gap-3 font-mono text-[11px] tracking-[0.14em] uppercase">
             <span style={{ color: project.accent }}>● {project.n}</span>
@@ -229,10 +242,6 @@ function MobileCard({ project, reverse }) {
   );
 }
 
-/* ─────────────────────────────────────────────────────────────────────
-   Billboard project card — wider, full-bleed treatment for things
-   that aren't shaped like phones (Chrome extensions, web apps, etc).
-   ───────────────────────────────────────────────────────────────────── */
 function BillboardCard({ project }) {
   return (
     <article
@@ -281,7 +290,6 @@ function BillboardCard({ project }) {
           </div>
         </div>
 
-        {/* Screenshot — wide aspect, bleeds to the bottom edge of the card */}
         <div
           className="relative w-full overflow-hidden rounded-t-2xl border-t border-l border-r border-rule"
           style={{
@@ -302,7 +310,6 @@ function BillboardCard({ project }) {
             <ScreenshotPlaceholder text={project.title} />
           )}
 
-          {/* Subtle bottom gradient so the card edge feels intentional */}
           <div
             className="absolute inset-x-0 bottom-0 h-12 pointer-events-none"
             style={{
@@ -315,8 +322,6 @@ function BillboardCard({ project }) {
     </article>
   );
 }
-
-/* ───────────────────────────────────────── shared bits ───── */
 
 function Meta({ project, compact = false }) {
   const statCols =
@@ -360,7 +365,7 @@ function Cta({ project }) {
     <div className="flex flex-wrap gap-2 mt-7">
       <Link
         href={project.detailsLink}
-        className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg bg-ink text-bg text-[13px] font-semibold hover:bg-accent hover:text-[#1a0a02] transition"
+        className="inline-flex items-center gap-1.5 px-4 py-2.5 rounded-lg bg-ink text-bg text-[13px] font-semibold hover:bg-accent-deep hover:text-on-accent transition"
       >
         View details
         <ArrowUpRight className="w-3.5 h-3.5" />

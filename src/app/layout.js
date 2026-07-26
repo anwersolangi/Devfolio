@@ -3,12 +3,13 @@ import "./globals.css";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import SmoothScroll from "@/components/SmoothScroll";
+import ScrollProgress from "@/components/ScrollProgress";
 
 import { SiteSchemas } from "@/components/SEOComponents";
 import {
   SITE_URL,
   SITE_NAME,
-  SITE_DESCRIPTION,
   TWITTER_HANDLE,
   absUrl,
 } from "@/data/site";
@@ -42,7 +43,6 @@ export const metadata = {
   title: {
     default:
       "Anwer Solangi — React Native Developer in Karachi, Pakistan",
-    // Page titles already include the brand where needed; avoid duplicating it.
     template: "%s",
   },
   description:
@@ -132,20 +132,21 @@ export default function RootLayout({ children }) {
       className={`${hanken.variable} ${geistMono.variable} ${instrumentSerif.variable}`}
     >
       <head>
-        <link rel="icon" type="image/x-icon" href="/favicon.ico" />
         <SiteSchemas />
-        {/* Scroll-reveal content must stay visible without JavaScript */}
         <noscript>
           <style>{`.reveal{opacity:1 !important;transform:none !important}`}</style>
         </noscript>
       </head>
       <body className="antialiased">
-        <a href="#main-content" className="skip-link">
-          Skip to content
-        </a>
-        <Header />
-        <div id="main-content">{children}</div>
-        <Footer />
+        <SmoothScroll>
+          <a href="#main-content" className="skip-link">
+            Skip to content
+          </a>
+          <ScrollProgress />
+          <Header />
+          <div id="main-content">{children}</div>
+          <Footer />
+        </SmoothScroll>
       </body>
       {GA_ID ? <GoogleAnalytics gaId={GA_ID} /> : null}
     </html>
