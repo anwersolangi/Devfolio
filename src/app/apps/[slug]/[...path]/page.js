@@ -389,7 +389,7 @@ function HelpPage({ help, appSlug }) {
   );
 }
 
-function ContactPage({ contactOptions, appSlug, supportEmail }) {
+function ContactPage({ contactOptions, appSlug, appName, supportEmail }) {
   const createMailtoLink = (option) => {
     const subject = encodeURIComponent(option.subject);
     const body = encodeURIComponent(option.body);
@@ -399,15 +399,15 @@ function ContactPage({ contactOptions, appSlug, supportEmail }) {
   return (
     <main className="min-h-screen pt-28 pb-20 px-6 lg:px-16">
       <div className="max-w-4xl mx-auto">
-        <BackLink appSlug={appSlug} appName="app" />
+        <BackLink appSlug={appSlug} appName={appName} />
 
         <header className="mb-12 max-w-3xl">
           <div className="font-mono text-[11px] tracking-[0.14em] text-accent uppercase">
-            CONTACT
+            {appName} · CONTACT
           </div>
           <h1 className="text-5xl md:text-6xl font-extrabold tracking-[-0.045em] leading-[0.95] mt-3 text-ink">
             How can I{" "}
-            <span className="font-serif italic text-accent font-normal">
+            <span className="font-italic-serif text-accent font-normal">
               help
             </span>
             <span className="text-accent">?</span>
@@ -566,6 +566,7 @@ export default async function AppSubPage({ params }) {
         <ContactPage
           contactOptions={help.contactOptions}
           appSlug={slug}
+          appName={help.appName}
           supportEmail={help.supportEmail}
         />
       );

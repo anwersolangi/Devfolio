@@ -1,0 +1,476 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-02T00:00:00.000Z",
+  "title": "Design System: Anwer Solangi",
+  "extensions": {
+    "colorMeta": {
+      "accent": {
+        "role": "primary",
+        "displayName": "Ember Orange",
+        "canonical": "#ff6a3d",
+        "tonalRamp": [
+          "#2a0d05",
+          "#4d1a0a",
+          "#7a2a10",
+          "#a83a17",
+          "#d4501f",
+          "#ff6a3d",
+          "#ff9b74",
+          "#ffd0b8"
+        ]
+      },
+      "accent-deep": {
+        "role": "primary",
+        "displayName": "Ember Fill",
+        "canonical": "#ff6a3d",
+        "tonalRamp": [
+          "#2a0d05",
+          "#4d1a0a",
+          "#7a2a10",
+          "#a83a17",
+          "#d4501f",
+          "#ff6a3d",
+          "#ff9b74",
+          "#ffd0b8"
+        ]
+      },
+      "accent-2": {
+        "role": "primary",
+        "displayName": "Ember Light",
+        "canonical": "#ffb27a",
+        "tonalRamp": [
+          "#331d0e",
+          "#55301a",
+          "#7d4726",
+          "#a86033",
+          "#d18a52",
+          "#ffb27a",
+          "#ffcfae",
+          "#ffe9d9"
+        ]
+      },
+      "accent-hot": {
+        "role": "primary",
+        "displayName": "Ember Core",
+        "canonical": "#fff0dc",
+        "tonalRamp": [
+          "#2b241a",
+          "#443a2b",
+          "#61553f",
+          "#827459",
+          "#a89877",
+          "#cbbd9c",
+          "#e8dcc3",
+          "#fff0dc"
+        ]
+      },
+      "on-accent": {
+        "role": "primary",
+        "displayName": "Ember Ink",
+        "canonical": "#1a0a02",
+        "tonalRamp": [
+          "#1a0a02",
+          "#2e1206",
+          "#451c0b",
+          "#5e2711",
+          "#7a3418",
+          "#994220",
+          "#b95229",
+          "#d96433"
+        ]
+      },
+      "bg": {
+        "role": "neutral",
+        "displayName": "Darkroom Black",
+        "canonical": "#0d0c0b",
+        "tonalRamp": [
+          "#0d0c0b",
+          "#161514",
+          "#1f1d1b",
+          "#2b2926",
+          "#3a3733",
+          "#4d4944",
+          "#666158",
+          "#8a847a"
+        ]
+      },
+      "bg-2": {
+        "role": "neutral",
+        "displayName": "Bench",
+        "canonical": "#161514",
+        "tonalRamp": [
+          "#0d0c0b",
+          "#161514",
+          "#1f1d1b",
+          "#2b2926",
+          "#3a3733",
+          "#4d4944",
+          "#666158",
+          "#8a847a"
+        ]
+      },
+      "bg-3": {
+        "role": "neutral",
+        "displayName": "Shelf",
+        "canonical": "#1f1d1b",
+        "tonalRamp": [
+          "#0d0c0b",
+          "#161514",
+          "#1f1d1b",
+          "#2b2926",
+          "#3a3733",
+          "#4d4944",
+          "#666158",
+          "#8a847a"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Print White",
+        "canonical": "#f4efe7",
+        "tonalRamp": [
+          "#171512",
+          "#2b2822",
+          "#423e36",
+          "#5c574c",
+          "#7d7668",
+          "#a49c8c",
+          "#cdc6b8",
+          "#f4efe7"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Print Mid",
+        "canonical": "rgba(244, 239, 231, 0.62)",
+        "tonalRamp": [
+          "#171512",
+          "#2b2822",
+          "#423e36",
+          "#5c574c",
+          "#7d7668",
+          "#a49c8c",
+          "#cdc6b8",
+          "#f4efe7"
+        ]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Print Faint",
+        "canonical": "rgba(244, 239, 231, 0.38)",
+        "tonalRamp": [
+          "#171512",
+          "#2b2822",
+          "#423e36",
+          "#5c574c",
+          "#7d7668",
+          "#a49c8c",
+          "#cdc6b8",
+          "#f4efe7"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Hairline",
+        "canonical": "rgba(244, 239, 231, 0.10)"
+      },
+      "good": {
+        "role": "tertiary",
+        "displayName": "Fix Green",
+        "canonical": "#7af0a8",
+        "tonalRamp": [
+          "#08240f",
+          "#0f3d1c",
+          "#17602c",
+          "#20853e",
+          "#2fae55",
+          "#4ed37c",
+          "#7af0a8",
+          "#b6f9cf"
+        ]
+      },
+      "bad": {
+        "role": "tertiary",
+        "displayName": "Stop Red",
+        "canonical": "#ff7a7a",
+        "tonalRamp": [
+          "#2e0b0b",
+          "#4d1414",
+          "#751f1f",
+          "#a02b2b",
+          "#cc3f3f",
+          "#ff5c5c",
+          "#ff7a7a",
+          "#ffbdbd"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "Page-owning hero headline. One per page, tracking tightened to -0.045em because default spacing reads loose at this size."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Section titles, usually terminated with a period rendered in ember."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Card and subsection headings; drops to 600 weight at 17-18px inside cards."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "The workhorse body size (15px) — card copy, list items and dense prose, set in Print Mid rather than full ink."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "The section eyebrow. Mono, uppercase, always ember, numbered in reading order on index pages."
+      },
+      "micro": {
+        "displayName": "Micro Label",
+        "purpose": "Specimen labels above device frames, chip text, metric captions, footer links."
+      },
+      "accent-serif": {
+        "displayName": "Accent Serif",
+        "purpose": "Italic serif marking exactly one word per heading. Never body copy, never a full phrase."
+      },
+      "body-lead": {
+        "displayName": "Body Lead",
+        "purpose": "Opening paragraphs and section subtitles (18–20px)."
+      },
+      "body-sm": {
+        "displayName": "Body Small",
+        "purpose": "List items and secondary copy inside cards (14px)."
+      },
+      "body-xs": {
+        "displayName": "Body XS",
+        "purpose": "Supporting descriptions and metadata (13px) — the smallest prose step."
+      }
+    },
+    "shadows": [
+      {
+        "name": "focus-ring",
+        "value": "0 0 0 2px var(--accent)",
+        "purpose": "Global :focus-visible treatment with a 4px radius. Applied to every focusable element; never removed without an equivalent replacement."
+      },
+      {
+        "name": "suspended-object",
+        "value": "0 25px 50px -12px rgba(0, 0, 0, 0.6)",
+        "purpose": "Real cast shadow for objects genuinely floating in space: device frames and the app icon tile. The only sanctioned shadow on a surface."
+      },
+      {
+        "name": "ambient-glow",
+        "value": "radial-gradient(circle, rgba(255, 106, 61, 0.18), transparent 60%) with blur(20px)",
+        "purpose": "Not a shadow but a light source. The glow orb, positioned to bleed off the edge of its section and clipped by overflow-hidden."
+      }
+    ],
+    "motion": [
+      {
+        "name": "ease-standard",
+        "value": "cubic-bezier(0.2, 0.7, 0.3, 1)",
+        "purpose": "The system's only custom curve. Quick out, soft settle. Used by scroll reveals, hero entrance, and the FAQ accordion."
+      },
+      {
+        "name": "duration-state",
+        "value": "200ms",
+        "purpose": "Button opacity and colour state changes."
+      },
+      {
+        "name": "duration-surface",
+        "value": "300ms",
+        "purpose": "Card hover: the 2-4px lift plus the hairline warming to accent/40."
+      },
+      {
+        "name": "duration-reveal",
+        "value": "480ms",
+        "purpose": "Scroll reveal, travelling 14px. Deliberately shortened from an earlier 700ms/20px which read as lag."
+      },
+      {
+        "name": "duration-accordion",
+        "value": "320ms",
+        "purpose": "FAQ details-content block-size transition, scoped via interpolate-size on the item rather than :root."
+      },
+      {
+        "name": "duration-hero",
+        "value": "800ms",
+        "purpose": "Hero entrance, pure CSS so the hero stays a server component. The artifact column lags 200ms behind the text column."
+      },
+      {
+        "name": "duration-header",
+        "value": "500ms",
+        "purpose": "Header fading to bg/90 with backdrop blur past 10px of scroll."
+      },
+      {
+        "name": "duration-ripple",
+        "value": "600ms ease-out",
+        "purpose": "Press ripple expanding from the pointer and fading to zero opacity."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "sm",
+        "value": "640px"
+      },
+      {
+        "name": "md",
+        "value": "768px"
+      },
+      {
+        "name": "lg",
+        "value": "1024px"
+      },
+      {
+        "name": "xl",
+        "value": "1280px"
+      },
+      {
+        "name": "container",
+        "value": "1440px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The single primary action in a view. Solid ember with a near-black label; shifts opacity on hover rather than lifting.",
+      "html": "<button class=\"ds-btn-primary\">Start a project →</button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: var(--accent-deep, #ff6a3d); color: var(--on-accent, #1a0a02); font-family: var(--font-inter), system-ui, sans-serif; font-size: 14px; font-weight: 700; padding: 14px 20px; border: none; border-radius: 12px; cursor: pointer; transition: opacity 200ms ease, background 200ms ease; } .ds-btn-primary:hover { opacity: 0.9; } .ds-btn-primary:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--accent, #ff6a3d); } .ds-btn-primary:disabled { opacity: 0.4; cursor: not-allowed; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Secondary action. Transparent inside a hairline; fills to a 5% ink wash on hover.",
+      "html": "<button class=\"ds-btn-ghost\">See the reels</button>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; justify-content: center; gap: 8px; background: transparent; color: var(--ink, #f4efe7); font-family: var(--font-inter), system-ui, sans-serif; font-size: 14px; font-weight: 600; padding: 14px 20px; border: 1px solid var(--rule, rgba(244,239,231,0.1)); border-radius: 12px; cursor: pointer; transition: background 200ms ease, border-color 200ms ease; } .ds-btn-ghost:hover { background: rgba(255, 255, 255, 0.05); } .ds-btn-ghost:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--accent, #ff6a3d); } .ds-btn-ghost:disabled { opacity: 0.4; cursor: not-allowed; }"
+    },
+    {
+      "name": "Input Field",
+      "kind": "input",
+      "refersTo": "input-field",
+      "description": "Text input. Fills one tonal step BELOW its surrounding card so inputs recess rather than raise; border warms to ember on focus.",
+      "html": "<label class=\"ds-field\"><span class=\"ds-field__label\">Filename</span><input class=\"ds-input\" type=\"text\" placeholder=\"app-icon\" /><span class=\"ds-field__hint\">Used for the exported ZIP</span></label>",
+      "css": ".ds-field { display: block; font-family: var(--font-inter), system-ui, sans-serif; } .ds-field__label { display: block; margin-bottom: 6px; font-size: 12px; font-weight: 500; color: var(--ink-2, rgba(244,239,231,0.62)); } .ds-field__hint { display: block; margin-top: 4px; font-size: 11px; color: var(--ink-3, rgba(244,239,231,0.38)); } .ds-input { width: 100%; background: var(--bg, #0d0c0b); color: var(--ink, #f4efe7); font-family: inherit; font-size: 14px; padding: 10px 12px; border: 1px solid var(--rule, rgba(244,239,231,0.1)); border-radius: 8px; transition: border-color 200ms ease; } .ds-input::placeholder { color: var(--ink-3, rgba(244,239,231,0.38)); } .ds-input:focus { outline: none; border-color: rgba(255, 106, 61, 0.5); } .ds-input:focus-visible { box-shadow: 0 0 0 2px var(--accent, #ff6a3d); }"
+    },
+    {
+      "name": "Tool Card",
+      "kind": "card",
+      "refersTo": "card-surface",
+      "description": "The system's canonical card. Lifts 4px on hover while its hairline warms to ember and the title takes the accent. No shadow, no scale.",
+      "html": "<a class=\"ds-card\" href=\"#\"><div class=\"ds-card__top\"><span class=\"ds-card__icon\"><svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"3\" y=\"3\" width=\"18\" height=\"18\" rx=\"2\"/><path d=\"M3 9h18M9 21V9\"/></svg></span><svg class=\"ds-card__arrow\" width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M7 17L17 7M7 7h10v10\"/></svg></div><h3 class=\"ds-card__title\">App Icon Generator</h3><p class=\"ds-card__body\">Generate every iOS and Android icon size from one image, in the browser.</p><span class=\"ds-chip\">Design</span></a>",
+      "css": ".ds-card { position: relative; display: flex; flex-direction: column; background: var(--bg-2, #161514); border: 1px solid var(--rule, rgba(244,239,231,0.1)); border-radius: 16px; padding: 24px; text-decoration: none; font-family: var(--font-inter), system-ui, sans-serif; transition: transform 300ms ease, border-color 300ms ease; } .ds-card:hover { transform: translateY(-4px); border-color: rgba(255, 106, 61, 0.4); } .ds-card:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--accent, #ff6a3d); } .ds-card__top { display: flex; align-items: flex-start; justify-content: space-between; } .ds-card__icon { display: flex; align-items: center; justify-content: center; width: 48px; height: 48px; background: var(--bg, #0d0c0b); border: 1px solid var(--rule, rgba(244,239,231,0.1)); border-radius: 12px; color: var(--accent, #ff6a3d); transition: border-color 300ms ease; } .ds-card:hover .ds-card__icon { border-color: rgba(255, 106, 61, 0.4); } .ds-card__arrow { color: var(--ink-3, rgba(244,239,231,0.38)); transition: transform 300ms ease, color 300ms ease; } .ds-card:hover .ds-card__arrow { transform: translate(2px, -2px); color: var(--accent, #ff6a3d); } .ds-card__title { margin: 20px 0 0; font-size: 17px; font-weight: 600; letter-spacing: -0.01em; color: var(--ink, #f4efe7); transition: color 300ms ease; } .ds-card:hover .ds-card__title { color: var(--accent, #ff6a3d); } .ds-card__body { margin: 8px 0 0; font-size: 14px; line-height: 1.6; color: var(--ink-2, rgba(244,239,231,0.62)); } .ds-chip { display: inline-flex; align-items: center; width: fit-content; margin-top: 16px; background: var(--bg, #0d0c0b); border: 1px solid var(--rule, rgba(244,239,231,0.1)); border-radius: 6px; padding: 4px 8px; font-family: var(--font-mono), monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.14em; color: var(--ink-3, rgba(244,239,231,0.38)); }"
+    },
+    {
+      "name": "Section Eyebrow",
+      "kind": "custom",
+      "refersTo": "label",
+      "description": "Opens every major section. Mono, uppercase, always ember, numbered in reading order on index-style pages.",
+      "html": "<div class=\"ds-eyebrow\">01 · KEY FEATURES</div>",
+      "css": ".ds-eyebrow { font-family: var(--font-mono), monospace; font-size: 11px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--accent, #ff6a3d); }"
+    },
+    {
+      "name": "Segmented Control",
+      "kind": "chip",
+      "refersTo": "chip-badge",
+      "description": "Tool-context tab group. The active segment is one of the few sanctioned solid-ember fills.",
+      "html": "<div class=\"ds-segmented\" role=\"tablist\"><button class=\"ds-segment ds-segment--active\" role=\"tab\" aria-selected=\"true\">Encode</button><button class=\"ds-segment\" role=\"tab\" aria-selected=\"false\">Decode</button></div>",
+      "css": ".ds-segmented { display: inline-flex; flex-wrap: wrap; gap: 4px; background: var(--bg, #0d0c0b); border: 1px solid var(--rule, rgba(244,239,231,0.1)); border-radius: 12px; padding: 4px; } .ds-segment { background: transparent; border: none; border-radius: 8px; padding: 6px 12px; font-family: var(--font-inter), system-ui, sans-serif; font-size: 12px; font-weight: 600; color: var(--ink-2, rgba(244,239,231,0.62)); cursor: pointer; transition: color 200ms ease, background 200ms ease; } .ds-segment:hover { color: var(--ink, #f4efe7); } .ds-segment--active { background: var(--accent-deep, #ff6a3d); color: var(--on-accent, #1a0a02); } .ds-segment:focus-visible { outline: none; box-shadow: 0 0 0 2px var(--accent, #ff6a3d); }"
+    },
+    {
+      "name": "Metric Tile",
+      "kind": "custom",
+      "refersTo": "metric-tile",
+      "description": "Instrument readout used across the tools. Mono caption above a tabular-numeral value, tone-coded via the semantic greens and reds only.",
+      "html": "<div class=\"ds-metric\"><div class=\"ds-metric__label\">Saved</div><div class=\"ds-metric__value ds-metric__value--good\">62%</div></div>",
+      "css": ".ds-metric { background: var(--bg, #0d0c0b); border: 1px solid var(--rule, rgba(244,239,231,0.1)); border-radius: 8px; padding: 8px 12px; font-family: var(--font-inter), system-ui, sans-serif; } .ds-metric__label { font-family: var(--font-mono), monospace; font-size: 9px; text-transform: uppercase; letter-spacing: 0.16em; color: var(--ink-3, rgba(244,239,231,0.38)); } .ds-metric__value { margin-top: 2px; font-size: 14px; font-weight: 700; font-variant-numeric: tabular-nums; color: var(--ink, #f4efe7); } .ds-metric__value--good { color: var(--good, #7af0a8); } .ds-metric__value--bad { color: #ff7a7a; } .ds-metric__value--accent { color: var(--accent, #ff6a3d); }"
+    },
+    {
+      "name": "Specimen Frame",
+      "kind": "custom",
+      "refersTo": "card-surface",
+      "description": "Signature pattern. Device and browser frames presented as labelled specimens on a bench, with a mono micro-label floating above the top-left corner. The only objects permitted a real cast shadow.",
+      "html": "<div class=\"ds-specimen\"><span class=\"ds-specimen__label\">REEL · ONBOARDING</span><div class=\"ds-specimen__frame\"><div class=\"ds-specimen__screen\"></div></div></div>",
+      "css": ".ds-specimen { position: relative; display: inline-block; padding-top: 20px; } .ds-specimen__label { position: absolute; top: 0; left: 0; font-family: var(--font-mono), monospace; font-size: 10px; text-transform: uppercase; letter-spacing: 0.12em; color: var(--ink-3, rgba(244,239,231,0.38)); } .ds-specimen__frame { width: 170px; height: 300px; border: 1px solid var(--rule, rgba(244,239,231,0.1)); border-radius: 16px; overflow: hidden; background: #000; box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6); } .ds-specimen__screen { width: 100%; height: 100%; background: linear-gradient(160deg, #1f1d1b, #0d0c0b 60%); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Darkroom",
+    "overview": "This is a photographic darkroom, not a dark theme. The difference matters: a dark theme is a light interface with the values flipped, while a darkroom is a room that was always dark, lit on purpose by a single warm safelight so that the work being developed is the only thing you look at. Every color decision here follows from that. The ground is a warm near-black (#0d0c0b, not a blue-black), the text is a warm off-white (#f4efe7, not white), and the one chromatic color in the entire system is an ember orange that behaves exactly like a safelight - it pools, it glows, it falls off into the dark, and it never floods the room.\n\nThe register is confident, warm, and engineered. Precision without coldness: hairline rules, mono specimen labels, numbered sections and tabular metrics give it the discipline of instrumentation, while the warmth in the palette keeps it from reading as a spec sheet. The restraint is the point. This site is the largest work sample of the craft it is selling, so nothing is decorated that isn't also demonstrating something - the motion, the light, and the labeling are all evidence, not ornament.\n\nDepth is lighting, not elevation. Surfaces do not pretend to float above one another; they sit at different distances from the light, expressed as a three-step tonal stack and a one-pixel rule. The only things that cast real shadows are objects genuinely suspended in space - a phone frame, an app icon - and they are presented like specimens on a bench, each with a small mono label floating above it.",
+    "keyCharacteristics": [
+      "Warm near-black ground (#0d0c0b) with warm off-white ink (#f4efe7) - never neutral grey, never pure white",
+      "Exactly one chromatic hue: Ember Orange (#ff6a3d), free as light, rationed as fill",
+      "Flat by default; depth from a three-step tonal stack plus 1px hairlines",
+      "Mono uppercase labels annotate everything - sections are numbered like plates",
+      "Italic serif marks exactly one word per heading, never more",
+      "Motion is short, quick-out, and fully disabled under prefers-reduced-motion"
+    ],
+    "rules": [
+      {
+        "name": "The Free-to-Glow Rule",
+        "body": "Ember is unrestricted as light and rationed as fill. Glow orbs, beams, spotlight grids, radial gradients and ripple rings may use it freely at low alpha - that atmosphere is the brand. Solid ember fills are reserved for the single primary action in view, the logo tile, and active control states. If two solid ember fills compete on one screen, one of them is wrong.",
+        "section": "colors"
+      },
+      {
+        "name": "The Dark-Label Rule",
+        "body": "Never put white text on ember. White on #ff6a3d is 2.84:1 and fails; the near-black on-accent is 6.8:1 and passes. Any solid ember surface takes on-accent, without exception.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Hue Rule",
+        "body": "The palette is warm greyscale plus ember. Green and red exist only to mean succeeded and failed. Introducing a second decorative hue breaks the room.",
+        "section": "colors"
+      },
+      {
+        "name": "The One Word Rule",
+        "body": "The italic serif marks exactly one word in a heading, at most once per screen, and always the word carrying the promise - ship, fast, obvious, help. Never a full phrase. Never body copy. Never twice in one heading. Its whole power is that it happens once and then stops.",
+        "section": "typography"
+      },
+      {
+        "name": "The Numbered Plate Rule",
+        "body": "Every major section opens with a mono uppercase eyebrow, and on index-style pages those eyebrows are numbered in reading order (01 - KEY FEATURES, 02 - DEEP DIVE). Adding a section means renumbering the ones after it - the sequence is a promise that the page has a defined length.",
+        "section": "typography"
+      },
+      {
+        "name": "The Ember Stop Rule",
+        "body": "Display and headline text ends on a period rendered in ember. It is the smallest possible use of the accent and it terminates the sentence like a maker's mark.",
+        "section": "typography"
+      },
+      {
+        "name": "The Asymmetric Split Rule",
+        "body": "Two-column hero and app layouts use 1.4fr 1fr, never 1fr 1fr. The text column leads; the artifact column supports.",
+        "section": "layout"
+      },
+      {
+        "name": "The Flat-By-Default Rule",
+        "body": "Surfaces are flat at rest and flat on hover. If a new element seems to need a shadow to read as distinct, it needs a tonal step or a hairline instead. Reach for bg-2/bg-3 and rule before you reach for box-shadow.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Hairline Rule",
+        "body": "Edges warm, they do not thicken. A surface signals interactivity by shifting its 1px border from rule toward accent/40 - never by growing to 2px, which shifts layout and reads as a different component.",
+        "section": "shapes"
+      }
+    ],
+    "dos": [
+      "Do put on-accent (#1a0a02) on every solid ember surface - white on ember fails contrast at 2.84:1.",
+      "Do open each major section with a mono uppercase ember eyebrow, numbered in reading order on index-style pages.",
+      "Do reach for a tonal step (bg to bg-2 to bg-3) or a hairline before reaching for a shadow.",
+      "Do let interactive surfaces answer with a 2-4px lift and a warming hairline over ~300ms - quick, small, no spring.",
+      "Do set body prose in ink-2, not full ink; reserve full ink for headings and emphasis.",
+      "Do register every new animation in the prefers-reduced-motion block in globals.css - the existing block covers all of them, and that record must stay complete.",
+      "Do let ember light bleed past its container and clip it with overflow-hidden on the section."
+    ],
+    "donts": [
+      "Don't use white text on ember, anywhere, for any reason.",
+      "Don't introduce a second decorative hue. Green (good) and red (bad) are semantic-only; everything else is warm greyscale plus ember.",
+      "Don't use the italic serif for more than one word, and never in body copy.",
+      "Don't touch the legacy Tailwind tokens blue-400/500/600, gray-900/950, font-heading (--font-outfit), or the shadow-blue / shadow-blue-sm entries. They reference variables that were never defined and are dead from an earlier build - they are not part of this system.",
+      "Don't add a shadow to make a surface read as raised; the answer is a tonal step or an edge.",
+      "Don't thicken a border on hover. Edges warm, they do not grow - a 1px to 2px shift moves layout.",
+      "Don't place two competing solid-ember fills in one viewport. Ember-as-light is unlimited; ember-as-fill marks the single primary action.",
+      "Don't use pure black (#000) or pure white (#fff) as a surface or text color. Every neutral in this system is warm."
+    ]
+  }
+}

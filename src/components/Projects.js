@@ -5,9 +5,33 @@ import Reveal from "@/components/Reveal";
 
 const projects = [
   {
+    title: "Wasiyyah",
+    slug: "wasiyyah",
+    n: "01",
+    tag: "Islamic will & faraid calculator",
+    pitch: "Write the will. Compute the shares.",
+    description:
+      "A guided Shariah-compliant will builder on top of a 2,000-line pure-TypeScript faraid engine — exact fractions, hajb, awl, radd and the classical special cases across 8 madhabs. Fully offline, in 10 languages with RTL, with a formal PDF export.",
+    // TODO: swap in /wasiyyah_screenshot_01.png once store screenshots are cut.
+    // Until then the card shows the icon on its stage instead of a phone.
+    image: null,
+    icon: "/wasiyyah_icon.png",
+    layout: "mobile",
+    stage: "linear-gradient(135deg, #0f2a1f 0%, #08170f 100%)",
+    accent: "#34c98a",
+    stack: ["React Native", "Expo SDK 57", "TypeScript", "Encrypted MMKV"],
+    stats: [
+      ["8", "madhabs"],
+      ["10", "languages"],
+      ["100%", "offline"],
+      ["2K-line", "faraid engine"],
+    ],
+    detailsLink: "/apps/wasiyyah",
+  },
+  {
     title: "Nearby",
     slug: "nearby",
-    n: "01",
+    n: "02",
     tag: "Location-based social",
     pitch: "Find and chat with people around you.",
     description:
@@ -36,7 +60,7 @@ const projects = [
   {
     title: "DocuLensAI",
     slug: "doculensai",
-    n: "02",
+    n: "03",
     tag: "AI document scanner",
     pitch: "A private, offline scanner in your pocket.",
     description:
@@ -56,7 +80,7 @@ const projects = [
   {
     title: "YouTube Fullscreen Focus",
     slug: "youtube-fullscreen-focus",
-    n: "03",
+    n: "04",
     tag: "Chrome extension",
     pitch: "True fullscreen YouTube. No accidents.",
     description:
@@ -84,7 +108,7 @@ const projects = [
   {
     title: "TapMeal",
     slug: "tapmeal",
-    n: "04",
+    n: "05",
     tag: "Restaurant SaaS · QR ordering",
     pitch: "Scan the table. Order from the browser.",
     description:
@@ -112,7 +136,7 @@ const projects = [
   {
     title: "MemorIQ",
     slug: "memoriq",
-    n: "05",
+    n: "06",
     tag: "Memory game · rebrandable",
     pitch: "Flip, match, beat the clock.",
     description:
@@ -146,7 +170,7 @@ export default function Projects() {
               .
             </h2>
             <p className="text-base md:text-lg text-ink-2 leading-relaxed mt-5 max-w-2xl">
-              Five selected case studies. The full catalog — apps, commercial
+              Six selected case studies. The full catalog — apps, commercial
               templates, and a handful of open-source side quests — lives in the
               Apps section below.
             </p>
@@ -192,25 +216,29 @@ function MobileCard({ project, reverse }) {
         <div
           className={`flex justify-center ${reverse ? "md:order-2" : "md:order-1"}`}
         >
-          <div
-            className="relative w-[220px] md:w-[260px] lg:w-[300px] aspect-[9/19.5] rounded-[2rem] overflow-hidden bg-black transition-transform duration-700 group-hover:scale-[1.02] group-hover:-rotate-1"
-            style={{
-              boxShadow:
-                "0 60px 120px -40px rgba(0,0,0,0.7), 0 30px 60px -20px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.06)",
-            }}
-          >
-            {project.image ? (
-              <Image
-                src={project.image}
-                alt={`${project.title} app screenshot`}
-                fill
-                sizes="300px"
-                className="object-cover"
-              />
-            ) : (
-              <ScreenshotPlaceholder text={project.title} />
-            )}
-          </div>
+          {!project.image && project.icon ? (
+            <IconSpecimen project={project} />
+          ) : (
+            <div
+              className="relative w-[220px] md:w-[260px] lg:w-[300px] aspect-[9/19.5] rounded-[2rem] overflow-hidden bg-black transition-transform duration-700 group-hover:scale-[1.02] group-hover:-rotate-1"
+              style={{
+                boxShadow:
+                  "0 60px 120px -40px rgba(0,0,0,0.7), 0 30px 60px -20px rgba(0,0,0,0.5), inset 0 0 0 1px rgba(255,255,255,0.06)",
+              }}
+            >
+              {project.image ? (
+                <Image
+                  src={project.image}
+                  alt={`${project.title} app screenshot`}
+                  fill
+                  sizes="300px"
+                  className="object-cover"
+                />
+              ) : (
+                <ScreenshotPlaceholder text={project.title} />
+              )}
+            </div>
+          )}
         </div>
 
         <div className={reverse ? "md:order-1" : "md:order-2"}>
@@ -392,6 +420,38 @@ function Cta({ project }) {
           <ArrowUpRight className="w-3.5 h-3.5" />
         </a>
       )}
+    </div>
+  );
+}
+
+/**
+ * Stand-in for a phone screenshot while an app has none: the icon itself,
+ * presented as a suspended specimen on the card's stage and lit by the
+ * project's own accent. Straightens on hover the way the phones tilt.
+ */
+function IconSpecimen({ project }) {
+  return (
+    <div className="relative py-6 md:py-10">
+      <div
+        className="absolute inset-0 -m-10 rounded-full pointer-events-none"
+        style={{
+          background: `radial-gradient(circle, ${project.accent}38, transparent 62%)`,
+          filter: "blur(24px)",
+        }}
+        aria-hidden
+      />
+      <Image
+        src={project.icon}
+        alt={`${project.title} app icon`}
+        width={260}
+        height={260}
+        sizes="(min-width: 1024px) 260px, (min-width: 768px) 220px, 180px"
+        className="relative w-[180px] md:w-[220px] lg:w-[260px] h-auto rounded-[22%] border border-rule rotate-3 transition-transform duration-700 group-hover:rotate-0 group-hover:scale-[1.02]"
+        style={{
+          boxShadow:
+            "0 60px 120px -40px rgba(0,0,0,0.7), 0 30px 60px -20px rgba(0,0,0,0.5)",
+        }}
+      />
     </div>
   );
 }

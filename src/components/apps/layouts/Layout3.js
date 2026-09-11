@@ -1,73 +1,17 @@
 "use client";
-import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, GitFork, Plus, Minus } from "lucide-react";
+import { ArrowLeft, GitFork } from "lucide-react";
+import {
+  FAQItem,
+  CtaGlow,
+  AppFooterLinks,
+  EmberStop,
+  useRevealOnce,
+} from "@/components/apps/shared";
 
-function FAQItem({ question, answer, index }) {
-  const [open, setOpen] = useState(false);
-  return (
-    <div className="bg-bg-2 rounded-xl border border-rule overflow-hidden">
-      <button
-        onClick={() => setOpen(!open)}
-        aria-expanded={open}
-        className="w-full text-left px-6 py-5 flex justify-between items-start gap-4 hover:bg-white/5 transition-colors"
-      >
-        <div className="flex items-start gap-4 flex-1">
-          <span className="font-mono text-[11px] text-accent tracking-[0.1em] pt-1 shrink-0">
-            {String(index + 1).padStart(2, "0")}
-          </span>
-          <span className="font-semibold text-ink leading-snug">
-            {question}
-          </span>
-        </div>
-        {open ? (
-          <Minus className="w-4 h-4 text-ink-2 mt-1 shrink-0" />
-        ) : (
-          <Plus className="w-4 h-4 text-ink-2 mt-1 shrink-0" />
-        )}
-      </button>
-      {open && (
-        <div className="px-6 pb-5 pt-1 border-t border-rule">
-          <p className="text-ink-2 leading-relaxed pl-9">{answer}</p>
-        </div>
-      )}
-    </div>
-  );
-}
-
-export default function Layout3({ app }) {
-  const [isVisible, setIsVisible] = useState(false);
-  const [activeFeatures, setActiveFeatures] = useState([]);
-  const sectionRef = useRef(null);
-  const featuresRef = useRef([]);
-
-  useEffect(() => {
-    const obs = new IntersectionObserver(
-      ([e]) => e.isIntersecting && setIsVisible(true),
-      { threshold: 0.1 },
-    );
-    if (sectionRef.current) obs.observe(sectionRef.current);
-    return () => obs.disconnect();
-  }, []);
-
-  useEffect(() => {
-    const obs = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            const i = featuresRef.current.indexOf(entry.target);
-            if (i !== -1 && !activeFeatures.includes(i)) {
-              setActiveFeatures((prev) => [...prev, i]);
-            }
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: "0px 0px -50px 0px" },
-    );
-    featuresRef.current.forEach((f) => f && obs.observe(f));
-    return () => obs.disconnect();
-  }, [activeFeatures]);
+export default function Layout3({ app, subPages }) {
+  const [sectionRef, isVisible] = useRevealOnce();
 
   return (
     <div>
@@ -166,7 +110,7 @@ export default function Layout3({ app }) {
         >
           <div className="max-w-screen mx-auto">
             <div
-              className={`transition-all duration-1000 ${isVisible ? "opacity-100" : "opacity-0"}`}
+              className={`transition-all duration-1000 motion-reduce:transition-none motion-reduce:opacity-100 ${isVisible ? "opacity-100" : "opacity-0"}`}
             >
               <div className="font-mono text-[11px] tracking-[0.14em] text-accent">
                 01 · WHAT IT DOES
@@ -179,13 +123,14 @@ export default function Layout3({ app }) {
                 {app.features.map((feature, i) => (
                   <div
                     key={i}
-                    ref={(el) => (featuresRef.current[i] = el)}
-                    className={`p-6 rounded-xl border border-rule bg-bg transition-all duration-700 ${
-                      activeFeatures.includes(i)
+                    className={`p-6 rounded-xl border border-rule bg-bg transition-all duration-700 motion-reduce:transition-none motion-reduce:opacity-100 motion-reduce:translate-y-0 ${
+                      isVisible
                         ? "opacity-100 translate-y-0"
                         : "opacity-0 translate-y-6"
                     }`}
-                    style={{ transitionDelay: `${i * 80}ms` }}
+                    // Capped so a long feature list doesn't leave the last card
+                    // waiting a second after it has already scrolled into view.
+                    style={{ transitionDelay: `${Math.min(i, 5) * 60}ms` }}
                   >
                     <div className="font-mono text-[10px] tracking-[0.18em] text-accent uppercase">
                       {String(i + 1).padStart(2, "0")}
@@ -248,7 +193,7 @@ export default function Layout3({ app }) {
           <div className="max-w-3xl mx-auto">
             <div className="mb-12">
               <div className="font-mono text-[11px] tracking-[0.14em] text-accent">
-                03 · FAQs
+                03 · FAQ
               </div>
               <h2 className="text-4xl md:text-5xl font-bold tracking-[-0.035em] text-ink mt-3">
                 Common questions.
@@ -264,24 +209,16 @@ export default function Layout3({ app }) {
       )}
 
       <section className="py-24 lg:py-32 px-6 lg:px-16 relative overflow-hidden">
-        <div
-          className="absolute left-1/2 -bottom-[300px] -translate-x-1/2 w-[900px] h-[500px] rounded-full pointer-events-none"
-          style={{
-            background:
-              "radial-gradient(ellipse, rgba(255,106,61,0.22), transparent 60%)",
-            filter: "blur(40px)",
-          }}
-        />
+        <CtaGlow />
         <div className="relative max-w-3xl mx-auto text-center">
           <h2 className="text-4xl md:text-6xl font-extrabold tracking-[-0.04em] leading-[0.95] text-ink">
-            {app.ctaTitle || `Try ${app.name}`}
-            <span className="text-accent">.</span>
+            <EmberStop>{app.ctaTitle || `Try ${app.name}`}</EmberStop>
           </h2>
           <p className="text-lg text-ink-2 mt-6 leading-relaxed">
             {app.ctaDescription ||
               `It's free and open source. Get it on the Chrome Web Store, or fork the code on GitHub.`}
           </p>
-          <div className="flex flex-wrap gap-3 justify-center mt-8">
+          <div className="flex flex-wrap gap-3 justify-center items-center mt-8">
             {app.links?.chromeStore && (
               <a
                 href={app.links.chromeStore}
@@ -297,9 +234,9 @@ export default function Layout3({ app }) {
                 href={app.links.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="px-6 py-3.5 rounded-xl border border-rule text-ink text-[15px] font-semibold hover:bg-white/5 transition"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl border border-rule text-ink text-[15px] font-semibold hover:bg-white/5 transition"
               >
-                <GitFork className="w-4 h-4 inline mr-2" /> GitHub
+                <GitFork className="w-4 h-4" aria-hidden /> GitHub ↗
               </a>
             )}
             <Link
@@ -312,30 +249,7 @@ export default function Layout3({ app }) {
         </div>
       </section>
 
-      <section className="py-10 px-6 lg:px-16 border-t border-rule">
-        <div className="max-w-screen mx-auto flex flex-wrap gap-x-6 gap-y-2 justify-center text-xs font-mono text-ink-3 tracking-[0.08em]">
-          <Link
-            href={`/apps/${app.slug}/privacy`}
-            className="hover:text-ink transition-colors"
-          >
-            PRIVACY POLICY
-          </Link>
-          <Link
-            href={`/apps/${app.slug}/terms`}
-            className="hover:text-ink transition-colors"
-          >
-            TERMS OF SERVICE
-          </Link>
-          {app.links?.email && (
-            <a
-              href={app.links.email}
-              className="hover:text-ink transition-colors"
-            >
-              SUPPORT
-            </a>
-          )}
-        </div>
-      </section>
+      <AppFooterLinks app={app} subPages={subPages} />
     </div>
   );
 }

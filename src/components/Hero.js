@@ -23,7 +23,7 @@ const TICKER = [
 ];
 
 const PROOF = [
-  ["FIVERR", "5.0★ · top rated"],
+  ["PROJECTS", "50+ delivered"],
   ["CODECANYON", "5+ products"],
   ["PLAY STORE", "10K+ installs"],
 ];
@@ -77,14 +77,26 @@ export default function Hero() {
               design that turns into a reel.
             </p>
 
-            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3 mt-9">
+            {/* Phones: the primary spans the row and the two secondaries share
+                the next, so one action leads instead of three equal slabs. */}
+            <div className="grid grid-cols-2 gap-3 sm:flex sm:flex-wrap mt-9">
               <RippleLink
                 href="#contact"
                 color="var(--on-accent)"
-                className="inline-flex items-center justify-center px-5 py-3.5 rounded-xl bg-accent-deep text-on-accent font-bold text-sm hover:bg-accent transition-colors"
+                overlay={
+                  <BorderBeam
+                    size={70}
+                    duration={6}
+                    borderWidth={1.5}
+                    colorFrom="var(--on-accent)"
+                    colorTo="var(--accent-2)"
+                  />
+                }
+                // The self-coloured border matches the outlined buttons' box,
+                // so the rows line up at the same 50px.
+                className="col-span-2 inline-flex items-center justify-center px-5 py-3.5 rounded-xl border border-accent-deep bg-accent-deep text-on-accent font-bold text-sm hover:opacity-90 transition-opacity duration-200"
               >
                 Start a project →
-                <BorderBeam size={70} duration={6} borderWidth={1.5} colorFrom="var(--on-accent)" colorTo="var(--accent-2)" />
               </RippleLink>
               <a
                 href="#reels"
@@ -101,19 +113,25 @@ export default function Hero() {
               </a>
             </div>
 
-            <dl className="mt-12 lg:mt-14 grid grid-cols-3 gap-6 sm:gap-8 font-mono text-[11px] tracking-[0.08em] text-ink-3 max-w-md">
+            {/* The figures are the evidence, so they take full ink; the
+                platform names are captions and recede, as in the project stats. */}
+            <dl className="mt-12 lg:mt-14 grid grid-cols-3 gap-6 sm:gap-8 font-mono text-[11px] tracking-[0.08em] max-w-md">
               {PROOF.map(([label, value]) => (
                 <div key={label}>
-                  <dt className="text-ink">{label}</dt>
-                  <dd className="mt-0.5">{value}</dd>
+                  <dt className="text-ink-3">{label}</dt>
+                  <dd className="mt-1 text-ink">{value}</dd>
                 </div>
               ))}
             </dl>
           </div>
 
-          <div className="relative hidden md:flex justify-center items-center min-h-[640px] hero-enter-late">
+          {/* Capped below lg, where the stack drops under the copy and spans the
+              full column: uncapped, the side phones pin to the viewport edges
+              and get sliced by the section's overflow clip. */}
+          <div className="relative hidden md:flex justify-center items-center w-full max-w-[560px] mx-auto lg:max-w-none min-h-[640px] hero-enter-late">
             {/* Each phone lags the scroll by a different amount, so the stack
-                separates into three planes as the page moves. */}
+                separates into three planes as the page moves. The centre one
+                is the nearest plane, so it paints over the two behind it. */}
             {left ? (
               <div className="absolute top-12 -left-6 opacity-60">
                 <Parallax speed={0.14}>
@@ -129,7 +147,7 @@ export default function Hero() {
             ) : null}
 
             {center ? (
-              <Parallax speed={0.04}>
+              <Parallax speed={0.04} className="relative z-10">
                 <div className="relative rounded-[44px]">
                   <PhoneFrame
                     width={280}

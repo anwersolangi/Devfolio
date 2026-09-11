@@ -10,11 +10,16 @@ let nextId = 0;
  * Same interaction as Animate UI's RippleButton, done in CSS — that component
  * is a thin wrapper over `motion/react` plus its own Slot/context helpers, and
  * a ~34kB dependency isn't worth it for one keyframe.
+ *
+ * `overlay` renders against the link itself rather than inside the label, for
+ * edge effects like BorderBeam — passed as a child it would trace the text's
+ * box instead of the button's border.
  */
 export default function RippleLink({
   href,
   className = "",
   color = "currentColor",
+  overlay = null,
   children,
   ...rest
 }) {
@@ -59,6 +64,7 @@ export default function RippleLink({
         />
       ))}
       <span className="relative inline-flex items-center gap-2">{children}</span>
+      {overlay}
     </a>
   );
 }

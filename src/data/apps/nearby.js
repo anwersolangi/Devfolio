@@ -67,7 +67,7 @@ export const nearby = {
     },
   ],
   links: {
-    playStore:
+    playstore:
       "https://play.google.com/store/apps/details?id=com.nearbyreactive",
     codecanyon:
       "https://codecanyon.net/item/nearby-react-native-app-for-find-and-chat-using-gps-technology/25363722",

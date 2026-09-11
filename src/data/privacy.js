@@ -1,4 +1,130 @@
 export const PRIVACY_POLICIES = {
+  wasiyyah: {
+    title: "Privacy Policy",
+    lastUpdated: "August 16, 2026",
+    appName: "Wasiyyah",
+    sections: [
+      {
+        title: "Introduction",
+        content: `I ("Anwer Solangi", the developer) am committed to protecting your privacy. This Privacy Policy explains how information is handled when you use the Wasiyyah mobile application (the "App").
+
+Wasiyyah is an offline Islamic will builder and faraid inheritance calculator. A will is among the most private documents a person writes — it names your family, your assets and your intentions after death. That data stays on your device. I run no servers and have no access to it.`,
+      },
+      {
+        title: "Information I Do NOT Collect",
+        content: `Wasiyyah is designed to be a privacy-first application. I do NOT collect, store, or share:`,
+        items: [
+          "Your will, or any part of it",
+          "Your name, date of birth, place of birth, address or identification numbers",
+          "The names, relationships or details of your heirs",
+          "Your estate values, assets, currency or bequests",
+          "Executor names, witnesses or special instructions",
+          "Your location or precise GPS data",
+          "Usage analytics or behavioral data",
+        ],
+        footer:
+          "There is no account and no sign-up. Everything you enter is stored only in the App's private, encrypted storage on your device.",
+      },
+      {
+        title: "On-Device Processing",
+        content: `All of the App's core work happens locally on your device, with nothing sent to a server:`,
+        items: [
+          "The will builder and every detail you enter into it",
+          "The complete faraid calculation — shares, blocking, awl and radd",
+          "Madhab selection and all jurisprudential rules",
+          "PDF generation for both the will and the inheritance statement",
+          "Language, theme and fiqh preferences",
+        ],
+        footer:
+          "The App needs no network connection to build a will, calculate shares, or export a PDF. You can use every feature in airplane mode.",
+      },
+      {
+        title: "How Your Data Is Stored",
+        content: `Your will is stored in an encrypted database on the device. The encryption key is generated per install and held in the platform's secure hardware-backed keystore — the iOS Keychain or the Android Keystore — not in the App's own files.`,
+        items: [
+          "Encrypted at rest on the device",
+          "Never transmitted to any server",
+          "Not backed up to any cloud service by me",
+          "Permanently erased when you delete it in the App or uninstall",
+        ],
+        footer:
+          "Because I never receive a copy, deleting your data on your device deletes it everywhere.",
+      },
+      {
+        title: "Third-Party Services",
+        content: "Wasiyyah uses the following third-party services:",
+        subsections: [
+          {
+            title: "Google AdMob",
+            content: `The free plan displays advertisements through Google AdMob to support development. AdMob may collect certain information as described in Google's Privacy Policy: https://policies.google.com/privacy
+
+AdMob may use:
+• Device advertising identifiers
+• General location (country/region level, not precise GPS)
+• Device information and ad-interaction data for ad personalization
+
+If you are in the EEA or the UK, you are shown a consent form before any personalized advertising, and you can change your answer at any time from Settings → Ad Privacy Settings. On iOS you are asked separately through Apple's App Tracking Transparency prompt. Declining either means you still see ads — just non-personalized ones. Upgrading to Premium removes ads, and this data flow, entirely.`,
+          },
+          {
+            title: "RevenueCat",
+            content: `I use RevenueCat to manage the optional Wasiyyah Premium subscription. RevenueCat processes:
+• Purchase and subscription status
+• Anonymous user identifiers for purchase verification
+• Transaction information necessary for billing
+
+RevenueCat never receives your will, your heirs or any part of your estate. Learn more at: https://www.revenuecat.com/privacy`,
+          },
+          {
+            title: "Apple App Store & Google Play",
+            content: `Purchases are processed by Apple or Google depending on your platform. I receive only an anonymous receipt used to unlock Premium — never your name, card number, or billing address. These transactions are governed by Apple's and Google's respective privacy policies.`,
+          },
+        ],
+      },
+      {
+        title: "Permissions",
+        content: `Wasiyyah requests no runtime permissions of its own. The only permissions present are added by the advertising and purchase SDKs:`,
+        items: [
+          "Internet access — used solely to serve ads and validate subscriptions",
+          "Network state — used to skip ad requests when you are offline",
+          "Advertising ID — used by AdMob, and refusable through the consent form",
+        ],
+        footer:
+          "The App does not request access to your camera, contacts, location, files or photo library.",
+      },
+      {
+        title: "Your Choices",
+        content: `You have complete control over your data:`,
+        items: [
+          "Delete all will data permanently from Settings → Delete Will Data",
+          "Uninstall the App to remove everything stored locally",
+          "Change your advertising consent from Settings → Ad Privacy Settings",
+          "Reset or delete your advertising identifier in your device settings",
+          "Upgrade to Premium to remove ads entirely",
+          "Use the App fully offline, with no internet connection at all",
+        ],
+      },
+      {
+        title: "Children's Privacy",
+        content:
+          "Wasiyyah is intended for adults writing a will and is not directed at children under 13. I do not knowingly collect any personal information from children. Since I don't collect personal information from any users, this applies universally.",
+      },
+      {
+        title: "A Note on the App's Purpose",
+        content:
+          "Wasiyyah helps you draft a will and estimate inheritance shares under Islamic jurisprudence. It is not legal advice and not a substitute for a qualified scholar or lawyer. Please have your will reviewed by someone qualified, and register it with the appropriate authority in your country if you want it to be enforceable.",
+      },
+      {
+        title: "Changes to This Policy",
+        content:
+          'I may update this Privacy Policy from time to time. I will notify you of any changes by posting the new Privacy Policy on this page and updating the "Last Updated" date.',
+      },
+      {
+        title: "Contact Me",
+        content: `If you have any questions about this Privacy Policy, please contact me at:`,
+        contactEmail: "me@anwersolangi.com",
+      },
+    ],
+  },
   doculensai: {
     title: "Privacy Policy",
     lastUpdated: "July 12, 2026",

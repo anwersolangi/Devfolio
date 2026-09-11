@@ -1,4 +1,139 @@
 export const TERMS_OF_SERVICE = {
+  wasiyyah: {
+    title: "Terms of Service",
+    lastUpdated: "August 16, 2026",
+    appName: "Wasiyyah",
+    sections: [
+      {
+        title: "Agreement to Terms",
+        content: `By downloading, installing, or using Wasiyyah ("the App"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, please do not use the App.
+
+These Terms constitute a legal agreement between you and Anwer Solangi ("I", "me", "the developer").`,
+      },
+      {
+        title: "Description of Service",
+        content: `Wasiyyah is an offline Islamic will builder and faraid inheritance calculator that provides:`,
+        items: [
+          "A guided builder for a Shariah-compliant will",
+          "Calculation of Quranic inheritance shares as exact fractions",
+          "Rules for eight schools of thought (madhabs)",
+          "Recording of bequests within the one-third limit",
+          "PDF export of a formal will and a detailed inheritance statement",
+        ],
+        footer:
+          "The App operates entirely offline and stores all data locally, encrypted, on your device.",
+      },
+      {
+        title: "Not Legal or Religious Advice",
+        content: `This is the most important term in this document. Please read it carefully.
+
+Wasiyyah is a study and drafting tool. It is NOT a substitute for a qualified scholar, mufti, or lawyer, and using it does not create any professional relationship between us.
+
+Inheritance under Islamic law can turn on facts that no calculator can see — the precise status of an heir, simultaneous deaths, debts against the estate, disputed lineage, prior gifts, or the specific civil law of your country. The App works from what you type into it and nothing else.`,
+        items: [
+          "Have your will reviewed by a qualified scholar or mufti before relying on it",
+          "Consult a lawyer about how a will is executed where you live",
+          "Register the will with the appropriate civil authority if you want it enforced",
+          "Verify any calculation that will be acted upon, especially in a disputed estate",
+        ],
+        footer:
+          "A document exported from this App is a draft prepared from your own input. Whether it is valid, binding or enforceable is determined by scholars and by the law of your jurisdiction — not by this App.",
+      },
+      {
+        title: "Accuracy of Calculations",
+        content: `The faraid engine implements the classical rules and is tested against the standard textbook cases, but I make no warranty that every result is correct for every combination of heirs.
+
+Some rulings are genuinely disputed among scholars, and the App follows the position of the school you select, flagging disputed cases where it can. A small number of rarer cases are deliberately simplified, and the App warns you when it reaches one.`,
+        footer:
+          "You are responsible for verifying any result you intend to act upon. I accept no liability for a distribution made in reliance on a calculation from this App.",
+      },
+      {
+        title: "License Grant",
+        content: `Subject to your compliance with these Terms, I grant you a limited, non-exclusive, non-transferable, revocable license to:`,
+        items: [
+          "Download and install the App on your personal mobile device",
+          "Use the App to prepare your own will and calculate inheritance shares",
+          "Export documents for your own personal or professional use",
+          "Access premium features if you have an active Premium entitlement",
+        ],
+      },
+      {
+        title: "Restrictions",
+        content: `You agree NOT to:`,
+        items: [
+          "Copy, modify, or distribute the App or its content",
+          "Reverse engineer, decompile, or disassemble the App",
+          "Remove or alter the disclaimers shown in the App or in exported documents",
+          "Present the App's output as certified legal or religious advice",
+          "Use the App for any unlawful purpose",
+        ],
+      },
+      {
+        title: "Your Data & Your Responsibility",
+        content: `Your will is stored only on your device, encrypted. I never receive a copy, which has an important consequence:`,
+        items: [
+          "I cannot recover your data if you lose, reset, or damage your device",
+          "I cannot restore a will you delete — deletion is immediate and permanent",
+          "Uninstalling the App erases everything you entered",
+          "Export your will to PDF and keep a copy somewhere safe",
+        ],
+        footer:
+          "Keeping a backup of anything important is your responsibility. There is no cloud copy to fall back on.",
+      },
+      {
+        title: "Subscriptions & Payments",
+        content: `Wasiyyah is free to download and use. Free users receive a daily allowance of PDF exports and see advertisements. An optional Premium subscription removes the daily cap and the ads.`,
+        items: [
+          "Every calculation feature is available on the free tier",
+          "Payment is charged to your Apple or Google account at confirmation",
+          "Subscriptions renew automatically unless cancelled at least 24 hours before the period ends",
+          "Manage or cancel any time in your App Store or Play Store account settings",
+          "Refunds are handled by Apple or Google under their own policies, not by me",
+        ],
+      },
+      {
+        title: "Advertisements",
+        content: `The free tier is supported by advertising through Google AdMob. Where required by law, you are asked for consent before any personalized advertising and can change that choice at any time from Settings → Ad Privacy Settings. Declining means you still see ads, but non-personalized ones.`,
+      },
+      {
+        title: "Intellectual Property",
+        content: `The App, its design, its source code and the Wasiyyah name and mark are my property and are protected by copyright and other laws.
+
+The Qur'anic verses, hadith and classical jurisprudential rules the App presents are not my property — they belong to the Islamic scholarly tradition. My work is the software that implements and presents them.`,
+        footer:
+          "The will you write is yours. I claim no rights over any document you create with the App.",
+      },
+      {
+        title: "Disclaimer of Warranties",
+        content: `The App is provided "as is" and "as available", without warranties of any kind, whether express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, accuracy, or non-infringement.
+
+I do not warrant that the App will be uninterrupted, error-free, or that every calculation will be correct for every case.`,
+      },
+      {
+        title: "Limitation of Liability",
+        content: `To the maximum extent permitted by law, I shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of data, arising from your use of the App.
+
+This expressly includes any loss arising from a will that is held invalid, an inheritance distributed incorrectly, or a dispute among heirs.`,
+        footer:
+          "In every case, my total liability is limited to the amount you paid for the App in the twelve months preceding the claim — which, for free users, is zero.",
+      },
+      {
+        title: "Changes to These Terms",
+        content:
+          'I may update these Terms from time to time. Continued use of the App after changes are posted constitutes acceptance of the revised Terms. The "Last Updated" date above reflects the current version.',
+      },
+      {
+        title: "Governing Law",
+        content:
+          "These Terms are governed by the laws of Pakistan, without regard to conflict-of-law provisions. Nothing here limits any consumer rights you hold under the mandatory law of your own country of residence.",
+      },
+      {
+        title: "Contact Me",
+        content: `If you have any questions about these Terms, please contact me at:`,
+        contactEmail: "me@anwersolangi.com",
+      },
+    ],
+  },
   doculensai: {
     title: "Terms of Service",
     lastUpdated: "July 12, 2026",

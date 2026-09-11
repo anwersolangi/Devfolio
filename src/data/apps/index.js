@@ -7,8 +7,10 @@ import { convertiX } from "./convertix";
 import { tapMeal } from "./tapmeal";
 import { memorIQ } from "./memoriq";
 import { docuLensAI } from "./doculensai";
+import { wasiyyah } from "./wasiyyah";
 
 export const APPS_DATA = {
+  wasiyyah,
   doculensai: docuLensAI,
   nearby,
   whatsupfire,
@@ -21,6 +23,12 @@ export const APPS_DATA = {
 };
 
 export const APPS_LIST = [
+  {
+    slug: wasiyyah.slug,
+    name: wasiyyah.name,
+    description: wasiyyah.description,
+    icon: wasiyyah.icon,
+  },
   {
     slug: docuLensAI.slug,
     name: docuLensAI.name,
@@ -79,6 +87,7 @@ export const APPS_LIST = [
 ];
 
 export {
+  wasiyyah,
   docuLensAI,
   nearby,
   whatsupfire,
