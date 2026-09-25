@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="React Native in 2026">
-  <rect width="1200" height="630" fill="#0d0c0b"/>
-  <g stroke="rgba(244,239,231,0.06)" stroke-width="1">
+  <rect width="1200" height="630" fill="#f7f7f5"/>
+  <g stroke="rgba(23,23,22,0.06)" stroke-width="1">
     <line x1="0" y1="157" x2="1200" y2="157"/>
     <line x1="0" y1="315" x2="1200" y2="315"/>
     <line x1="0" y1="472" x2="1200" y2="472"/>
@@ -8,15 +8,15 @@
     <line x1="600" y1="0" x2="600" y2="630"/>
     <line x1="900" y1="0" x2="900" y2="630"/>
   </g>
-  <g transform="translate(920,315)" fill="none" stroke="#ff6a3d" stroke-width="3" opacity="0.85">
+  <g transform="translate(920,315)" fill="none" stroke="#0d6b4b" stroke-width="3" opacity="0.85">
     <ellipse rx="150" ry="58"/>
     <ellipse rx="150" ry="58" transform="rotate(60)"/>
     <ellipse rx="150" ry="58" transform="rotate(120)"/>
-    <circle r="14" fill="#ff6a3d" stroke="none"/>
+    <circle r="14" fill="#0d6b4b" stroke="none"/>
   </g>
-  <text x="80" y="150" font-family="ui-monospace,Menlo,monospace" font-size="22" letter-spacing="6" fill="#ff6a3d">THE BUILD LOG · REACT NATIVE</text>
-  <text x="80" y="290" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="104" font-weight="800" letter-spacing="-4" fill="#f4efe7">React Native</text>
-  <text x="80" y="400" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="104" font-weight="800" letter-spacing="-4" fill="#ff6a3d">in 2026</text>
-  <text x="80" y="480" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="30" fill="rgba(244,239,231,0.62)">The bridge is gone. Here&#8217;s what&#8217;s left — and what&#8217;s next.</text>
-  <text x="80" y="566" font-family="ui-monospace,Menlo,monospace" font-size="18" letter-spacing="3" fill="rgba(244,239,231,0.38)">ANWERSOLANGI.COM/BLOG</text>
+  <text x="80" y="150" font-family="ui-monospace,Menlo,monospace" font-size="22" letter-spacing="6" fill="#0d6b4b">THE BUILD LOG · REACT NATIVE</text>
+  <text x="80" y="290" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="104" font-weight="800" letter-spacing="-4" fill="#171716">React Native</text>
+  <text x="80" y="400" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="104" font-weight="800" letter-spacing="-4" fill="#0d6b4b">in 2026</text>
+  <text x="80" y="480" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="30" fill="rgba(23,23,22,0.62)">The bridge is gone. Here&#8217;s what&#8217;s left — and what&#8217;s next.</text>
+  <text x="80" y="566" font-family="ui-monospace,Menlo,monospace" font-size="18" letter-spacing="3" fill="rgba(23,23,22,0.38)">ANWERSOLANGI.COM/BLOG</text>
 </svg>

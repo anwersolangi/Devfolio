@@ -1,7 +1,5 @@
-import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, permanentRedirect } from "next/navigation";
 import {
-  ArrowLeft,
   ArrowRight,
   Mail,
   ChevronDown,
@@ -15,203 +13,91 @@ import { PRIVACY_POLICIES } from "@/data/privacy";
 import { TERMS_OF_SERVICE } from "@/data/terms";
 import { HELP_CONTENT } from "@/data/help";
 import { CHILD_SAFETY_POLICIES } from "@/data/child-safety";
+import { pageTitle, clampText, TWITTER_BASE } from "@/lib/seo";
+import LegalDocument, {
+  BackLink,
+  LegalHeader,
+  PolicySection,
+  FootCard,
+} from "@/components/legal/LegalDocument";
+
+import { appSubPages, allAppSubPageParams, UNIFIED_FALLBACK } from "@/lib/legal";
+
+// Every page with content is prerendered; any other path is a 404.
+export const dynamicParams = false;
+
+export function generateStaticParams() {
+  return allAppSubPageParams();
+}
 
 export async function generateMetadata({ params }) {
   const { slug, path } = await params;
   const app = APPS_DATA[slug];
-  if (!app) return { title: "Not Found" };
+  if (!app || path?.length !== 1 || !appSubPages(slug).includes(path[0])) {
+    return { title: "Not Found" };
+  }
 
   const canonicalPath = `/apps/${slug}/${(path || []).join("/")}`;
 
   const map = {
     privacy: [
       "Privacy Policy",
-      `Privacy Policy for ${app.name}. Learn how your data is handled.`,
+      `Privacy policy for ${app.name} (${app.subtitle}): what information the app handles, how it is used, and how to contact the developer.`,
     ],
     terms: [
       "Terms of Service",
-      `Terms of Service for ${app.name}. Read the terms and conditions.`,
+      `Terms of service for ${app.name} (${app.subtitle}): the terms and conditions that apply when you use the app.`,
     ],
     help: [
       "Help & Support",
-      `Get help with ${app.name}. FAQs, troubleshooting, and contact support.`,
+      `Help and support for ${app.name}: answers to common questions, troubleshooting steps, and how to contact the developer.`,
     ],
     contact: [
-      "Contact Us",
-      `Contact support for ${app.name}. Bug reports, feature requests, and inquiries.`,
+      "Contact",
+      `Contact the developer of ${app.name} for bug reports, feature requests and account questions.`,
     ],
     "child-safety": [
       "Child Safety Standards",
-      `Child Safety Standards Policy for ${app.name}. Our commitment to child safety and protection.`,
+      `Child safety standards for ${app.name}: the app's policy on child safety and how to report a concern to the developer.`,
     ],
   };
   const entry = map[path?.[0]];
-  if (entry) {
-    return {
-      title: `${entry[0]} | ${app.name} | Anwer Solangi`,
-      description: entry[1],
-      alternates: { canonical: canonicalPath },
-    };
-  }
-  const pageName = path?.join(" / ");
+  const pageName = entry?.[0] ?? path?.join(" / ");
+  const title = pageTitle(`${pageName} — ${app.name}`);
+  const description = clampText(entry?.[1] ?? `${pageName} for ${app.name}.`);
   return {
-    title: `${pageName} | ${app.name} | Anwer Solangi`,
-    description: `${pageName} for ${app.name}`,
+    title,
+    description,
+    // Legal and support pages exist because store listings link to them, not
+    // to rank. Keeping them out of the index (but followed) stops ~17
+    // boilerplate-heavy pages competing with the pages that should rank; they
+    // stay publicly reachable for Play Console and store reviewers.
+    robots: { index: false, follow: true },
     alternates: { canonical: canonicalPath },
+    openGraph: {
+      title,
+      description,
+      url: canonicalPath,
+      type: "website",
+      // The app's generated share card; file-based OG images don't cascade
+      // into this catch-all segment on their own.
+      images: [
+        {
+          url: `/apps/${slug}/opengraph-image`,
+          width: 1200,
+          height: 630,
+          alt: `${app.name} — ${app.subtitle}`,
+        },
+      ],
+    },
+    twitter: { ...TWITTER_BASE, title, description },
   };
 }
 
-function BackLink({ appSlug, appName }) {
-  return (
-    <Link
-      href={`/apps/${appSlug}`}
-      className="inline-flex items-center gap-2 text-sm text-ink-2 hover:text-ink mb-12 group font-mono"
-    >
-      <ArrowLeft className="w-3.5 h-3.5 transition-transform duration-300 group-hover:-translate-x-1" />
-      back to {appName}
-    </Link>
-  );
-}
+const appBack = (slug, name) => ({ href: `/apps/${slug}`, label: `back to ${name}` });
 
-function PageHeader({ eyebrow, title, lastUpdated }) {
-  return (
-    <header className="mb-12">
-      <div className="font-mono text-[11px] tracking-[0.14em] text-accent uppercase">
-        {eyebrow}
-      </div>
-      <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-[-0.04em] leading-[0.98] mt-3 text-ink">
-        {title}
-      </h1>
-      {lastUpdated && (
-        <p className="font-mono text-[12px] tracking-[0.06em] text-ink-3 mt-4">
-          LAST UPDATED · {lastUpdated.toUpperCase()}
-        </p>
-      )}
-    </header>
-  );
-}
-
-function PolicySection({ section }) {
-  return (
-    <section className="mb-12 pb-12 border-b border-rule last:border-b-0">
-      <h2 className="text-2xl md:text-3xl font-bold text-ink tracking-[-0.02em] mb-5 leading-tight">
-        {section.title}
-      </h2>
-
-      {section.content && (
-        <p className="text-ink-2 text-[15px] leading-[1.7] whitespace-pre-line mb-4">
-          {section.content}
-        </p>
-      )}
-
-      {section.items && (
-        <ul className="space-y-2 mb-4">
-          {section.items.map((item, i) => (
-            <li
-              key={i}
-              className="relative pl-5 text-ink-2 text-[15px] leading-[1.6]"
-            >
-              <span className="absolute left-0 top-[10px] w-1.5 h-1.5 rounded-full bg-accent" />
-              {item}
-            </li>
-          ))}
-        </ul>
-      )}
-
-      {section.footer && (
-        <p className="text-ink leading-[1.6] mt-4 p-4 rounded-lg bg-bg-2 border border-rule border-l-2 border-l-accent">
-          {section.footer}
-        </p>
-      )}
-
-      {section.subsections?.map((sub, i) => (
-        <div key={i} className="mt-5 p-5 bg-bg-2 rounded-xl border border-rule">
-          <h3 className="text-lg font-semibold text-ink tracking-[-0.01em] mb-2">
-            {sub.title}
-          </h3>
-          <p className="text-ink-2 text-[14px] leading-[1.6] whitespace-pre-line">
-            {sub.content}
-          </p>
-        </div>
-      ))}
-
-      {section.contactEmail && (
-        <a
-          href={`mailto:${section.contactEmail}`}
-          className="inline-flex items-center gap-2 mt-4 px-4 py-2.5 rounded-lg border border-rule text-ink hover:bg-white/5 hover:border-accent/40 transition text-sm font-mono"
-        >
-          <Mail className="w-4 h-4 text-accent" />
-          {section.contactEmail}
-        </a>
-      )}
-    </section>
-  );
-}
-
-function FootCard({ children }) {
-  return (
-    <div className="mt-12 p-6 rounded-xl border border-rule bg-bg-2">
-      <p className="text-ink-2 text-center text-[15px]">{children}</p>
-    </div>
-  );
-}
-
-function PrivacyPolicyPage({ policy, appSlug }) {
-  return (
-    <main className="min-h-screen pt-28 pb-20 px-6 lg:px-16">
-      <div className="max-w-4xl mx-auto">
-        <BackLink appSlug={appSlug} appName={policy.appName} />
-        <PageHeader
-          eyebrow={`${policy.appName} · LEGAL`}
-          title={policy.title}
-          lastUpdated={policy.lastUpdated}
-        />
-        <article>
-          {policy.sections.map((section, i) => (
-            <PolicySection key={i} section={section} />
-          ))}
-        </article>
-        <FootCard>
-          Have questions about privacy practices?{" "}
-          <a
-            href="mailto:me@anwersolangi.com"
-            className="text-accent hover:underline font-medium"
-          >
-            Contact me
-          </a>
-        </FootCard>
-      </div>
-    </main>
-  );
-}
-
-function TermsOfServicePage({ terms, appSlug }) {
-  return (
-    <main className="min-h-screen pt-28 pb-20 px-6 lg:px-16">
-      <div className="max-w-4xl mx-auto">
-        <BackLink appSlug={appSlug} appName={terms.appName} />
-        <PageHeader
-          eyebrow={`${terms.appName} · LEGAL`}
-          title={terms.title}
-          lastUpdated={terms.lastUpdated}
-        />
-        <article>
-          {terms.sections.map((section, i) => (
-            <PolicySection key={i} section={section} />
-          ))}
-        </article>
-        <FootCard>
-          Have questions about these terms?{" "}
-          <a
-            href="mailto:me@anwersolangi.com"
-            className="text-accent hover:underline font-medium"
-          >
-            Contact me
-          </a>
-        </FootCard>
-      </div>
-    </main>
-  );
+function AppBackLink({ appSlug, appName }) {
+  return <BackLink {...appBack(appSlug, appName)} />;
 }
 
 function HelpPage({ help, appSlug }) {
@@ -224,10 +110,10 @@ function HelpPage({ help, appSlug }) {
   return (
     <main className="min-h-screen pt-28 pb-20 px-6 lg:px-16">
       <div className="max-w-5xl mx-auto">
-        <BackLink appSlug={appSlug} appName={help.appName} />
+        <AppBackLink appSlug={appSlug} appName={help.appName} />
 
         <header className="mb-12 max-w-3xl">
-          <div className="font-mono text-[11px] tracking-[0.14em] text-accent uppercase">
+          <div className="label">
             {help.appName} · SUPPORT
           </div>
           <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-[-0.045em] leading-[0.95] mt-3 text-ink">
@@ -249,8 +135,8 @@ function HelpPage({ help, appSlug }) {
           />
           <div className="relative flex flex-col md:flex-row md:items-center md:justify-between gap-5">
             <div className="max-w-xl">
-              <div className="font-mono text-[10px] tracking-[0.18em] text-accent uppercase">
-                ▸ Need immediate help?
+              <div className="label">
+                Need immediate help?
               </div>
               <h2 className="text-2xl md:text-3xl font-bold tracking-[-0.02em] text-ink mt-2">
                 Email me directly.
@@ -269,7 +155,7 @@ function HelpPage({ help, appSlug }) {
         </div>
 
         <section className="mb-20">
-          <div className="font-mono text-[11px] tracking-[0.14em] text-accent mb-3 uppercase">
+          <div className="label mb-3">
             01 · FAQ
           </div>
           <h2 className="text-3xl md:text-4xl font-bold tracking-[-0.03em] text-ink mb-8">
@@ -301,7 +187,7 @@ function HelpPage({ help, appSlug }) {
         </section>
 
         <section className="mb-20">
-          <div className="font-mono text-[11px] tracking-[0.14em] text-accent mb-3 uppercase">
+          <div className="label mb-3">
             02 · TROUBLESHOOTING
           </div>
           <h2 className="text-3xl md:text-4xl font-bold tracking-[-0.03em] text-ink mb-8">
@@ -340,7 +226,7 @@ function HelpPage({ help, appSlug }) {
         </section>
 
         <section className="mb-12">
-          <div className="font-mono text-[11px] tracking-[0.14em] text-accent mb-3 uppercase">
+          <div className="label mb-3">
             03 · GET IN TOUCH
           </div>
           <h2 className="text-3xl md:text-4xl font-bold tracking-[-0.03em] text-ink mb-3">
@@ -399,15 +285,15 @@ function ContactPage({ contactOptions, appSlug, appName, supportEmail }) {
   return (
     <main className="min-h-screen pt-28 pb-20 px-6 lg:px-16">
       <div className="max-w-4xl mx-auto">
-        <BackLink appSlug={appSlug} appName={appName} />
+        <AppBackLink appSlug={appSlug} appName={appName} />
 
         <header className="mb-12 max-w-3xl">
-          <div className="font-mono text-[11px] tracking-[0.14em] text-accent uppercase">
+          <div className="label">
             {appName} · CONTACT
           </div>
           <h1 className="text-5xl md:text-6xl font-extrabold tracking-[-0.045em] leading-[0.95] mt-3 text-ink">
             How can I{" "}
-            <span className="font-italic-serif text-accent font-normal">
+            <span className="text-accent">
               help
             </span>
             <span className="text-accent">?</span>
@@ -460,7 +346,7 @@ function ChildSafetyPolicyPage({ policy, appSlug }) {
   return (
     <main className="min-h-screen pt-28 pb-20 px-6 lg:px-16">
       <div className="max-w-4xl mx-auto">
-        <BackLink appSlug={appSlug} appName={policy.appName} />
+        <AppBackLink appSlug={appSlug} appName={policy.appName} />
 
         <div className="bg-[#3a1a14] border border-[#f06a5a]/40 border-l-4 border-l-[#f06a5a] p-6 rounded-xl mb-12 flex items-start gap-4">
           <ShieldAlert className="w-6 h-6 text-[#f06a5a] shrink-0 mt-0.5" />
@@ -475,7 +361,7 @@ function ChildSafetyPolicyPage({ policy, appSlug }) {
           </div>
         </div>
 
-        <PageHeader
+        <LegalHeader
           eyebrow={`${policy.appName} · LEGAL`}
           title={policy.title}
           lastUpdated={policy.lastUpdated}
@@ -511,7 +397,7 @@ function ChildSafetyPolicyPage({ policy, appSlug }) {
               href="https://www.cybertipline.org"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-rule text-ink text-sm font-semibold hover:bg-white/5 transition"
+              className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-rule text-ink text-sm font-semibold hover:bg-bg-3 transition"
             >
               <ExternalLink className="w-4 h-4" />
               NCMEC CyberTipline
@@ -523,60 +409,61 @@ function ChildSafetyPolicyPage({ policy, appSlug }) {
   );
 }
 
-function GenericSubPage({ slug, path, app }) {
-  const pageName = path?.join(" / ");
-  return (
-    <main className="min-h-screen pt-28 pb-20 px-6 lg:px-16">
-      <div className="max-w-4xl mx-auto">
-        <BackLink appSlug={slug} appName={app.name} />
-        <PageHeader eyebrow={`${app.name} · SUB-PAGE`} title={pageName} />
-        <p className="text-lg text-ink-2 leading-relaxed">
-          This page is coming soon for{" "}
-          <strong className="text-ink">{app.name}</strong>.
-        </p>
-      </div>
-    </main>
-  );
-}
-
 export default async function AppSubPage({ params }) {
   const { slug, path } = await params;
   const app = APPS_DATA[slug];
-  if (!app) notFound();
+  const kind = path?.length === 1 ? path[0] : null;
+  const back = app && appBack(slug, app.name);
 
-  if (path?.[0] === "privacy") {
-    const policy = PRIVACY_POLICIES[slug];
-    if (policy) return <PrivacyPolicyPage policy={policy} appSlug={slug} />;
+  if (kind === "privacy" && PRIVACY_POLICIES[slug]) {
+    return (
+      <LegalDocument
+        doc={PRIVACY_POLICIES[slug]}
+        eyebrow={`${app.name} · LEGAL`}
+        back={back}
+        question="Have questions about privacy practices?"
+      />
+    );
   }
 
-  if (path?.[0] === "terms") {
-    const terms = TERMS_OF_SERVICE[slug];
-    if (terms) return <TermsOfServicePage terms={terms} appSlug={slug} />;
+  if (kind === "terms" && TERMS_OF_SERVICE[slug]) {
+    return (
+      <LegalDocument
+        doc={TERMS_OF_SERVICE[slug]}
+        eyebrow={`${app.name} · LEGAL`}
+        back={back}
+        question="Have questions about these terms?"
+      />
+    );
   }
 
-  if (path?.[0] === "help") {
+  if (kind === "help" && HELP_CONTENT[slug]) {
+    return <HelpPage help={HELP_CONTENT[slug]} appSlug={slug} />;
+  }
+
+  if (kind === "contact" && HELP_CONTENT[slug]?.contactOptions) {
     const help = HELP_CONTENT[slug];
-    if (help) return <HelpPage help={help} appSlug={slug} />;
+    return (
+      <ContactPage
+        contactOptions={help.contactOptions}
+        appSlug={slug}
+        appName={help.appName}
+        supportEmail={help.supportEmail}
+      />
+    );
   }
 
-  if (path?.[0] === "contact") {
-    const help = HELP_CONTENT[slug];
-    if (help?.contactOptions) {
-      return (
-        <ContactPage
-          contactOptions={help.contactOptions}
-          appSlug={slug}
-          appName={help.appName}
-          supportEmail={help.supportEmail}
-        />
-      );
-    }
+  if (kind === "child-safety" && CHILD_SAFETY_POLICIES[slug]) {
+    return (
+      <ChildSafetyPolicyPage policy={CHILD_SAFETY_POLICIES[slug]} appSlug={slug} />
+    );
   }
 
-  if (path?.[0] === "child-safety") {
-    const policy = CHILD_SAFETY_POLICIES[slug];
-    if (policy) return <ChildSafetyPolicyPage policy={policy} appSlug={slug} />;
-  }
+  // No app-specific document: send privacy/terms to the unified page so a
+  // store listing link still lands on a real policy.
+  if (app && UNIFIED_FALLBACK[kind]) permanentRedirect(UNIFIED_FALLBACK[kind]);
 
-  return <GenericSubPage slug={slug} path={path} app={app} />;
+  // Only pages with real content exist; everything else is a 404 rather
+  // than a "coming soon" stub.
+  notFound();
 }

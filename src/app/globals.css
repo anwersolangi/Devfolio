@@ -1,161 +1,300 @@
 @import "tailwindcss";
 @config "../../tailwind.config.js";
 
+/* =========================================================================
+   Tokens — a typographic system in two themes. Light: off-white paper,
+   near-black ink. Dark: warm near-black, off-white ink. In both, one green
+   means "you can act on this" and nothing else.
+
+   Theme resolution: the inline script in layout.js sets data-theme on <html>
+   before first paint (saved choice, else the OS setting). Without JS the
+   media query below still follows the OS. tailwind.config.js reads these
+   variables, so every utility (bg-bg, text-ink, border-accent/40…) switches
+   with the theme.
+   ========================================================================= */
 @layer base {
   :root {
-    /* V1 palette — warm charcoal + orange */
-    --bg: #0d0c0b;
-    --bg-2: #161514;
-    --bg-3: #1f1d1b;
-    --ink: #f4efe7;
-    --ink-2: rgba(244, 239, 231, 0.62);
-    --ink-3: rgba(244, 239, 231, 0.38);
-    --rule: rgba(244, 239, 231, 0.1);
+    color-scheme: light;
 
-    /* Orange is light enough that solid fills take *dark* label text — white
-       on --accent is only 2.84:1, the near-black is 6.8:1. --accent-deep is
-       kept as a separate name (it's referenced across the app) but points at
-       --accent here; it only diverges for accents too dark to label in ink. */
-    --accent: #ff6a3d;
-    --accent-deep: #ff6a3d;
-    --accent-2: #ffb27a;
-    --on-accent: #1a0a02;
-    --good: #7af0a8;
+    --bg: #f7f7f5;
+    --bg-2: #ffffff;
+    --bg-3: #eeeeea;
+    --ink: #171716;
+    --ink-2: #5a5a55;
+    --ink-3: #77776f;
+    --rule: #e2e2dd;
+    --rule-2: #c9c9c3;
 
-    /* Hot core for travelling highlights. --accent and --accent-2 sit a shade
-       apart, so a two-stop sweep between them reads as a flat line; this is
-       the near-white the beams pass through at their brightest point. */
-    --accent-hot: #fff0dc;
+    --accent: #0d6b4b;
+    --accent-deep: #0a563c;
+    --accent-tint: #e4f1ea;
+    --on-accent: #ffffff;
+    /* Legacy aliases still referenced by inner pages. */
+    --accent-2: #0a563c;
+    --accent-hot: #0d6b4b;
 
-    /* Map to your existing CSS variables so any older component that uses
-       var(--background) / var(--foreground) keeps working with the dark theme */
-    --background: #0d0c0b;
-    --foreground: #f4efe7;
+    --good: #1a7f4b;
+    --bad: #b42318;
+
+    /* The phone bezel is a dark object in both themes. */
+    --bezel: #111110;
+    --shadow-card:
+      0 1px 2px rgba(23, 23, 22, 0.04), 0 10px 30px -18px rgba(23, 23, 22, 0.18);
+    --shadow-object:
+      0 24px 48px -24px rgba(23, 23, 22, 0.35), 0 2px 6px rgba(23, 23, 22, 0.12);
+
+    --background: var(--bg);
+    --foreground: var(--ink);
+  }
+
+  /* Dark values, declared twice: once for an explicit choice, once for the
+     OS setting when no choice has been made (or JS is off). */
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+
+    --bg: #121211;
+    --bg-2: #1a1a18;
+    --bg-3: #252522;
+    --ink: #f1f0ea;
+    --ink-2: #b3b2aa;
+    --ink-3: #8d8c84;
+    --rule: #2b2b28;
+    --rule-2: #3e3e3a;
+
+    --accent: #52c48f;
+    --accent-deep: #74d6a8;
+    --accent-tint: #16291f;
+    --on-accent: #06140d;
+    --accent-2: #74d6a8;
+    --accent-hot: #52c48f;
+
+    --good: #52c48f;
+    --bad: #f07b70;
+
+    --bezel: #0a0a09;
+    --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 30px -18px rgba(0, 0, 0, 0.6);
+    --shadow-object:
+      0 24px 48px -24px rgba(0, 0, 0, 0.75), 0 2px 6px rgba(0, 0, 0, 0.4);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) {
+      color-scheme: dark;
+
+      --bg: #121211;
+      --bg-2: #1a1a18;
+      --bg-3: #252522;
+      --ink: #f1f0ea;
+      --ink-2: #b3b2aa;
+      --ink-3: #8d8c84;
+      --rule: #2b2b28;
+      --rule-2: #3e3e3a;
+
+      --accent: #52c48f;
+      --accent-deep: #74d6a8;
+      --accent-tint: #16291f;
+      --on-accent: #06140d;
+      --accent-2: #74d6a8;
+      --accent-hot: #52c48f;
+
+      --good: #52c48f;
+      --bad: #f07b70;
+
+      --bezel: #0a0a09;
+      --shadow-card: 0 1px 2px rgba(0, 0, 0, 0.3), 0 10px 30px -18px rgba(0, 0, 0, 0.6);
+      --shadow-object:
+        0 24px 48px -24px rgba(0, 0, 0, 0.75), 0 2px 6px rgba(0, 0, 0, 0.4);
+    }
   }
 
   html {
     scroll-behavior: smooth;
-    /* Anchor targets (#about, #contact, …) clear the fixed header */
-    scroll-padding-top: 6rem;
-  }
-
-  /* Lenis is driving. Native smooth scroll would fight its rAF loop, so hand
-     the animation over entirely — `smooth` above stays as the no-JS fallback. */
-  html.lenis {
-    scroll-behavior: auto;
+    /* Anchor targets clear the fixed header. */
+    scroll-padding-top: 5rem;
   }
 
   body {
-    @apply min-h-screen;
+    min-height: 100vh;
     background: var(--bg);
     color: var(--ink);
     font-family:
-      var(--font-inter),
+      var(--font-sans),
       system-ui,
       -apple-system,
       sans-serif;
-    font-feature-settings:
-      "rlig" 1,
-      "calt" 1;
+    font-size: 16px;
+    line-height: 1.6;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+  }
+
+  img,
+  video {
+    max-width: 100%;
+  }
+
+  ::selection {
+    background: var(--accent-tint);
+    color: var(--ink);
+  }
+
+  *:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+    border-radius: 4px;
   }
 }
 
 /* =========================================================================
-   Component classes — V1 primitives + your existing helpers, re-skinned
-   for the dark theme. 404 / project detail / reel detail pages pick this
-   up automatically.
+   Components
    ========================================================================= */
 @layer components {
+  .btn-primary,
+  .btn-secondary,
+  .btn-ghost {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-5 py-3 text-[15px] font-medium leading-none transition-colors duration-150;
+  }
   .btn-primary {
-    @apply inline-flex items-center justify-center px-6 py-3
-           font-semibold rounded-xl
-           focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#0d0c0b]
-           transition-all duration-200;
-    background: var(--accent-deep);
+    background: var(--accent);
     color: var(--on-accent);
   }
   .btn-primary:hover {
-    opacity: 0.92;
+    background: var(--accent-deep);
   }
-
   .btn-secondary {
-    @apply inline-flex items-center justify-center px-6 py-3
-           font-semibold rounded-xl
-           focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-[#0d0c0b]
-           transition-all duration-200;
     color: var(--ink);
-    border: 1px solid var(--rule);
-    background: transparent;
+    border: 1px solid var(--rule-2);
+    background: var(--bg-2);
   }
   .btn-secondary:hover {
-    background: rgba(244, 239, 231, 0.05);
+    background: var(--bg-3);
+  }
+  .btn-ghost {
+    color: var(--ink-2);
+    padding-left: 0.25rem;
+    padding-right: 0.25rem;
+  }
+  .btn-ghost:hover {
+    color: var(--ink);
+  }
+  .btn-primary:active,
+  .btn-secondary:active {
+    transform: translateY(1px);
+  }
+  .btn-sm {
+    padding: 0.5rem 0.875rem;
+    font-size: 14px;
+    border-radius: 8px;
   }
 
-  .section-padding {
-    @apply py-24 lg:py-32;
+  /* Inline text link. */
+  .link {
+    color: var(--accent);
+    text-underline-offset: 4px;
+    text-decoration-thickness: 1px;
+  }
+  .link:hover {
+    color: var(--accent-deep);
+    text-decoration-line: underline;
   }
 
-  .heading-1 {
-    @apply text-5xl sm:text-6xl lg:text-7xl font-extrabold tracking-[-0.04em] leading-[0.95];
+  /* Small section label. Kept under its legacy name so inner pages that
+     still use it render as a plain label rather than the old mono eyebrow. */
+  .eyebrow,
+  .label {
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-3);
   }
-  .heading-2 {
-    @apply text-4xl sm:text-5xl lg:text-6xl font-bold tracking-[-0.035em] leading-[1];
-  }
-  .heading-3 {
-    @apply text-2xl sm:text-3xl font-bold tracking-[-0.02em];
+  .label-sm {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-3);
   }
 
-  .text-muted {
+  /* "← Back" style links at the top of inner pages. */
+  .back-link {
+    @apply inline-flex items-center gap-1.5 text-[14px] font-medium transition-colors duration-150;
+    color: var(--ink-2);
+  }
+  .back-link:hover {
+    color: var(--ink);
+  }
+
+  /* Small meta tag: categories, stack items. */
+  .chip {
+    @apply inline-flex items-center rounded-md px-2 py-0.5 text-[12px] font-medium;
+    background: var(--bg-3);
     color: var(--ink-2);
   }
 
   .card {
-    @apply rounded-xl transition-all duration-200;
     background: var(--bg-2);
     border: 1px solid var(--rule);
-  }
-  .card:hover {
-    border-color: rgba(244, 239, 231, 0.18);
+    border-radius: 12px;
   }
 
   .badge {
-    @apply inline-flex items-center px-2.5 py-1 rounded-md text-xs font-medium;
-    background: rgba(244, 239, 231, 0.05);
+    @apply inline-flex items-center px-2 py-0.5 rounded-md text-[12px] font-medium;
+    background: var(--bg-3);
     color: var(--ink-2);
-    border: 1px solid var(--rule);
-    font-family: var(--font-mono);
-    letter-spacing: 0.02em;
   }
 
-  .eyebrow {
-    font-family: var(--font-mono);
-    font-size: 11px;
-    letter-spacing: 0.14em;
-    color: var(--accent);
-    text-transform: uppercase;
+  /* Legacy helpers used by inner pages until they are re-skinned. */
+  .section-padding {
+    @apply py-16 lg:py-24;
+  }
+  .heading-1 {
+    @apply text-4xl sm:text-5xl font-semibold tracking-[-0.025em] leading-[1.1];
+  }
+  .heading-2 {
+    @apply text-3xl sm:text-4xl font-semibold tracking-[-0.02em] leading-[1.15];
+  }
+  .heading-3 {
+    @apply text-xl sm:text-2xl font-semibold tracking-[-0.015em];
+  }
+  .text-muted {
+    color: var(--ink-2);
   }
 }
 
 /* =========================================================================
    Utilities
    ========================================================================= */
+
+/* The two display steps from DESIGN.md. Fluid so a heading names its step
+   once instead of carrying a literal size per breakpoint. Declared with
+   @utility because Tailwind v4 owns the `text-*` namespace. */
+@utility text-display {
+  font-size: clamp(2.125rem, 1rem + 3.2vw, 3.375rem);
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+}
+@utility text-display-sm {
+  font-size: clamp(2rem, 0.9rem + 2.9vw, 3rem);
+  line-height: 1.06;
+  letter-spacing: -0.03em;
+}
+
 @layer utilities {
   .font-display {
-    font-family: var(--font-inter), system-ui, sans-serif;
+    font-family: var(--font-sans), system-ui, sans-serif;
   }
+  /* Legacy: the italic serif accent face is gone; inner pages that still ask
+     for it get a plain italic until they are re-skinned. */
   .font-italic-serif {
-    font-family: var(--font-instrument-serif), Georgia, serif;
     font-style: italic;
-  }
-
-  /* Track motion lives in VelocityMarquee — it's driven by scroll velocity,
-     not a fixed-duration keyframe. */
-  .marquee {
-    display: flex;
-    overflow: hidden;
-    white-space: nowrap;
   }
 
   .no-scrollbar::-webkit-scrollbar {
@@ -166,281 +305,8 @@
     -ms-overflow-style: none;
   }
 
-  .glow-orb {
-    position: absolute;
-    border-radius: 9999px;
-    filter: blur(20px);
-    pointer-events: none;
-    background: radial-gradient(
-      circle,
-      rgba(255, 106, 61, 0.18),
-      transparent 60%
-    );
-  }
-
-  /* Scroll-reveal primitive — toggled by the Reveal component */
-  /* Shorter travel and a quicker curve than before — at 700ms/20px sections
-     were still settling well after the scroll had moved on, which read as lag. */
-  .reveal {
-    opacity: 0;
-    transform: translateY(14px);
-    transition:
-      opacity 480ms cubic-bezier(0.2, 0.7, 0.3, 1),
-      transform 480ms cubic-bezier(0.2, 0.7, 0.3, 1);
-  }
-  .reveal.is-visible {
-    opacity: 1;
-    transform: none;
-  }
-
-  /* Hero entrance — pure CSS so the hero can stay a server component */
-  .hero-enter {
-    animation: hero-enter 800ms cubic-bezier(0.2, 0.7, 0.3, 1) both;
-  }
-  .hero-enter-late {
-    animation: hero-enter 800ms cubic-bezier(0.2, 0.7, 0.3, 1) 200ms both;
-  }
-  @keyframes hero-enter {
-    from {
-      opacity: 0;
-      transform: translateY(24px);
-    }
-    to {
-      opacity: 1;
-      transform: none;
-    }
-  }
-
-  /* ---------------------------------------------------------------------
-     Spotlight — dim dot grid, plus a bright accent grid revealed through a
-     radial mask that follows the pointer. Coordinates come from Spotlight.js.
-     --------------------------------------------------------------------- */
-  .spotlight {
-    position: absolute;
-    inset: 0;
-    overflow: hidden;
-    pointer-events: none;
-    --spot-x: 50%;
-    --spot-y: 0px;
-    --spot-opacity: 0;
-  }
-  .spotlight-grid,
-  .spotlight-reveal {
-    position: absolute;
-    inset: 0;
-    background-image: radial-gradient(
-      circle at center,
-      var(--dot-color) 1px,
-      transparent 1px
-    );
-    background-size: 26px 26px;
-  }
-  /* Base layer: barely there, and faded out top and bottom so the grid never
-     collides with the header or the section below. */
-  .spotlight-grid {
-    --dot-color: rgba(244, 239, 231, 0.09);
-    mask-image: linear-gradient(
-      to bottom,
-      transparent,
-      black 18%,
-      black 72%,
-      transparent
-    );
-  }
-  /* Reveal layer: same grid in accent orange, clipped to a disc at the cursor. */
-  .spotlight-reveal {
-    --dot-color: rgba(255, 178, 122, 0.85);
-    opacity: var(--spot-opacity);
-    transition: opacity 400ms ease;
-    mask-image: radial-gradient(
-      var(--spot-size) circle at var(--spot-x) var(--spot-y),
-      black 0%,
-      transparent 65%
-    );
-  }
-  .spotlight-glow {
-    position: absolute;
-    inset: 0;
-    opacity: var(--spot-opacity);
-    transition: opacity 400ms ease;
-    background: radial-gradient(
-      calc(var(--spot-size) * 1.3) circle at var(--spot-x) var(--spot-y),
-      rgba(255, 106, 61, 0.14),
-      transparent 70%
-    );
-  }
-
-  /* ---------------------------------------------------------------------
-     Border beam — ported from Inspira UI (MIT).
-     The element is a ring: two masks (padding-box + border-box) intersect so
-     only the transparent border area paints, and ::after rides a rounded-rect
-     offset-path around it. Both of those properties are recent, so the beam
-     only exists inside @supports — without them you get the plain border.
-     --------------------------------------------------------------------- */
-  .border-beam {
-    position: absolute;
-    inset: 0;
-    border-radius: inherit;
-    pointer-events: none;
-  }
-  @supports (mask-composite: intersect) and
-    (offset-path: rect(0 auto auto 0 round 1px)) {
-    .border-beam {
-      border: calc(var(--beam-border-width) * 1px) solid transparent;
-      mask:
-        linear-gradient(transparent, transparent),
-        linear-gradient(white, white);
-      mask-clip: padding-box, border-box;
-      mask-composite: intersect;
-    }
-    .border-beam::after {
-      content: "";
-      position: absolute;
-      aspect-ratio: 1;
-      width: calc(var(--beam-size) * 1px);
-      /* Same three-stop ramp as AnimatedBeam so both beams read as one system. */
-      background: linear-gradient(
-        to left,
-        var(--beam-from),
-        var(--accent-hot) 40%,
-        var(--beam-to) 70%,
-        transparent
-      );
-      offset-anchor: calc(var(--beam-anchor) * 1%) 50%;
-      offset-path: rect(0 auto auto 0 round calc(var(--beam-size) * 1px));
-      animation: border-beam var(--beam-duration) var(--beam-delay) infinite
-        linear;
-    }
-    @keyframes border-beam {
-      to {
-        offset-distance: 100%;
-      }
-    }
-  }
-
-  /* ---------------------------------------------------------------------
-     Ripple background — ported from Inspira UI (MIT). Rings pulse between
-     full and 90% scale on a stagger; the mask keeps them from hitting the
-     section edges as hard lines.
-     --------------------------------------------------------------------- */
-  .ripple-bg {
-    position: absolute;
-    inset: 0;
-    pointer-events: none;
-    mask-image: radial-gradient(
-      circle at center,
-      black 30%,
-      transparent 72%
-    );
-  }
-  .ripple-circle {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    border-radius: 9999px;
-    border: 1px solid var(--accent);
-    transform: translate(-50%, -50%) scale(1);
-    animation: ripple-circle 3s ease-in-out infinite;
-  }
-  @keyframes ripple-circle {
-    0%,
-    100% {
-      transform: translate(-50%, -50%) scale(1);
-    }
-    50% {
-      transform: translate(-50%, -50%) scale(0.9);
-    }
-  }
-
-  /* ---------------------------------------------------------------------
-     Shimmer button — ported from Inspira UI (MIT). The spark layer sits at
-     z-index -30 so it paints above the button's own background but below the
-     inset panel at -20; the gap between the button edge and that panel
-     (--shimmer-cut) is the only place the gradient shows through.
-     --------------------------------------------------------------------- */
-  .shimmer-btn {
-    --shimmer-spread: 90deg;
-    position: relative;
-    z-index: 0;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    overflow: hidden;
-    white-space: nowrap;
-    border-radius: var(--shimmer-radius);
-    background: var(--shimmer-bg);
-    transform: translateZ(0);
-    transition: transform 200ms ease;
-  }
-  .shimmer-btn:active {
-    transform: translateY(1px);
-  }
-  .shimmer-btn__spark {
-    position: absolute;
-    inset: 0;
-    z-index: -30;
-    overflow: visible;
-    filter: blur(2px);
-    container-type: size;
-  }
-  .shimmer-btn__slide {
-    position: absolute;
-    inset: 0;
-    aspect-ratio: 1;
-    height: 100cqh;
-    animation: shimmer-slide var(--shimmer-speed) ease-in-out infinite alternate;
-  }
-  .shimmer-btn__spin {
-    position: absolute;
-    inset: -100%;
-    width: auto;
-    background: conic-gradient(
-      from calc(270deg - (var(--shimmer-spread) * 0.5)),
-      transparent 0,
-      var(--shimmer-color) var(--shimmer-spread),
-      transparent var(--shimmer-spread)
-    );
-    animation: shimmer-spin calc(var(--shimmer-speed) * 2) infinite linear;
-  }
-  .shimmer-btn__inset {
-    position: absolute;
-    inset: var(--shimmer-cut);
-    z-index: -20;
-    border-radius: var(--shimmer-radius);
-    background: var(--shimmer-bg);
-  }
-  .shimmer-btn__label {
-    position: relative;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.375rem;
-  }
-  @keyframes shimmer-slide {
-    to {
-      transform: translate(calc(100cqw - 100%), 0);
-    }
-  }
-  @keyframes shimmer-spin {
-    0% {
-      transform: translateZ(0) rotate(0);
-    }
-    15%,
-    35% {
-      transform: translateZ(0) rotate(90deg);
-    }
-    65%,
-    85% {
-      transform: translateZ(0) rotate(270deg);
-    }
-    100% {
-      transform: translateZ(0) rotate(360deg);
-    }
-  }
-
-  /* ---------------------------------------------------------------------
-     FAQ accordion. `interpolate-size` is scoped to the item rather than
-     :root so enabling keyword transitions can't leak into other components.
-     --------------------------------------------------------------------- */
+  /* FAQ accordion. `interpolate-size` is scoped to the item so keyword
+     transitions can't leak into other components. */
   .faq-item {
     interpolate-size: allow-keywords;
   }
@@ -449,29 +315,64 @@
       block-size: 0;
       overflow: hidden;
       transition:
-        block-size 320ms cubic-bezier(0.2, 0.7, 0.3, 1),
-        content-visibility 320ms allow-discrete;
+        block-size 260ms cubic-bezier(0.2, 0.7, 0.3, 1),
+        content-visibility 260ms allow-discrete;
     }
     .faq-item[open]::details-content {
       block-size: auto;
     }
   }
 
-  /* Ripple on press — the Animate UI interaction, without pulling in Motion. */
-  .ripple-layer {
-    position: absolute;
-    border-radius: 9999px;
-    transform: translate(-50%, -50%) scale(0);
-    background: currentColor;
-    opacity: 0.45;
-    pointer-events: none;
-    animation: ripple 600ms ease-out forwards;
+  /* Hero phone cluster. Each phone carries its own rest pose in custom
+     properties so the entrance can animate to it without a second wrapper. */
+  .hero-phone {
+    transform-origin: 50% 100%;
+    transform: translateY(var(--dy, 0px)) rotate(var(--rot, 0deg))
+      scale(var(--scale, 1));
+    animation: hero-phone-in 900ms cubic-bezier(0.16, 1, 0.3, 1) both;
   }
-  @keyframes ripple {
-    to {
-      transform: translate(-50%, -50%) scale(1);
+  @keyframes hero-phone-in {
+    from {
       opacity: 0;
+      transform: translateY(calc(var(--dy, 0px) + 32px))
+        rotate(var(--rot, 0deg)) scale(var(--scale, 1));
     }
+    to {
+      opacity: 1;
+      transform: translateY(var(--dy, 0px)) rotate(var(--rot, 0deg))
+        scale(var(--scale, 1));
+    }
+  }
+
+  /* Image pairs rendered by ThemedImage: only the current theme's copy shows.
+     The hidden copy is lazy, so the browser doesn't fetch it. */
+  .theme-dark-only {
+    display: none;
+  }
+  :root[data-theme="dark"] .theme-dark-only {
+    display: block;
+  }
+  :root[data-theme="dark"] .theme-light-only {
+    display: none;
+  }
+
+  /* Toggle: the moon offers dark mode, the sun offers light mode. Hidden
+     until the theme script has run, since it can't work without JS. */
+  :root:not([data-theme]) .theme-toggle {
+    visibility: hidden;
+  }
+  :root[data-theme="dark"] .theme-icon-moon,
+  :root:not([data-theme="dark"]) .theme-icon-sun {
+    display: none;
+  }
+
+  /* While the theme flips, per-element colour transitions would each animate
+     at their own speed. The switch is one moment, handled by the reveal. */
+  .theme-switching,
+  .theme-switching *,
+  .theme-switching *::before,
+  .theme-switching *::after {
+    transition: none !important;
   }
 
   .skip-link {
@@ -480,74 +381,80 @@
     left: 16px;
     z-index: 200;
     padding: 10px 16px;
-    border-radius: 10px;
-    background: var(--accent-deep);
-    color: var(--on-accent);
-    font-weight: 700;
+    border-radius: 8px;
+    background: var(--ink);
+    color: var(--bg);
+    font-weight: 600;
     font-size: 14px;
     transition: top 150ms ease;
   }
   .skip-link:focus-visible {
     top: 16px;
   }
+
+  /* Effect classes from the previous theme (glows, beams, spotlights, rings,
+     tickers). Neutralised here so any inner page still carrying the markup
+     renders clean until that markup is removed. */
+  .glow-orb,
+  .spotlight,
+  .border-beam,
+  .ripple-bg,
+  .ripple-circle,
+  .ripple-layer,
+  .shimmer-btn__spark,
+  .marquee {
+    display: none !important;
+  }
 }
 
-/* Respect users who prefer less motion */
+/* Theme switch: the new theme grows out of the toggle as a circle. The
+   origin and radius are set on <html> by ThemeToggle just before the switch. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-new(root) {
+  animation: theme-reveal 560ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+@keyframes theme-reveal {
+  from {
+    clip-path: circle(0 at var(--theme-x, 100%) var(--theme-y, 0));
+  }
+  to {
+    clip-path: circle(var(--theme-r, 150vmax) at var(--theme-x, 100%) var(--theme-y, 0));
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
   }
-  .reveal,
-  .hero-enter,
-  .hero-enter-late {
-    opacity: 1;
-    transform: none;
-    transition: none;
-    animation: none;
-  }
-  .border-beam::after,
-  .ripple-layer,
-  .ripple-circle,
-  .shimmer-btn__slide,
-  .shimmer-btn__spin {
-    animation: none;
-  }
   .faq-item::details-content {
     transition: none;
   }
-  .spotlight-reveal,
-  .spotlight-glow {
-    display: none;
+  .hero-phone {
+    animation: none;
   }
 }
 
 /* =========================================================================
-   Scrollbar — dark theme
+   Browser surfaces
    ========================================================================= */
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 10px;
+  height: 10px;
 }
 ::-webkit-scrollbar-track {
   background: var(--bg);
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(244, 239, 231, 0.12);
+  background: var(--rule-2);
   border-radius: 9999px;
+  border: 2px solid var(--bg);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(244, 239, 231, 0.22);
-}
-
-*:focus-visible {
-  outline: none;
-  box-shadow: 0 0 0 2px var(--accent);
-  border-radius: 4px;
-}
-
-::selection {
-  background: var(--accent-deep);
-  color: var(--on-accent);
+  background: var(--ink-3);
 }
 
 @media print {

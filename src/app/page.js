@@ -1,7 +1,6 @@
 import Hero from "@/components/Hero";
 import ReelsCarousel from "@/components/ReelsCarousel";
 import Projects from "@/components/Projects";
-import Apps from "@/components/Apps";
 import Tools from "@/components/Tools";
 import Blog from "@/components/Blog";
 import About from "@/components/About";
@@ -12,11 +11,26 @@ import Contact from "@/components/Contact";
 import { reelsData } from "@/data/reels";
 import { getReelsStats } from "@/lib/reelStats";
 import { HomeSchemas } from "@/components/SEOComponents";
+import { DEFAULT_OG_IMAGE } from "@/lib/seo";
 
 export const revalidate = 3600;
 
 export const metadata = {
-  alternates: { canonical: "/" },
+  alternates: {
+    canonical: "/",
+    types: { "application/rss+xml": "/blog/feed.xml" },
+  },
+  openGraph: {
+    type: "profile",
+    url: "/",
+    title: "Anwer Solangi — React Native Developer in Karachi, Pakistan",
+    description:
+      "Senior React Native developer in Karachi, Pakistan. 50+ projects delivered, 100K+ app downloads. Available for freelance and contract work.",
+    images: [DEFAULT_OG_IMAGE],
+    firstName: "Anwer",
+    lastName: "Solangi",
+    username: "anwersolangi",
+  },
 };
 
 export default async function Home() {
@@ -33,7 +47,6 @@ export default async function Home() {
         totalReels={reelsData.length}
       />
       <Projects />
-      <Apps />
       <Tools />
       <Blog />
       <About />

@@ -84,10 +84,10 @@ export function FAQItem({ question, answer, index }) {
         onClick={() => setOpen(!open)}
         aria-expanded={open}
         aria-controls={panelId}
-        className="w-full text-left px-6 py-5 flex justify-between items-start gap-4 hover:bg-white/5 transition-colors"
+        className="w-full text-left px-6 py-5 flex justify-between items-start gap-4 hover:bg-bg-3 transition-colors duration-150"
       >
         <div className="flex items-start gap-4 flex-1">
-          <span className="font-mono text-[11px] text-accent tracking-[0.1em] pt-1 shrink-0">
+          <span className="text-[13px] text-ink-3 tabular-nums pt-1 shrink-0">
             {String(index + 1).padStart(2, "0")}
           </span>
           <span className="font-semibold text-ink leading-snug">
@@ -116,8 +116,8 @@ export function FAQItem({ question, answer, index }) {
 
 export function StackCard({ title, items }) {
   return (
-    <div className="p-6 rounded-xl border border-rule bg-bg">
-      <div className="font-mono text-[10px] tracking-[0.18em] text-accent uppercase mb-4 pb-3 border-b border-rule">
+    <div className="p-6 rounded-xl border border-rule bg-bg-2">
+      <div className="label mb-4 pb-3 border-b border-rule">
         {title}
       </div>
       <ul className="space-y-2.5">
@@ -146,7 +146,7 @@ export function PerfectFor({ items }) {
         : "sm:grid-cols-2";
 
   return (
-    <div className="mt-10 p-8 rounded-2xl border border-accent/30 bg-gradient-to-br from-bg-3 to-bg-2">
+    <div className="mt-10 p-8 rounded-2xl border border-rule bg-bg-2">
       <div className="flex items-center gap-3 mb-6">
         <Sparkles className="w-5 h-5 text-accent" aria-hidden />
         <h3 className="text-xl font-bold text-ink tracking-[-0.01em]">
@@ -171,37 +171,28 @@ export function PerfectFor({ items }) {
 
 /** The wide ember wash under every layout's closing CTA. */
 export function CtaGlow() {
-  return (
-    <div
-      className="absolute left-1/2 -bottom-[300px] -translate-x-1/2 w-[900px] h-[500px] rounded-full pointer-events-none"
-      style={{
-        background:
-          "radial-gradient(ellipse, rgba(255,106,61,0.22), transparent 60%)",
-        filter: "blur(40px)",
-      }}
-      aria-hidden
-    />
-  );
+  // The light system has no atmospheric light; depth comes from surfaces and
+  // hairlines. Kept as a no-op so the layouts' markup stays stable.
+  return null;
 }
 
 /**
- * Legal/support footer. Only links to sub-pages that actually have content —
- * `subPages` is resolved on the server from the privacy/terms/help/child-safety
- * maps, so an app never advertises a page that renders a "coming soon" stub.
+ * Legal/support footer. `subPages` holds hrefs resolved on the server (see
+ * app/apps/[slug]/page.js); a falsy entry means the app has no such page.
  */
 export function AppFooterLinks({ app, subPages = {} }) {
   const links = [
-    subPages.privacy && ["PRIVACY POLICY", `/apps/${app.slug}/privacy`],
-    subPages.terms && ["TERMS OF SERVICE", `/apps/${app.slug}/terms`],
-    subPages.help && ["HELP & SUPPORT", `/apps/${app.slug}/help`],
-    subPages.childSafety && ["CHILD SAFETY", `/apps/${app.slug}/child-safety`],
+    subPages.privacy && ["Privacy policy", subPages.privacy],
+    subPages.terms && ["Terms of service", subPages.terms],
+    subPages.help && ["Help & support", subPages.help],
+    subPages.childSafety && ["Child safety", subPages.childSafety],
   ].filter(Boolean);
 
   if (!links.length && !app.links?.email) return null;
 
   return (
     <section className="py-10 px-6 lg:px-16 border-t border-rule">
-      <div className="max-w-screen mx-auto flex flex-wrap gap-x-6 gap-y-2 justify-center text-xs font-mono text-ink-3 tracking-[0.08em]">
+      <div className="max-w-screen mx-auto flex flex-wrap gap-x-6 gap-y-2 justify-center text-[13px] text-ink-3">
         {links.map(([label, href]) => (
           <Link
             key={href}
@@ -216,7 +207,7 @@ export function AppFooterLinks({ app, subPages = {} }) {
             href={app.links.email}
             className="py-1 hover:text-ink transition-colors"
           >
-            EMAIL SUPPORT
+            Email support
           </a>
         )}
       </div>
@@ -240,20 +231,19 @@ export function StoreLinks({ app, size = "md" }) {
   const lg = size === "lg";
   const pad = lg ? "px-6 py-3.5 text-[15px]" : "px-5 py-3 text-sm";
   const { playstore, codecanyon, gumroad } = app.links ?? {};
-  const ghost = `inline-flex items-center gap-2 rounded-xl border border-rule text-ink font-semibold hover:bg-white/5 transition ${pad}`;
+  const ghost = `inline-flex items-center gap-2 rounded-xl border border-rule text-ink font-semibold hover:bg-bg-3 transition ${pad}`;
 
   return (
     <>
       {playstore &&
         (app.released === false ? (
           <span
-            className={`inline-flex items-center gap-2.5 rounded-xl border border-rule bg-bg-2/60 text-ink-2 font-mono text-[13px] uppercase tracking-[0.08em] ${
+            className={`inline-flex items-center gap-2.5 rounded-xl border border-rule bg-bg-2 text-ink-2 text-[14px] font-medium ${
               lg ? "px-6 py-3.5 leading-6" : "px-5 py-3 leading-5"
             }`}
           >
             <span
-              className="w-1.5 h-1.5 rounded-full bg-accent shrink-0"
-              style={{ boxShadow: "0 0 8px rgba(255,106,61,0.8)" }}
+              className="w-1.5 h-1.5 rounded-full bg-good shrink-0"
               aria-hidden
             />
             Coming soon · Google Play

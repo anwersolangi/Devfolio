@@ -1,4 +1,5 @@
 import Link from "next/link";
+import ThemedImage from "@/components/ThemedImage";
 
 const TOKEN_RE = /(\[[^\]]+\]\([^)]+\)|\*\*[^*]+\*\*|`[^`]+`|_[^_]+_)/g;
 const LINK_RE = /^\[([^\]]+)\]\(([^)]+)\)$/;
@@ -43,7 +44,7 @@ function renderInline(text) {
       return (
         <code
           key={i}
-          className="rounded-md border border-rule bg-bg-2 px-1.5 py-0.5 font-mono text-[0.85em] text-accent-2"
+          className="rounded-md border border-rule bg-bg-3 px-1.5 py-0.5 font-mono text-[0.85em] text-ink"
         >
           {part.slice(1, -1)}
         </code>
@@ -98,8 +99,8 @@ function Block({ block }) {
         <ListTag
           className={`mt-6 space-y-3 pl-5 text-[16.5px] leading-[1.75] text-ink-2 md:text-lg ${
             block.ordered
-              ? "list-decimal marker:font-mono marker:text-accent"
-              : "list-disc marker:text-accent"
+              ? "list-decimal marker:text-ink-3"
+              : "list-disc marker:text-ink-3"
           }`}
         >
           {block.items.map((item, i) => (
@@ -114,7 +115,7 @@ function Block({ block }) {
     case "image":
       return (
         <figure className="mt-10">
-          <img
+          <ThemedImage
             src={block.src}
             alt={block.alt}
             width={block.width}
@@ -123,7 +124,7 @@ function Block({ block }) {
             className="w-full rounded-2xl border border-rule bg-bg-2"
           />
           {block.caption && (
-            <figcaption className="mt-3 text-center font-mono text-xs leading-relaxed text-ink-3">
+            <figcaption className="mt-3 text-center text-[13px] leading-relaxed text-ink-3">
               {block.caption}
             </figcaption>
           )}
@@ -149,7 +150,7 @@ function Block({ block }) {
             />
           </div>
           {(block.caption || block.watchUrl) && (
-            <figcaption className="mt-3 text-center font-mono text-xs leading-relaxed text-ink-3">
+            <figcaption className="mt-3 text-center text-[13px] leading-relaxed text-ink-3">
               {block.caption}
               {block.watchUrl && (
                 <a
@@ -173,12 +174,12 @@ function Block({ block }) {
 
     case "quote":
       return (
-        <blockquote className="mt-8 border-l-2 border-accent pl-5">
-          <p className="font-serif text-xl italic leading-relaxed text-ink">
+        <blockquote className="mt-8 border-l border-rule-2 pl-5">
+          <p className="text-xl md:text-[22px] font-medium leading-[1.5] tracking-[-0.01em] text-ink">
             {renderInline(block.text)}
           </p>
           {block.cite && (
-            <cite className="mt-2 block font-mono text-xs not-italic text-ink-3">
+            <cite className="mt-2 block text-[13px] not-italic text-ink-3">
               — {block.cite}
             </cite>
           )}
@@ -187,17 +188,17 @@ function Block({ block }) {
 
     case "code":
       return (
-        <pre className="mt-8 overflow-x-auto rounded-2xl border border-rule bg-bg-2 p-5 font-mono text-sm leading-relaxed text-ink-2">
+        <pre className="mt-8 overflow-x-auto rounded-2xl border border-rule bg-bg-2 p-5 font-mono text-[13px] leading-[1.7] text-ink">
           <code>{block.code}</code>
         </pre>
       );
 
     case "callout":
       return (
-        <aside className="mt-8 rounded-2xl border border-accent/25 bg-accent/[0.06] p-5 md:p-6">
+        <aside className="mt-8 rounded-2xl border border-rule bg-accent-tint/60 p-5 md:p-6">
           {block.title && (
-            <div className="font-mono text-[11px] uppercase tracking-[0.14em] text-accent">
-              ▸ {block.title}
+            <div className="label">
+              {block.title}
             </div>
           )}
           <p className="mt-2 text-[15.5px] leading-relaxed text-ink-2">
@@ -215,7 +216,7 @@ function Block({ block }) {
                 {block.head.map((cell) => (
                   <th
                     key={cell}
-                    className="px-5 py-3.5 font-mono text-[11px] uppercase tracking-[0.12em] text-ink-3"
+                    className="px-5 py-3.5 label-sm"
                   >
                     {cell}
                   </th>

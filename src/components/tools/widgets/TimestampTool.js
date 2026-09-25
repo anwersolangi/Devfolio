@@ -48,7 +48,7 @@ export default function TimestampTool() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-center justify-between gap-3 rounded-xl border border-rule bg-bg p-4">
         <div>
-          <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-3">
+          <div className="label-sm">
             Current Unix time ({unit === "s" ? "seconds" : "ms"})
           </div>
           <div className="mt-1 font-mono text-2xl font-bold tabular-nums text-ink">
@@ -80,7 +80,7 @@ export default function TimestampTool() {
             />
           </Field>
           {fromTs?.error && (
-            <p className="text-sm text-[#ff7a7a]">{fromTs.error}</p>
+            <p className="text-sm text-bad">{fromTs.error}</p>
           )}
           {fromTs?.rows && (
             <div className="divide-y divide-rule rounded-xl border border-rule bg-bg">

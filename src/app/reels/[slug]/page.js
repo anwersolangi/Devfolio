@@ -5,25 +5,25 @@ import { getReelStats } from "@/lib/reelStats";
 import {
   Play,
   ArrowLeft,
+  ArrowRight,
   Eye,
   Clock,
   Calendar,
 } from "lucide-react";
+import Image from "next/image";
 import { jsonLd } from "@/lib/jsonld";
+import {
+  clampText,
+  reelSummary,
+  reelTitle,
+  stripEmoji,
+  breadcrumbJsonLd, TWITTER_BASE } from "@/lib/seo";
 
 function cleanTitle(str) {
-  if (!str) return "";
-  return str
-    .replace(
-      /[\u{1F300}-\u{1F9FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{1F1E6}-\u{1F1FF}]/gu,
-      "",
-    )
-    .trim();
+  return stripEmoji(str || "");
 }
 
 const SITE_URL = "https://anwersolangi.com";
-const SITE_NAME = "Anwer Solangi";
-const TWITTER_HANDLE = "@anwersolangidev";
 const SCHEMA_TIMEZONE_OFFSET = "+05:00";
 const MONTHS = {
   january: 1,
@@ -144,7 +144,7 @@ function getReelVideoUrl(reel) {
 }
 
 function getCoverImage(reel) {
-  return reel.coverImage || reel.coverImageReel || reel.coverImageOg || "";
+  return reel.coverImage || reel.coverImageReel || "";
 }
 
 function toAbsoluteUrl(path) {
@@ -340,6 +340,19 @@ function formatDuration(seconds) {
   return `${remainingSeconds}s`;
 }
 
+// Human date for the meta row. Falls back to the raw value when the
+// publishTime string is in a shape the schema parser doesn't know.
+function formatPublishDate(value) {
+  const iso = toSchemaUploadDate(value);
+  if (!iso) return value;
+  return new Date(iso).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    timeZone: "Asia/Karachi",
+  });
+}
+
 function toIsoDuration(seconds) {
   const durationSeconds = Number(seconds);
   if (!Number.isFinite(durationSeconds) || durationSeconds <= 0) {
@@ -359,13 +372,13 @@ export async function generateMetadata({ params }) {
   if (!reel) return { title: "Reel Not Found | Anwer Solangi" };
 
   const title = cleanTitle(reel.title);
+  const description = reel.notes ? clampText(reel.notes) : reelSummary(reel);
   const url = `${SITE_URL}/reels/${reel.slug}`;
-  const cover = toAbsoluteUrl(getCoverImage(reel));
   const uploadDate = toSchemaUploadDate(reel.publishTime);
 
   return {
-    title: `${title} | ${SITE_NAME}`,
-    description: reel.description,
+    title: reelTitle(reel),
+    description,
     keywords: [
       ...reel.technologies,
       "React Native",
@@ -381,32 +394,17 @@ export async function generateMetadata({ params }) {
     creator: "Anwer Solangi",
     publisher: "Anwer Solangi",
     alternates: { canonical: url },
+    // og:image comes from the generated share card (opengraph-image.js):
+    // the raw covers are portrait or 4:3 and crop badly in link previews.
     openGraph: {
       title,
-      description: reel.description,
+      description,
       url,
-      siteName: SITE_NAME,
       type: "article",
       ...(uploadDate ? { publishedTime: uploadDate } : {}),
       authors: ["Anwer Solangi"],
-      images: [
-        {
-          url: cover,
-          width: 1200,
-          height: 630,
-          alt: `${title} — React Native UI by Anwer Solangi`,
-        },
-      ],
-      locale: "en_US",
     },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description: reel.description,
-      site: TWITTER_HANDLE,
-      creator: TWITTER_HANDLE,
-      images: [cover],
-    },
+    twitter: { ...TWITTER_BASE, title, description },
     other: {
       ...(uploadDate ? { "article:published_time": uploadDate } : {}),
       "article:author": "Anwer Solangi",
@@ -430,7 +428,7 @@ function VideoJsonLd({ reel, stats }) {
     "@context": "https://schema.org",
     "@type": "VideoObject",
     name: title,
-    description: reel.description,
+    description: reel.notes || reelSummary(reel, 300),
     thumbnailUrl: [cover],
     uploadDate,
     ...(duration ? { duration } : {}),
@@ -473,6 +471,126 @@ function VideoJsonLd({ reel, stats }) {
   );
 }
 
+function ReelBreadcrumbJsonLd({ reel }) {
+  return (
+    <script
+      type="application/ld+json"
+      dangerouslySetInnerHTML={{
+        __html: jsonLd(
+          breadcrumbJsonLd([
+            { name: "Home", path: "/" },
+            { name: "Reels", path: "/reels" },
+            { name: cleanTitle(reel.title), path: `/reels/${reel.slug}` },
+          ]),
+        ),
+      }}
+    />
+  );
+}
+
+// Three more reels to watch next, chosen as the next three in the list,
+// wrapping at the end. Picking "newest in the same category" instead looked
+// smarter but sent every Mobile UI reel to the same three pages: three reels
+// collected 33-36 internal links while 23 had one. Walking the list gives
+// every reel exactly three inbound links.
+function relatedReels(reel, count = 3) {
+  const i = reelsData.findIndex((r) => r.slug === reel.slug);
+  if (i < 0) return reelsData.slice(0, count);
+  return Array.from(
+    { length: Math.min(count, reelsData.length - 1) },
+    (_, n) => reelsData[(i + 1 + n) % reelsData.length],
+  );
+}
+
+// Reels are short by nature, so each one points at the long-form post that
+// covers its subject. Keyed on the reel's own category.
+const CATEGORY_READING = {
+  "Mobile UI": {
+    slug: "react-native-animation-examples",
+    title: "React Native animation examples, with the technique behind each",
+  },
+  "UI/UX": {
+    slug: "react-native-animation-examples",
+    title: "React Native animation examples, with the technique behind each",
+  },
+  "Creative Coding": {
+    slug: "react-native-animation-examples",
+    title: "React Native animation examples, with the technique behind each",
+  },
+  "Game Dev": {
+    slug: "react-native-animation-examples",
+    title: "React Native animation examples, with the technique behind each",
+  },
+  "Tools & Libraries": {
+    slug: "react-native-in-2026",
+    title: "React Native in 2026: what actually changed",
+  },
+};
+
+function ReadNext({ reel }) {
+  const post = CATEGORY_READING[reel.category];
+  if (!post) return null;
+  return (
+    <Link
+      href={`/blog/${post.slug}`}
+      className="group mt-10 flex items-start gap-4 rounded-xl border border-rule bg-accent-tint/60 p-5 transition-colors duration-200 hover:border-accent/40"
+    >
+      <span className="min-w-0 flex-1">
+        <span className="block label">Read next</span>
+        <span className="mt-1 block text-[15px] font-semibold text-ink transition-colors duration-150 group-hover:text-accent">
+          {post.title}
+        </span>
+      </span>
+      <ArrowRight
+        className="mt-1 h-4 w-4 shrink-0 text-accent transition-transform duration-150 group-hover:translate-x-0.5"
+        aria-hidden
+      />
+    </Link>
+  );
+}
+
+function MoreReels({ reel }) {
+  const items = relatedReels(reel);
+  return (
+    <section className="mt-20 border-t border-rule pt-8" aria-labelledby="more-reels">
+      <div className="flex flex-wrap items-baseline justify-between gap-4 mb-6">
+        <h2 id="more-reels" className="text-2xl md:text-[28px] font-semibold tracking-[-0.02em] leading-[1.2] text-ink">
+          More React Native UI reels
+        </h2>
+        <Link href="/reels" className="text-[15px] font-medium text-accent hover:text-accent-deep">
+          All {reelsData.length} reels →
+        </Link>
+      </div>
+      <ul className="grid gap-5 sm:grid-cols-3 list-none m-0 p-0">
+        {items.map((r) => {
+          const cover = r.coverImage || r.coverImageReel;
+          return (
+            <li key={r.slug}>
+              <Link href={`/reels/${r.slug}`} className="group block">
+                <div className="relative aspect-[4/3] overflow-hidden rounded-xl border border-rule bg-bg-2">
+                  {cover && (
+                    <Image
+                      src={cover}
+                      alt=""
+                      fill
+                      sizes="(min-width: 640px) 33vw, 100vw"
+                      className="object-cover object-top transition-transform duration-500 ease-out group-hover:scale-[1.03]"
+                    />
+                  )}
+                </div>
+                <p className="mt-3 text-[13px] text-ink-3">{r.category}</p>
+                <h3 className="mt-1 text-[17px] font-medium leading-[1.35] text-ink group-hover:text-accent transition-colors duration-150 line-clamp-2">
+                  {stripEmoji(r.title)}
+                </h3>
+              </Link>
+            </li>
+          );
+        })}
+      </ul>
+    </section>
+  );
+}
+
 function renderInlineContent(text, keyPrefix) {
   const parts = text.split(/(`[^`]+`|\*\*[^*]+?\*\*)/g);
 
@@ -481,7 +599,7 @@ function renderInlineContent(text, keyPrefix) {
       return (
         <code
           key={`${keyPrefix}-code-${idx}`}
-          className="bg-bg-2 border border-rule px-1.5 py-0.5 rounded font-mono text-[13px] text-accent-2"
+          className="bg-bg-3 border border-rule px-1.5 py-0.5 rounded font-mono text-[13px] text-ink"
         >
           {part.slice(1, -1)}
         </code>
@@ -502,14 +620,14 @@ function renderInlineContent(text, keyPrefix) {
 
 function CodeBlock({ code, language }) {
   return (
-    <div className="my-7 overflow-hidden rounded-xl border border-rule bg-[#080706]">
+    <div className="my-7 overflow-hidden rounded-xl border border-rule bg-bg-2">
       <div className="flex items-center justify-between border-b border-rule px-4 py-2">
-        <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
+        <span className="label">
           {language || "code"}
         </span>
       </div>
       <pre
-        className="overflow-x-auto p-4 text-[13px] leading-relaxed text-ink-2"
+        className="overflow-x-auto p-4 font-mono text-[13px] leading-[1.7] text-ink"
         style={{ tabSize: 2 }}
       >
         <code>{code}</code>
@@ -604,6 +722,22 @@ function renderContent(markdown) {
         >
           {line.replace("# ", "")}
         </h2>,
+      );
+      return;
+    }
+
+    // Captions written with three hashes were falling through to a paragraph
+    // and rendering the literal "### " on the page.
+    if (line.startsWith("### ")) {
+      flushParagraph();
+      flushList();
+      blocks.push(
+        <h4
+          key={`h4-${blocks.length}`}
+          className="text-[17px] font-semibold tracking-[-0.01em] text-ink mt-7 mb-2"
+        >
+          {line.replace("### ", "")}
+        </h4>,
       );
       return;
     }
@@ -723,7 +857,7 @@ function SocialLinkPill({ link }) {
       href={link.url}
       target="_blank"
       rel="noopener noreferrer"
-      className={`${base} border border-rule text-ink hover:bg-white/5`}
+      className={`${base} border border-rule text-ink hover:bg-bg-3`}
       title={`Watch on ${link.label}`}
     >
       <Icon className="w-4 h-4" />
@@ -751,28 +885,32 @@ export default async function ReelDetailPage({ params }) {
   return (
     <main className="min-h-screen pt-28 pb-20 px-6 lg:px-16">
       <VideoJsonLd reel={reel} stats={stats} />
+      <ReelBreadcrumbJsonLd reel={reel} />
 
       <div className="max-w-5xl mx-auto">
         <Link
           href="/reels"
-          className="inline-flex items-center gap-2 text-sm text-ink-2 hover:text-ink mb-10 group font-mono"
+          className="group back-link mb-10"
         >
           <ArrowLeft className="w-3.5 h-3.5 transition-transform group-hover:-translate-x-1" />
-          back to reels
+          Back to reels
         </Link>
 
         <div className="mb-10 max-w-3xl">
-          <div className="font-mono text-[11px] tracking-[0.14em] text-accent">
+          <div className="label">
             {reel.category} · {durationLabel}
           </div>
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-[-0.04em] leading-[0.98] text-ink mt-3">
+          <h1 className="text-display font-semibold text-ink mt-3">
             {title}
           </h1>
-          <p className="text-xl text-ink-2 font-light mt-5 leading-relaxed">
-            {renderInlineContent(reel.description, "description")}
+          <p className="text-[17px] md:text-lg text-ink-2 mt-5 leading-[1.6]">
+            {stripEmoji(reel.description).toLowerCase() ===
+            stripEmoji(reel.title).toLowerCase()
+              ? reel.notes || reelSummary(reel, 220)
+              : renderInlineContent(reel.description, "description")}
           </p>
 
-          <div className="flex flex-wrap items-center gap-5 mt-6 text-xs font-mono text-ink-3">
+          <div className="flex flex-wrap items-center gap-5 mt-6 text-[13px] text-ink-3 tabular-nums">
             {Number.isFinite(Number(stats.views)) && (
               <span className="inline-flex items-center gap-1.5">
                 <Eye className="w-3.5 h-3.5" />
@@ -791,15 +929,15 @@ export default async function ReelDetailPage({ params }) {
             {reel.publishTime && (
               <span className="inline-flex items-center gap-1.5">
                 <Calendar className="w-3.5 h-3.5" />
-                {reel.publishTime}
+                {formatPublishDate(reel.publishTime)}
               </span>
             )}
           </div>
         </div>
 
         <div className="mb-12">
-          <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-3 mb-3">
-            ▸ Watch on
+          <div className="label-sm mb-3">
+            Watch on
           </div>
           <div className="flex flex-wrap items-center gap-2">
             {activeLinks.map((link) => (
@@ -844,8 +982,8 @@ export default async function ReelDetailPage({ params }) {
                   )}
                   <div className="absolute inset-0 bg-gradient-to-t from-bg/95 to-transparent flex flex-col justify-end p-6">
                     <Play className="w-10 h-10 text-accent mb-3" />
-                    <p className="text-sm font-mono text-ink-2 mb-4">
-                      ▸ Watch on {videoSource.platform}
+                    <p className="text-[14px] text-ink-2 mb-4">
+                      Watch on {videoSource.platform}
                     </p>
                     {(videoSource.src || reel.links?.facebook) && (
                       <a
@@ -863,14 +1001,14 @@ export default async function ReelDetailPage({ params }) {
               )}
 
               <div>
-                <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-3 mb-3">
-                  ▸ Stack
+                <div className="label-sm mb-3">
+                  Stack
                 </div>
                 <div className="flex flex-wrap gap-1.5">
                   {reel.technologies.map((tech, i) => (
                     <span
                       key={i}
-                      className="px-2.5 py-1.5 bg-bg-2 text-ink-2 rounded border border-rule font-mono text-[11px]"
+                      className="chip"
                     >
                       {tech}
                     </span>
@@ -878,7 +1016,7 @@ export default async function ReelDetailPage({ params }) {
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-3 text-[11px] font-mono">
+              <div className="grid grid-cols-2 gap-3 text-[13px]">
                 <div className="border border-rule rounded-lg p-3">
                   <div className="text-ink-3 uppercase tracking-[0.12em]">
                     Views
@@ -887,7 +1025,7 @@ export default async function ReelDetailPage({ params }) {
                     {formatViews(stats.views)}
                     {stats.isLive && (
                       <span
-                        className="ml-2 align-middle text-[10px] uppercase tracking-[0.12em] text-accent"
+                        className="ml-2 align-middle label-sm text-accent"
                         title="Fetched from YouTube"
                       >
                         live
@@ -903,7 +1041,7 @@ export default async function ReelDetailPage({ params }) {
                     {durationLabel}
                     {stats.isLive && (
                       <span
-                        className="ml-2 align-middle text-[10px] uppercase tracking-[0.12em] text-accent"
+                        className="ml-2 align-middle label-sm text-accent"
                         title="Fetched from YouTube"
                       >
                         live
@@ -915,8 +1053,8 @@ export default async function ReelDetailPage({ params }) {
 
               {activeLinks.length > 0 && (
                 <div>
-                  <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-3 mb-3">
-                    ▸ Follow
+                  <div className="label-sm mb-3">
+                    Follow
                   </div>
                   <div className="flex flex-wrap gap-1.5">
                     {activeLinks.map((link) => {
@@ -929,7 +1067,7 @@ export default async function ReelDetailPage({ params }) {
                           rel="noopener noreferrer"
                           aria-label={link.label}
                           title={link.label}
-                          className="w-9 h-9 inline-flex items-center justify-center rounded-lg border border-rule text-ink-2 hover:text-ink hover:bg-white/5 transition"
+                          className="w-9 h-9 inline-flex items-center justify-center rounded-lg border border-rule text-ink-2 hover:text-ink hover:bg-bg-3 transition"
                         >
                           <Icon className="w-4 h-4" />
                         </a>
@@ -942,13 +1080,23 @@ export default async function ReelDetailPage({ params }) {
           </div>
 
           <div className="flex-1 order-1 md:order-2">
-            <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink-3 mb-6">
-              ▸ Write-up
+            <div className="label-sm mb-6">
+              Write-up
             </div>
+            {reel.notes && (
+              <div className="mb-10 border-l-2 border-accent/30 pl-5">
+                <h2 className="text-[17px] font-semibold text-ink">
+                  About this build
+                </h2>
+                <p className="mt-2 text-[16px] leading-[1.7] text-ink-2">
+                  {reel.notes}
+                </p>
+              </div>
+            )}
             <div>{renderContent(reel.content)}</div>
 
             <div className="mt-16 p-6 rounded-xl bg-bg-2 border border-rule">
-              <div className="font-mono text-[11px] tracking-[0.14em] text-accent mb-2">
+              <div className="label mb-2">
                 LIKE WHAT YOU SEE?
               </div>
               <p className="text-ink text-lg leading-relaxed mb-5">
@@ -964,7 +1112,7 @@ export default async function ReelDetailPage({ params }) {
                 </Link>
                 <Link
                   href="/reels"
-                  className="px-5 py-2.5 rounded-lg border border-rule text-ink text-sm font-medium hover:bg-white/5 transition"
+                  className="px-5 py-2.5 rounded-lg border border-rule text-ink text-sm font-medium hover:bg-bg-3 transition"
                 >
                   More reels
                 </Link>
@@ -972,6 +1120,9 @@ export default async function ReelDetailPage({ params }) {
             </div>
           </div>
         </div>
+
+        <ReadNext reel={reel} />
+        <MoreReels reel={reel} />
       </div>
     </main>
   );

@@ -147,7 +147,7 @@ function Stat({ label, value, sub, highlight }) {
         highlight ? "border-accent/40 bg-accent/5" : "border-rule bg-bg"
       }`}
     >
-      <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-3">
+      <div className="label-sm">
         {label}
       </div>
       <div className="mt-1 text-2xl font-bold text-ink">{value}</div>

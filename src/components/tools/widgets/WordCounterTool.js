@@ -87,7 +87,7 @@ export default function WordCounterTool() {
 
       {stats.keywords.length > 0 && (
         <div>
-          <div className="mb-2 font-mono text-[10px] uppercase tracking-[0.16em] text-ink-3">
+          <div className="mb-2 label-sm">
             Top keywords
           </div>
           <div className="flex flex-wrap gap-2">

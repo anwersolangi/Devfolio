@@ -3,6 +3,8 @@ export const howMuchDoesAnAppCost = {
   title: "How Much Does It Cost to Build a Mobile App in 2026?",
   description:
     "Real numbers from a developer who quotes apps every week: what MVPs, mid-size products, and complex apps actually cost in 2026, what drives the price up, and where clients waste money.",
+  metaDescription:
+    "Real 2026 numbers from a developer who quotes apps every week: what an MVP, a mid-size product and a complex app cost, and where clients waste money.",
   category: "Guides",
   tags: [
     "mobile app development cost",

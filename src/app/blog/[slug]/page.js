@@ -1,16 +1,23 @@
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ArrowLeft } from "lucide-react";
 import BlogContent from "@/components/blog/BlogContent";
 import BlogCard from "@/components/blog/BlogCard";
+import {
+  PageShell,
+  Breadcrumbs,
+  SectionHead,
+  CtaPanel,
+} from "@/components/PageHeader";
 import {
   BLOG_POSTS,
   getPost,
   getOtherPosts,
   readingTimeMinutes,
+  ogImageFor,
+  metaDescriptionFor,
 } from "@/data/blog";
-import { SITE_URL, SITE_NAME, PERSON_ID, WEBSITE_ID } from "@/data/site";
+import { SITE_URL, SITE_NAME, WEBSITE_ID } from "@/data/site";
 import { jsonLd } from "@/lib/jsonld";
+import { pageTitle, breadcrumbJsonLd, PERSON_REF, TWITTER_BASE } from "@/lib/seo";
 
 export function generateStaticParams() {
   return BLOG_POSTS.map((post) => ({ slug: post.slug }));
@@ -22,18 +29,20 @@ export async function generateMetadata({ params }) {
   if (!post) return { title: "Post Not Found" };
 
   const url = `${SITE_URL}/blog/${post.slug}`;
-  const title = `${post.title} | ${SITE_NAME}`;
+  const description = metaDescriptionFor(post);
   return {
-    title,
-    description: post.description,
+    title: pageTitle(post.title),
+    description,
     keywords: post.tags,
     authors: [{ name: SITE_NAME, url: SITE_URL }],
-    alternates: { canonical: url },
+    alternates: {
+      canonical: url,
+      types: { "application/rss+xml": `${SITE_URL}/blog/feed.xml` },
+    },
     openGraph: {
       title: post.title,
-      description: post.description,
+      description,
       url,
-      siteName: SITE_NAME,
       type: "article",
       publishedTime: post.publishedAt,
       modifiedTime: post.updatedAt || post.publishedAt,
@@ -42,19 +51,14 @@ export async function generateMetadata({ params }) {
       tags: post.tags,
       images: [
         {
-          url: `${SITE_URL}${post.cover}`,
+          url: `${SITE_URL}${ogImageFor(post)}`,
           width: 1200,
           height: 630,
           alt: post.coverAlt,
         },
       ],
     },
-    twitter: {
-      card: "summary_large_image",
-      title: post.title,
-      description: post.description,
-      creator: "@anwersolangidev",
-    },
+    twitter: { ...TWITTER_BASE, title: post.title, description },
   };
 }
 
@@ -80,81 +84,84 @@ export default async function BlogPostPage({ params }) {
     headline: post.title,
     description: post.description,
     url,
-    mainEntityOfPage: url,
-    image: `${SITE_URL}${post.cover}`,
+    mainEntityOfPage: { "@type": "WebPage", "@id": url },
+    image: {
+      "@type": "ImageObject",
+      url: `${SITE_URL}${ogImageFor(post)}`,
+      width: 1200,
+      height: 630,
+    },
     datePublished: post.publishedAt,
     dateModified: post.updatedAt || post.publishedAt,
-    author: { "@id": PERSON_ID },
-    publisher: { "@id": PERSON_ID },
+    wordCount: post.content
+      .flatMap((b) => b.text ?? b.items ?? b.rows?.flat() ?? [])
+      .join(" ")
+      .split(/\s+/)
+      .filter(Boolean).length,
+    author: PERSON_REF,
+    publisher: PERSON_REF,
     isPartOf: { "@id": WEBSITE_ID },
     articleSection: post.category,
     keywords: post.tags.join(", "),
     inLanguage: "en",
   };
 
-  const breadcrumbJsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    itemListElement: [
-      { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
-      { "@type": "ListItem", position: 2, name: "Blog", item: `${SITE_URL}/blog` },
-      { "@type": "ListItem", position: 3, name: post.title, item: url },
-    ],
-  };
+  const breadcrumbs = breadcrumbJsonLd([
+    { name: "Home", path: "/" },
+    { name: "Blog", path: "/blog" },
+    { name: post.title, path: `/blog/${post.slug}` },
+  ]);
 
   return (
-    <main className="min-h-screen px-6 pb-28 pt-28 lg:px-16">
+    <PageShell>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: jsonLd(articleJsonLd) }}
       />
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumbJsonLd) }}
+        dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumbs) }}
       />
 
       <article className="mx-auto max-w-3xl">
-        <nav
-          aria-label="Breadcrumb"
-          className="mb-10 flex items-center gap-2 font-mono text-xs text-ink-3"
-        >
-          <Link href="/" className="hover:text-ink">
-            home
-          </Link>
-          <span>/</span>
-          <Link href="/blog" className="hover:text-ink">
-            blog
-          </Link>
-          <span>/</span>
-          <span className="truncate text-ink-2">{post.slug}</span>
-        </nav>
+        <Breadcrumbs
+          className="mb-8"
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Blog", href: "/blog" },
+            { label: post.title },
+          ]}
+        />
 
         <header>
-          <div className="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-[11px] uppercase tracking-[0.14em] text-ink-3">
-            <span className="text-accent">{post.category}</span>
-            <span aria-hidden="true">·</span>
+          <p className="text-[13px] text-ink-3">
+            <span className="font-medium text-accent">{post.category}</span>
+            <span aria-hidden> · </span>
             <time dateTime={post.publishedAt}>
               {formatDate(post.publishedAt)}
             </time>
-            <span aria-hidden="true">·</span>
-            <span>{readingTimeMinutes(post)} min read</span>
-          </div>
-          <h1 className="mt-4 text-3xl font-extrabold leading-[1.08] tracking-[-0.035em] text-ink md:text-4xl lg:text-5xl">
+            <span aria-hidden> · </span>
+            {readingTimeMinutes(post)} min read
+          </p>
+          <h1 className="mt-4 text-display-sm font-semibold text-ink">
             {post.title}
           </h1>
-          <div className="mt-6 flex items-center gap-3 border-b border-rule pb-8">
+          <p className="mt-5 text-[17px] md:text-lg leading-[1.6] text-ink-2">
+            {post.description}
+          </p>
+          <div className="mt-7 flex items-center gap-3 border-b border-rule pb-7">
             <span
               aria-hidden="true"
-              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent text-sm font-bold text-on-accent"
+              className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-accent text-[15px] font-semibold text-on-accent"
             >
               A
             </span>
             <div>
-              <div className="text-sm font-semibold text-ink">
+              <div className="text-[15px] font-medium text-ink">
                 Anwer Solangi
               </div>
-              <div className="font-mono text-[11px] text-ink-3">
-                React Native developer · Karachi, PK
+              <div className="text-[13px] text-ink-3">
+                React Native developer · Karachi, Pakistan
               </div>
             </div>
           </div>
@@ -162,46 +169,16 @@ export default async function BlogPostPage({ params }) {
 
         <BlogContent content={post.content} />
 
-        <section className="mt-16 rounded-2xl border border-rule bg-bg-2 p-7 md:p-9">
-          <div className="font-mono text-[11px] tracking-[0.14em] text-accent">
-            ▸ WRITTEN BY ANWER SOLANGI
-          </div>
-          <h2 className="mt-3 text-2xl font-bold leading-tight tracking-[-0.02em] text-ink">
-            Building an app?{" "}
-            <span className="font-serif italic font-normal text-accent">
-              Let&rsquo;s talk.
-            </span>
-          </h2>
-          <p className="mt-3 max-w-lg text-ink-2">
-            I&rsquo;m a senior React Native developer in Karachi with 50+
-            shipped apps. I write these posts the same way I build: no filler.
-          </p>
-          <div className="mt-5 flex flex-wrap gap-3">
-            <Link
-              href="/#contact"
-              className="rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-on-accent transition hover:opacity-90"
-            >
-              Start a project →
-            </Link>
-            <Link
-              href="/blog"
-              className="inline-flex items-center gap-1.5 rounded-lg border border-rule px-5 py-3 text-sm font-medium text-ink transition hover:bg-white/5"
-            >
-              <ArrowLeft className="h-3.5 w-3.5" />
-              All posts
-            </Link>
-          </div>
-        </section>
+        <CtaPanel
+          title="Building an app? Let’s talk."
+          body="I’m a senior React Native developer in Karachi with 50+ shipped apps. I write these posts the same way I build: no filler."
+          secondary={{ href: "/blog", label: "All posts" }}
+        />
       </article>
 
       {others.length > 0 && (
-        <section className="mx-auto mt-20 max-w-screen">
-          <div className="mb-6 flex items-center gap-3">
-            <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent">
-              ▸ Keep reading
-            </span>
-            <div className="h-px flex-1 bg-rule" />
-          </div>
+        <section className="mx-auto mt-20 max-w-screen border-t border-rule pt-10">
+          <SectionHead label="Keep reading" />
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {others.map((p) => (
               <BlogCard key={p.slug} post={p} />
@@ -209,6 +186,6 @@ export default async function BlogPostPage({ params }) {
           </div>
         </section>
       )}
-    </main>
+    </PageShell>
   );
 }

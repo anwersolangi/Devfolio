@@ -3,6 +3,8 @@ export const reactNativeIn2026 = {
   title: "React Native in 2026: What Actually Changed, and What I'd Bet On",
   description:
     "The bridge is dead, Expo won, and the New Architecture is just... the architecture now. A working developer's honest read on React Native in 2026 — what got better, what still hurts, and where I'd place my bets.",
+  metaDescription:
+    "The bridge is dead, Expo won, and the New Architecture is just the architecture now. An honest read on React Native in 2026 and where I'd bet.",
   category: "React Native",
   tags: [
     "react native 2026",

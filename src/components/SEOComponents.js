@@ -180,28 +180,6 @@ export function BreadcrumbSchema({ items }) {
   return <JsonLd schema={schema} />;
 }
 
-export function SoftwareApplicationSchema({
-  name,
-  description,
-  url,
-  applicationCategory = "BrowserExtension",
-  operatingSystem = "Chrome",
-}) {
-  const schema = {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    name,
-    description,
-    url,
-    applicationCategory,
-    operatingSystem,
-    author: { "@id": PERSON_ID },
-    creator: { "@id": PERSON_ID },
-    offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
-  };
-  return <JsonLd schema={schema} />;
-}
-
 export function SiteSchemas() {
   return (
     <>

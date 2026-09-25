@@ -1,78 +1,56 @@
-import Reveal from "@/components/Reveal";
-import Ripple from "@/components/ui/Ripple";
+import Link from "next/link";
+import { Section } from "@/components/Section";
 
 const socials = [
-  ["GITHUB", "https://github.com/anwersolangi"],
-  ["LINKEDIN", "https://linkedin.com/in/anwersolangi"],
-  ["TWITTER", "https://twitter.com/anwersolangidev"],
-  ["MEDIUM", "https://medium.com/@anwersolangi"],
+  ["GitHub", "https://github.com/anwersolangi"],
+  ["LinkedIn", "https://www.linkedin.com/in/anwersolangi"],
+  ["X", "https://x.com/anwersolangidev"],
+  ["YouTube", "https://www.youtube.com/@anwersolangidev"],
+  ["Medium", "https://medium.com/@anwersolangy"],
 ];
 
 export default function Contact() {
   return (
-    <section
-      id="contact"
-      className="relative py-24 lg:py-32 px-6 lg:px-16 overflow-hidden"
-    >
-      <Ripple count={8} baseSize={240} spacing={90} baseOpacity={0.26} />
+    <Section id="contact" label="Contact">
+      <p className="text-[2rem] sm:text-[2.5rem] md:text-[2.75rem] font-semibold tracking-[-0.025em] leading-[1.1] text-ink max-w-2xl text-balance">
+        Have an app to build? Tell me about it.
+      </p>
+      <p className="mt-5 text-[17px] text-ink-2 leading-[1.6] max-w-prose">
+        Available for freelance and contract work — new builds, rescues and
+        ongoing product work. I usually reply within a day.{" "}
+        <Link href="/hire-react-native-developer-karachi" className="link">
+          How hiring a React Native developer in Karachi works
+        </Link>
+        .
+      </p>
 
-      {/* Kept behind the rings so the section still has some warmth in it. */}
-      <div
-        className="absolute left-1/2 -bottom-[300px] -translate-x-1/2 w-[1000px] h-[600px] rounded-full pointer-events-none"
-        style={{
-          background:
-            "radial-gradient(ellipse, rgba(255,106,61,0.14), transparent 60%)",
-          filter: "blur(40px)",
-        }}
-        aria-hidden
-      />
-
-      <div className="relative max-w-screen mx-auto text-center">
-        <Reveal>
-          <div className="eyebrow">09 · LET’S BUILD</div>
-          <h2 className="font-display text-5xl md:text-7xl lg:text-8xl xl:text-[120px] font-extrabold tracking-tightest leading-[0.95] mt-5 text-ink">
-            Got an app idea?
-            <br />
-            <span className="font-italic-serif text-accent font-normal">
-              Let’s ship it.
-            </span>
-          </h2>
-
-          <p className="text-lg md:text-xl text-ink-2 max-w-2xl mx-auto mt-8">
-            Available for freelance & contract work. Typical reply within a day.
-          </p>
-
-          <div className="flex flex-col sm:flex-row justify-center gap-3 mt-9">
-            <a
-              href="mailto:me@anwersolangi.com"
-              className="px-7 py-4 rounded-xl bg-ink text-bg font-bold text-[15px] hover:bg-accent-deep hover:text-on-accent transition"
-            >
-              me@anwersolangi.com
-            </a>
-            <a
-              href="/anwer-solangi-resume.pdf"
-              download
-              className="px-7 py-4 rounded-xl border border-rule text-ink font-semibold text-[15px] hover:bg-white/5 transition"
-            >
-              Download résumé ↓
-            </a>
-          </div>
-
-          <div className="flex flex-wrap justify-center gap-x-8 gap-y-3 mt-9 font-mono text-xs tracking-[0.08em] text-ink-2">
-            {socials.map(([label, href]) => (
-              <a
-                key={label}
-                href={href}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="hover:text-ink transition-colors"
-              >
-                {label} ↗
-              </a>
-            ))}
-          </div>
-        </Reveal>
+      <div className="mt-8 flex flex-wrap items-center gap-3">
+        <a href="mailto:me@anwersolangi.com" className="btn-primary">
+          me@anwersolangi.com
+        </a>
+        <a
+          href="/anwer-solangi-resume.pdf"
+          download
+          className="btn-secondary"
+        >
+          Résumé (PDF) ↓
+        </a>
       </div>
-    </section>
+
+      <ul className="mt-10 pt-6 border-t border-rule flex flex-wrap gap-x-6 gap-y-2 text-[14px] text-ink-2 list-none m-0 p-0">
+        {socials.map(([label, href]) => (
+          <li key={label}>
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer me"
+              className="hover:text-ink transition-colors"
+            >
+              {label} ↗
+            </a>
+          </li>
+        ))}
+      </ul>
+    </Section>
   );
 }

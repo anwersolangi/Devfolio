@@ -52,7 +52,7 @@ export default function JsonFormatterTool() {
         {status && (
           <span
             className={`inline-flex items-center gap-1.5 text-xs font-medium ${
-              status.ok ? "text-good" : "text-[#ff7a7a]"
+              status.ok ? "text-good" : "text-bad"
             }`}
           >
             {status.ok ? (

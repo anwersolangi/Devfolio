@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Why a mobile app is a must for your business in 2026">
+  <rect width="1200" height="630" fill="#121211"/>
+  <g stroke="rgba(241,240,234,0.06)" stroke-width="1">
+    <line x1="0" y1="157" x2="1200" y2="157"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="472" x2="1200" y2="472"/>
+  </g>
+  <g transform="translate(880,140)">
+    <rect x="0" y="0" width="200" height="360" rx="28" fill="#1a1a18" stroke="rgba(241,240,234,0.18)" stroke-width="3"/>
+    <rect x="70" y="18" width="60" height="8" rx="4" fill="rgba(241,240,234,0.18)"/>
+    <g transform="translate(30,220)">
+      <rect x="0" y="60" width="24" height="50" rx="4" fill="rgba(241,240,234,0.25)"/>
+      <rect x="38" y="35" width="24" height="75" rx="4" fill="rgba(241,240,234,0.4)"/>
+      <rect x="76" y="10" width="24" height="100" rx="4" fill="#52c48f"/>
+      <rect x="114" y="-15" width="24" height="125" rx="4" fill="#74d6a8"/>
+    </g>
+    <path d="M 30 190 L 80 150 L 115 165 L 170 100" fill="none" stroke="#52c48f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M 148 96 L 172 98 L 166 122" fill="none" stroke="#52c48f" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="80" y="150" font-family="ui-monospace,Menlo,monospace" font-size="22" letter-spacing="6" fill="#52c48f">THE BUILD LOG · BUSINESS</text>
+  <text x="80" y="272" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="84" font-weight="800" letter-spacing="-3" fill="#f1f0ea">An app is a must</text>
+  <text x="80" y="362" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="84" font-weight="800" letter-spacing="-3" fill="#f1f0ea">for business <tspan fill="#52c48f">in 2026</tspan></text>
+  <text x="80" y="440" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="30" fill="rgba(241,240,234,0.62)">Four shifts that quietly turned apps into table stakes.</text>
+  <text x="80" y="566" font-family="ui-monospace,Menlo,monospace" font-size="18" letter-spacing="3" fill="rgba(241,240,234,0.38)">ANWERSOLANGI.COM/BLOG</text>
+</svg>

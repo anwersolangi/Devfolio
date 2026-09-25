@@ -41,6 +41,6 @@ export const config = {
   matcher: [
     // Excludes api, _next, and static assets. NOTE: sitemap.xml / robots.txt /
     // favicon.ico are excluded too, so this middleware never redirects them.
-    "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|app-ads.txt|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
+    "/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt|app-ads.txt|llms.txt|blog/feed.xml|.*\\.(?:svg|png|jpg|jpeg|gif|webp)$).*)",
   ],
 };

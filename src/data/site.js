@@ -5,8 +5,6 @@ export const SITE_URL = (
 ).replace(/\/$/, "");
 
 export const SITE_NAME = "Anwer Solangi";
-export const SITE_DESCRIPTION =
-  "Senior React Native developer in Karachi, Pakistan. 50+ shipped apps, 100K+ downloads. Available for freelance & contract mobile app development.";
 export const TWITTER_HANDLE = "@anwersolangidev";
 export const CONTACT_EMAIL = "me@anwersolangi.com";
 

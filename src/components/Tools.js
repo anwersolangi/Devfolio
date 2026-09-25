@@ -1,9 +1,7 @@
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
 import { TOOLS, FEATURED_TOOLS } from "@/data/tools";
 import { SITE_URL } from "@/data/site";
-import ToolCard from "@/components/tools/ToolCard";
-import Reveal from "@/components/Reveal";
+import { Section } from "@/components/Section";
 import { jsonLd } from "@/lib/jsonld";
 
 export default function Tools() {
@@ -22,52 +20,39 @@ export default function Tools() {
   };
 
   return (
-    <section
+    <Section
       id="tools"
-      className="py-16 md:py-24 lg:py-32 px-6 lg:px-16 border-t border-rule"
+      label="Free tools"
+      title="Free browser tools that run entirely on your device."
+      intro="Alongside client work I build free utilities — an app icon generator, QR code generator, PDF-to-image converter, image compressor, JSON formatter and more. Each one runs in your browser: no sign-up, no uploads, nothing leaves your machine."
+      more={{ href: "/tools", label: `All ${TOOLS.length} tools` }}
     >
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: jsonLd(itemListJsonLd) }}
       />
-      <div className="max-w-screen mx-auto">
-        <Reveal className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 lg:mb-12">
-          <div className="max-w-3xl">
-            <div className="eyebrow">04 · FREE TOOLS</div>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-extra-tight leading-[1] mt-3 text-ink">
-              Free tools that{" "}
-              <span className="font-italic-serif text-accent font-normal">
-                just work
+      <ul className="grid sm:grid-cols-2 gap-x-10 border-t border-rule list-none m-0 p-0">
+        {FEATURED_TOOLS.map((tool) => (
+          <li key={tool.slug} className="border-b border-rule">
+            <Link
+              href={`/tools/${tool.slug}`}
+              className="group flex items-baseline justify-between gap-4 py-4"
+            >
+              <span className="min-w-0">
+                <span className="block text-[16px] font-medium text-ink group-hover:text-accent transition-colors duration-150">
+                  {tool.name}
+                </span>
+                <span className="block mt-0.5 text-[14px] text-ink-2 leading-[1.5]">
+                  {tool.tagline}
+                </span>
               </span>
-              .
-            </h2>
-            <p className="text-base md:text-lg text-ink-2 leading-relaxed mt-5 max-w-2xl">
-              Beyond client work, I build free, privacy-first browser tools — an{" "}
-              <strong className="font-semibold text-ink">
-                app icon generator
-              </strong>
-              , QR code generator, PDF-to-image converter, image compressor, JSON
-              formatter and more. Every one runs entirely in your browser: no
-              sign-up, no uploads, nothing leaves your device.
-            </p>
-          </div>
-          <Link
-            href="/tools"
-            className="group inline-flex items-center gap-2 font-mono text-xs text-ink-2 hover:text-ink transition-colors shrink-0"
-          >
-            browse all {TOOLS.length} tools
-            <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
-          </Link>
-        </Reveal>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-5">
-          {FEATURED_TOOLS.map((tool, index) => (
-            <Reveal key={tool.slug} delay={index * 60}>
-              <ToolCard tool={tool} />
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
+              <span className="shrink-0 text-[12px] text-ink-3">
+                {tool.category}
+              </span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </Section>
   );
 }

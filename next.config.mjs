@@ -21,6 +21,7 @@ const PROJECTS_CONSOLIDATED_TO_APPS = [
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  poweredByHeader: false,
   async redirects() {
     return [
       // Exact match must precede the wildcard so the bare slug redirects cleanly.
@@ -41,10 +42,24 @@ const nextConfig = {
         destination: `/apps/${slug}`,
         permanent: true,
       })),
+      // The standalone extension page duplicated /apps/youtube-fullscreen-focus
+      // (86% word overlap) and had no internal links. Its unique content was
+      // merged into the app record. The privacy policy below it stays live:
+      // the Chrome Web Store listing links to that URL.
+      {
+        source: "/extensions/youtube-fullscreen-focus",
+        destination: "/apps/youtube-fullscreen-focus",
+        permanent: true,
+      },
     ];
   },
   images: {
     formats: ["image/avif", "image/webp"],
+    // Trimmed from the defaults: every <Image> emits one srcset candidate per
+    // size, and the reels index renders 41 of them. Fewer, well-spaced widths
+    // cut that page's HTML by roughly a third with no visible quality loss.
+    deviceSizes: [640, 828, 1080, 1200, 1920],
+    imageSizes: [64, 128, 256, 384],
     remotePatterns: [
       {
         protocol: "https",
@@ -62,9 +77,9 @@ const nextConfig = {
     ],
   },
   async headers() {
-    // REPORT-ONLY on purpose: an over-tight CSP fails silently in production,
-    // so violations go to the browser console first. Once it's clean, rename the
-    // header below to "Content-Security-Policy" to enforce it.
+    // Enforced (2026-09-25) after every page template and all 27 tools ran
+    // clean under Report-Only. Adding a third-party embed, script or API means
+    // adding its origin here, or the browser will block it.
     // 'unsafe-inline'/'unsafe-eval' cover Next's inline bootstrap and pdfjs;
     // tightening them needs a nonce pipeline.
     const csp = [
@@ -81,7 +96,8 @@ const nextConfig = {
       // blob: covers the tools' Web Workers (regex timeout guard, pdfjs).
       "worker-src 'self' blob:",
       "child-src 'self' blob:",
-      "frame-src https://www.youtube.com https://www.youtube-nocookie.com",
+      // Facebook: most reels embed via facebook.com/plugins/video.php.
+      "frame-src https://www.youtube.com https://www.youtube-nocookie.com https://www.facebook.com",
       "media-src 'self' blob: data:",
       "manifest-src 'self'",
       "upgrade-insecure-requests",
@@ -104,7 +120,29 @@ const nextConfig = {
             key: "Strict-Transport-Security",
             value: "max-age=31536000",
           },
-          { key: "Content-Security-Policy-Report-Only", value: csp },
+          { key: "Content-Security-Policy", value: csp },
+        ],
+      },
+      {
+        // Static images in /public are content-stable (a cover changes only
+        // when its post does), but their filenames aren't hashed, so this is a
+        // week of caching plus a month of stale-while-revalidate rather than
+        // `immutable`.
+        source: "/:path(blog|reels)/:file*",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=604800, stale-while-revalidate=2592000",
+          },
+        ],
+      },
+      {
+        source: "/:file(.*\\.(?:png|jpg|jpeg|svg|webp|avif|ico))",
+        headers: [
+          {
+            key: "Cache-Control",
+            value: "public, max-age=604800, stale-while-revalidate=2592000",
+          },
         ],
       },
       {

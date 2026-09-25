@@ -65,7 +65,7 @@ export default function ZakatCalculatorTool() {
   return (
     <div className="space-y-8">
       <div className="rounded-xl border border-rule bg-bg-2 p-5 sm:p-6">
-        <h3 className="mb-4 font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
+        <h3 className="label mb-4">
           1. Zakatable Assets (in PKR)
         </h3>
         <div className="space-y-1">
@@ -98,7 +98,7 @@ export default function ZakatCalculatorTool() {
       </div>
 
       <div className="rounded-xl border border-rule bg-bg-2 p-5 sm:p-6">
-        <h3 className="mb-4 font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
+        <h3 className="label mb-4">
           2. Deductible Liabilities
         </h3>
         <InputRow

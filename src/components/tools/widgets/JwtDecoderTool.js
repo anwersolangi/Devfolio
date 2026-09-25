@@ -47,7 +47,7 @@ export default function JwtDecoderTool() {
         />
       </Field>
 
-      {result?.error && <p className="text-sm text-[#ff7a7a]">{result.error}</p>}
+      {result?.error && <p className="text-sm text-bad">{result.error}</p>}
 
       {result && !result.error && (
         <>
@@ -55,7 +55,7 @@ export default function JwtDecoderTool() {
             <div
               className={`inline-flex items-center gap-2 rounded-lg border px-3 py-2 text-xs font-semibold ${
                 result.expired
-                  ? "border-[#ff7a7a]/40 bg-[#ff7a7a]/10 text-[#ff7a7a]"
+                  ? "border-[#ff7a7a]/40 bg-[#ff7a7a]/10 text-bad"
                   : "border-good/40 bg-good/10 text-good"
               }`}
             >
@@ -70,7 +70,7 @@ export default function JwtDecoderTool() {
 
           {Object.keys(TIME_CLAIMS).some((k) => k in result.payload) && (
             <div className="rounded-xl border border-rule bg-bg p-4">
-              <div className="mb-2 font-mono text-[10px] uppercase tracking-[0.16em] text-ink-3">
+              <div className="mb-2 label-sm">
                 Readable timestamps
               </div>
               <ul className="space-y-1 p-0">

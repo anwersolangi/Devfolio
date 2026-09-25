@@ -3,6 +3,8 @@ export const restaurantQrMenu2026 = {
   title: "Why Your Restaurant Needs a QR Digital Menu System in 2026",
   description:
     "I built TapMeal after watching one too many waiters juggle twelve tables with a notepad. Here's why a real QR ordering system — not a PDF behind a QR code — pays for itself, and what it changes for the kitchen, the staff, and the customer.",
+  metaDescription:
+    "Why a real QR ordering system — not a PDF behind a QR code — pays for itself in 2026, and what it changes for the kitchen, the staff and the customer.",
   category: "Business",
   tags: [
     "qr digital menu",

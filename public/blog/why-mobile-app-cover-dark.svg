@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Why you need a mobile app — and when you honestly don't">
+  <rect width="1200" height="630" fill="#121211"/>
+  <g stroke="rgba(241,240,234,0.06)" stroke-width="1">
+    <line x1="0" y1="157" x2="1200" y2="157"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="472" x2="1200" y2="472"/>
+  </g>
+  <g transform="translate(870,150)">
+    <rect x="0" y="0" width="190" height="340" rx="26" fill="#1a1a18" stroke="rgba(241,240,234,0.18)" stroke-width="3"/>
+    <rect x="66" y="16" width="58" height="8" rx="4" fill="rgba(241,240,234,0.18)"/>
+    <g transform="translate(25,50)">
+      <rect x="0" y="0" width="40" height="40" rx="10" fill="#52c48f"/>
+      <rect x="50" y="0" width="40" height="40" rx="10" fill="rgba(241,240,234,0.14)"/>
+      <rect x="100" y="0" width="40" height="40" rx="10" fill="rgba(241,240,234,0.14)"/>
+      <rect x="0" y="50" width="40" height="40" rx="10" fill="rgba(241,240,234,0.14)"/>
+      <rect x="50" y="50" width="40" height="40" rx="10" fill="#74d6a8"/>
+      <rect x="100" y="50" width="40" height="40" rx="10" fill="rgba(241,240,234,0.14)"/>
+    </g>
+    <g transform="translate(60,220)">
+      <path d="M 0 22 L 22 44 L 66 0" fill="none" stroke="#52c48f" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+    </g>
+    <text x="95" y="316" font-family="ui-monospace,Menlo,monospace" font-size="17" letter-spacing="2" fill="rgba(241,240,234,0.38)" text-anchor="middle">OR NOT?</text>
+  </g>
+  <text x="80" y="150" font-family="ui-monospace,Menlo,monospace" font-size="22" letter-spacing="6" fill="#52c48f">THE BUILD LOG · BUSINESS</text>
+  <text x="80" y="272" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="84" font-weight="800" letter-spacing="-3" fill="#f1f0ea">Why you need</text>
+  <text x="80" y="362" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="84" font-weight="800" letter-spacing="-3" fill="#f1f0ea">an app <tspan fill="#52c48f">(or don&#8217;t)</tspan></text>
+  <text x="80" y="440" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="30" fill="rgba(241,240,234,0.62)">The filter I use before taking anyone&#8217;s money.</text>
+  <text x="80" y="566" font-family="ui-monospace,Menlo,monospace" font-size="18" letter-spacing="3" fill="rgba(241,240,234,0.38)">ANWERSOLANGI.COM/BLOG</text>
+</svg>

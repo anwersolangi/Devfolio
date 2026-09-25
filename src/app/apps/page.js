@@ -1,12 +1,16 @@
-import Link from "next/link";
 import AppCard from "@/components/apps/AppCard";
+import { PageShell, PageHeader, CtaPanel } from "@/components/PageHeader";
 import { APPS_LIST } from "@/data/apps";
-import { ArrowLeft } from "lucide-react";
+import { SITE_URL } from "@/data/site";
+import { jsonLd } from "@/lib/jsonld";
+import { DEFAULT_OG_IMAGE, breadcrumbJsonLd, TWITTER_BASE } from "@/lib/seo";
+
+const DESCRIPTION =
+  "React Native apps, Chrome extensions and open-source projects built by Anwer Solangi, a mobile developer in Karachi, Pakistan — 100K+ downloads.";
 
 export const metadata = {
-  title: "Apps by Anwer Solangi — React Native & iOS Apps",
-  description:
-    "Mobile apps and extensions built by Anwer Solangi, a React Native developer in Karachi, Pakistan — React Native apps, Chrome extensions, and open-source projects with 100K+ downloads.",
+  title: "React Native Apps & Extensions | Anwer Solangi",
+  description: DESCRIPTION,
   keywords: [
     "Anwer Solangi apps",
     "React Native apps",
@@ -17,84 +21,78 @@ export const metadata = {
   ],
   alternates: { canonical: "/apps" },
   openGraph: {
-    title: "Apps by Anwer Solangi",
-    description:
-      "React Native apps, browser extensions, and open-source projects by Anwer Solangi.",
+    title: "React Native Apps & Extensions by Anwer Solangi",
+    description: DESCRIPTION,
     url: "/apps",
     type: "website",
+    images: [DEFAULT_OG_IMAGE],
+  },
+  twitter: {
+    ...TWITTER_BASE,
+    title: "React Native Apps & Extensions by Anwer Solangi",
+    description: DESCRIPTION,
+  },
+};
+
+const collectionJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "CollectionPage",
+  name: "Apps by Anwer Solangi",
+  url: `${SITE_URL}/apps`,
+  description: DESCRIPTION,
+  isPartOf: { "@id": `${SITE_URL}/#website` },
+  about: { "@id": `${SITE_URL}/#person` },
+  mainEntity: {
+    "@type": "ItemList",
+    itemListElement: APPS_LIST.map((app, i) => ({
+      "@type": "ListItem",
+      position: i + 1,
+      url: `${SITE_URL}/apps/${app.slug}`,
+      name: app.name,
+    })),
   },
 };
 
 export default function AppsPage() {
   return (
-    <main className="min-h-screen pt-28 pb-28 px-6 lg:px-16">
-      <div className="max-w-screen mx-auto">
-        <Link
-          href="/"
-          className="inline-flex items-center gap-2 text-sm text-ink-2 hover:text-ink mb-12 group font-mono"
-        >
-          <ArrowLeft className="w-3.5 h-3.5 transition-transform duration-300 group-hover:-translate-x-1" />
-          back to home
-        </Link>
+    <PageShell>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: jsonLd(collectionJsonLd) }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: jsonLd(
+            breadcrumbJsonLd([
+              { name: "Home", path: "/" },
+              { name: "Apps", path: "/apps" },
+            ]),
+          ),
+        }}
+      />
+      <PageHeader
+        crumbs={[{ label: "Home", href: "/" }, { label: "Apps" }]}
+        title="Apps I’ve shipped."
+        lede="Mobile apps, browser extensions and open-source projects — each one designed and built end-to-end. Open any tile for the full story, tech stack and download links."
+        meta={`${APPS_LIST.length} apps · Google Play, Chrome Web Store, CodeCanyon and GitHub`}
+      />
 
-        <div className="mb-16 max-w-3xl">
-          <div className="font-mono text-[11px] tracking-[0.14em] text-accent">
-            APPS · {APPS_LIST.length} SHIPPED
-          </div>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-[-0.045em] leading-[0.95] mt-3 text-ink">
-            Apps I’ve{" "}
-            <span className="font-serif italic text-accent font-normal">
-              shipped
-            </span>
-            .
-          </h1>
-          <p className="text-lg text-ink-2 leading-relaxed mt-6">
-            Mobile apps, browser extensions, and open-source projects — each one
-            designed and built end-to-end. Tap any tile for the full story, tech
-            stack, and download links.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-5 lg:gap-6">
-          {APPS_LIST.map((app) => (
-            <AppCard key={app.slug} app={app} />
-          ))}
-        </div>
-
-        <div className="mt-24 p-8 lg:p-12 rounded-2xl border border-rule bg-bg-2 grid md:grid-cols-[1.4fr_1fr] gap-8 items-center">
-          <div>
-            <div className="font-mono text-[11px] tracking-[0.14em] text-accent">
-              ▸ HIRE ME
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-[-0.03em] text-ink mt-3 leading-tight">
-              Got an app idea?{" "}
-              <span className="font-serif italic text-accent font-normal">
-                Let’s ship it.
-              </span>
-            </h2>
-            <p className="text-ink-2 mt-3 max-w-lg">
-              Available for freelance & contract work. Typical reply within a
-              day, almost always inside two.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-3 md:justify-end">
-            <Link
-              href="/#contact"
-              className="px-5 py-3 rounded-lg bg-accent-deep text-on-accent text-sm font-semibold hover:opacity-90 transition"
-            >
-              Start a project →
-            </Link>
-            <a
-              href="https://github.com/anwersolangi"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="px-5 py-3 rounded-lg border border-rule text-ink text-sm font-medium hover:bg-white/5 transition"
-            >
-              GitHub ↗
-            </a>
-          </div>
-        </div>
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-x-4 gap-y-8 lg:gap-x-5">
+        {APPS_LIST.map((app) => (
+          <AppCard key={app.slug} app={app} />
+        ))}
       </div>
-    </main>
+
+      <CtaPanel
+        title="Got an app idea? Let’s ship it."
+        body="Available for freelance and contract work. Typical reply within a day, almost always inside two."
+        secondary={{
+          href: "https://github.com/anwersolangi",
+          label: "GitHub",
+          external: true,
+        }}
+      />
+    </PageShell>
   );
 }

@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Publishing a React Native app to the Play Store">
+  <rect width="1200" height="630" fill="#121211"/>
+  <g stroke="rgba(241,240,234,0.06)" stroke-width="1">
+    <line x1="0" y1="157" x2="1200" y2="157"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="472" x2="1200" y2="472"/>
+    <line x1="300" y1="0" x2="300" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="900" y1="0" x2="900" y2="630"/>
+  </g>
+  <g transform="translate(880,150)">
+    <rect x="30" y="120" width="200" height="210" rx="28" fill="none" stroke="rgba(241,240,234,0.25)" stroke-width="3"/>
+    <rect x="58" y="150" width="144" height="10" rx="5" fill="rgba(241,240,234,0.18)"/>
+    <rect x="58" y="176" width="100" height="10" rx="5" fill="rgba(241,240,234,0.12)"/>
+    <g stroke="#52c48f" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round">
+      <line x1="130" y1="96" x2="130" y2="12"/>
+      <polyline points="92,50 130,12 168,50"/>
+    </g>
+    <circle cx="130" cy="250" r="34" fill="#52c48f"/>
+    <polyline points="114,250 126,262 148,238" fill="none" stroke="#121211" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="80" y="150" font-family="ui-monospace,Menlo,monospace" font-size="22" letter-spacing="6" fill="#52c48f">THE BUILD LOG · GUIDES</text>
+  <text x="80" y="290" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="70" font-weight="800" letter-spacing="-3" fill="#f1f0ea" textLength="600" lengthAdjust="spacingAndGlyphs">Ship your app to</text>
+  <text x="80" y="372" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="70" font-weight="800" letter-spacing="-3" fill="#52c48f" textLength="540" lengthAdjust="spacingAndGlyphs">the Play Store</text>
+  <text x="80" y="446" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="28" fill="rgba(241,240,234,0.62)">Signing, the AAB, store assets &#8212; and the forms</text>
+  <text x="80" y="484" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="28" fill="rgba(241,240,234,0.62)">nobody warns you about.</text>
+  <text x="80" y="566" font-family="ui-monospace,Menlo,monospace" font-size="18" letter-spacing="3" fill="rgba(241,240,234,0.38)">ANWERSOLANGI.COM/BLOG</text>
+</svg>

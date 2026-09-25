@@ -407,7 +407,7 @@ export default function CsvJsonTool() {
         }`}
       >
         <div className="mb-2 flex flex-wrap items-center gap-2">
-          <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-3">
+          <span className="label-sm">
             Input · {isCsvSource ? "CSV" : "JSON"}
           </span>
           <button
@@ -477,14 +477,14 @@ export default function CsvJsonTool() {
       </div>
 
       {fileError && (
-        <p className="flex items-center gap-2 text-xs text-[#ff7a7a]">
+        <p className="flex items-center gap-2 text-xs text-bad">
           <AlertTriangle className="h-3.5 w-3.5" /> {fileError}
         </p>
       )}
 
       <div className="space-y-4 rounded-xl border border-rule bg-bg p-4">
         <div className="flex flex-wrap items-center gap-3">
-          <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-3">
+          <span className="label-sm">
             Delimiter
           </span>
           <Segmented
@@ -580,7 +580,7 @@ export default function CsvJsonTool() {
 
       <div>
         <div className="mb-2 flex flex-wrap items-center gap-2">
-          <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
+          <span className="label">
             Output · {isCsvSource ? "JSON" : "CSV"}
           </span>
           <div className="ml-auto flex gap-2">
@@ -600,7 +600,7 @@ export default function CsvJsonTool() {
         </div>
 
         {error ? (
-          <div className="flex items-start gap-2 rounded-xl border border-[#ff7a7a]/25 bg-[#ff7a7a]/5 p-4 font-mono text-sm text-[#ff7a7a]">
+          <div className="flex items-start gap-2 rounded-xl border border-[#ff7a7a]/25 bg-[#ff7a7a]/5 p-4 font-mono text-sm text-bad">
             <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
             <span>{error}</span>
           </div>

@@ -186,7 +186,7 @@ export default function PdfToImageTool() {
                 />
               </div>
               <div className="flex items-center justify-between gap-2 px-3 py-2">
-                <span className="font-mono text-[11px] text-ink-3">
+                <span className="text-[13px] text-ink-3">
                   p{p.num} · {formatBytes(p.blob.size)}
                 </span>
                 <button

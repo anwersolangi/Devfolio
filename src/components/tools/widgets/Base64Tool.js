@@ -104,7 +104,7 @@ export default function Base64Tool() {
               spellCheck={false}
               rows={10}
               className={`w-full resize-y rounded-xl border border-rule bg-bg p-4 font-mono text-sm focus:outline-none ${
-                error ? "text-[#ff7a7a]" : "text-ink"
+                error ? "text-bad" : "text-ink"
               }`}
             />
           </div>

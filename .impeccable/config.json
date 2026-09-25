@@ -1,0 +1,14 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "overused-font",
+        "value": "geist mono",
+        "createdAt": "2026-09-24T21:18:30.821Z",
+        "reason": "Site's established mono face (src/app/layout.js loads Geist_Mono); resume must match the portfolio theme per user request"
+      }
+    ]
+  }
+}

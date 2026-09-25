@@ -805,4 +805,86 @@ RevenueCat does not have access to your gameplay data. Learn more at: https://ww
       },
     ],
   },
+  // Also served at /extensions/youtube-fullscreen-focus/privacy-policy, the
+  // URL the Chrome Web Store listing links to.
+  "youtube-fullscreen-focus": {
+    title: "Privacy Policy",
+    lastUpdated: "October 12, 2025",
+    appName: "YouTube Focus",
+    sections: [
+      {
+        title: "Overview",
+        content: `YouTube Fullscreen Focus ("the Extension") is committed to protecting your privacy. This policy explains its data practices.`,
+        footer:
+          "The Extension does NOT collect any personal data. It operates entirely locally in your browser and does not collect, store, or transmit any personal information.",
+      },
+      {
+        title: "Data Collection",
+        content: "The Extension:",
+        items: [
+          "Does not collect, store, or transmit any personal information",
+          "Does not track your browsing activity",
+          "Does not use cookies or analytics",
+          "Does not communicate with external servers",
+          "Does not share any data with third parties",
+        ],
+      },
+      {
+        title: "Permissions Used",
+        content:
+          "The Extension requires certain permissions to function. Here's what each one is used for:",
+        subsections: [
+          {
+            title: "activeTab",
+            content:
+              "Used to detect when you're on YouTube or YouTube Kids. Data accessed: none — it only checks the current tab's URL. Data stored: none.",
+          },
+          {
+            title: "scripting",
+            content:
+              "Used to inject code that detects fullscreen mode and blocks keystrokes. Data accessed: none — it only monitors fullscreen state. Data stored: none.",
+          },
+          {
+            title: "storage (Chrome Storage API)",
+            content:
+              "Used to save your enable/disable preference. Data stored: a single on/off value, kept locally in your browser and never shared or transmitted.",
+          },
+        ],
+      },
+      {
+        title: "How the Extension Works",
+        content: "The Extension operates entirely locally in your browser by:",
+        items: [
+          "Detecting when you enter fullscreen mode on YouTube",
+          "Temporarily blocking keyboard inputs to prevent accidental interruptions",
+          "Restoring keyboard functionality when you exit fullscreen",
+        ],
+        footer:
+          "All processing happens in your browser. No data is sent to any server or third party.",
+      },
+      {
+        title: "Third-Party Services",
+        content:
+          "The Extension does not use any third-party services, analytics, or tracking tools. It does not integrate with Google Analytics, advertising networks, or any other external services.",
+      },
+      {
+        title: "Children's Privacy",
+        content: `The Extension is safe for users of all ages, including children. It does not collect any information from anyone, including children under 13.
+
+The Extension is specifically designed to work with YouTube Kids, making it safe for family viewing.`,
+      },
+      {
+        title: "Changes to This Privacy Policy",
+        content: `I may update this Privacy Policy from time to time. Any changes will be reflected by updating the "Last Updated" date at the top of this policy, and are effective when posted on this page.
+
+Continued use of the Extension after any modifications constitutes your acceptance of the changes.`,
+      },
+      {
+        title: "Contact",
+        content:
+          "If you have any questions, concerns, or requests regarding this Privacy Policy, please contact me. I typically respond within 48 hours.",
+        contactEmail: "me@anwersolangi.com",
+      },
+    ],
+  },
 };

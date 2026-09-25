@@ -158,7 +158,7 @@ export default function ImageConverterTool() {
               <span className="min-w-0 truncate text-sm text-ink">
                 {isResult ? item.name : item.name}
               </span>
-              <span className="flex shrink-0 items-center gap-3 font-mono text-[11px] text-ink-3">
+              <span className="flex shrink-0 items-center gap-3 text-[13px] text-ink-3">
                 {isResult ? (
                   <>
                     {formatBytes(item.originalSize)} → {formatBytes(item.blob.size)}

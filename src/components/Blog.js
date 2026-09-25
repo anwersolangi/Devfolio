@@ -1,13 +1,27 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { BLOG_POSTS } from "@/data/blog";
+import { BLOG_POSTS, readingTimeMinutes } from "@/data/blog";
 import { SITE_URL } from "@/data/site";
-import BlogCard from "@/components/blog/BlogCard";
-import Reveal from "@/components/Reveal";
+import { Section } from "@/components/Section";
+import ThemedImage from "@/components/ThemedImage";
 import { jsonLd } from "@/lib/jsonld";
 
+const formatDate = (iso) =>
+  new Date(`${iso}T00:00:00Z`).toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "short",
+    day: "numeric",
+    timeZone: "UTC",
+  });
+
+/**
+ * Homepage teaser: the featured post with its cover, then the next three as
+ * a plain list. The listing's ordering rules (featured first, the CNIC
+ * explainer last) come from the data module.
+ */
 export default function Blog() {
-  const posts = BLOG_POSTS.slice(0, 3);
+  const posts = BLOG_POSTS.slice(0, 4);
+  const [featured, ...rest] = posts;
 
   const itemListJsonLd = {
     "@context": "https://schema.org",
@@ -24,48 +38,87 @@ export default function Blog() {
   };
 
   return (
-    <section
+    <Section
       id="blog"
-      className="py-16 md:py-24 lg:py-32 px-6 lg:px-16 border-t border-rule"
+      label="Writing"
+      title="Notes from shipping mobile apps for a living."
+      more={{ href: "/blog", label: "All posts" }}
     >
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: jsonLd(itemListJsonLd) }}
       />
-      <div className="max-w-screen mx-auto">
-        <Reveal className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10 lg:mb-12">
-          <div className="max-w-3xl">
-            <div className="eyebrow">05 · FROM THE BLOG</div>
-            <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold tracking-extra-tight leading-[1] mt-3 text-ink">
-              Notes from the{" "}
-              <span className="font-italic-serif text-accent font-normal">
-                build log
-              </span>
-              .
-            </h2>
-            <p className="text-base md:text-lg text-ink-2 leading-relaxed mt-5 max-w-2xl">
-              Things I&rsquo;ve learned shipping mobile apps for a living —
-              honest takes on React Native, what apps really cost, and the
-              occasional deep dive. No fluff, no recycled listicles.
-            </p>
-          </div>
-          <Link
-            href="/blog"
-            className="group inline-flex items-center gap-2 font-mono text-xs text-ink-2 hover:text-ink transition-colors shrink-0"
-          >
-            read all {BLOG_POSTS.length} posts
-            <ArrowRight className="w-3.5 h-3.5 transition-transform group-hover:translate-x-0.5" />
-          </Link>
-        </Reveal>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
-          {posts.map((post, index) => (
-            <Reveal key={post.slug} delay={index * 60}>
-              <BlogCard post={post} />
-            </Reveal>
+      <div className="grid gap-10 border-t border-rule pt-8 lg:grid-cols-[1.1fr_1fr] lg:gap-14">
+        <FeaturedPost post={featured} />
+        <ul className="list-none m-0 p-0 divide-y divide-rule border-t border-rule lg:border-t-0 lg:-mt-5">
+          {rest.map((post) => (
+            <li key={post.slug}>
+              <PostRow post={post} />
+            </li>
           ))}
-        </div>
+        </ul>
       </div>
-    </section>
+    </Section>
+  );
+}
+
+function Meta({ post }) {
+  return (
+    <p className="text-[13px] text-ink-3">
+      <span className="font-medium text-accent">{post.category}</span>
+      <span aria-hidden> · </span>
+      <time dateTime={post.publishedAt}>{formatDate(post.publishedAt)}</time>
+      <span aria-hidden> · </span>
+      {readingTimeMinutes(post)} min read
+    </p>
+  );
+}
+
+function FeaturedPost({ post }) {
+  return (
+    <article>
+      <Link href={`/blog/${post.slug}`} className="group block">
+        <div className="overflow-hidden rounded-xl border border-rule bg-bg-2 shadow-card">
+          <ThemedImage
+            src={post.cover}
+            alt={post.coverAlt}
+            width={1200}
+            height={630}
+            loading="lazy"
+            className="w-full aspect-[1200/630] object-cover transition-transform duration-500 ease-out group-hover:scale-[1.015]"
+          />
+        </div>
+        <div className="mt-5">
+          <Meta post={post} />
+          <h3 className="mt-2 text-[19px] md:text-2xl font-semibold tracking-[-0.02em] leading-[1.25] text-ink group-hover:text-accent transition-colors duration-150">
+            {post.title}
+          </h3>
+          <p className="mt-2 text-[15px] text-ink-2 leading-[1.6] line-clamp-3 max-w-prose">
+            {post.description}
+          </p>
+          <span className="mt-3 inline-flex items-center gap-1.5 text-[15px] font-medium text-accent">
+            Read the post
+            <ArrowRight
+              className="w-4 h-4 transition-transform duration-150 group-hover:translate-x-0.5"
+              aria-hidden
+            />
+          </span>
+        </div>
+      </Link>
+    </article>
+  );
+}
+
+function PostRow({ post }) {
+  return (
+    <Link href={`/blog/${post.slug}`} className="group block py-5">
+      <Meta post={post} />
+      <h3 className="mt-1.5 text-[17px] font-medium leading-[1.35] text-ink group-hover:text-accent transition-colors duration-150">
+        {post.title}
+      </h3>
+      <p className="mt-1.5 text-[14px] text-ink-2 leading-[1.55] line-clamp-2">
+        {post.description}
+      </p>
+    </Link>
   );
 }

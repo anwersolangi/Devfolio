@@ -64,7 +64,7 @@ export function CopyButton({ value, disabled, className = "", label = "Copy" }) 
       type="button"
       disabled={disabled || !value}
       onClick={() => copy(typeof value === "function" ? value() : value)}
-      className={`inline-flex items-center gap-1.5 rounded-lg border border-rule px-3 py-2 text-xs font-medium text-ink-2 transition hover:bg-white/5 hover:text-ink disabled:cursor-not-allowed disabled:opacity-40 ${className}`}
+      className={`inline-flex items-center gap-1.5 rounded-lg border border-rule px-3 py-2 text-xs font-medium text-ink-2 transition hover:bg-bg-3 hover:text-ink disabled:cursor-not-allowed disabled:opacity-40 ${className}`}
     >
       {copied ? (
         <>
@@ -154,11 +154,11 @@ export function Metric({ label, value, tone = "default" }) {
     default: "text-ink",
     accent: "text-accent",
     good: "text-good",
-    bad: "text-[#ff7a7a]",
+    bad: "text-bad",
   }[tone];
   return (
     <div className="rounded-lg border border-rule bg-bg px-3 py-2">
-      <div className="font-mono text-[9px] uppercase tracking-[0.16em] text-ink-3">
+      <div className="label-sm">
         {label}
       </div>
       <div className={`mt-0.5 text-sm font-bold tabular-nums ${toneClass}`}>
@@ -266,7 +266,7 @@ export function GhostButton({ className = "", ...props }) {
   return (
     <button
       type="button"
-      className={`inline-flex items-center justify-center gap-2 rounded-lg border border-rule px-5 py-2.5 text-sm font-medium text-ink transition hover:bg-white/5 disabled:cursor-not-allowed disabled:opacity-40 ${className}`}
+      className={`inline-flex items-center justify-center gap-2 rounded-lg border border-rule px-5 py-2.5 text-sm font-medium text-ink transition hover:bg-bg-3 disabled:cursor-not-allowed disabled:opacity-40 ${className}`}
       {...props}
     />
   );

@@ -7,6 +7,8 @@ export const TOOLS = [
     icon: "ArrowLeftRight",
     description:
       "Free online Diff Checker. Compare two texts or files side by side, unified or inline, with word and character highlighting. Export a .diff patch. Runs 100% in your browser.",
+    metaDescription:
+      "Free online Diff Checker. Compare two texts or files side by side with word and character highlighting, and export a .diff patch. Runs in your browser.",
     keywords: [
       "diff checker",
       "text compare",
@@ -101,6 +103,8 @@ export const TOOLS = [
     icon: "Code",
     description:
       "Free online Regex Tester with a plain-English explainer. See matches highlighted live, inspect capture groups, preview replacements, and learn what every part of your pattern does.",
+    metaDescription:
+      "Free online Regex Tester with a plain-English explainer. Live match highlighting, capture groups and replacement preview, all in your browser.",
     keywords: [
       "regex tester",
       "regex tester online",
@@ -195,6 +199,8 @@ export const TOOLS = [
     icon: "ArrowLeftRight",
     description:
       "Free CSV to JSON converter. Drag and drop a CSV, TSV or JSON file, convert it instantly and download the result. Handles quoted fields and any delimiter. Runs in your browser.",
+    metaDescription:
+      "Free CSV to JSON converter. Drop a CSV or TSV file, convert it instantly and download the JSON. Handles quoted fields and any delimiter.",
     keywords: [
       "csv to json",
       "convert csv to json",
@@ -383,6 +389,12 @@ export const TOOLS = [
       },
     ],
     related: ["image-converter", "image-compressor", "qr-code-generator"],
+    article: {
+      slug: "app-icon-sizes-ios-android-web",
+      title: "Every App Icon Size You Actually Need in 2026",
+      description:
+        "The full size list for iOS, Android and the web, plus the Android safe zone and the 48-pixel test every icon should pass.",
+    },
   },
   {
     slug: "uuid-generator",
@@ -1198,6 +1210,8 @@ export const TOOLS = [
     icon: "Map",
     description:
       "Free online Pakistani CNIC validator and decoder. Extract the province, division, district, family number, and gender from any 13-digit NADRA Computerized National Identity Card.",
+    metaDescription:
+      "Free Pakistani CNIC validator and decoder. Get the province, division, district, family number and gender from any 13-digit NADRA CNIC.",
     keywords: [
       "cnic lookup",
       "cnic decoder",
@@ -1275,6 +1289,8 @@ export const TOOLS = [
     icon: "Calculator",
     description:
       "Free FBR Salary Tax Calculator for Pakistan 2026-2027. Enter your monthly or annual salary to instantly calculate income tax, gross salary, and net take-home pay.",
+    metaDescription:
+      "Free FBR salary tax calculator for Pakistan 2026-27. Enter a monthly or annual salary to see income tax and net take-home pay instantly.",
     keywords: [
       "salary tax calculator",
       "salary tax calculator 2026-27",

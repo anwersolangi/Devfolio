@@ -60,7 +60,7 @@ export default function YoutubeThumbnailTool() {
       </Field>
 
       {input && !id && (
-        <p className="text-sm text-[#ff7a7a]">
+        <p className="text-sm text-bad">
           Couldn&rsquo;t find a video ID in that — check the link and try again.
         </p>
       )}
@@ -96,7 +96,7 @@ export default function YoutubeThumbnailTool() {
                     <div className="text-sm font-semibold text-ink">
                       {qq.label}
                     </div>
-                    <div className="font-mono text-[11px] text-ink-3">
+                    <div className="text-[13px] text-ink-3">
                       {qq.dim}
                     </div>
                   </div>

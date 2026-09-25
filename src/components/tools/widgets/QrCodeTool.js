@@ -56,8 +56,8 @@ export default function QrCodeTool() {
   const [light, setLight] = useState("#ffffff");
   const [ecLevel, setEcLevel] = useState("M");
 
-  const [dataUrl, setDataUrl] = useState("");
-  const [error, setError] = useState("");
+  const [qrUrl, setDataUrl] = useState("");
+  const [qrError, setError] = useState("");
 
   const payload = useMemo(
     () =>
@@ -74,12 +74,8 @@ export default function QrCodeTool() {
   );
 
   useEffect(() => {
+    if (!payload) return;
     let cancelled = false;
-    if (!payload) {
-      setDataUrl("");
-      setError("");
-      return;
-    }
     QRCode.toDataURL(payload, {
       width: size,
       margin,
@@ -99,6 +95,11 @@ export default function QrCodeTool() {
       cancelled = true;
     };
   }, [payload, size, margin, ecLevel, dark, light]);
+
+  // Derived rather than reset in the effect: with no content there is
+  // nothing to show, whatever the last render produced.
+  const dataUrl = payload ? qrUrl : "";
+  const error = payload ? qrError : "";
 
   const downloadPng = () => {
     if (dataUrl) downloadUrl(dataUrl, "qr-code.png");

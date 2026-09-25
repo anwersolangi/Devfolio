@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Five React Native animation examples explained">
+  <rect width="1200" height="630" fill="#121211"/>
+  <g stroke="rgba(241,240,234,0.06)" stroke-width="1">
+    <line x1="0" y1="157" x2="1200" y2="157"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="472" x2="1200" y2="472"/>
+    <line x1="300" y1="0" x2="300" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="900" y1="0" x2="900" y2="630"/>
+  </g>
+  <g transform="translate(840,140)">
+    <path d="M10 320 C 60 120, 200 340, 250 120" fill="none" stroke="rgba(241,240,234,0.18)" stroke-width="3" stroke-dasharray="8 10"/>
+    <circle cx="10" cy="320" r="10" fill="rgba(82,196,143,0.18)"/>
+    <circle cx="62" cy="232" r="13" fill="rgba(82,196,143,0.3)"/>
+    <circle cx="118" cy="226" r="17" fill="rgba(82,196,143,0.48)"/>
+    <circle cx="186" cy="248" r="22" fill="rgba(82,196,143,0.7)"/>
+    <circle cx="250" cy="120" r="30" fill="#52c48f"/>
+    <rect x="196" y="300" width="112" height="14" rx="7" fill="rgba(241,240,234,0.12)"/>
+    <rect x="196" y="300" width="70" height="14" rx="7" fill="#52c48f"/>
+  </g>
+  <text x="80" y="150" font-family="ui-monospace,Menlo,monospace" font-size="22" letter-spacing="6" fill="#52c48f">THE BUILD LOG · REACT NATIVE</text>
+  <text x="80" y="290" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="70" font-weight="800" letter-spacing="-3" fill="#f1f0ea" textLength="620" lengthAdjust="spacingAndGlyphs">Five React Native</text>
+  <text x="80" y="372" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="70" font-weight="800" letter-spacing="-3" fill="#52c48f" textLength="660" lengthAdjust="spacingAndGlyphs">animations, explained</text>
+  <text x="80" y="446" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="28" fill="rgba(241,240,234,0.62)">Gesture-driven onboarding, a Skia game loop</text>
+  <text x="80" y="484" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="28" fill="rgba(241,240,234,0.62)">and a live delivery map.</text>
+  <text x="80" y="566" font-family="ui-monospace,Menlo,monospace" font-size="18" letter-spacing="3" fill="rgba(241,240,234,0.38)">ANWERSOLANGI.COM/BLOG</text>
+</svg>

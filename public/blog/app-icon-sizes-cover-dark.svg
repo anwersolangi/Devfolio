@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="Every app icon size you actually need">
+  <rect width="1200" height="630" fill="#121211"/>
+  <g stroke="rgba(241,240,234,0.06)" stroke-width="1">
+    <line x1="0" y1="157" x2="1200" y2="157"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="472" x2="1200" y2="472"/>
+    <line x1="300" y1="0" x2="300" y2="630"/>
+    <line x1="600" y1="0" x2="600" y2="630"/>
+    <line x1="900" y1="0" x2="900" y2="630"/>
+  </g>
+  <g transform="translate(860,180)">
+    <rect x="0" y="0" width="190" height="190" rx="44" fill="#52c48f"/>
+    <rect x="18" y="52" width="154" height="16" rx="8" fill="#121211" opacity="0.92"/>
+    <rect x="18" y="88" width="110" height="16" rx="8" fill="#121211" opacity="0.62"/>
+    <rect x="18" y="124" width="66" height="16" rx="8" fill="#121211" opacity="0.38"/>
+    <rect x="0" y="214" width="112" height="112" rx="26" fill="none" stroke="#52c48f" stroke-width="3"/>
+    <rect x="128" y="246" width="80" height="80" rx="19" fill="none" stroke="rgba(241,240,234,0.38)" stroke-width="3"/>
+    <rect x="224" y="278" width="48" height="48" rx="12" fill="none" stroke="rgba(241,240,234,0.25)" stroke-width="3"/>
+  </g>
+  <text x="80" y="150" font-family="ui-monospace,Menlo,monospace" font-size="22" letter-spacing="6" fill="#52c48f">THE BUILD LOG · GUIDES</text>
+  <text x="80" y="290" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="70" font-weight="800" letter-spacing="-3" fill="#f1f0ea" textLength="640" lengthAdjust="spacingAndGlyphs">Every app icon size</text>
+  <text x="80" y="372" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="70" font-weight="800" letter-spacing="-3" fill="#52c48f" textLength="580" lengthAdjust="spacingAndGlyphs">you actually need</text>
+  <text x="80" y="446" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="28" fill="rgba(241,240,234,0.62)">iOS, Android and the web &#8212; plus the safe zone</text>
+  <text x="80" y="484" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="28" fill="rgba(241,240,234,0.62)">that quietly crops your mark.</text>
+  <text x="80" y="566" font-family="ui-monospace,Menlo,monospace" font-size="18" letter-spacing="3" fill="rgba(241,240,234,0.38)">ANWERSOLANGI.COM/BLOG</text>
+</svg>

@@ -24,23 +24,23 @@ export default function Layout3({ app, subPages }) {
         <div className="max-w-screen w-full mx-auto relative">
           <Link
             href="/apps"
-            className="inline-flex items-center gap-2 text-sm text-ink-2 hover:text-ink mb-12 group font-mono"
+            className="group back-link mb-10"
           >
             <ArrowLeft className="w-3.5 h-3.5 transition-transform group-hover:-translate-x-1" />
-            all apps
+            All apps
           </Link>
 
           <div className="grid lg:grid-cols-[1.4fr_1fr] gap-12 items-center">
             <div>
-              <div className="font-mono text-[11px] tracking-[0.14em] text-accent uppercase">
+              <div className="label">
                 {app.category || "Open source"} · {app.subcategory || "Free"}
               </div>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-[-0.045em] leading-[0.92] mt-3 text-ink">
+              <h1 className="text-[2.75rem] md:text-[3.5rem] lg:text-[4.25rem] font-semibold tracking-[-0.035em] leading-[0.98] mt-3 text-ink">
                 {app.name}
                 <span className="text-accent">.</span>
               </h1>
               {app.subtitle && (
-                <p className="text-xl md:text-2xl text-ink-2 font-light leading-[1.5] mt-6">
+                <p className="text-lg md:text-xl text-ink-2 leading-[1.5] mt-5">
                   {app.subtitle}
                 </p>
               )}
@@ -64,7 +64,7 @@ export default function Layout3({ app, subPages }) {
                     href={app.links.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-rule text-ink text-sm font-semibold hover:bg-white/5 transition"
+                    className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-rule text-ink text-sm font-semibold hover:bg-bg-3 transition"
                   >
                     <GitFork className="w-4 h-4" /> View source
                   </a>
@@ -74,7 +74,7 @@ export default function Layout3({ app, subPages }) {
                     href={app.links.demo}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-rule text-ink-2 text-sm font-medium hover:text-ink hover:bg-white/5 transition"
+                    className="inline-flex items-center gap-2 px-5 py-3 rounded-xl border border-rule text-ink-2 text-sm font-medium hover:text-ink hover:bg-bg-3 transition"
                   >
                     Live demo ↗
                   </a>
@@ -85,16 +85,12 @@ export default function Layout3({ app, subPages }) {
             {app.icon && (
               <div className="flex justify-center lg:justify-end">
                 <div className="relative">
-                  <div
-                    className="absolute -inset-8 rounded-[3rem] bg-accent/20 blur-3xl"
-                    aria-hidden
-                  />
                   <Image
                     src={app.icon}
                     alt={`${app.name} icon`}
                     width={240}
                     height={240}
-                    className="relative w-44 h-44 md:w-56 md:h-56 rounded-[2rem] shadow-2xl border border-rule"
+                    className="relative w-44 h-44 md:w-56 md:h-56 rounded-[2rem] shadow-object border border-rule"
                   />
                 </div>
               </div>
@@ -112,7 +108,7 @@ export default function Layout3({ app, subPages }) {
             <div
               className={`transition-all duration-1000 motion-reduce:transition-none motion-reduce:opacity-100 ${isVisible ? "opacity-100" : "opacity-0"}`}
             >
-              <div className="font-mono text-[11px] tracking-[0.14em] text-accent">
+              <div className="label">
                 01 · WHAT IT DOES
               </div>
               <h2 className="text-4xl md:text-5xl font-bold tracking-[-0.035em] text-ink mt-3 mb-12">
@@ -132,7 +128,7 @@ export default function Layout3({ app, subPages }) {
                     // waiting a second after it has already scrolled into view.
                     style={{ transitionDelay: `${Math.min(i, 5) * 60}ms` }}
                   >
-                    <div className="font-mono text-[10px] tracking-[0.18em] text-accent uppercase">
+                    <div className="label">
                       {String(i + 1).padStart(2, "0")}
                     </div>
                     <h3 className="text-base font-semibold text-ink leading-tight tracking-[-0.01em] mt-2">
@@ -150,7 +146,7 @@ export default function Layout3({ app, subPages }) {
         <section className="py-24 lg:py-32 px-6 lg:px-16">
           <div className="max-w-4xl mx-auto">
             <div className="mb-12">
-              <div className="font-mono text-[11px] tracking-[0.14em] text-accent">
+              <div className="label">
                 02 · DEEP DIVE
               </div>
               <h2 className="text-4xl md:text-5xl font-bold tracking-[-0.035em] text-ink mt-3">
@@ -192,7 +188,7 @@ export default function Layout3({ app, subPages }) {
         <section className="py-24 lg:py-32 px-6 lg:px-16 bg-bg-2">
           <div className="max-w-3xl mx-auto">
             <div className="mb-12">
-              <div className="font-mono text-[11px] tracking-[0.14em] text-accent">
+              <div className="label">
                 03 · FAQ
               </div>
               <h2 className="text-4xl md:text-5xl font-bold tracking-[-0.035em] text-ink mt-3">
@@ -211,7 +207,7 @@ export default function Layout3({ app, subPages }) {
       <section className="py-24 lg:py-32 px-6 lg:px-16 relative overflow-hidden">
         <CtaGlow />
         <div className="relative max-w-3xl mx-auto text-center">
-          <h2 className="text-4xl md:text-6xl font-extrabold tracking-[-0.04em] leading-[0.95] text-ink">
+          <h2 className="text-[2rem] md:text-[2.75rem] font-semibold tracking-[-0.03em] leading-[1.08] text-ink">
             <EmberStop>{app.ctaTitle || `Try ${app.name}`}</EmberStop>
           </h2>
           <p className="text-lg text-ink-2 mt-6 leading-relaxed">
@@ -234,14 +230,14 @@ export default function Layout3({ app, subPages }) {
                 href={app.links.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl border border-rule text-ink text-[15px] font-semibold hover:bg-white/5 transition"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-xl border border-rule text-ink text-[15px] font-semibold hover:bg-bg-3 transition"
               >
                 <GitFork className="w-4 h-4" aria-hidden /> GitHub ↗
               </a>
             )}
             <Link
               href="/#contact"
-              className="px-6 py-3.5 rounded-xl border border-rule text-ink-2 text-[15px] font-medium hover:text-ink hover:bg-white/5 transition"
+              className="px-6 py-3.5 rounded-xl border border-rule text-ink-2 text-[15px] font-medium hover:text-ink hover:bg-bg-3 transition"
             >
               Contact developer
             </Link>

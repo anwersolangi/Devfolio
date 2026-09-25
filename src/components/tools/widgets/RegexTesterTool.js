@@ -535,6 +535,13 @@ const KIND_COLOR = {
   literal: "text-ink",
 };
 
+const IDLE_ENGINE = {
+  key: null,
+  matches: [],
+  replaced: "",
+  timedOut: false,
+};
+
 export default function RegexTesterTool() {
   const [pattern, setPattern] = useState("(\\w+)@([\\w.-]+)\\.([a-z]{2,})");
   const [flags, setFlags] = useState("gi");
@@ -561,20 +568,16 @@ export default function RegexTesterTool() {
     }
   }, [pattern, flags]);
 
-  const [engine, setEngine] = useState({
-    matches: [],
-    replaced: "",
-    timedOut: false,
-    running: false,
-  });
+  const [engine, setEngine] = useState(IDLE_ENGINE);
+  const idle = !pattern || Boolean(error);
+
+  // Results are tagged with the inputs that produced them, so "running" is
+  // simply "the latest result is for different inputs".
+  const inputKey = JSON.stringify([pattern, flags, testString, replacement]);
 
   useEffect(() => {
-    if (!pattern || error) {
-      setEngine({ matches: [], replaced: "", timedOut: false, running: false });
-      return;
-    }
+    if (idle) return;
     let cancelled = false;
-    setEngine((prev) => ({ ...prev, running: true }));
 
     const debounce = setTimeout(async () => {
       const payload = { pattern, flags, testString, replacement };
@@ -582,10 +585,10 @@ export default function RegexTesterTool() {
       if (result.unavailable) result = runRegexSync(payload);
       if (cancelled) return;
       setEngine({
+        key: JSON.stringify([pattern, flags, testString, replacement]),
         matches: result.ok ? result.matches : [],
         replaced: result.ok ? result.replaced : "",
         timedOut: Boolean(result.timedOut),
-        running: false,
       });
     }, 250);
 
@@ -593,9 +596,11 @@ export default function RegexTesterTool() {
       cancelled = true;
       clearTimeout(debounce);
     };
-  }, [pattern, flags, testString, replacement, error]);
+  }, [pattern, flags, testString, replacement, idle]);
 
-  const { matches, replaced, timedOut, running } = engine;
+  // With no valid pattern the last result is stale, so show the idle state.
+  const { matches, replaced, timedOut } = idle ? IDLE_ENGINE : engine;
+  const running = !idle && engine.key !== inputKey;
 
   const highlighted = useMemo(() => {
     if (error || matches.length === 0) return [testString];
@@ -696,7 +701,7 @@ export default function RegexTesterTool() {
         </div>
 
         <div className="flex flex-wrap items-center gap-2 border-t border-rule pt-3">
-          <span className="inline-flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.16em] text-ink-3">
+          <span className="inline-flex items-center gap-1.5 label-sm">
             <Sparkles className="h-3 w-3 text-accent" /> Try
           </span>
           {PRESETS.map((preset) => (
@@ -713,7 +718,7 @@ export default function RegexTesterTool() {
       </div>
 
       {error && (
-        <div className="flex items-start gap-2 rounded-xl border border-[#ff7a7a]/25 bg-[#ff7a7a]/5 p-3 text-sm text-[#ff7a7a]">
+        <div className="flex items-start gap-2 rounded-xl border border-[#ff7a7a]/25 bg-[#ff7a7a]/5 p-3 text-sm text-bad">
           <AlertTriangle className="mt-0.5 h-4 w-4 shrink-0" />
           <span className="font-mono text-xs">{error}</span>
         </div>
@@ -740,7 +745,7 @@ export default function RegexTesterTool() {
       )}
 
       <div>
-        <div className="mb-2 font-mono text-[10px] uppercase tracking-[0.16em] text-ink-3">
+        <div className="mb-2 label-sm">
           Test string
         </div>
         <textarea
@@ -768,7 +773,7 @@ export default function RegexTesterTool() {
       </div>
 
       <div>
-        <div className="mb-2 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
+        <div className="mb-2 flex items-center gap-2 label">
           Highlighted result
           {running && (
             <span className="normal-case tracking-normal text-ink-3">
@@ -870,7 +875,7 @@ export default function RegexTesterTool() {
                       {match.groups.map((group, groupIndex) => (
                         <span
                           key={groupIndex}
-                          className="font-mono text-[11px] text-ink-3"
+                          className="text-[13px] text-ink-3"
                         >
                           ${groupIndex + 1}:{" "}
                           <span className="text-ink-2">
@@ -885,7 +890,7 @@ export default function RegexTesterTool() {
                       {Object.entries(match.named).map(([name, value]) => (
                         <span
                           key={name}
-                          className="font-mono text-[11px] text-ink-3"
+                          className="text-[13px] text-ink-3"
                         >
                           {name}:{" "}
                           <span className="text-ink-2">
@@ -958,7 +963,7 @@ export default function RegexTesterTool() {
         <div className="grid gap-6 border-t border-rule p-4 sm:grid-cols-2">
           {CHEATSHEET.map((section) => (
             <div key={section.group}>
-              <h3 className="mb-2 font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
+              <h3 className="mb-2 label">
                 {section.group}
               </h3>
               <dl className="space-y-1.5">

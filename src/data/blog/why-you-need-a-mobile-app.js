@@ -3,6 +3,8 @@ export const whyYouNeedAMobileApp = {
   title: "Why You Need a Mobile App — and When You Honestly Don't",
   description:
     "An app developer's filter for the 'do we need an app?' question: the five signals that say yes, the cases where a website genuinely wins, and how to tell which side you're on before spending money.",
+  metaDescription:
+    "An app developer's filter for 'do we need an app?': five signals that say yes, the cases where a website wins, and how to tell before spending money.",
   category: "Business",
   tags: [
     "why you need a mobile app",

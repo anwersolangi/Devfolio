@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { ArrowLeft, Check, MapPin, Clock, Star, Mail } from "lucide-react";
+import { Check, MapPin, Clock, Star, Mail } from "lucide-react";
+import { PageShell, Breadcrumbs, SectionHead } from "@/components/PageHeader";
 import {
   BreadcrumbSchema,
   ServiceSchema,
@@ -7,14 +8,14 @@ import {
 } from "@/components/SEOComponents";
 import { SITE_URL, CONTACT_EMAIL } from "@/data/site";
 import { jsonLd } from "@/lib/jsonld";
+import { TWITTER_BASE } from "@/lib/seo";
 
 const PATH = "/hire-react-native-developer-karachi";
 const URL = `${SITE_URL}${PATH}`;
 
-const TITLE =
-  "Hire a React Native Developer in Karachi, Pakistan — Anwer Solangi";
+const TITLE = "Hire a React Native Developer in Karachi | Anwer Solangi";
 const DESCRIPTION =
-  "Hire Anwer Solangi, a senior React Native developer in Karachi, Pakistan. 5+ years, 100K+ downloads, 50+ shipped apps. Available for freelance & contract work locally and remotely worldwide.";
+  "Hire Anwer Solangi, a senior React Native developer in Karachi, Pakistan: 5+ years, 50+ projects, 100K+ downloads. Freelance and contract, local or remote.";
 
 export const metadata = {
   title: TITLE,
@@ -37,7 +38,7 @@ export const metadata = {
     type: "website",
   },
   twitter: {
-    card: "summary_large_image",
+    ...TWITTER_BASE,
     title: TITLE,
     description: DESCRIPTION,
   },
@@ -112,7 +113,7 @@ function FaqJsonLd() {
 
 export default function HirePage() {
   return (
-    <main className="min-h-screen pt-28 pb-24 px-6 lg:px-16 overflow-hidden">
+    <PageShell>
       <WebPageSchema url={URL} name={TITLE} description={DESCRIPTION} />
       <ServiceSchema />
       <FaqJsonLd />
@@ -123,32 +124,25 @@ export default function HirePage() {
         ]}
       />
 
-      <div
-        className="glow-orb"
-        style={{ top: -200, right: -200, width: 700, height: 700 }}
-      />
-
-      <div className="max-w-screen mx-auto relative">
-        <Link
-          href="/"
-          className="inline-flex items-center gap-2 text-sm text-ink-2 hover:text-ink mb-12 group font-mono"
-        >
-          <ArrowLeft className="w-3.5 h-3.5 transition-transform duration-300 group-hover:-translate-x-1" />
-          back to home
-        </Link>
+      <div>
+        <Breadcrumbs
+          className="mb-8"
+          items={[
+            { label: "Home", href: "/" },
+            { label: "Hire a React Native developer" },
+          ]}
+        />
 
         <header className="max-w-3xl">
-          <p className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-accent/10 border border-accent/25 font-mono text-[11px] tracking-[0.06em] text-accent-2">
-            <MapPin className="w-3 h-3" /> KARACHI · PAKISTAN · REMOTE WORLDWIDE
+          <p className="inline-flex items-center gap-2 text-[13px] font-medium text-ink">
+            <MapPin className="w-3.5 h-3.5 text-accent" aria-hidden />
+            Karachi, Pakistan
+            <span className="text-ink-3 font-normal">· remote worldwide</span>
           </p>
-          <h1 className="font-display text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-[-0.04em] leading-[1.02] mt-5 text-ink">
-            Hire a React Native developer in{" "}
-            <span className="font-serif italic text-accent font-normal">
-              Karachi
-            </span>
-            .
+          <h1 className="mt-5 text-display font-semibold text-ink">
+            Hire a React Native developer in Karachi.
           </h1>
-          <p className="text-lg md:text-xl text-ink-2 leading-[1.55] mt-6">
+          <p className="text-[17px] md:text-lg text-ink-2 leading-[1.6] mt-6 max-w-2xl">
             I&rsquo;m <strong className="text-ink font-semibold">Anwer Solangi</strong>,
             a senior React Native developer based in Karachi, Pakistan. I build
             cross-platform iOS and Android apps — 5+ years in, 50+ projects
@@ -161,53 +155,45 @@ export default function HirePage() {
               href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
                 "React Native project enquiry",
               )}`}
-              className="inline-flex items-center gap-2 px-5 py-3.5 rounded-xl bg-accent-deep text-on-accent font-bold text-sm hover:opacity-90 transition"
+              className="btn-primary"
             >
-              <Mail className="w-4 h-4" /> Start a project
+              <Mail className="w-4 h-4" aria-hidden /> Start a project
             </a>
-            <Link
-              href="/apps"
-              className="inline-flex items-center px-5 py-3.5 rounded-xl border border-rule text-ink font-semibold text-sm hover:bg-white/5 transition"
-            >
+            <Link href="/apps" className="btn-secondary">
               See shipped apps
             </Link>
-            <Link
-              href="/reels"
-              className="inline-flex items-center px-5 py-3.5 rounded-xl border border-rule text-ink-2 font-semibold text-sm hover:bg-white/5 hover:text-ink transition"
-            >
+            <Link href="/reels" className="btn-ghost">
               Watch the UI reels
             </Link>
           </div>
 
-          <dl className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-6 font-mono text-[11px] tracking-[0.08em] text-ink-3 max-w-xl">
+          <dl className="mt-12 grid grid-cols-2 sm:grid-cols-4 gap-x-8 gap-y-6 pt-6 border-t border-rule">
             {[
-              ["5.0★", "Fiverr rating"],
-              ["100K+", "Downloads"],
-              ["50+", "Projects"],
+              ["5.0", "client rating"],
+              ["100K+", "app downloads"],
+              ["50+", "projects delivered"],
               ["5+ yrs", "React Native"],
             ].map(([v, l]) => (
               <div key={l}>
-                <dt className="text-accent text-2xl font-display font-extrabold tracking-[-0.03em]">
+                <dt className="text-[13px] text-ink-3">{l}</dt>
+                <dd className="mt-0.5 text-xl font-semibold tracking-[-0.02em] text-ink tabular-nums">
                   {v}
-                </dt>
-                <dd className="mt-1 uppercase">{l}</dd>
+                </dd>
               </div>
             ))}
           </dl>
         </header>
 
-        <section className="mt-24">
-          <div className="font-mono text-[11px] tracking-[0.14em] text-accent">
-            ▸ WHAT I BUILD
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-[-0.03em] text-ink mt-3 max-w-2xl">
-            React Native &amp; iOS development, end to end.
-          </h2>
-          <div className="grid sm:grid-cols-2 gap-5 mt-10">
+        <section className="mt-20 border-t border-rule pt-8">
+          <SectionHead
+            label="What I build"
+            title="React Native and iOS development, end to end."
+          />
+          <div className="grid sm:grid-cols-2 gap-4">
             {SERVICES.map(([title, body]) => (
               <div
                 key={title}
-                className="p-6 rounded-2xl border border-rule bg-bg-2 hover:border-accent/30 transition-colors"
+                className="p-6 rounded-2xl border border-rule bg-bg-2"
               >
                 <div className="flex items-start gap-3">
                   <Check className="w-5 h-5 text-accent shrink-0 mt-0.5" />
@@ -225,16 +211,13 @@ export default function HirePage() {
           </div>
         </section>
 
-        <section className="mt-24 grid lg:grid-cols-2 gap-12 lg:gap-20 items-start">
-          <div>
-            <div className="font-mono text-[11px] tracking-[0.14em] text-accent">
-              ▸ KARACHI, PAKISTAN &amp; BEYOND
-            </div>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-[-0.03em] text-ink mt-3">
-              Local roots, global delivery.
-            </h2>
-          </div>
-          <div className="space-y-5 text-lg text-ink-2 leading-[1.6]">
+        <section className="mt-20 border-t border-rule pt-8 grid lg:grid-cols-2 gap-10 lg:gap-16 items-start">
+          <SectionHead
+            label="Karachi, Pakistan and beyond"
+            title="Local roots, global delivery."
+            className="mb-0"
+          />
+          <div className="space-y-5 text-[17px] text-ink-2 leading-[1.6]">
             <p>
               Based in Karachi, I work with Pakistani founders and startups who
               want someone in their timezone they can actually meet — and with
@@ -259,23 +242,18 @@ export default function HirePage() {
           </div>
         </section>
 
-        <section className="mt-24">
-          <div className="font-mono text-[11px] tracking-[0.14em] text-accent">
-            ▸ HOW IT WORKS
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-[-0.03em] text-ink mt-3">
-            Three steps, no black box.
-          </h2>
-          <div className="grid md:grid-cols-3 gap-5 mt-10">
+        <section className="mt-20 border-t border-rule pt-8">
+          <SectionHead label="How it works" title="Three steps, no black box." />
+          <div className="grid md:grid-cols-3 gap-4">
             {PROCESS.map(([n, title, body]) => (
               <div
                 key={n}
                 className="p-6 rounded-2xl border border-rule bg-bg-2"
               >
-                <div className="font-display text-4xl font-extrabold text-accent tracking-[-0.04em]">
-                  {n}
+                <div className="text-[13px] font-medium text-ink-3 tabular-nums">
+                  Step {n}
                 </div>
-                <h3 className="text-lg font-semibold text-ink mt-3">{title}</h3>
+                <h3 className="text-lg font-semibold text-ink mt-2">{title}</h3>
                 <p className="text-ink-2 text-[15px] leading-[1.6] mt-2">
                   {body}
                 </p>
@@ -284,28 +262,24 @@ export default function HirePage() {
           </div>
         </section>
 
-        <section className="mt-24 max-w-3xl">
-          <div className="font-mono text-[11px] tracking-[0.14em] text-accent">
-            ▸ FAQ
-          </div>
-          <h2 className="text-3xl md:text-4xl font-bold tracking-[-0.03em] text-ink mt-3">
-            Hiring questions, answered.
-          </h2>
-          <div className="space-y-3 mt-10">
+        <section className="mt-20 border-t border-rule pt-8 max-w-3xl">
+          <SectionHead label="FAQ" title="Hiring questions, answered." />
+          <div className="border-t border-rule">
             {FAQS.map((f, i) => (
-              <details
-                key={i}
-                className="group bg-bg-2 border border-rule rounded-xl overflow-hidden hover:border-accent/30 transition-colors"
-              >
-                <summary className="flex items-center justify-between gap-4 p-5 cursor-pointer list-none">
-                  <h3 className="font-semibold text-ink leading-snug text-[15px]">
+              <details key={i} className="faq-item group border-b border-rule">
+                <summary className="flex items-start justify-between gap-6 py-4 cursor-pointer list-none select-none">
+                  <h3 className="text-[17px] font-medium text-ink leading-[1.4]">
                     {f.q}
                   </h3>
-                  <span className="text-accent font-mono text-lg shrink-0 group-open:rotate-45 transition-transform">
-                    +
+                  <span
+                    aria-hidden
+                    className="relative mt-2 w-3.5 h-3.5 shrink-0 text-ink-3 group-hover:text-ink transition-colors"
+                  >
+                    <span className="absolute top-1/2 left-0 w-full h-[1.5px] -translate-y-1/2 bg-current" />
+                    <span className="absolute top-1/2 left-0 w-full h-[1.5px] -translate-y-1/2 bg-current rotate-90 group-open:rotate-0 transition-transform duration-200" />
                   </span>
                 </summary>
-                <p className="px-5 pb-5 text-ink-2 text-[15px] leading-[1.65]">
+                <p className="pb-5 -mt-1 text-[15px] text-ink-2 leading-[1.65] max-w-prose">
                   {f.a}
                 </p>
               </details>
@@ -313,23 +287,27 @@ export default function HirePage() {
           </div>
         </section>
 
-        <section className="mt-24 p-8 lg:p-12 rounded-2xl border border-rule bg-bg-2 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-[-0.03em] text-ink">
-            Got an app to build?
-          </h2>
-          <p className="text-ink-2 mt-3 max-w-xl mx-auto">
-            Tell me what you&rsquo;re making. Replies usually inside a day.
-          </p>
-          <a
-            href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
-              "React Native project enquiry",
-            )}`}
-            className="inline-flex items-center gap-2 mt-7 px-6 py-3.5 rounded-xl bg-accent-deep text-on-accent font-bold text-sm hover:opacity-90 transition"
-          >
-            <Mail className="w-4 h-4" /> {CONTACT_EMAIL}
-          </a>
+        <section className="mt-20 pt-10 border-t border-rule md:grid md:grid-cols-[1.4fr_1fr] md:gap-10 md:items-center">
+          <div>
+            <h2 className="text-2xl md:text-[28px] font-semibold tracking-[-0.02em] leading-[1.2] text-ink max-w-xl">
+              Got an app to build? Tell me what you&rsquo;re making.
+            </h2>
+            <p className="mt-3 text-[15px] text-ink-2 leading-[1.6] max-w-lg">
+              Replies usually inside a day.
+            </p>
+          </div>
+          <div className="mt-6 md:mt-0 flex flex-wrap gap-3 md:justify-end">
+            <a
+              href={`mailto:${CONTACT_EMAIL}?subject=${encodeURIComponent(
+                "React Native project enquiry",
+              )}`}
+              className="btn-primary"
+            >
+              <Mail className="w-4 h-4" aria-hidden /> {CONTACT_EMAIL}
+            </a>
+          </div>
         </section>
       </div>
-    </main>
+    </PageShell>
   );
 }

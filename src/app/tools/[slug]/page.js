@@ -3,6 +3,7 @@ import ToolShell from "@/components/tools/ToolShell";
 import ToolRunner from "@/components/tools/ToolRunner";
 import { TOOLS, getTool } from "@/data/tools";
 import { jsonLd } from "@/lib/jsonld";
+import { pageTitle, clampText, TWITTER_BASE } from "@/lib/seo";
 
 const baseUrl = (
   process.env.NEXT_PUBLIC_BASE_URL || "https://anwersolangi.com"
@@ -18,33 +19,20 @@ export async function generateMetadata({ params }) {
   if (!tool) return { title: "Tool Not Found" };
 
   const url = `${baseUrl}/tools/${tool.slug}`;
-  const title = `${tool.name} — Free Online Tool | Anwer Solangi`;
+  const title = pageTitle(`${tool.name} — Free Online Tool`);
+  const description = clampText(tool.metaDescription || tool.description);
   return {
     title,
-    description: tool.description,
+    description,
     keywords: tool.keywords,
     alternates: { canonical: url },
     openGraph: {
       title,
-      description: tool.description,
+      description,
       url,
-      siteName: "Anwer Solangi",
       type: "website",
-      images: [
-        {
-          url: `${baseUrl}/og-image.png`,
-          width: 1200,
-          height: 630,
-          alt: `${tool.name} by Anwer Solangi`,
-        },
-      ],
     },
-    twitter: {
-      card: "summary_large_image",
-      title,
-      description: tool.description,
-      creator: "@anwersolangidev",
-    },
+    twitter: { ...TWITTER_BASE, title, description },
   };
 }
 

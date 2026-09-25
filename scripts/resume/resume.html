@@ -1,0 +1,272 @@
+<!doctype html>
+<!--
+  Source for public/anwer-solangi-resume.pdf. Rebuild with `npm run resume`.
+  Copy and numbers mirror the site (Hero, Experience, Projects, Skills) — when
+  those change, change them here too. Colours and type are the site's light
+  theme tokens from src/app/globals.css.
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Anwer Solangi — React Native Developer · Résumé</title>
+<meta name="author" content="Anwer Solangi" />
+<meta name="description" content="Résumé of Anwer Solangi, React Native developer in Karachi, Pakistan." />
+<style>
+  @font-face { font-family: "Schibsted Grotesk"; font-weight: 400; src: url("../../src/assets/fonts/SchibstedGrotesk-400.ttf"); }
+  @font-face { font-family: "Schibsted Grotesk"; font-weight: 600 800; src: url("../../src/assets/fonts/SchibstedGrotesk-600.ttf"); }
+  @font-face { font-family: "Geist Mono"; font-weight: 100 900; src: url("../../src/app/fonts/GeistMonoVF.woff"); }
+
+  :root {
+    --paper: #ffffff;
+    --bg-2: #f7f7f5;
+    --bg-3: #eeeeea;
+    --ink: #171716;
+    --ink-2: #5a5a55;
+    --ink-3: #77776f;
+    --rule: #e2e2dd;
+    --accent: #0d6b4b;
+    --accent-tint: #e4f1ea;
+  }
+  @page { size: A4; margin: 14mm 15mm 13mm; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body {
+    font-family: "Schibsted Grotesk", system-ui, sans-serif;
+    color: var(--ink);
+    background: var(--paper);
+    font-size: 9.6pt;
+    line-height: 1.45;
+  }
+  a { color: inherit; text-decoration: none; }
+  .mono {
+    font-family: "Geist Mono", ui-monospace, monospace;
+    font-size: 7.4pt;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  /* Header */
+  header { display: flex; justify-content: space-between; align-items: flex-end; gap: 16px; }
+  .status { color: var(--accent); display: flex; align-items: center; gap: 6px; margin-bottom: 8px; }
+  .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+  h1 { font-size: 30pt; font-weight: 800; letter-spacing: -0.04em; word-spacing: 0.06em; line-height: 0.95; }
+  h1 .accent { color: var(--accent); }
+  .role { font-size: 12pt; color: var(--ink-2); margin-top: 6px; letter-spacing: -0.01em; }
+  .contact { text-align: right; color: var(--ink-2); line-height: 1.7; font-size: 8.8pt; }
+  .contact a:hover { color: var(--accent); }
+  .contact strong { color: var(--ink); font-weight: 600; }
+
+  /* Stats */
+  .facts {
+    display: grid; grid-template-columns: repeat(4, 1fr);
+    margin: 16px 0 4px; border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule);
+  }
+  .fact { padding: 9px 0 8px; }
+  .fact + .fact { padding-left: 14px; border-left: 1px solid var(--rule); }
+  .fact b { display: flex; align-items: center; gap: 3px; word-spacing: 0.08em; font-size: 19pt; font-weight: 800; letter-spacing: -0.04em; line-height: 1; }
+  .fact b svg { width: 13px; height: 13px; fill: var(--accent); }
+  .fact span { display: block; margin-top: 5px; color: var(--ink-3); }
+
+  /* Sections */
+  section { margin-top: 15px; }
+  .label { display: flex; align-items: center; gap: 8px; color: var(--accent); margin-bottom: 8px; }
+  .label::after { content: ""; flex: 1; height: 1px; background: var(--rule); }
+  p.lede { font-size: 10.4pt; line-height: 1.5; color: var(--ink); letter-spacing: -0.005em; }
+  p.lede em { font-style: normal; color: var(--ink-2); }
+
+  .job { padding: 8px 0; }
+  .job .head { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+  .job + .job { border-top: 1px solid var(--rule); }
+  .years { color: var(--ink-3); white-space: nowrap; }
+  .job h3 { font-size: 11pt; font-weight: 700; letter-spacing: -0.015em; }
+  .org { color: var(--ink-2); margin: 1px 0 5px; }
+  .org span { color: var(--ink-3); }
+  ul { list-style: none; }
+  /* No positioning here: positioned boxes paint in a later layer, which
+     moves their text to the end of the PDF's reading order (bad for ATS). */
+  li { padding-left: 12px; text-indent: -12px; margin: 2px 0; color: var(--ink-2); }
+  li::before { content: ""; display: inline-block; width: 5px; height: 1px; margin-right: 7px; vertical-align: 0.3em; background: var(--accent); }
+
+  /* Projects */
+  .projects { display: grid; grid-template-columns: 1fr 1fr; column-gap: 20px; }
+  .project { padding: 11px 0; border-top: 1px solid var(--rule); break-inside: avoid; }
+  .project .top { display: flex; justify-content: space-between; align-items: baseline; gap: 8px; }
+  .project h3 { font-size: 11pt; font-weight: 700; letter-spacing: -0.015em; }
+  .project .tag { color: var(--ink-3); white-space: nowrap; }
+  .project p { color: var(--ink-2); margin: 4px 0 7px; font-size: 9.4pt; }
+  .chips { display: flex; flex-wrap: wrap; gap: 4px; }
+  .chip { padding: 2px 8px; border-radius: 6px; background: var(--bg-3); color: var(--ink-2); font-size: 6.9pt; }
+  .chip.hl { background: var(--accent-tint); color: var(--accent); }
+  .project .link { color: var(--accent); margin-top: 5px; display: inline-block; }
+
+  /* Skills */
+  .skills { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .skills h4 { font-size: 9.8pt; font-weight: 700; margin-bottom: 4px; letter-spacing: -0.01em; }
+  .skills dl div { padding: 3px 0; border-top: 1px solid var(--rule); }
+  .skills dt { font-weight: 600; font-size: 9pt; }
+  .skills dd { color: var(--ink-3); font-size: 8.4pt; }
+  .also { margin-top: 8px; color: var(--ink-2); font-size: 8.8pt; }
+  .also b { font-weight: 600; color: var(--ink); }
+
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .two p { color: var(--ink-2); }
+  .two p b { color: var(--ink); font-weight: 600; }
+
+  footer { margin-top: 14px; padding-top: 8px; border-top: 1px solid var(--ink); display: flex; justify-content: space-between; color: var(--ink-3); }
+  .page-break { break-before: page; margin-top: 0; }
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="status mono"><span class="dot"></span>Available for freelance &amp; contract work</div>
+    <h1>Anwer Solangi<span class="accent">.</span></h1>
+    <div class="role">React Native developer · iOS &amp; Android · Karachi, Pakistan</div>
+  </div>
+  <div class="contact">
+    <a href="mailto:me@anwersolangi.com"><strong>me@anwersolangi.com</strong></a><br />
+    <a href="https://anwersolangi.com">anwersolangi.com</a><br />
+    <a href="https://github.com/anwersolangi">github.com/anwersolangi</a><br />
+    <a href="https://www.linkedin.com/in/anwersolangi">linkedin.com/in/anwersolangi</a>
+  </div>
+</header>
+
+<div class="facts">
+  <div class="fact"><b>50+</b><span class="mono">Projects delivered</span></div>
+  <div class="fact"><b>100K+</b><span class="mono">App downloads</span></div>
+  <div class="fact"><b>5.0<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2l2.9 6.9 7.1.6-5.4 4.7 1.6 7L12 17.5 5.8 21.2l1.6-7L2 9.5l7.1-.6z"/></svg></b><span class="mono">Client rating</span></div>
+  <div class="fact"><b>5+ yrs</b><span class="mono">React Native</span></div>
+</div>
+
+<section>
+  <div class="label mono">Profile</div>
+  <p class="lede">
+    React Native developer in Karachi, shipping iOS and Android apps for founders worldwide. Over the last five years I’ve delivered 50+ projects and 100K+ app downloads — a location-based social app, an offline AI document scanner, a restaurant ordering suite, an Islamic inheritance calculator — mostly solo, in React Native and TypeScript, and always through to a live store listing.
+    <em>My sweet spot is taking an early-stage idea through architecture, motion, Firebase wiring, payments and store submission.</em>
+  </p>
+</section>
+
+<section>
+  <div class="label mono">Experience</div>
+  <div class="job">
+    <div class="head"><h3>Senior React Native Developer</h3><span class="years mono">2019 — now</span></div>
+    <div>
+      <div class="org">Freelance · remote from Karachi, Pakistan <span>· via direct clients, Fiverr, CodeCanyon</span></div>
+      <ul>
+        <li>Completed 50+ mobile app projects for international clients, from first architecture to live App Store and Play Store listings</li>
+        <li>Shipped a location-based social app with 10K+ Play Store installs, rated 4.6</li>
+        <li>Built and sold React Native templates on CodeCanyon with active sales</li>
+        <li>Five-star ratings across Fiverr, CodeCanyon and direct client work</li>
+        <li>Deep Firebase integration, real-time features, GPS and payments (Stripe, RevenueCat)</li>
+      </ul>
+    </div>
+  </div>
+  <div class="job">
+    <div class="head"><h3>Independent Mobile Developer</h3><span class="years mono">2018 — now</span></div>
+    <div>
+      <div class="org">Self-directed products <span>· via Play Store, Chrome Web Store, GitHub</span></div>
+      <ul>
+        <li>Publish and maintain my own apps on Google Play and a Chrome extension on the Chrome Web Store</li>
+        <li>Published multiple React Native templates on the CodeCanyon marketplace</li>
+        <li>Open-source contributions across React Native and the JavaScript ecosystem</li>
+        <li>Weekly UI reels and tutorials for the React Native community, plus 27 free developer tools on anwersolangi.com</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="label mono">Stack</div>
+  <div class="skills">
+    <div>
+      <h4>Mobile engineering</h4>
+      <dl>
+        <div><dt>React Native &amp; Expo</dt><dd>5+ years, 50+ shipped apps</dd></div>
+        <div><dt>TypeScript &amp; modern JavaScript</dt><dd>typed, maintainable codebases</dd></div>
+        <div><dt>Reanimated &amp; Gesture Handler</dt><dd>60fps motion and gestures</dd></div>
+        <div><dt>React Navigation &amp; deep linking</dt><dd>auth flows, tabs, universal links</dd></div>
+        <div><dt>Native modules</dt><dd>Swift / Kotlin bridges</dd></div>
+      </dl>
+    </div>
+    <div>
+      <h4>Backend &amp; realtime</h4>
+      <dl>
+        <div><dt>Firebase</dt><dd>Auth, Firestore, FCM, Cloud Functions</dd></div>
+        <div><dt>Node.js &amp; REST APIs</dt><dd>pragmatic backends for mobile</dd></div>
+        <div><dt>GraphQL &amp; Socket.io</dt><dd>live data, chat, presence</dd></div>
+        <div><dt>MongoDB</dt><dd>document modelling for app data</dd></div>
+        <div><dt>Stripe &amp; RevenueCat</dt><dd>subscriptions and checkout</dd></div>
+      </dl>
+    </div>
+    <div>
+      <h4>Shipping &amp; tooling</h4>
+      <dl>
+        <div><dt>Fastlane · TestFlight · Play Console</dt><dd>automated release pipelines</dd></div>
+        <div><dt>CodePush</dt><dd>over-the-air updates</dd></div>
+        <div><dt>Git, GitHub &amp; CI</dt><dd>reviews, branching, checks</dd></div>
+        <div><dt>Jest &amp; Detox</dt><dd>unit and end-to-end testing</dd></div>
+        <div><dt>Figma</dt><dd>design handoff, motion specs</dd></div>
+      </dl>
+    </div>
+  </div>
+  <p class="also"><b>Also:</b> Redux / MobX, Lottie, push notifications, MMKV, React Native Paper, Next.js, Chrome Extension APIs, Xcode, Android Studio, Postman.</p>
+</section>
+
+<section class="page-break">
+  <div class="label mono">Selected work</div>
+  <div class="projects">
+    <div class="project">
+      <div class="top"><h3>Nearby</h3><span class="tag mono">Location-based social</span></div>
+      <p>GPS-driven discovery and real-time chat. Built solo in React Native with a Firebase backend and Stripe payments.</p>
+      <div class="chips"><span class="chip hl">10K+ installs</span><span class="chip hl">4.6 on Play Store</span><span class="chip">React Native</span><span class="chip">Firebase</span><span class="chip">Stripe</span></div>
+    </div>
+    <div class="project">
+      <div class="top"><h3>TapMeal</h3><span class="tag mono">Restaurant SaaS · QR</span></div>
+      <p>A three-app restaurant suite on one Firebase backend: customers order by QR with no install; owners run orders, kitchen and staff live from their phone.</p>
+      <div class="chips"><span class="chip hl">Live on Play Store</span><span class="chip">React Native</span><span class="chip">Next.js</span><span class="chip">Firebase</span><span class="chip">TypeScript</span></div>
+    </div>
+    <div class="project">
+      <div class="top"><h3>DocuLensAI</h3><span class="tag mono">AI document scanner</span></div>
+      <p>Auto edge detection, on-device OCR and one-tap PDF, image and text export. Every scan runs entirely on the phone — no cloud, no account.</p>
+      <div class="chips"><span class="chip hl">100% offline</span><span class="chip">VisionCamera + OpenCV</span><span class="chip">ML Kit OCR</span><span class="chip">SQLite</span></div>
+    </div>
+    <div class="project">
+      <div class="top"><h3>Wasiyyah</h3><span class="tag mono">Islamic will &amp; faraid</span></div>
+      <p>A guided Shariah-compliant will builder on a 2,000-line pure-TypeScript faraid engine: exact fractions across 8 madhabs, 10 languages with RTL, formal PDF export.</p>
+      <div class="chips"><span class="chip hl">8 madhabs</span><span class="chip hl">10 languages</span><span class="chip">Expo</span><span class="chip">TypeScript</span><span class="chip">Encrypted MMKV</span></div>
+    </div>
+    <div class="project">
+      <div class="top"><h3>MemorIQ</h3><span class="tag mono">Memory game</span></div>
+      <p>A memory-match brain trainer with 9 themes, animated backgrounds, lives and per-round timers, offline-first. Sold on CodeCanyon, rebrandable from one config file.</p>
+      <div class="chips"><span class="chip hl">9 themes</span><span class="chip">Reanimated</span><span class="chip">MMKV</span><span class="chip">TypeScript</span></div>
+    </div>
+    <div class="project">
+      <div class="top"><h3>YouTube Focus</h3><span class="tag mono">Chrome extension</span></div>
+      <p>Blocks accidental keystrokes while YouTube or YouTube Kids is fullscreen, so a stray keypress can’t pause, skip or exit. Free and open source.</p>
+      <div class="chips"><span class="chip hl">Chrome Web Store</span><span class="chip">JavaScript</span><span class="chip">Chrome APIs</span></div>
+    </div>
+  </div>
+  <a class="link mono" style="color:var(--accent);display:inline-block;margin-top:6px" href="https://anwersolangi.com/apps">All 10 apps → anwersolangi.com/apps</a>
+</section>
+
+
+
+<section class="two">
+  <div>
+    <div class="label mono">Education</div>
+    <p><b>Self-taught developer.</b> Continuous learning through documentation, courses and shipping real products — focused on React Native, mobile and the modern JavaScript ecosystem.</p>
+  </div>
+  <div>
+    <div class="label mono">Details</div>
+    <p><b>Languages:</b> English, Urdu, Sindhi<br /><b>Time zone:</b> UTC+5, working remotely worldwide<br /><b>Work:</b> anwersolangi.com · reels at @anwersolangidev</p>
+  </div>
+</section>
+
+<footer class="mono">
+  <span>Anwer Solangi — with an ‘e’</span>
+  <span>anwersolangi.com</span>
+</footer>
+
+</body>
+</html>

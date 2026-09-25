@@ -54,7 +54,7 @@ export default function SalaryTaxTool() {
       <div className="rounded-xl border border-rule bg-bg-2 p-5 sm:p-6">
         <div className="flex flex-col sm:flex-row gap-4 items-end">
           <div className="flex-1 w-full">
-            <label className="block mb-2 font-mono text-[10px] uppercase tracking-[0.16em] text-ink-3">
+            <label className="block mb-2 label-sm">
               Enter Salary (PKR)
             </label>
             <div className="relative">
@@ -74,7 +74,7 @@ export default function SalaryTaxTool() {
             </div>
           </div>
           <div className="w-full sm:w-48">
-            <label className="block mb-2 font-mono text-[10px] uppercase tracking-[0.16em] text-ink-3">
+            <label className="block mb-2 label-sm">
               Per
             </label>
             <div className="flex rounded-lg border border-rule bg-bg overflow-hidden p-1">
@@ -105,7 +105,7 @@ export default function SalaryTaxTool() {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div className="rounded-xl border border-rule bg-bg p-5 sm:p-6">
-          <h3 className="mb-6 font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
+          <h3 className="label mb-6">
             Monthly Breakdown
           </h3>
           <div className="space-y-4">
@@ -131,7 +131,7 @@ export default function SalaryTaxTool() {
         </div>
 
         <div className="rounded-xl border border-rule bg-bg p-5 sm:p-6">
-          <h3 className="mb-6 font-mono text-[11px] uppercase tracking-[0.16em] text-accent">
+          <h3 className="label mb-6">
             Yearly Breakdown
           </h3>
           <div className="space-y-4">

@@ -1,5 +1,5 @@
 "use client";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useState } from "react";
 import { RefreshCw } from "lucide-react";
 import { Field, CopyButton, PrimaryButton } from "../ui";
 
@@ -20,17 +20,14 @@ export default function UuidTool() {
   const [count, setCount] = useState(5);
   const [uppercase, setUppercase] = useState(false);
   const [hyphens, setHyphens] = useState(true);
-  const [list, setList] = useState([]);
+  // The widget only renders in the browser (ToolRunner loads it with
+  // ssr: false), so the first batch can be generated as initial state.
+  const [list, setList] = useState(() => Array.from({ length: 5 }, randomUuid));
 
   const generate = useCallback(() => {
     const n = Math.min(1000, Math.max(1, count || 1));
     setList(Array.from({ length: n }, randomUuid));
   }, [count]);
-
-  useEffect(() => {
-    generate();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
 
   const format = (id) => {
     let v = hyphens ? id : id.replace(/-/g, "");

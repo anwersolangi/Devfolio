@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const socials = [
   ["GitHub", "https://github.com/anwersolangi"],
   ["LinkedIn", "https://www.linkedin.com/in/anwersolangi"],
@@ -6,19 +8,16 @@ const socials = [
   ["YouTube", "https://www.youtube.com/@anwersolangidev"],
   ["TikTok", "https://www.tiktok.com/@anwersolangidev"],
   ["Pinterest", "https://www.pinterest.com/anwersolangidev"],
-  [
-    "Facebook",
-    "https://www.facebook.com/anwersolangidev",
-    "Verified · 5K+ followers",
-  ],
+  ["Facebook", "https://www.facebook.com/anwersolangidev"],
   ["Medium", "https://medium.com/@anwersolangy"],
 ];
 
 const explore = [
   ["Hire me", "/hire-react-native-developer-karachi"],
+  ["Selected work", "/#work"],
   ["Reels", "/reels"],
   ["Apps", "/apps"],
-  ["Free Tools", "/tools"],
+  ["Free tools", "/tools"],
   ["Blog", "/blog"],
 ];
 
@@ -26,98 +25,91 @@ export default function Footer() {
   const year = new Date().getFullYear();
 
   return (
-    <footer className="border-t border-rule">
-      <div className="max-w-screen mx-auto px-6 lg:px-16 py-12">
-        <div className="flex flex-col md:flex-row md:items-start justify-between gap-10">
-          <div className="max-w-sm">
-            <div className="inline-flex items-center gap-2.5">
-              <span className="w-7 h-7 rounded-md bg-accent-deep text-on-accent font-bold text-sm flex items-center justify-center">
-                A
-              </span>
-              <span className="font-medium text-[15px] tracking-tight text-ink">
-                Anwer Solangi
-              </span>
-            </div>
-            <p className="text-sm text-ink-3 leading-relaxed mt-3">
-              Senior React Native developer in Karachi, building mobile apps
-              for founders and product teams worldwide.
+    <footer className="border-t border-rule bg-bg-2">
+      <div className="max-w-screen mx-auto px-5 sm:px-8 lg:px-10 py-14">
+        <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
+          <div className="max-w-xs">
+            <p className="text-[15px] font-semibold text-ink">Anwer Solangi</p>
+            <p className="mt-2 text-[14px] leading-[1.6] text-ink-2">
+              Senior React Native developer in Karachi, Pakistan, building
+              iOS and Android apps for founders and product teams worldwide.
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-10 sm:gap-16">
-            <div>
-              <div className="font-mono text-[11px] tracking-[0.14em] uppercase text-ink-3 mb-3">
-                Explore
-              </div>
-              <ul className="space-y-2 list-none p-0">
-                {explore.map(([label, href]) => (
-                  <li key={label}>
-                    <a
-                      href={href}
-                      className="text-sm text-ink-2 hover:text-ink transition-colors"
-                    >
-                      {label}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <div className="font-mono text-[11px] tracking-[0.14em] uppercase text-ink-3 mb-3">
-                Connect
-              </div>
-              <ul className="space-y-2 list-none p-0">
-                {socials.map(([label, href, badge]) => (
-                  <li key={label}>
-                    <a
-                      href={href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 text-sm text-ink-2 hover:text-ink transition-colors"
-                    >
-                      <span>{label} ↗</span>
-                      {badge && (
-                        <span className="inline-flex items-center rounded-full border border-accent/40 bg-accent/10 px-2 py-0.5 font-mono text-[9px] tracking-[0.08em] uppercase text-accent">
-                          {badge}
-                        </span>
-                      )}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            <div>
-              <div className="font-mono text-[11px] tracking-[0.14em] uppercase text-ink-3 mb-3">
-                Contact
-              </div>
-              <ul className="space-y-2 list-none p-0">
-                <li>
-                  <a
-                    href="mailto:me@anwersolangi.com"
-                    className="text-sm text-ink-2 hover:text-ink transition-colors"
-                  >
-                    me@anwersolangi.com
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="/anwer-solangi-resume.pdf"
-                    download
-                    className="text-sm text-ink-2 hover:text-ink transition-colors"
-                  >
-                    Résumé (PDF) ↓
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
+          <FooterList title="Explore">
+            {explore.map(([label, href]) => (
+              <li key={label}>
+                <Link href={href} className="hover:text-ink transition-colors">
+                  {label}
+                </Link>
+              </li>
+            ))}
+          </FooterList>
+
+          <FooterList title="Elsewhere">
+            {socials.map(([label, href]) => (
+              <li key={label}>
+                <a
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer me"
+                  className="hover:text-ink transition-colors"
+                >
+                  {label}
+                </a>
+              </li>
+            ))}
+          </FooterList>
+
+          <FooterList title="Contact">
+            <li>
+              <a
+                href="mailto:me@anwersolangi.com"
+                className="hover:text-ink transition-colors"
+              >
+                me@anwersolangi.com
+              </a>
+            </li>
+            <li>
+              <a
+                href="/anwer-solangi-resume.pdf"
+                download
+                className="hover:text-ink transition-colors"
+              >
+                Résumé (PDF)
+              </a>
+            </li>
+            <li>
+              <Link href="/privacy" className="hover:text-ink transition-colors">
+                Privacy
+              </Link>
+            </li>
+            <li>
+              <Link href="/terms" className="hover:text-ink transition-colors">
+                Terms
+              </Link>
+            </li>
+          </FooterList>
         </div>
 
-        <div className="mt-10 pt-6 border-t border-rule flex flex-col md:flex-row justify-between items-center gap-3 font-mono text-[11px] tracking-[0.06em] text-ink-3">
-          <span>© {year} ANWER SOLANGI · KARACHI, PK · 24.86°N 67.00°E</span>
-          <span>BUILT WITH REACT NATIVE ENERGY</span>
+        <div className="mt-12 pt-6 border-t border-rule flex flex-col sm:flex-row justify-between gap-2 text-[13px] text-ink-3">
+          <span>© {year} Anwer Solangi. Karachi, Pakistan.</span>
+          <span>Anwer, with an ‘e’.</span>
         </div>
       </div>
     </footer>
+  );
+}
+
+function FooterList({ title, children }) {
+  return (
+    <div>
+      <p className="text-[13px] font-medium uppercase tracking-[0.06em] text-ink-3 mb-3">
+        {title}
+      </p>
+      <ul className="space-y-2 text-[14px] text-ink-2 list-none m-0 p-0">
+        {children}
+      </ul>
+    </div>
   );
 }

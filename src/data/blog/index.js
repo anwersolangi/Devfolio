@@ -5,8 +5,14 @@ import { appMustForBusiness2026 } from "./app-must-for-business-2026";
 import { howMuchDoesAnAppCost } from "./how-much-does-an-app-cost";
 import { whyYouNeedAMobileApp } from "./why-you-need-a-mobile-app";
 import { howNadraStructuresCnic } from "./how-nadra-structures-cnic";
+import { reactNativeAnimationExamples } from "./react-native-animation-examples";
+import { publishReactNativeAppPlayStore } from "./publish-react-native-app-play-store";
+import { appIconSizes } from "./app-icon-sizes";
 
 const ALL_POSTS = [
+  reactNativeAnimationExamples,
+  publishReactNativeAppPlayStore,
+  appIconSizes,
   restaurantQrMenu2026,
   reactNativeIn2026,
   howToChooseStack,
@@ -29,6 +35,14 @@ export const POSTS_BY_SLUG = Object.fromEntries(
 );
 
 export const getPost = (slug) => POSTS_BY_SLUG[slug] ?? null;
+
+// Social networks don't render SVG share images, so each hand-drawn cover has
+// a PNG twin rendered by `npm run og:assets`. `metaDescription` is the
+// search-snippet version of `description` (kept under ~155 characters); the
+// full description is still shown on the page.
+export const ogImageFor = (post) => post.cover.replace(/\.svg$/, ".png");
+export const metaDescriptionFor = (post) =>
+  post.metaDescription || post.description;
 
 // Words across every text-bearing block → "N min read". Computed here so the
 // estimate never drifts from the actual content.

@@ -1,17 +1,25 @@
-import Link from "next/link";
-import { ArrowLeft, ShieldCheck, Zap, Gift } from "lucide-react";
+import { ShieldCheck, Zap, Gift } from "lucide-react";
 import ToolCard from "@/components/tools/ToolCard";
+import {
+  PageShell,
+  PageHeader,
+  SectionHead,
+  CtaPanel,
+} from "@/components/PageHeader";
 import { TOOLS, TOOL_CATEGORIES } from "@/data/tools";
 import { jsonLd } from "@/lib/jsonld";
+import { TWITTER_BASE } from "@/lib/seo";
 
 const baseUrl = (
   process.env.NEXT_PUBLIC_BASE_URL || "https://anwersolangi.com"
 ).replace(/\/$/, "");
 
+const DESCRIPTION =
+  "Free, private browser tools: app icon generator, QR codes, PDF to image, image compressor, JSON formatter and more. No sign-up, and nothing is uploaded.";
+
 export const metadata = {
-  title: "Free Online Tools | Anwer Solangi",
-  description:
-    "A growing collection of free, fast, privacy-first browser tools — QR code generator, app icon generator, PDF to image, image compressor, JSON formatter and more. No sign-up, nothing uploaded.",
+  title: "Free Online Tools — Private, No Sign-up | Anwer Solangi",
+  description: DESCRIPTION,
   keywords: [
     "free online tools",
     "free developer tools",
@@ -24,9 +32,8 @@ export const metadata = {
   ],
   alternates: { canonical: `${baseUrl}/tools` },
   openGraph: {
-    title: "Free Online Tools | Anwer Solangi",
-    description:
-      "Free, fast, privacy-first browser tools — QR codes, app icons, PDF to image, image compression, JSON and more. Nothing is uploaded.",
+    title: "Free Online Tools by Anwer Solangi",
+    description: DESCRIPTION,
     url: `${baseUrl}/tools`,
     siteName: "Anwer Solangi",
     type: "website",
@@ -40,11 +47,9 @@ export const metadata = {
     ],
   },
   twitter: {
-    card: "summary_large_image",
-    title: "Free Online Tools | Anwer Solangi",
-    description:
-      "Free, privacy-first browser tools — QR codes, app icons, PDF to image and more.",
-    creator: "@anwersolangidev",
+    ...TWITTER_BASE,
+    title: "Free Online Tools by Anwer Solangi",
+    description: DESCRIPTION,
   },
 };
 
@@ -89,7 +94,7 @@ export default function ToolsPage() {
   };
 
   return (
-    <main className="min-h-screen px-6 pb-28 pt-28 lg:px-16">
+    <PageShell>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: jsonLd(itemListJsonLd) }}
@@ -99,96 +104,41 @@ export default function ToolsPage() {
         dangerouslySetInnerHTML={{ __html: jsonLd(breadcrumbJsonLd) }}
       />
 
-      <div className="mx-auto max-w-screen">
-        <Link
-          href="/"
-          className="group mb-12 inline-flex items-center gap-2 font-mono text-sm text-ink-2 hover:text-ink"
-        >
-          <ArrowLeft className="h-3.5 w-3.5 transition-transform duration-300 group-hover:-translate-x-1" />
-          back to home
-        </Link>
+      <PageHeader
+        crumbs={[{ label: "Home", href: "/" }, { label: "Free tools" }]}
+        title="Free tools that just work."
+        lede="A growing toolbox of fast, no-nonsense browser utilities — generate QR codes and app icons, convert PDFs to images, compress photos, format JSON and more. Every tool runs entirely on your device, so your files and data never leave your browser."
+        meta={`${TOOLS.length} tools`}
+      >
+        <ul className="mt-6 flex flex-wrap gap-x-5 gap-y-2 list-none m-0 p-0">
+          {TRUST.map(({ icon: Icon, label }) => (
+            <li
+              key={label}
+              className="inline-flex items-center gap-1.5 text-[14px] font-medium text-ink-2"
+            >
+              <Icon className="h-4 w-4 text-good" aria-hidden />
+              {label}
+            </li>
+          ))}
+        </ul>
+      </PageHeader>
 
-        <div className="mb-12 max-w-3xl">
-          <div className="font-mono text-[11px] tracking-[0.14em] text-accent">
-            FREE TOOLS · {TOOLS.length} UTILITIES
-          </div>
-          <h1 className="mt-3 text-5xl font-extrabold leading-[0.95] tracking-[-0.045em] text-ink md:text-6xl lg:text-7xl">
-            Free tools that{" "}
-            <span className="font-serif italic font-normal text-accent">
-              just work
-            </span>
-            .
-          </h1>
-          <p className="mt-6 text-lg leading-relaxed text-ink-2">
-            A growing toolbox of fast, no-nonsense browser utilities — generate
-            QR codes and app icons, convert PDFs to images, compress photos,
-            format JSON and more. Every tool runs entirely on your device, so
-            your files and data never leave your browser.
-          </p>
-          <div className="mt-6 flex flex-wrap gap-x-5 gap-y-2">
-            {TRUST.map(({ icon: Icon, label }) => (
-              <span
-                key={label}
-                className="inline-flex items-center gap-1.5 text-sm font-medium text-ink-3"
-              >
-                <Icon className="h-4 w-4 text-good" />
-                {label}
-              </span>
+      {TOOL_CATEGORIES.map((group) => (
+        <section key={group.name} className="mb-14 border-t border-rule pt-8">
+          <SectionHead label={group.name} count={group.tools.length} />
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+            {group.tools.map((tool) => (
+              <ToolCard key={tool.slug} tool={tool} />
             ))}
           </div>
-        </div>
+        </section>
+      ))}
 
-        {TOOL_CATEGORIES.map((group) => (
-          <section key={group.name} className="mb-14">
-            <div className="mb-6 flex items-center gap-3">
-              <h2 className="font-mono text-[11px] uppercase tracking-[0.18em] text-accent">
-                {group.name}
-              </h2>
-              <div className="h-px flex-1 bg-rule" />
-              <span className="font-mono text-xs tabular-nums text-ink-3">
-                {group.tools.length}
-              </span>
-            </div>
-            <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
-              {group.tools.map((tool) => (
-                <ToolCard key={tool.slug} tool={tool} />
-              ))}
-            </div>
-          </section>
-        ))}
-
-        <div className="mt-20 grid items-center gap-8 rounded-2xl border border-rule bg-bg-2 p-8 md:grid-cols-[1.4fr_1fr] lg:p-12">
-          <div>
-            <div className="font-mono text-[11px] tracking-[0.14em] text-accent">
-              ▸ HIRE ME
-            </div>
-            <h2 className="mt-3 text-3xl font-bold leading-tight tracking-[-0.03em] text-ink md:text-4xl">
-              Want a custom tool or a mobile app?{" "}
-              <span className="font-serif italic font-normal text-accent">
-                Let&rsquo;s build it.
-              </span>
-            </h2>
-            <p className="mt-3 max-w-lg text-ink-2">
-              I build these for fun and to sharpen the same craft I bring to
-              client work. Available for freelance &amp; contract projects.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-3 md:justify-end">
-            <Link
-              href="/#contact"
-              className="rounded-lg bg-accent px-5 py-3 text-sm font-semibold text-on-accent transition hover:opacity-90"
-            >
-              Start a project →
-            </Link>
-            <Link
-              href="/apps"
-              className="rounded-lg border border-rule px-5 py-3 text-sm font-medium text-ink transition hover:bg-white/5"
-            >
-              See my apps ↗
-            </Link>
-          </div>
-        </div>
-      </div>
-    </main>
+      <CtaPanel
+        title="Want a custom tool or a mobile app? Let’s build it."
+        body="I build these for fun and to sharpen the same craft I bring to client work. Available for freelance and contract projects."
+        secondary={{ href: "/apps", label: "See my apps" }}
+      />
+    </PageShell>
   );
 }

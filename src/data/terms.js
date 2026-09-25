@@ -852,4 +852,233 @@ These Terms constitute a legal agreement between you and Anwer Solangi ("I", "me
       },
     ],
   },
+  reacttube: {
+    title: "Terms of Service",
+    lastUpdated: "September 25, 2026",
+    appName: "ReactTube",
+    sections: [
+      {
+        title: "Agreement to Terms",
+        content: `By downloading, installing, or using ReactTube ("the App"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, please do not use the App.
+
+These Terms constitute a legal agreement between you and Anwer Solangi ("I", "me", "the developer").`,
+      },
+      {
+        title: "Description of Service",
+        content: `ReactTube is an open-source YouTube-style interface built with React Native to demonstrate mobile UI patterns. It includes:`,
+        items: [
+          "Video browsing, explore and library screens",
+          "A comments view and user profile screens",
+          "An earnings/analytics dashboard and login/register screens",
+        ],
+        footer:
+          "ReactTube is a frontend demo. It is not affiliated with, endorsed by, or connected to YouTube or Google, and it does not include a video backend.",
+      },
+      {
+        title: "Demo Content",
+        content:
+          "Videos, channels, comments, earnings and other data shown in the App are sample content for demonstration only. Login and register screens are UI examples and do not create a real account with any service.",
+      },
+      {
+        title: "Open-Source License",
+        content:
+          "The source code is published on GitHub. Your use, modification and redistribution of the code is governed by the license in that repository. These Terms cover the App as distributed as a downloadable build.",
+      },
+      {
+        title: "Acceptable Use",
+        content: `You agree NOT to:`,
+        items: [
+          "Present the App as an official YouTube or Google product",
+          "Use the App or its code for any unlawful purpose",
+          "Use YouTube's trademarks in a way that breaches their brand guidelines",
+        ],
+      },
+      {
+        title: "Trademarks",
+        content:
+          "YouTube is a trademark of Google LLC. It is referenced only to describe the design the App is modelled on.",
+      },
+      {
+        title: "Disclaimer of Warranties",
+        content: `THE APP IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND. TO THE FULLEST EXTENT PERMITTED BY LAW, I DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND UNINTERRUPTED OR ERROR-FREE OPERATION.`,
+      },
+      {
+        title: "Limitation of Liability",
+        content:
+          "TO THE MAXIMUM EXTENT PERMITTED BY LAW, I SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES ARISING FROM YOUR USE OF THE APP OR ITS SOURCE CODE.",
+      },
+      {
+        title: "Changes to Terms",
+        content:
+          "I reserve the right to modify these Terms at any time. Changes will be effective immediately upon posting. Your continued use of the App after any changes constitutes acceptance of the new Terms.",
+      },
+      {
+        title: "Governing Law",
+        content:
+          "These Terms shall be governed by and construed in accordance with applicable laws, without regard to conflict of law principles.",
+      },
+      {
+        title: "Contact",
+        content: `If you have any questions about these Terms, please contact me at:`,
+        contactEmail: "me@anwersolangi.com",
+      },
+    ],
+  },
+  tapmeal: {
+    title: "Terms of Service",
+    lastUpdated: "September 25, 2026",
+    appName: "TapMeal",
+    sections: [
+      {
+        title: "Agreement to Terms",
+        content: `By downloading, installing, or using TapMeal, including the admin mobile app, the admin web panel and the customer web menu (together, "the Service"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, please do not use the Service.
+
+These Terms constitute a legal agreement between you and Anwer Solangi ("I", "me", "the developer").`,
+      },
+      {
+        title: "Description of Service",
+        content: `TapMeal is a QR ordering and restaurant management system that provides:`,
+        items: [
+          "A customer web menu opened by scanning a table QR code, with no app or account required",
+          "A live order board with push notifications for restaurant owners",
+          "Menu, table, staff and operating-hours management",
+          "Kitchen Display Mode, printable QR sheets and revenue analytics",
+          "Role-based staff access for managers, waiters and kitchen staff",
+        ],
+      },
+      {
+        title: "Restaurant Accounts",
+        content: `If you create a restaurant account ("Owner"), you are responsible for:`,
+        items: [
+          "Keeping your sign-in details secure and for all activity under your account",
+          "Everything you publish, including menu items, prices, images, descriptions and allergen information",
+          "The staff accounts you create and the permissions you give them",
+          "Fulfilling the orders your customers place, and your own pricing, taxes and food-safety obligations",
+        ],
+        footer:
+          "TapMeal is a tool that passes orders from customers to your restaurant. I am not a party to any sale between a restaurant and its customers.",
+      },
+      {
+        title: "Customers Ordering Through a Menu",
+        content:
+          "If you order through a restaurant's TapMeal menu, your order is placed with that restaurant, not with me. Questions about food, prices, payment, allergens or refunds should go to the restaurant.",
+      },
+      {
+        title: "Subscriptions",
+        content:
+          "Optional in-app subscriptions (for example to remove ads) are processed by Google Play and managed through RevenueCat. They renew automatically until you cancel them in your Google Play account settings, and refunds follow Google Play's policies.",
+      },
+      {
+        title: "Acceptable Use",
+        content: `You agree NOT to:`,
+        items: [
+          "Publish content that is unlawful, misleading, offensive, or that you do not have the right to use",
+          "Place fake or abusive orders, or interfere with another restaurant's data",
+          "Attempt to bypass security rules or access data belonging to another account",
+          "Reverse engineer or resell the App outside the terms of a source-code license",
+        ],
+      },
+      {
+        title: "Source Code Licenses",
+        content:
+          "The TapMeal source code sold on CodeCanyon or Gumroad is licensed under that marketplace's license terms (Regular or Extended). Deployments built from purchased source code are operated by the buyer, who is responsible for their own terms and privacy policy.",
+      },
+      {
+        title: "Availability",
+        content:
+          "The Service depends on an internet connection and on Firebase. I aim to keep it running reliably but do not guarantee uninterrupted availability, and I am not liable for lost orders or revenue caused by outages, connectivity problems or third-party services.",
+      },
+      {
+        title: "Disclaimer of Warranties",
+        content: `THE SERVICE IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND. TO THE FULLEST EXTENT PERMITTED BY LAW, I DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND UNINTERRUPTED OR ERROR-FREE OPERATION.`,
+      },
+      {
+        title: "Limitation of Liability",
+        content:
+          "TO THE MAXIMUM EXTENT PERMITTED BY LAW, I SHALL NOT BE LIABLE FOR ANY INDIRECT, INCIDENTAL, SPECIAL, CONSEQUENTIAL, OR PUNITIVE DAMAGES, INCLUDING LOST PROFITS, LOST ORDERS OR LOSS OF DATA, ARISING FROM YOUR USE OF THE SERVICE.",
+      },
+      {
+        title: "Termination",
+        content:
+          "You can stop using the Service and request deletion of your restaurant account at any time. I may suspend accounts that break these Terms.",
+      },
+      {
+        title: "Changes to Terms",
+        content:
+          "I reserve the right to modify these Terms at any time. Changes will be effective immediately upon posting. Your continued use of the Service after any changes constitutes acceptance of the new Terms.",
+      },
+      {
+        title: "Governing Law",
+        content:
+          "These Terms shall be governed by and construed in accordance with applicable laws, without regard to conflict of law principles.",
+      },
+      {
+        title: "Contact",
+        content: `If you have any questions about these Terms, please contact me at:`,
+        contactEmail: "me@anwersolangi.com",
+      },
+    ],
+  },
+  "youtube-fullscreen-focus": {
+    title: "Terms of Service",
+    lastUpdated: "September 25, 2026",
+    appName: "YouTube Focus",
+    sections: [
+      {
+        title: "Agreement to Terms",
+        content: `By installing or using the YouTube Focus Chrome extension ("the Extension"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, please do not use the Extension.
+
+These Terms constitute a legal agreement between you and Anwer Solangi ("I", "me", "the developer").`,
+      },
+      {
+        title: "Description of Service",
+        content: `YouTube Focus is a free browser extension that blocks accidental keystrokes while YouTube or YouTube Kids is in fullscreen. It:`,
+        items: [
+          "Activates only while a YouTube video is fullscreen",
+          "Blocks keys that would pause, seek, mute or exit the video",
+          "Always lets the Escape key exit fullscreen",
+          "Lets you choose which keys stay active from the extension popup",
+        ],
+      },
+      {
+        title: "Not a Parental Control",
+        content:
+          "The Extension reduces accidental interruptions. It does not filter content, limit screen time or restrict what can be watched, and it should not be relied on to supervise children.",
+      },
+      {
+        title: "License and Open Source",
+        content:
+          "The Extension is free to use. Its source code is published on GitHub, and use of that code is governed by the license in the repository.",
+      },
+      {
+        title: "Trademarks",
+        content:
+          "YouTube and YouTube Kids are trademarks of Google LLC. The Extension is not affiliated with or endorsed by Google, and may stop working if YouTube changes its site.",
+      },
+      {
+        title: "Disclaimer of Warranties",
+        content: `THE EXTENSION IS PROVIDED "AS IS" AND "AS AVAILABLE" WITHOUT WARRANTIES OF ANY KIND. TO THE FULLEST EXTENT PERMITTED BY LAW, I DISCLAIM ALL WARRANTIES, EXPRESS OR IMPLIED, INCLUDING MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND UNINTERRUPTED OR ERROR-FREE OPERATION.`,
+      },
+      {
+        title: "Limitation of Liability",
+        content:
+          "TO THE MAXIMUM EXTENT PERMITTED BY LAW, I SHALL NOT BE LIABLE FOR ANY DAMAGES ARISING FROM YOUR USE OF, OR INABILITY TO USE, THE EXTENSION.",
+      },
+      {
+        title: "Changes to Terms",
+        content:
+          "I reserve the right to modify these Terms at any time. Changes will be effective immediately upon posting. Your continued use of the Extension after any changes constitutes acceptance of the new Terms.",
+      },
+      {
+        title: "Governing Law",
+        content:
+          "These Terms shall be governed by and construed in accordance with applicable laws, without regard to conflict of law principles.",
+      },
+      {
+        title: "Contact",
+        content: `If you have any questions about these Terms, please contact me at:`,
+        contactEmail: "me@anwersolangi.com",
+      },
+    ],
+  },
 };

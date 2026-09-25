@@ -3,6 +3,8 @@ export const howNadraStructuresCnic = {
   title: "How NADRA Structures the CNIC Number in Pakistan",
   description:
     "A digit-by-digit breakdown of Pakistan's 13-digit CNIC: what the first five digits say about where you were registered, what the family number means, how the last digit encodes gender — and the myths that refuse to die.",
+  metaDescription:
+    "Pakistan's 13-digit CNIC decoded digit by digit: what the first five digits say about where you registered, the family number, and the gender digit.",
   category: "Pakistan",
   tags: [
     "nadra cnic structure",

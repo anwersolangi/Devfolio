@@ -1,5 +1,10 @@
 const COVERS = "/reels/covers";
 
+// `notes` is a short original write-up shown on the reel page as "About this
+// build", and reused for the meta description, the VideoObject schema and the
+// video sitemap. The captions in `content` are social-post copy and are often
+// just the title again, which left these pages too thin to index.
+
 export const reelsData = [
   {
     id: 1,
@@ -8,15 +13,17 @@ export const reelsData = [
     title:
       "Couldn’t decide what to eat… so I built a spinning food wheel in React Native 🍝🥩🍛",
     slug: "couldnt-decide-what-to-eat-so-i-built-a-spinning-food-wheel",
+    // Shorter <title> for search results; the on-page heading keeps `title`.
+    seoTitle: "Spinning Food Wheel in React Native with Skia",
     category: "Creative Coding",
     description:
       "Couldn’t decide what to eat… so I built a spinning food wheel in React Native 🍝🥩🍛",
+    notes:
+      "I couldn't decide what to eat, so I built a wheel to decide for me. It's drawn with Skia and SVG, spun with a pan gesture, and slowed down by Reanimated so it decelerates the way a real wheel would. Three spins in, biryani won. Silly problem, but the deceleration curve is the part worth stealing.",
     videoUrl:
       "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1470240467975774%2F&show_text=0&width=560",
     coverImage: "",
-    coverImageReel: `${COVERS}/couldnt-decide-what-to-eat-so-i-built-a-spinning-food-wheel-reel.png`,
-    coverImageOg: `${COVERS}/couldnt-decide-what-to-eat-so-i-built-a-spinning-food-wheel-og.png`,
-    coverImagePin: `${COVERS}/couldnt-decide-what-to-eat-so-i-built-a-spinning-food-wheel-pin.png`,
+    coverImageReel: `${COVERS}/couldnt-decide-what-to-eat-so-i-built-a-spinning-food-wheel-reel.jpg`,
     technologies: [
       "React Native",
       "Reanimated",
@@ -54,15 +61,17 @@ What should I add next to this wheel?
     title:
       "Biometric Authentication Screen with Face ID & Fingerprint in React Native 🔐",
     slug: "biometric-authentication-screen-with-face-id-fingerprint-in",
+    // Shorter <title> for search results; the on-page heading keeps `title`.
+    seoTitle: "Face ID & Fingerprint Auth Screen in React Native",
     category: "Mobile UI",
     description:
       "Biometric Authentication Screen with Face ID & Fingerprint in React Native 🔐",
+    notes:
+      "A Face ID and fingerprint screen that moves through four states: idle, scanning, processing, success. Scanning ripples and a shimmer pass over a glassmorphic card, so the wait has something to watch instead of a spinner. Reanimated drives the ripples, Expo Blur handles the frosted panel, and the whole flow is typed.",
     videoUrl:
       "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F839348452465405%2F&show_text=0&width=560",
     coverImage: "",
-    coverImageReel: `${COVERS}/biometric-authentication-screen-with-face-id-fingerprint-in-reel.png`,
-    coverImageOg: `${COVERS}/biometric-authentication-screen-with-face-id-fingerprint-in-og.png`,
-    coverImagePin: `${COVERS}/biometric-authentication-screen-with-face-id-fingerprint-in-pin.png`,
+    coverImageReel: `${COVERS}/biometric-authentication-screen-with-face-id-fingerprint-in-reel.jpg`,
     technologies: [
       "React Native",
       "Reanimated",
@@ -101,12 +110,12 @@ Full code 👉 anwersolangi.com
     category: "Mobile UI",
     description:
       "Swipeable Card Stack Wallet with Gesture-Driven Animations 💳✨",
+    notes:
+      "A wallet where the cards sit in a stack and answer your thumb: swipe left to archive, right to favourite, tap to flip in 3D. Gesture Handler reads the drag while Reanimated springs the card back when you let go early. The flip and that spring settle are what make them feel like objects rather than views.",
     videoUrl:
       "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F2042944753254242%2F&show_text=0&width=560",
     coverImage: "",
-    coverImageReel: `${COVERS}/swipeable-card-stack-wallet-with-gesture-driven-animations-reel.png`,
-    coverImageOg: `${COVERS}/swipeable-card-stack-wallet-with-gesture-driven-animations-og.png`,
-    coverImagePin: `${COVERS}/swipeable-card-stack-wallet-with-gesture-driven-animations-pin.png`,
+    coverImageReel: `${COVERS}/swipeable-card-stack-wallet-with-gesture-driven-animations-reel.jpg`,
     technologies: [
       "React Native",
       "Reanimated",
@@ -146,12 +155,12 @@ Full code 👉 anwersolangi.com
     category: "UI/UX",
     description:
       "Your dashboard isn’t boring… it just needs better hierarchy ⚡",
+    notes:
+      "The same dashboard twice. Nothing changed but spacing, contrast and type scale, and the second one reads instantly. I post this whenever someone tells me their app looks boring, because the layout is usually fine and the hierarchy is what's missing.",
     videoUrl:
       "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F897735173244805%2F&show_text=0&width=560",
     coverImage: "",
-    coverImageReel: `${COVERS}/your-dashboard-isnt-boring-it-just-needs-better-hierarchy-reel.png`,
-    coverImageOg: `${COVERS}/your-dashboard-isnt-boring-it-just-needs-better-hierarchy-og.png`,
-    coverImagePin: `${COVERS}/your-dashboard-isnt-boring-it-just-needs-better-hierarchy-pin.png`,
+    coverImageReel: `${COVERS}/your-dashboard-isnt-boring-it-just-needs-better-hierarchy-reel.jpg`,
     technologies: ["React Native"],
     views: 630,
     duration: 10,
@@ -179,15 +188,17 @@ Clean spacing + contrast = instant upgrade.
     title:
       "Premium Instagram-Inspired Feed + Glassmorphic Tab Bar in React Native 🔥",
     slug: "premium-instagram-inspired-feed-glassmorphic-tab-bar-in-reac",
+    // Shorter <title> for search results; the on-page heading keeps `title`.
+    seoTitle: "Instagram-Style Feed & Glass Tab Bar in React Native",
     category: "Mobile UI",
     description:
       "Premium Instagram-Inspired Feed + Glassmorphic Tab Bar in React Native 🔥",
+    notes:
+      "An Instagram-style feed with a floating tab bar that blurs whatever scrolls underneath it. Double tap to like, stories with gradient rings, and a menu that expands on spring physics. Built with Expo Router and Expo Blur; the detached tab bar is the piece people ask about most.",
     videoUrl:
       "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1320114499875664%2F&show_text=0&width=560",
     coverImage: "",
-    coverImageReel: `${COVERS}/premium-instagram-inspired-feed-glassmorphic-tab-bar-in-reac-reel.png`,
-    coverImageOg: `${COVERS}/premium-instagram-inspired-feed-glassmorphic-tab-bar-in-reac-og.png`,
-    coverImagePin: `${COVERS}/premium-instagram-inspired-feed-glassmorphic-tab-bar-in-reac-pin.png`,
+    coverImageReel: `${COVERS}/premium-instagram-inspired-feed-glassmorphic-tab-bar-in-reac-reel.jpg`,
     technologies: [
       "React Native",
       "Reanimated",
@@ -229,12 +240,12 @@ Perfect for your next social media app! 🚀
     slug: "built-a-cyberpunk-slot-machine-in-react-native",
     category: "Creative Coding",
     description: "Built a Cyberpunk Slot Machine in React Native 🎰🤖",
+    notes:
+      "Neon reels that snap like a mechanical machine, header text that glitches every few seconds, and a particle burst when the jackpot lands. There's a working credits system underneath, including the state where you run out. All of it uses React Native's own Animated API, with no external animation library.",
     videoUrl:
       "https://www.facebook.com/plugins/video.php?href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1245609144338386%2F&show_text=0&width=560",
     coverImage: "",
-    coverImageReel: `${COVERS}/built-a-cyberpunk-slot-machine-in-react-native-reel.png`,
-    coverImageOg: `${COVERS}/built-a-cyberpunk-slot-machine-in-react-native-og.png`,
-    coverImagePin: `${COVERS}/built-a-cyberpunk-slot-machine-in-react-native-pin.png`,
+    coverImageReel: `${COVERS}/built-a-cyberpunk-slot-machine-in-react-native-reel.jpg`,
     technologies: ["React Native", "TypeScript"],
     views: 153,
     duration: 29,
@@ -269,14 +280,15 @@ Animated API only — zero external libraries
     title:
       "Building a React Native Gamification Library with Streaks, XP & Badges",
     slug: "building-a-react-native-gamification-library-with-streaks-xp",
+    // Shorter <title> for search results; the on-page heading keeps `title`.
+    seoTitle: "React Native Gamification: Streaks, XP & Badges",
     category: "Tools & Libraries",
     description:
       "Building a React Native Gamification Library with Streaks, XP & Badges",
+    notes:
+      "An early look at a gamification library I'm building for React Native: drop-in streaks, XP bars and badges you can add to a screen without wiring the animation yourself. It isn't released yet. This is the state of it while I work on the API.",
     videoUrl: "https://www.youtube.com/embed/0RcrlGVIjyY",
     coverImage: "https://i.ytimg.com/vi/0RcrlGVIjyY/hqdefault.jpg",
-    coverImageReel: `${COVERS}/building-a-react-native-gamification-library-with-streaks-xp-reel.png`,
-    coverImageOg: `${COVERS}/building-a-react-native-gamification-library-with-streaks-xp-og.png`,
-    coverImagePin: `${COVERS}/building-a-react-native-gamification-library-with-streaks-xp-pin.png`,
     technologies: ["React Native"],
     views: 96,
     duration: 15,
@@ -305,11 +317,10 @@ Follow to be the first to know when it drops 🔔
     slug: "sleek-login-screen-ui-in-react-native",
     category: "Mobile UI",
     description: "Sleek Login Screen UI in React Native 🚀",
+    notes:
+      "A login screen with the details that usually get skipped: focus states on the fields, a button that reacts to being pressed, and spacing that survives a small phone. It's the kind of screen I build first when a client wants to feel the app before any features exist.",
     videoUrl: "https://www.youtube.com/embed/jdRxKHIwkys",
     coverImage: "https://i.ytimg.com/vi/jdRxKHIwkys/hqdefault.jpg",
-    coverImageReel: `${COVERS}/sleek-login-screen-ui-in-react-native-reel.png`,
-    coverImageOg: `${COVERS}/sleek-login-screen-ui-in-react-native-og.png`,
-    coverImagePin: `${COVERS}/sleek-login-screen-ui-in-react-native-pin.png`,
     technologies: ["React Native"],
     views: 1900,
     duration: 26,
@@ -337,11 +348,10 @@ Follow to be the first to know when it drops 🔔
     slug: "smooth-liquid-swipe-onboarding-with-react-native-reanimated",
     category: "Mobile UI",
     description: "Smooth Liquid Swipe Onboarding with React Native Reanimated",
+    notes:
+      "Onboarding where one swipe drives everything at once. Gesture Handler tracks the pan, Reanimated maps that distance onto the reveal, and Expo Image with BlurHash keeps the full-screen photos from popping in. Let go early and it springs back; pass the threshold and it completes.",
     videoUrl: "https://www.youtube.com/embed/W4o1mQ_lmhI",
     coverImage: "https://i.ytimg.com/vi/W4o1mQ_lmhI/hqdefault.jpg",
-    coverImageReel: `${COVERS}/smooth-liquid-swipe-onboarding-with-react-native-reanimated-reel.png`,
-    coverImageOg: `${COVERS}/smooth-liquid-swipe-onboarding-with-react-native-reanimated-og.png`,
-    coverImagePin: `${COVERS}/smooth-liquid-swipe-onboarding-with-react-native-reanimated-pin.png`,
     technologies: [
       "React Native",
       "Reanimated",
@@ -383,11 +393,10 @@ What do you think? Drop a comment below! 👇
     slug: "premium-otp-verification-screen-in-react-native",
     category: "Mobile UI",
     description: "Premium OTP Verification Screen in React Native 🔐✨",
+    notes:
+      "An OTP screen that verifies the moment the last digit lands instead of waiting for a submit button. Each box animates as it fills, and the loading and success states belong to the same flow. Reanimated and TypeScript, and it's the screen I reuse most often in client work.",
     videoUrl: "https://www.youtube.com/embed/Jzmq5VH8SW8",
     coverImage: "https://i.ytimg.com/vi/Jzmq5VH8SW8/hqdefault.jpg",
-    coverImageReel: `${COVERS}/premium-otp-verification-screen-in-react-native-reel.png`,
-    coverImageOg: `${COVERS}/premium-otp-verification-screen-in-react-native-og.png`,
-    coverImagePin: `${COVERS}/premium-otp-verification-screen-in-react-native-pin.png`,
     technologies: ["React Native", "Reanimated", "TypeScript"],
     views: 3418,
     duration: 25,
@@ -424,11 +433,10 @@ Follow @anwersolangidev for daily React Native tutorials 🚀
     category: "Mobile UI",
     description:
       "Building a ChatGPT-style AI Assistant UI in React Native 🤖✨",
+    notes:
+      "A chat interface with voice input that reacts while you speak, glassmorphic message cards and staggered entrances. Expo Blur handles the frosted panels and Reanimated the springs. It's the shape most AI apps have converged on, built here in a single file.",
     videoUrl: "https://www.youtube.com/embed/lPDEZXtllro",
     coverImage: "https://i.ytimg.com/vi/lPDEZXtllro/hqdefault.jpg",
-    coverImageReel: `${COVERS}/building-a-chatgpt-style-ai-assistant-ui-in-react-native-reel.png`,
-    coverImageOg: `${COVERS}/building-a-chatgpt-style-ai-assistant-ui-in-react-native-og.png`,
-    coverImagePin: `${COVERS}/building-a-chatgpt-style-ai-assistant-ui-in-react-native-pin.png`,
     technologies: [
       "React Native",
       "Reanimated",
@@ -468,11 +476,10 @@ Follow @anwersolangidev for daily React Native tutorials 🚀
     slug: "building-a-premium-habit-tracker-in-react-native",
     category: "Mobile UI",
     description: "Building a Premium Habit Tracker in React Native 📊🔥",
+    notes:
+      "A habit tracker with animated SVG progress rings, weekly completion charts and streak badges. The rings fill on mount and the cards answer taps with spring physics. Glassmorphism on a dark ground, which is what fitness and habit apps keep asking for.",
     videoUrl: "https://www.youtube.com/embed/HY0yi_RV6Mo",
     coverImage: "https://i.ytimg.com/vi/HY0yi_RV6Mo/hqdefault.jpg",
-    coverImageReel: `${COVERS}/building-a-premium-habit-tracker-in-react-native-reel.png`,
-    coverImageOg: `${COVERS}/building-a-premium-habit-tracker-in-react-native-og.png`,
-    coverImagePin: `${COVERS}/building-a-premium-habit-tracker-in-react-native-pin.png`,
     technologies: [
       "React Native",
       "Reanimated",
@@ -514,11 +521,10 @@ Follow @anwersolangidev for daily React Native tutorials 🚀
     category: "Mobile UI",
     description:
       "Uber-Style Delivery Tracker with Real-Time Map in React Native 🚗📍",
+    notes:
+      "A delivery tracker on a real Google Map, with a car marker that rotates to face its heading and a route that draws progressively as the driver moves. The palette is monochrome on purpose, so the route and the marker are the only things competing for attention.",
     videoUrl: "https://www.youtube.com/embed/V03GBRyA3GY",
     coverImage: "https://i.ytimg.com/vi/V03GBRyA3GY/hqdefault.jpg",
-    coverImageReel: `${COVERS}/uber-style-delivery-tracker-with-real-time-map-in-react-nati-reel.png`,
-    coverImageOg: `${COVERS}/uber-style-delivery-tracker-with-real-time-map-in-react-nati-og.png`,
-    coverImagePin: `${COVERS}/uber-style-delivery-tracker-with-real-time-map-in-react-nati-pin.png`,
     technologies: ["React Native"],
     views: 727,
     duration: 23,
@@ -555,11 +561,10 @@ Drop a 💙 if you want the full tutorial!
     category: "Mobile UI",
     description:
       "Card Input Screen with Real-Time Preview in React Native 💳✨",
+    notes:
+      "A card form where the card above it fills in as you type and flips itself when you reach the security code. New cards slide up from the bottom of the stack. Typed throughout, and the flip is the part that tells people the app understood what they entered.",
     videoUrl: "https://www.youtube.com/embed/SCj2Ie2jagc",
     coverImage: "https://i.ytimg.com/vi/SCj2Ie2jagc/hqdefault.jpg",
-    coverImageReel: `${COVERS}/card-input-screen-with-real-time-preview-in-react-native-reel.png`,
-    coverImageOg: `${COVERS}/card-input-screen-with-real-time-preview-in-react-native-og.png`,
-    coverImagePin: `${COVERS}/card-input-screen-with-real-time-preview-in-react-native-pin.png`,
     technologies: ["React Native", "TypeScript", "Expo"],
     views: 9128,
     duration: 15,
@@ -595,11 +600,10 @@ Drop a 💙 if you want the code!
     slug: "interactive-3d-ui-demo-with-expo-react-native-skia",
     category: "Creative Coding",
     description: "Interactive 3D UI Demo with Expo & React Native Skia",
+    notes:
+      "Not a pre-rendered animation: this one reads the device's motion sensors, so tilting the phone moves the layers in real time. Built with Expo and the gyroscope. It's the clearest demo I have of how far past flat views React Native can go now.",
     videoUrl: "https://www.youtube.com/embed/qJcigGuG8RU",
     coverImage: "https://i.ytimg.com/vi/qJcigGuG8RU/hqdefault.jpg",
-    coverImageReel: `${COVERS}/interactive-3d-ui-demo-with-expo-react-native-skia-reel.png`,
-    coverImageOg: `${COVERS}/interactive-3d-ui-demo-with-expo-react-native-skia-og.png`,
-    coverImagePin: `${COVERS}/interactive-3d-ui-demo-with-expo-react-native-skia-pin.png`,
     technologies: ["React Native", "React Native Skia", "Expo"],
     views: 381,
     duration: 16,
@@ -630,11 +634,10 @@ Let me know what part of this you want broken down next!
     slug: "premium-glassmorphism-calculator-in-react-native",
     category: "Mobile UI",
     description: "Premium Glassmorphism Calculator in React Native 💎✨",
+    notes:
+      "A calculator behind frosted glass, with an aurora gradient drifting behind it and buttons that respond to every press. Blur is the expensive part, so the gradient stays static and only cheap properties animate over it. Expo and React Native, one file.",
     videoUrl: "https://www.youtube.com/embed/jLu03xKxPuI",
     coverImage: "https://i.ytimg.com/vi/jLu03xKxPuI/hqdefault.jpg",
-    coverImageReel: `${COVERS}/premium-glassmorphism-calculator-in-react-native-reel.png`,
-    coverImageOg: `${COVERS}/premium-glassmorphism-calculator-in-react-native-og.png`,
-    coverImagePin: `${COVERS}/premium-glassmorphism-calculator-in-react-native-pin.png`,
     technologies: [
       "React Native",
       "Reanimated",
@@ -671,11 +674,10 @@ Full code on my portfolio 👉 anwersolangi.com
     slug: "liquid-glass-music-player-inspired-by-apple-music",
     category: "Mobile UI",
     description: "Liquid Glass Music Player Inspired by Apple Music 🎵✨",
+    notes:
+      "A music player where the album art bleeds through a heavy blur into the background, the vinyl disc turns while playing, and pulse rings follow the beat. Every track re-themes the screen from its own artwork. The restraint matters here: everything moves slowly, so nothing competes.",
     videoUrl: "https://www.youtube.com/embed/4zRMy2c_mOI",
     coverImage: "https://i.ytimg.com/vi/4zRMy2c_mOI/hqdefault.jpg",
-    coverImageReel: `${COVERS}/liquid-glass-music-player-inspired-by-apple-music-reel.png`,
-    coverImageOg: `${COVERS}/liquid-glass-music-player-inspired-by-apple-music-og.png`,
-    coverImagePin: `${COVERS}/liquid-glass-music-player-inspired-by-apple-music-pin.png`,
     technologies: [
       "React Native",
       "Reanimated",
@@ -713,11 +715,10 @@ Full code 👉 anwersolangi.com
     slug: "built-flappy-bird-from-scratch-in-react-native",
     category: "Game Dev",
     description: "Built Flappy Bird from Scratch in React Native 🐦✨",
+    notes:
+      "The whole game rebuilt with React Native Skia: gravity, collision detection, scrolling ground, animated clouds and a medal at the end. Skia draws each frame on the GPU instead of re-rendering a component tree, which is why it holds a steady frame rate.",
     videoUrl: "https://www.youtube.com/embed/YmkfJ06UT4U",
     coverImage: "https://i.ytimg.com/vi/YmkfJ06UT4U/hqdefault.jpg",
-    coverImageReel: `${COVERS}/built-flappy-bird-from-scratch-in-react-native-reel.png`,
-    coverImageOg: `${COVERS}/built-flappy-bird-from-scratch-in-react-native-og.png`,
-    coverImagePin: `${COVERS}/built-flappy-bird-from-scratch-in-react-native-pin.png`,
     technologies: [
       "React Native",
       "Reanimated",
@@ -756,11 +757,10 @@ Full game code 👉 anwersolangi.com
     category: "Mobile UI",
     description:
       "Built a fully interactive Pizza Ordering UI in React Native 🍕",
+    notes:
+      "Pick a topping and it animates onto the pizza while the price updates as you go. The pizza is drawn with react-native-svg and a radial gradient rather than shipped as an image, so it stays sharp at any size. There's a full order confirmation flow at the end.",
     videoUrl: "https://www.youtube.com/embed/kIl8HJvMjBE",
     coverImage: "https://i.ytimg.com/vi/kIl8HJvMjBE/hqdefault.jpg",
-    coverImageReel: `${COVERS}/built-a-fully-interactive-pizza-ordering-ui-in-react-native-reel.png`,
-    coverImageOg: `${COVERS}/built-a-fully-interactive-pizza-ordering-ui-in-react-native-og.png`,
-    coverImagePin: `${COVERS}/built-a-fully-interactive-pizza-ordering-ui-in-react-native-pin.png`,
     technologies: ["React Native", "TypeScript"],
     views: 1656,
     duration: 17,
@@ -795,11 +795,10 @@ and useState for real-time price management
     category: "Mobile UI",
     description:
       "Built a fully interactive Broadcast Radio UI in React Native 📻",
+    notes:
+      "A vintage broadcast radio drawn entirely with react-native-svg: an AM/FM frequency display, a VU meter that reacts, and dials that turn. No images anywhere, every part is drawn. This took longer than anything else in this list and it was purely for fun.",
     videoUrl: "https://www.youtube.com/embed/iOHvGwu6A_I",
     coverImage: "https://i.ytimg.com/vi/iOHvGwu6A_I/hqdefault.jpg",
-    coverImageReel: `${COVERS}/built-a-fully-interactive-broadcast-radio-ui-in-react-native-reel.png`,
-    coverImageOg: `${COVERS}/built-a-fully-interactive-broadcast-radio-ui-in-react-native-og.png`,
-    coverImagePin: `${COVERS}/built-a-fully-interactive-broadcast-radio-ui-in-react-native-pin.png`,
     technologies: ["React Native", "TypeScript"],
     views: 2135,
     duration: 16,
@@ -833,14 +832,15 @@ Pure React Native. No shortcuts.
     title:
       "Duolingo spent millions building their interactive word translation screen.",
     slug: "duolingo-spent-millions-building-their-interactive-word-tran",
+    // Shorter <title> for search results; the on-page heading keeps `title`.
+    seoTitle: "Duolingo-Style Word Translation Screen in React Native",
     category: "Mobile UI",
     description:
       "Duolingo spent millions building their interactive word translation screen.",
+    notes:
+      "Duolingo's drag-and-drop translation exercise, rebuilt in one file with Reanimated. Word tiles follow your finger, snap into the answer slots, and the remaining tiles reflow around the gap. Live-coded from scratch with hot reload running.",
     videoUrl: "https://www.youtube.com/embed/kyZBjNGSkmE",
     coverImage: "https://i.ytimg.com/vi/kyZBjNGSkmE/hqdefault.jpg",
-    coverImageReel: `${COVERS}/duolingo-spent-millions-building-their-interactive-word-tran-reel.png`,
-    coverImageOg: `${COVERS}/duolingo-spent-millions-building-their-interactive-word-tran-og.png`,
-    coverImagePin: `${COVERS}/duolingo-spent-millions-building-their-interactive-word-tran-pin.png`,
     technologies: ["React Native", "Reanimated", "Gesture Handler"],
     views: 1738,
     duration: 16,
@@ -876,11 +876,10 @@ What app UI should I clone next? Let me know 👇
     slug: "what-if-weather-uis-were-more-satisfying",
     category: "UI/UX",
     description: "What if weather UIs were more satisfying? ☀️",
+    notes:
+      "A weather screen built to answer one question: what if this were satisfying to look at instead of a table of numbers? Same information, arranged so the temperature and the condition land first and everything else waits its turn.",
     videoUrl: "https://www.youtube.com/embed/g398y_5qQvg",
     coverImage: "https://i.ytimg.com/vi/g398y_5qQvg/hqdefault.jpg",
-    coverImageReel: `${COVERS}/what-if-weather-uis-were-more-satisfying-reel.png`,
-    coverImageOg: `${COVERS}/what-if-weather-uis-were-more-satisfying-og.png`,
-    coverImagePin: `${COVERS}/what-if-weather-uis-were-more-satisfying-pin.png`,
     technologies: ["React Native"],
     views: 2159,
     duration: 11,
@@ -908,11 +907,10 @@ What app UI should I clone next? Let me know 👇
     slug: "building-a-neo-brutalism-wallet-ui-in-react-native",
     category: "Mobile UI",
     description: "Building a Neo Brutalism Wallet UI in React Native ⚡️",
+    notes:
+      "A fintech UI that breaks the usual rules on purpose: thick borders, hard shadows, loud colour, none of the restraint Apple's guidelines suggest. I built it to ask whether a wallet has to look minimal to feel trustworthy. Going by the comments, that is still contested.",
     videoUrl: "https://www.youtube.com/embed/My4GWdR_5t4",
     coverImage: "https://i.ytimg.com/vi/My4GWdR_5t4/hqdefault.jpg",
-    coverImageReel: `${COVERS}/building-a-neo-brutalism-wallet-ui-in-react-native-reel.png`,
-    coverImageOg: `${COVERS}/building-a-neo-brutalism-wallet-ui-in-react-native-og.png`,
-    coverImagePin: `${COVERS}/building-a-neo-brutalism-wallet-ui-in-react-native-pin.png`,
     technologies: [
       "React Native",
       "Reanimated",
@@ -953,11 +951,10 @@ More UI experiments coming soon.
     slug: "pure-monochrome-editorial-ui-in-react-native",
     category: "UI/UX",
     description: "Pure Monochrome Editorial UI in React Native",
+    notes:
+      "No colour at all: serif type, divider lines that draw themselves on screen, a slowly rotating circle composition and staggered entrances. The point of the experiment is that hierarchy, not palette, is what makes a screen look designed.",
     videoUrl: "https://www.youtube.com/embed/kBdDbar-3_g",
     coverImage: "https://i.ytimg.com/vi/kBdDbar-3_g/hqdefault.jpg",
-    coverImageReel: `${COVERS}/pure-monochrome-editorial-ui-in-react-native-reel.png`,
-    coverImageOg: `${COVERS}/pure-monochrome-editorial-ui-in-react-native-og.png`,
-    coverImagePin: `${COVERS}/pure-monochrome-editorial-ui-in-react-native-pin.png`,
     technologies: ["React Native"],
     views: 1500,
     duration: 7,
@@ -991,11 +988,10 @@ Design isn’t decoration. It’s intention.
     category: "Creative Coding",
     description:
       "Recreated a Childhood Scenery Drawing Using React Native Skia 🌄",
+    notes:
+      "The scenery drawing everyone made at school, sun and mountains and river and birds, except drawn in code with React Native Skia instead of pencils. A small experiment in how far drawing primitives go, and the most fun I have had with Skia.",
     videoUrl: "https://www.youtube.com/embed/RWDXtFLiJEU",
     coverImage: "https://i.ytimg.com/vi/RWDXtFLiJEU/hqdefault.jpg",
-    coverImageReel: `${COVERS}/recreated-a-childhood-scenery-drawing-using-react-native-ski-reel.png`,
-    coverImageOg: `${COVERS}/recreated-a-childhood-scenery-drawing-using-react-native-ski-og.png`,
-    coverImagePin: `${COVERS}/recreated-a-childhood-scenery-drawing-using-react-native-ski-pin.png`,
     technologies: ["React Native", "React Native Skia"],
     views: 3232,
     duration: 10,
@@ -1026,11 +1022,10 @@ Developers draw differently. 👨‍💻
     slug: "building-a-food-ordering-app-ui-using-react-native",
     category: "Mobile UI",
     description: "Building a Food Ordering App UI using React Native 📱🍔",
+    notes:
+      "A food ordering home screen built at speed, covering the menu, the cart and the order list in one pass. It's the layout most delivery apps share, so it's a useful starting point if you're building one and want the structure before the polish.",
     videoUrl: "https://www.youtube.com/embed/S_VdcURQSg4",
     coverImage: "https://i.ytimg.com/vi/S_VdcURQSg4/hqdefault.jpg",
-    coverImageReel: `${COVERS}/building-a-food-ordering-app-ui-using-react-native-reel.png`,
-    coverImageOg: `${COVERS}/building-a-food-ordering-app-ui-using-react-native-og.png`,
-    coverImagePin: `${COVERS}/building-a-food-ordering-app-ui-using-react-native-pin.png`,
     technologies: ["React Native"],
     views: 16219,
     duration: 10,
@@ -1066,11 +1061,10 @@ Follow for more React Native tutorials, coding reels, and mobile app development
     slug: "built-a-full-flight-bus-train-booking-ui-in-react-native",
     category: "Mobile UI",
     description: "Built a Full Flight, Bus & Train Booking UI in React Native",
+    notes:
+      "A travel booking screen covering flights, buses and trains together, with working filters, an animated swap between origin and destination, and sort controls over live result cards. One file, no UI kit. Multi-mode search is fiddly to lay out, and this is the version I'd start from.",
     videoUrl: "https://www.youtube.com/embed/IdMe66TKyp0",
     coverImage: "https://i.ytimg.com/vi/IdMe66TKyp0/hqdefault.jpg",
-    coverImageReel: `${COVERS}/built-a-full-flight-bus-train-booking-ui-in-react-native-reel.png`,
-    coverImageOg: `${COVERS}/built-a-full-flight-bus-train-booking-ui-in-react-native-og.png`,
-    coverImagePin: `${COVERS}/built-a-full-flight-bus-train-booking-ui-in-react-native-pin.png`,
     technologies: ["React Native", "Expo"],
     views: 4316,
     duration: 14,
@@ -1099,14 +1093,15 @@ Drop a ✈️ for the full GhostTyper script
     title:
       "Built a Stock Trading UI with Slot-Machine Digit Flip in React Native 📈",
     slug: "built-a-stock-trading-ui-with-slot-machine-digit-flip-in-rea",
+    // Shorter <title> for search results; the on-page heading keeps `title`.
+    seoTitle: "Stock Trading UI with Digit-Flip Ticker in React Native",
     category: "Mobile UI",
     description:
       "Built a Stock Trading UI with Slot-Machine Digit Flip in React Native 📈",
+    notes:
+      "A trading screen where each digit of the price scrolls independently when it changes, like a slot machine reel. No animation library: the flip is built from React Native's own primitives. The effect is small, and it's the only reason anyone remembers the screen.",
     videoUrl: "https://www.youtube.com/embed/J3PA-IDTojc",
     coverImage: "https://i.ytimg.com/vi/J3PA-IDTojc/hqdefault.jpg",
-    coverImageReel: `${COVERS}/built-a-stock-trading-ui-with-slot-machine-digit-flip-in-rea-reel.png`,
-    coverImageOg: `${COVERS}/built-a-stock-trading-ui-with-slot-machine-digit-flip-in-rea-og.png`,
-    coverImagePin: `${COVERS}/built-a-stock-trading-ui-with-slot-machine-digit-flip-in-rea-pin.png`,
     technologies: ["React Native", "Reanimated", "Expo"],
     views: 8155,
     duration: 10,
@@ -1143,11 +1138,10 @@ Stack used:
     category: "Mobile UI",
     description:
       "Built a Full Habit Tracker UI with AI Insights in React Native",
+    notes:
+      "A dark habit tracker with animated SVG rings, streak counters, weekly check-in dots and a live insights card at the bottom. Built on Expo in pure TypeScript, one production-ready file, no UI libraries.",
     videoUrl: "https://www.youtube.com/embed/7NlNdU_-pkw",
     coverImage: "https://i.ytimg.com/vi/7NlNdU_-pkw/hqdefault.jpg",
-    coverImageReel: `${COVERS}/built-a-full-habit-tracker-ui-with-ai-insights-in-react-nati-reel.png`,
-    coverImageOg: `${COVERS}/built-a-full-habit-tracker-ui-with-ai-insights-in-react-nati-og.png`,
-    coverImagePin: `${COVERS}/built-a-full-habit-tracker-ui-with-ai-insights-in-react-nati-pin.png`,
     technologies: ["React Native", "Reanimated", "Expo"],
     views: 6405,
     duration: 11,
@@ -1180,14 +1174,15 @@ Drop a 🔥 if you want the full GhostTyper script.
     title:
       "Building an interactive settings screen with a satisfying dark/light mode toggle ⚡",
     slug: "building-an-interactive-settings-screen-with-a-satisfying-da",
+    // Shorter <title> for search results; the on-page heading keeps `title`.
+    seoTitle: "Settings Screen with Dark/Light Toggle in React Native",
     category: "Mobile UI",
     description:
       "Building an interactive settings screen with a satisfying dark/light mode toggle ⚡",
+    notes:
+      "A settings screen where the dark and light toggle is worth watching: the switch travels, the surface follows it, and the change lands as one motion rather than a flicker. A small detail, but it's the interaction people try twice.",
     videoUrl: "https://www.youtube.com/embed/6IqnxWX524o",
     coverImage: "https://i.ytimg.com/vi/6IqnxWX524o/hqdefault.jpg",
-    coverImageReel: `${COVERS}/building-an-interactive-settings-screen-with-a-satisfying-da-reel.png`,
-    coverImageOg: `${COVERS}/building-an-interactive-settings-screen-with-a-satisfying-da-og.png`,
-    coverImagePin: `${COVERS}/building-an-interactive-settings-screen-with-a-satisfying-da-pin.png`,
     technologies: ["React Native"],
     views: 2850,
     duration: 7,
@@ -1216,11 +1211,10 @@ Small details = better user experience (UX)
     slug: "built-a-premium-crypto-wallet-ui-in-react-native",
     category: "Mobile UI",
     description: "Built a Premium Crypto Wallet UI in React Native ⚡",
+    notes:
+      "A crypto wallet built end to end with hot reload running, from an empty file to a finished screen. Balance card, token list, and the spacing that keeps a dense financial screen readable rather than cramped.",
     videoUrl: "https://www.youtube.com/embed/bqtcX1-Nid0",
     coverImage: "https://i.ytimg.com/vi/bqtcX1-Nid0/hqdefault.jpg",
-    coverImageReel: `${COVERS}/built-a-premium-crypto-wallet-ui-in-react-native-reel.png`,
-    coverImageOg: `${COVERS}/built-a-premium-crypto-wallet-ui-in-react-native-og.png`,
-    coverImagePin: `${COVERS}/built-a-premium-crypto-wallet-ui-in-react-native-pin.png`,
     technologies: ["React Native"],
     views: 2345,
     duration: 28,
@@ -1253,11 +1247,11 @@ Follow for daily UI builds, dev tips & clean mobile designs 🚀
     category: "Creative Coding",
     description:
       "A premium restaurant floor plan on a hardware-accelerated Skia GPU canvas — neon ambient glow from BlurMask, responsive coordinate mapping (table.x × FLOOR_W), and 60fps pulse animations via Reanimated shared values. Dark theme.",
+    notes:
+      "Instead of a flexbox grid, this floor plan renders on a Skia canvas: neon table shapes, glow, and smooth pan and zoom. Flexbox runs out of road when a layout is spatial rather than stacked, and this is what the alternative looks like.",
     videoUrl: "https://youtube.com/shorts/Nvlf1H2TsyQ",
-    coverImage: `${COVERS}/restaurant-floor-plan-ui-react-native-skia-neon-glow-gpu-canvas-reel.png`,
-    coverImageReel: `${COVERS}/restaurant-floor-plan-ui-react-native-skia-neon-glow-gpu-canvas-reel.png`,
-    coverImageOg: `${COVERS}/restaurant-floor-plan-ui-react-native-skia-neon-glow-gpu-canvas-og.png`,
-    coverImagePin: `${COVERS}/restaurant-floor-plan-ui-react-native-skia-neon-glow-gpu-canvas-pin.png`,
+    coverImage: `${COVERS}/restaurant-floor-plan-ui-react-native-skia-neon-glow-gpu-canvas-reel.jpg`,
+    coverImageReel: `${COVERS}/restaurant-floor-plan-ui-react-native-skia-neon-glow-gpu-canvas-reel.jpg`,
     technologies: [
       "React Native",
       "React Native Skia",
@@ -1328,11 +1322,11 @@ The glow opacity pulses using a Reanimated shared value driven by \`withRepeat(w
     category: "Mobile UI",
     description:
       "A Netflix-style streaming home with an Unsplash hero banner, a Continue Watching row with per-show purple progress bars keyed to show ID, a Trending grid with rank badges, and a +My List button with withSpring(1.3).",
+    notes:
+      "A streaming home screen with a cinematic hero banner, continue-watching rows carrying progress bars, trending rank badges and spring-animated tabs. Real images rather than grey placeholders, because a layout only shows its problems once real artwork is in it.",
     videoUrl: "",
-    coverImage: `${COVERS}/netflix-style-ott-streaming-home-react-native-hero-banner-progress-bars-reel.png`,
-    coverImageReel: `${COVERS}/netflix-style-ott-streaming-home-react-native-hero-banner-progress-bars-reel.png`,
-    coverImageOg: `${COVERS}/netflix-style-ott-streaming-home-react-native-hero-banner-progress-bars-og.png`,
-    coverImagePin: `${COVERS}/netflix-style-ott-streaming-home-react-native-hero-banner-progress-bars-pin.png`,
+    coverImage: `${COVERS}/netflix-style-ott-streaming-home-react-native-hero-banner-progress-bars-reel.jpg`,
+    coverImageReel: `${COVERS}/netflix-style-ott-streaming-home-react-native-hero-banner-progress-bars-reel.jpg`,
     technologies: [
       "React Native",
       "Reanimated",
@@ -1407,11 +1401,11 @@ The +My List button has its own \`Animated.View\` wrapper — separate from the 
     category: "Creative Coding",
     description:
       "A premium gym membership card with a 3-layer radial gradient hologram shimmer in Skia Canvas (each at a different phase), a diagonal shine sweep on loop, a 180° card flip via Reanimated perspective, and a full QR code from pure Skia Rect primitives — zero image assets.",
+    notes:
+      "A black-tier membership card with a hologram shimmer that moves with the card and a flip that reveals the QR code. Drawn entirely with Skia and Reanimated: no image assets at all, and the QR is built from primitives.",
     videoUrl: "",
-    coverImage: `${COVERS}/premium-gym-membership-card-react-native-skia-hologram-shimmer-card-flip-reel.png`,
-    coverImageReel: `${COVERS}/premium-gym-membership-card-react-native-skia-hologram-shimmer-card-flip-reel.png`,
-    coverImageOg: `${COVERS}/premium-gym-membership-card-react-native-skia-hologram-shimmer-card-flip-og.png`,
-    coverImagePin: `${COVERS}/premium-gym-membership-card-react-native-skia-hologram-shimmer-card-flip-pin.png`,
+    coverImage: `${COVERS}/premium-gym-membership-card-react-native-skia-hologram-shimmer-card-flip-reel.jpg`,
+    coverImageReel: `${COVERS}/premium-gym-membership-card-react-native-skia-hologram-shimmer-card-flip-reel.jpg`,
     technologies: [
       "React Native",
       "React Native Skia",
@@ -1493,11 +1487,11 @@ The back-side QR is a 15×15 binary grid of Skia Rects — no QR library, no ima
     category: "Mobile UI",
     description:
       "An OLX-style marketplace home with snap-scroll featured hero cards, an 8-icon category grid, a heart that springs to 1.35×, real Unsplash images, and a sticky Post an Ad FAB — ~200 lines of TypeScript, zero UI kit.",
+    notes:
+      "A classifieds marketplace home in a single file: snap-scrolling hero cards, a category grid, a heart that springs when tapped, gradient overlays and a sticky post button. Zero libraries, which is the constraint I set for most of these builds.",
     videoUrl: "",
-    coverImage: `${COVERS}/olx-listing-home-react-native-snap-scroll-cards-heart-spring-reel.png`,
-    coverImageReel: `${COVERS}/olx-listing-home-react-native-snap-scroll-cards-heart-spring-reel.png`,
-    coverImageOg: `${COVERS}/olx-listing-home-react-native-snap-scroll-cards-heart-spring-og.png`,
-    coverImagePin: `${COVERS}/olx-listing-home-react-native-snap-scroll-cards-heart-spring-pin.png`,
+    coverImage: `${COVERS}/olx-listing-home-react-native-snap-scroll-cards-heart-spring-reel.jpg`,
+    coverImageReel: `${COVERS}/olx-listing-home-react-native-snap-scroll-cards-heart-spring-reel.jpg`,
     technologies: [
       "React Native",
       "Reanimated",
@@ -1580,11 +1574,11 @@ Absolutely positioned at \`bottom: insets.bottom + 16\`, always visible above th
     category: "Mobile UI",
     description:
       "A coffee-ordering carousel where cards scale, tilt and fade on swipe, and tap springs one to center. Swipe the cards and they scale, tilt and fade.",
+    notes:
+      "A coffee ordering carousel where the active card holds the centre while its neighbours scale down, rotate and fade. Swipes snap with a spring, a tap pulls a card to the middle, and haptics fire on selection. Size selector and add to cart included.",
     videoUrl: "",
-    coverImage: `${COVERS}/coffee-order-carousel-react-native-swipe-tap-cards-reel.png`,
-    coverImageReel: `${COVERS}/coffee-order-carousel-react-native-swipe-tap-cards-reel.png`,
-    coverImageOg: `${COVERS}/og-image-coffee-order-carousel-in-react-native-swipe-the-cards-warm.png`,
-    coverImagePin: `${COVERS}/pin-coffee-order-carousel-light.png`,
+    coverImage: `${COVERS}/coffee-order-carousel-react-native-swipe-tap-cards-reel.jpg`,
+    coverImageReel: `${COVERS}/coffee-order-carousel-react-native-swipe-tap-cards-reel.jpg`,
     technologies: [
       "React Native",
       "Reanimated",
@@ -1632,11 +1626,11 @@ Single-file TypeScript, zero UI kit, production-ready. Pure Reanimated + Gesture
     category: "Mobile UI",
     description:
       "An Uber-style driver-arriving screen with a car that animates the curved route and a live ETA. The car slides the route and snaps to the pin on arrival.",
+    notes:
+      "An Uber-style arrival screen with no map library at all. The car follows a curved SVG path, the ETA counts down live, and arrival fires a pulse on the pin plus a haptic tap. One TypeScript file.",
     videoUrl: "",
-    coverImage: `${COVERS}/ride-hail-driver-arriving-react-native-animated-route-eta-reel.png`,
-    coverImageReel: `${COVERS}/ride-hail-driver-arriving-react-native-animated-route-eta-reel.png`,
-    coverImageOg: `${COVERS}/ride-hail-driver-arriving-react-native-animated-route-eta-og.png`,
-    coverImagePin: `${COVERS}/ride-hail-driver-arriving-react-native-animated-route-eta-pin.png`,
+    coverImage: `${COVERS}/ride-hail-driver-arriving-react-native-animated-route-eta-reel.jpg`,
+    coverImageReel: `${COVERS}/ride-hail-driver-arriving-react-native-animated-route-eta-reel.jpg`,
     technologies: [
       "React Native",
       "Reanimated",
@@ -1684,11 +1678,11 @@ Single-file TypeScript, zero UI kit, production-ready. Pure Reanimated.
     category: "Mobile UI",
     description:
       "A food-delivery tracker with a step timeline, pulsing active stage, and a bouncing food bag. The bag bounces when the order goes out for delivery.",
+    notes:
+      "An order tracker where the step timeline fills in sequence, the active step pulses, and the food bag sits still until the status flips to out for delivery, then bounces. Timing that bounce to the status change is the whole trick.",
     videoUrl: "",
-    coverImage: `${COVERS}/food-delivery-order-tracking-react-native-step-timeline-bag-bounce-reel.png`,
-    coverImageReel: `${COVERS}/food-delivery-order-tracking-react-native-step-timeline-bag-bounce-reel.png`,
-    coverImageOg: `${COVERS}/food-delivery-order-tracking-react-native-step-timeline-bag-bounce-og.png`,
-    coverImagePin: `${COVERS}/food-delivery-order-tracking-react-native-step-timeline-bag-bounce-pin.png`,
+    coverImage: `${COVERS}/food-delivery-order-tracking-react-native-step-timeline-bag-bounce-reel.jpg`,
+    coverImageReel: `${COVERS}/food-delivery-order-tracking-react-native-step-timeline-bag-bounce-reel.jpg`,
     technologies: [
       "React Native",
       "Reanimated",
@@ -1735,11 +1729,11 @@ Single-file TypeScript, zero UI kit, production-ready. Pure Reanimated.
     category: "Mobile UI",
     description:
       "Dark-themed real estate property detail screen with hero image, interior thumbnails, price drop indicator, spring heart animation, and Schedule Tour CTA. Built with React Native, Expo, and Reanimated v4.",
-    videoUrl: "",
-    coverImage: `${COVERS}/estate-listing-ui-react-native-reel.png`,
-    coverImageReel: `${COVERS}/estate-listing-ui-react-native-reel.png`,
-    coverImageOg: `${COVERS}/estate-listing-ui-react-native-og.png`,
-    coverImagePin: `${COVERS}/estate-listing-ui-react-native-pin.png`,
+    notes:
+      "A dark slate property detail screen: full-bleed hero photo, stacked interior thumbnails, a price drop indicator, the bed, bath and square-foot row, and a working Schedule Tour button. Reanimated springs the heart, haptics fire on each tap, and the photography is real rather than placeholder grey.",
+    videoUrl: "https://www.youtube.com/embed/jApbjhwRpoY",
+    coverImage: `${COVERS}/estate-listing-ui-react-native-reel.jpg`,
+    coverImageReel: `${COVERS}/estate-listing-ui-react-native-reel.jpg`,
     technologies: [
       "React Native",
       "Expo",
@@ -1747,14 +1741,14 @@ Single-file TypeScript, zero UI kit, production-ready. Pure Reanimated.
       "expo-haptics",
       "expo-linear-gradient",
     ],
-    views: 0,
-    duration: 0,
-    publishTime: "",
+    views: 30,
+    duration: 8,
+    publishTime: "2026-06-24T11:42:05-07:00",
     permalink: "",
     links: {
       facebook: "",
       github: "https://github.com/anwersolangi/rn-interface-kit",
-      youtube: "",
+      youtube: "https://www.youtube.com/shorts/jApbjhwRpoY",
       instagram: "",
       tiktok: "",
       pinterest: "",
@@ -1789,11 +1783,11 @@ Dark slate property detail screen with full-bleed hero photo, stacked interior t
     category: "Mobile UI",
     description:
       "A live stock-tracking screen where the chart line draws itself on mount using plain SVG, with a pulsing leading-edge dot and a price that keeps ticking. The chart draws itself the moment the screen loads.",
-    videoUrl: "",
-    coverImage: `${COVERS}/live-stock-chart-react-native-self-drawing-svg-price-ticker-reel.png`,
-    coverImageReel: `${COVERS}/live-stock-chart-react-native-self-drawing-svg-price-ticker-reel.png`,
-    coverImageOg: `${COVERS}/live-stock-chart-react-native-self-drawing-svg-price-ticker-og.png`,
-    coverImagePin: `${COVERS}/live-stock-chart-react-native-self-drawing-svg-price-ticker-pin.png`,
+    notes:
+      "A stock screen where the chart draws itself on mount: the line and its area fill are plain SVG paths revealed progressively, with a pulsing dot riding the leading edge. The price ticks on a fixed interval and the sheet below tracks your position.",
+    videoUrl: "https://www.youtube.com/embed/ZxxG7dFflI0",
+    coverImage: `${COVERS}/live-stock-chart-react-native-self-drawing-svg-price-ticker-reel.jpg`,
+    coverImageReel: `${COVERS}/live-stock-chart-react-native-self-drawing-svg-price-ticker-reel.jpg`,
     technologies: [
       "React Native",
       "react-native-svg",
@@ -1802,9 +1796,9 @@ Dark slate property detail screen with full-bleed hero photo, stacked interior t
       "TypeScript",
       "Expo",
     ],
-    views: 0,
-    duration: 0,
-    publishTime: "",
+    views: 31,
+    duration: 10,
+    publishTime: "2026-07-01T10:57:39-07:00",
     permalink: "",
     links: {
       facebook: "https://www.facebook.com/share/r/17LwcCEapk/",
@@ -1840,11 +1834,11 @@ Single-file TypeScript, zero UI kit, production-ready. Pure SVG and Reanimated.
     slug: "building-an-ai-voice-call-ui-using-react-native",
     category: "Mobile UI",
     description: "Building an AI Voice Call UI using React Native 🎙️🤖",
+    notes:
+      "A live AI voice call screen: a pulsing orb, expanding rings, a waveform that reacts and captions underneath. One TypeScript file built with Reanimated. It's the pattern every voice assistant has landed on, so it's a useful one to have ready.",
     videoUrl: "",
-    coverImage: `${COVERS}/ai-voice-call-ui-using-react-native-reel.png`,
-    coverImageReel: `${COVERS}/ai-voice-call-ui-using-react-native-reel.png`,
-    coverImageOg: `${COVERS}/ai-voice-call-ui-using-react-native-og.png`,
-    coverImagePin: `${COVERS}/ai-voice-call-ui-using-react-native-pin.png`,
+    coverImage: `${COVERS}/ai-voice-call-ui-using-react-native-reel.jpg`,
+    coverImageReel: `${COVERS}/ai-voice-call-ui-using-react-native-reel.jpg`,
     technologies: ["React Native", "EXPO", "Reanimated", "TypeScript"],
     views: 3000,
     duration: 15,

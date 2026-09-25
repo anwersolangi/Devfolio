@@ -6,47 +6,37 @@ import {
   formatReelViews,
   getReelsStats,
 } from "@/lib/reelStats";
-import { Play, ArrowLeft, ArrowRight } from "lucide-react";
+import { Play, ArrowRight } from "lucide-react";
+import { PageShell, PageHeader, SectionHead } from "@/components/PageHeader";
+import { jsonLd } from "@/lib/jsonld";
+import { DEFAULT_OG_IMAGE, breadcrumbJsonLd, stripEmoji, TWITTER_BASE } from "@/lib/seo";
+import { SITE_URL } from "@/data/site";
 
 export const revalidate = 3600;
 
+const DESCRIPTION =
+  "Screen-recorded React Native UI builds by Anwer Solangi, posted weekly on YouTube, Instagram and TikTok — with write-ups and source code.";
+
 export const metadata = {
-  title: "UI Reels & Shorts | Anwer Solangi",
-  description:
-    "Screen-recorded React Native UI builds by Anwer Solangi — posted across YouTube, Instagram, TikTok, Facebook & Pinterest. Now with source code.",
+  title: "React Native UI Reels with Source Code | Anwer Solangi",
+  description: DESCRIPTION,
   alternates: { canonical: "/reels" },
   openGraph: {
-    title: "UI Reels & Shorts | Anwer Solangi",
-    description:
-      "Screen-recorded React Native UI builds — posted across YouTube, Instagram, TikTok, Facebook & Pinterest. Now with source code.",
-    url: "https://anwersolangi.com/reels",
-    siteName: "Anwer Solangi",
+    title: "React Native UI Reels by Anwer Solangi",
+    description: DESCRIPTION,
+    url: "/reels",
     type: "website",
-    images: [
-      {
-        url: "https://anwersolangi.com/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "UI Reels & Shorts by Anwer Solangi",
-      },
-    ],
+    images: [DEFAULT_OG_IMAGE],
   },
   twitter: {
-    card: "summary_large_image",
-    title: "UI Reels & Shorts | Anwer Solangi",
-    description: "Screen-recorded React Native UI builds with full source.",
-    creator: "@anwersolangidev",
+    ...TWITTER_BASE,
+    title: "React Native UI Reels by Anwer Solangi",
+    description: DESCRIPTION,
   },
 };
 
 function cleanTitle(s) {
-  if (!s) return "";
-  return s
-    .replace(
-      /[\u{1F300}-\u{1F9FF}\u{2600}-\u{26FF}\u{2700}-\u{27BF}\u{1F1E6}-\u{1F1FF}]/gu,
-      "",
-    )
-    .trim();
+  return stripEmoji(s || "");
 }
 
 export default async function ReelsPage() {
@@ -56,44 +46,55 @@ export default async function ReelsPage() {
   const featuredStats = featured ? statsBySlug[featured.slug] : null;
 
   return (
-    <main className="min-h-screen pt-28 pb-28 px-6 lg:px-16">
-      <div className="max-w-screen mx-auto">
-        <Link
-          href="/"
-          className="inline-flex items-center gap-2 text-sm text-ink-2 hover:text-ink mb-12 group font-mono"
-        >
-          <ArrowLeft className="w-3.5 h-3.5 transition-transform duration-300 group-hover:-translate-x-1" />
-          back to home
-        </Link>
-
-        <div className="mb-16 max-w-3xl">
-          <div className="font-mono text-[11px] tracking-[0.14em] text-accent">
-            UI SHORTS · {reelsData.length} REELS
-          </div>
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-[-0.045em] leading-[0.95] mt-3 text-ink">
-            Screen-recorded UI builds.{" "}
-            <span className="font-serif italic text-accent font-normal">
-              Now with source.
-            </span>
-          </h1>
-          <p className="text-lg text-ink-2 leading-relaxed mt-6">
-            A weekly notebook of React Native experiments — posted across
-            YouTube, Instagram, TikTok, Facebook & Pinterest. Tap any reel for
-            the full write-up and source code on GitHub.
-          </p>
-        </div>
+    <PageShell>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: jsonLd({
+            "@context": "https://schema.org",
+            "@type": "CollectionPage",
+            name: "React Native UI reels by Anwer Solangi",
+            url: `${SITE_URL}/reels`,
+            description: DESCRIPTION,
+            isPartOf: { "@id": `${SITE_URL}/#website` },
+            about: { "@id": `${SITE_URL}/#person` },
+            mainEntity: {
+              "@type": "ItemList",
+              itemListElement: [...reelsData].reverse().map((reel, i) => ({
+                "@type": "ListItem",
+                position: i + 1,
+                url: `${SITE_URL}/reels/${reel.slug}`,
+                name: stripEmoji(reel.title),
+              })),
+            },
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: jsonLd(
+            breadcrumbJsonLd([
+              { name: "Home", path: "/" },
+              { name: "Reels", path: "/reels" },
+            ]),
+          ),
+        }}
+      />
+      <div>
+        <PageHeader
+          crumbs={[{ label: "Home", href: "/" }, { label: "Reels" }]}
+          title="Screen-recorded UI builds. Now with source."
+          lede="A weekly notebook of React Native experiments — posted across YouTube, Instagram, TikTok, Facebook and Pinterest. Open any reel for the full write-up and source code on GitHub."
+          meta={`${reelsData.length} reels`}
+        />
 
         {featured && (
-          <div className="mb-20">
-            <div className="flex items-center gap-3 mb-5">
-              <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent">
-                ▸ Latest
-              </span>
-              <div className="flex-1 h-px bg-rule" />
-            </div>
+          <div className="mb-16 border-t border-rule pt-8">
+            <SectionHead label="Latest" />
 
             <Link href={`/reels/${featured.slug}`}>
-              <div className="group relative w-full h-[420px] md:h-[560px] rounded-2xl overflow-hidden border border-rule hover:border-accent/40 transition-all duration-500 cursor-pointer">
+              <div className="group relative w-full h-[420px] md:h-[560px] rounded-2xl overflow-hidden border border-rule bg-bg-2 shadow-card hover:border-accent/40 transition-colors duration-300 cursor-pointer">
                 {featured.coverImage ? (
                   <Image
                     src={featured.coverImage}
@@ -111,8 +112,8 @@ export default async function ReelsPage() {
 
                 <div className="absolute inset-0 flex items-end p-8 md:p-14">
                   <div className="max-w-xl">
-                    <div className="flex flex-wrap items-center gap-3 font-mono text-[10px] uppercase tracking-[0.18em] text-accent-2 mb-4">
-                      <span>{featured.category}</span>
+                    <div className="flex flex-wrap items-center gap-3 label-2 mb-4">
+                      <span className="font-medium text-accent">{featured.category}</span>
                       {formatReelViews(featuredStats?.views, {
                         compact: true,
                       }) && (
@@ -132,10 +133,10 @@ export default async function ReelsPage() {
                         <span className="text-accent">live</span>
                       )}
                     </div>
-                    <h2 className="text-3xl md:text-5xl font-bold tracking-[-0.03em] text-ink leading-[1.05] mb-4 transition-transform duration-500 group-hover:-translate-y-1">
+                    <h2 className="text-3xl md:text-[2.75rem] font-semibold tracking-[-0.03em] text-ink leading-[1.08] mb-4">
                       {cleanTitle(featured.title)}
                     </h2>
-                    <p className="text-ink-2 font-light text-base leading-relaxed mb-6 line-clamp-2 max-w-lg">
+                    <p className="text-ink-2 text-[15px] leading-[1.6] mb-6 line-clamp-2 max-w-lg">
                       {featured.description}
                     </p>
                     <div className="flex items-center gap-5 flex-wrap">
@@ -152,7 +153,7 @@ export default async function ReelsPage() {
                         {featured.technologies.slice(0, 3).map((t, i) => (
                           <span
                             key={i}
-                            className="text-[10px] font-mono text-ink-2 px-2 py-1 rounded border border-rule"
+                            className="chip"
                           >
                             {t}
                           </span>
@@ -162,25 +163,13 @@ export default async function ReelsPage() {
                   </div>
                 </div>
 
-                <div
-                  className="absolute top-8 right-10 text-ink/8 font-extrabold select-none leading-none tracking-[-0.05em]"
-                  style={{ fontSize: "8rem" }}
-                >
-                  {String(reelsData.length).padStart(2, "0")}
-                </div>
               </div>
             </Link>
           </div>
         )}
 
-        <div className="flex items-center gap-3 mb-8">
-          <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-accent">
-            ▸ All reels
-          </span>
-          <div className="flex-1 h-px bg-rule" />
-          <span className="text-ink-3 text-xs font-mono tabular-nums">
-            {reelsData.length} total
-          </span>
+        <div className="border-t border-rule pt-8">
+          <SectionHead label="All reels" count={`${reelsData.length} total`} />
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-6">
@@ -194,7 +183,7 @@ export default async function ReelsPage() {
           ))}
         </div>
       </div>
-    </main>
+    </PageShell>
   );
 }
 
@@ -204,14 +193,14 @@ function GridReelCard({ reel, stats, displayIndex }) {
 
   return (
     <Link href={`/reels/${reel.slug}`}>
-      <div className="group relative rounded-2xl overflow-hidden cursor-pointer border border-rule hover:border-accent/40 transition-all duration-500 hover:-translate-y-1 bg-bg-2">
+      <div className="group relative rounded-2xl overflow-hidden cursor-pointer border border-rule hover:border-accent/40 transition-colors duration-200 bg-bg-2">
         <div className="relative aspect-square w-full overflow-hidden">
           {reel.coverImage ? (
             <Image
               src={reel.coverImage}
               alt={cleanTitle(reel.title)}
               fill
-              className="object-cover transition-transform duration-700 group-hover:scale-[1.05]"
+              className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.03]"
               sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
             />
           ) : (
@@ -219,11 +208,11 @@ function GridReelCard({ reel, stats, displayIndex }) {
               className="absolute inset-0 flex items-end p-5 bg-bg-2"
               style={{
                 backgroundImage:
-                  "repeating-linear-gradient(135deg, rgba(244,239,231,0.04) 0 1px, transparent 1px 14px)",
+                  "repeating-linear-gradient(135deg, color-mix(in oklab, var(--ink) 7%, transparent) 0 1px, transparent 1px 14px)",
               }}
             >
-              <div className="font-mono text-[10px] uppercase tracking-[0.18em] text-ink/40">
-                ↘ {cleanTitle(reel.title).slice(0, 40)}…
+              <div className="text-[13px] text-ink-3">
+                {cleanTitle(reel.title).slice(0, 40)}…
               </div>
             </div>
           )}
@@ -235,30 +224,30 @@ function GridReelCard({ reel, stats, displayIndex }) {
           </div>
 
           <div className="absolute top-4 left-4 right-4 flex items-start justify-between">
-            <span className="font-mono text-[9px] uppercase tracking-[0.2em] text-accent-2 bg-bg/60 backdrop-blur-sm border border-rule px-2 py-1 rounded">
+            <span className="chip bg-bg-2/90 backdrop-blur-sm border border-rule">
               {reel.category}
             </span>
-            <span className="text-ink/30 font-extrabold text-xl leading-none select-none tracking-[-0.02em] bg-bg/60 backdrop-blur-sm border border-rule px-2 py-1 rounded">
-              {String(displayIndex).padStart(2, "0")}
+            <span className="chip bg-bg-2/90 backdrop-blur-sm border border-rule tabular-nums">
+              #{String(displayIndex).padStart(2, "0")}
             </span>
           </div>
         </div>
 
         <div className="p-5">
-          <h3 className="text-ink font-semibold text-[15px] leading-[1.3] tracking-[-0.01em] mb-3 transition-transform duration-300 group-hover:-translate-y-0.5 line-clamp-2">
+          <h3 className="text-ink font-medium text-[16px] leading-[1.35] mb-3 transition-colors duration-150 group-hover:text-accent line-clamp-2">
             {cleanTitle(reel.title)}
           </h3>
           <div className="flex flex-wrap gap-1.5 mb-3">
             {reel.technologies.slice(0, 3).map((t, i) => (
               <span
                 key={i}
-                className="text-[10px] font-mono text-ink-2 bg-bg/40 px-2 py-0.5 rounded border border-rule"
+                className="chip"
               >
                 {t}
               </span>
             ))}
           </div>
-          <div className="pt-3 border-t border-rule flex items-center justify-between text-ink-3 text-[10px] font-mono uppercase tracking-wider">
+          <div className="pt-3 border-t border-rule flex items-center justify-between text-ink-3 text-[13px] tabular-nums">
             <span className="inline-flex items-center gap-2">
               {viewsLabel && <span>{viewsLabel} views</span>}
               {durationLabel && <span>{durationLabel}</span>}

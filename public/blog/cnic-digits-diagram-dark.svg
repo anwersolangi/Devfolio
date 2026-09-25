@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="500" viewBox="0 0 1200 500" role="img" aria-label="Breakdown of the CNIC number 42201-2345678-3: first five digits are locality codes, the middle seven are the family number, the last digit encodes gender">
+  <rect width="1200" height="500" fill="#121211"/>
+  <text x="600" y="64" font-family="ui-monospace,Menlo,monospace" font-size="20" letter-spacing="4" fill="rgba(241,240,234,0.38)" text-anchor="middle">A MADE-UP KARACHI CNIC · 42201-2345678-3</text>
+
+  <!-- digit boxes -->
+  <g font-family="ui-monospace,Menlo,monospace" font-size="44" font-weight="600" text-anchor="middle">
+    <!-- locality: 5 digits -->
+    <g fill="#52c48f">
+      <rect x="60" y="120" width="70" height="90" rx="12" fill="#1a1a18" stroke="#52c48f" stroke-width="2.5"/>
+      <rect x="140" y="120" width="70" height="90" rx="12" fill="#1a1a18" stroke="#52c48f" stroke-width="2.5"/>
+      <rect x="220" y="120" width="70" height="90" rx="12" fill="#1a1a18" stroke="#52c48f" stroke-width="2.5"/>
+      <rect x="300" y="120" width="70" height="90" rx="12" fill="#1a1a18" stroke="#52c48f" stroke-width="2.5"/>
+      <rect x="380" y="120" width="70" height="90" rx="12" fill="#1a1a18" stroke="#52c48f" stroke-width="2.5"/>
+      <text x="95" y="180">4</text><text x="175" y="180">2</text><text x="255" y="180">2</text><text x="335" y="180">0</text><text x="415" y="180">1</text>
+    </g>
+    <text x="480" y="180" fill="rgba(241,240,234,0.38)">-</text>
+    <!-- family: 7 digits -->
+    <g fill="#f1f0ea">
+      <rect x="510" y="120" width="70" height="90" rx="12" fill="#1a1a18" stroke="rgba(241,240,234,0.3)" stroke-width="2.5"/>
+      <rect x="590" y="120" width="70" height="90" rx="12" fill="#1a1a18" stroke="rgba(241,240,234,0.3)" stroke-width="2.5"/>
+      <rect x="670" y="120" width="70" height="90" rx="12" fill="#1a1a18" stroke="rgba(241,240,234,0.3)" stroke-width="2.5"/>
+      <rect x="750" y="120" width="70" height="90" rx="12" fill="#1a1a18" stroke="rgba(241,240,234,0.3)" stroke-width="2.5"/>
+      <rect x="830" y="120" width="70" height="90" rx="12" fill="#1a1a18" stroke="rgba(241,240,234,0.3)" stroke-width="2.5"/>
+      <rect x="910" y="120" width="70" height="90" rx="12" fill="#1a1a18" stroke="rgba(241,240,234,0.3)" stroke-width="2.5"/>
+      <rect x="990" y="120" width="70" height="90" rx="12" fill="#1a1a18" stroke="rgba(241,240,234,0.3)" stroke-width="2.5"/>
+      <text x="545" y="180">2</text><text x="625" y="180">3</text><text x="705" y="180">4</text><text x="785" y="180">5</text><text x="865" y="180">6</text><text x="945" y="180">7</text><text x="1025" y="180">8</text>
+    </g>
+    <!-- gender: 1 digit -->
+    <rect x="1080" y="120" width="70" height="90" rx="12" fill="#1a1a18" stroke="#52c48f" stroke-width="2.5"/>
+    <text x="1115" y="180" fill="#52c48f">3</text>
+  </g>
+
+  <!-- braces -->
+  <g fill="none" stroke-width="2.5">
+    <path d="M 60 240 L 60 258 L 450 258 L 450 240" stroke="#52c48f"/>
+    <line x1="255" y1="258" x2="255" y2="280" stroke="#52c48f"/>
+    <path d="M 510 240 L 510 258 L 1060 258 L 1060 240" stroke="rgba(241,240,234,0.3)"/>
+    <line x1="785" y1="258" x2="785" y2="280" stroke="rgba(241,240,234,0.3)"/>
+    <path d="M 1080 240 L 1080 258 L 1150 258 L 1150 240" stroke="#52c48f"/>
+    <line x1="1115" y1="258" x2="1115" y2="280" stroke="#52c48f"/>
+  </g>
+
+  <!-- labels -->
+  <g font-family="system-ui,-apple-system,'Segoe UI',sans-serif" text-anchor="middle">
+    <text x="255" y="312" font-size="24" font-weight="700" fill="#52c48f">LOCALITY</text>
+    <text x="255" y="344" font-size="18" fill="rgba(241,240,234,0.62)">province · division · district</text>
+    <text x="255" y="370" font-size="18" fill="rgba(241,240,234,0.62)">tehsil · union council</text>
+    <text x="255" y="404" font-size="16" font-style="italic" fill="rgba(241,240,234,0.38)">4 = Sindh, 422 = Karachi East</text>
+
+    <text x="785" y="312" font-size="24" font-weight="700" fill="#f1f0ea">FAMILY NUMBER</text>
+    <text x="785" y="344" font-size="18" fill="rgba(241,240,234,0.62)">NADRA&#8217;s internal link to your</text>
+    <text x="785" y="370" font-size="18" fill="rgba(241,240,234,0.62)">family tree — not readable from outside</text>
+
+    <text x="1115" y="312" font-size="24" font-weight="700" fill="#52c48f">GENDER</text>
+    <text x="1115" y="344" font-size="18" fill="rgba(241,240,234,0.62)">odd = male</text>
+    <text x="1115" y="370" font-size="18" fill="rgba(241,240,234,0.62)">even = female</text>
+  </g>
+
+  <text x="600" y="464" font-family="ui-monospace,Menlo,monospace" font-size="16" letter-spacing="3" fill="rgba(241,240,234,0.25)" text-anchor="middle">NO DATE OF BIRTH IS ENCODED ANYWHERE IN THE NUMBER</text>
+</svg>

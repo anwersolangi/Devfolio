@@ -3,6 +3,8 @@ export const howToChooseStack = {
   title: "How to Choose Between React Native, Flutter, and Native in 2026",
   description:
     "A React Native developer's genuinely unbiased framework for picking a mobile stack: the four questions that actually decide it, when Flutter is the right call, and when I tell clients to go fully native.",
+  metaDescription:
+    "A React Native developer's unbiased framework for picking a mobile stack in 2026: the four questions that decide it, and when Flutter or native wins.",
   category: "Guides",
   tags: [
     "react native vs flutter",

@@ -92,7 +92,7 @@ export default function ImageResizerTool() {
             className="max-h-56 w-auto object-contain"
           />
         </div>
-        <span className="font-mono text-[11px] text-ink-3">
+        <span className="text-[13px] text-ink-3">
           original {src.img.naturalWidth}×{src.img.naturalHeight}
         </span>
       </div>

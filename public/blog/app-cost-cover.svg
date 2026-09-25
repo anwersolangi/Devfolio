@@ -1,23 +1,23 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="How much does it cost to build a mobile app in 2026">
-  <rect width="1200" height="630" fill="#0d0c0b"/>
-  <g stroke="rgba(244,239,231,0.06)" stroke-width="1">
+  <rect width="1200" height="630" fill="#f7f7f5"/>
+  <g stroke="rgba(23,23,22,0.06)" stroke-width="1">
     <line x1="0" y1="157" x2="1200" y2="157"/>
     <line x1="0" y1="315" x2="1200" y2="315"/>
     <line x1="0" y1="472" x2="1200" y2="472"/>
   </g>
   <g transform="translate(870,170) rotate(12)">
-    <path d="M 20 0 L 190 0 Q 210 0 210 20 L 210 120 Q 210 140 190 140 L 20 140 Q 0 140 0 120 L 0 20 Q 0 0 20 0 Z" fill="#161514" stroke="rgba(244,239,231,0.18)" stroke-width="3"/>
-    <circle cx="40" cy="35" r="10" fill="none" stroke="#ff6a3d" stroke-width="4"/>
-    <text x="30" y="112" font-family="ui-monospace,Menlo,monospace" font-size="52" font-weight="600" fill="#ff6a3d">$?,???</text>
+    <path d="M 20 0 L 190 0 Q 210 0 210 20 L 210 120 Q 210 140 190 140 L 20 140 Q 0 140 0 120 L 0 20 Q 0 0 20 0 Z" fill="#ffffff" stroke="rgba(23,23,22,0.18)" stroke-width="3"/>
+    <circle cx="40" cy="35" r="10" fill="none" stroke="#0d6b4b" stroke-width="4"/>
+    <text x="30" y="112" font-family="ui-monospace,Menlo,monospace" font-size="52" font-weight="600" fill="#0d6b4b">$?,???</text>
   </g>
-  <g transform="translate(950,360)" font-family="ui-monospace,Menlo,monospace" font-size="20" fill="rgba(244,239,231,0.38)">
+  <g transform="translate(950,360)" font-family="ui-monospace,Menlo,monospace" font-size="20" fill="rgba(23,23,22,0.38)">
     <text x="0" y="0">MVP ........ $3–8K</text>
     <text x="0" y="36">MID ....... $8–25K</text>
     <text x="0" y="72">BIG ........ $25K+</text>
   </g>
-  <text x="80" y="150" font-family="ui-monospace,Menlo,monospace" font-size="22" letter-spacing="6" fill="#ff6a3d">THE BUILD LOG · GUIDES</text>
-  <text x="80" y="272" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="84" font-weight="800" letter-spacing="-3" fill="#f4efe7">What an app</text>
-  <text x="80" y="362" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="84" font-weight="800" letter-spacing="-3" fill="#f4efe7"><tspan fill="#ff6a3d">really costs</tspan> in 2026</text>
-  <text x="80" y="440" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="30" fill="rgba(244,239,231,0.62)">Honest numbers from someone who quotes apps every week.</text>
-  <text x="80" y="566" font-family="ui-monospace,Menlo,monospace" font-size="18" letter-spacing="3" fill="rgba(244,239,231,0.38)">ANWERSOLANGI.COM/BLOG</text>
+  <text x="80" y="150" font-family="ui-monospace,Menlo,monospace" font-size="22" letter-spacing="6" fill="#0d6b4b">THE BUILD LOG · GUIDES</text>
+  <text x="80" y="272" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="84" font-weight="800" letter-spacing="-3" fill="#171716">What an app</text>
+  <text x="80" y="362" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="84" font-weight="800" letter-spacing="-3" fill="#171716"><tspan fill="#0d6b4b">really costs</tspan> in 2026</text>
+  <text x="80" y="440" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="30" fill="rgba(23,23,22,0.62)">Honest numbers from someone who quotes apps every week.</text>
+  <text x="80" y="566" font-family="ui-monospace,Menlo,monospace" font-size="18" letter-spacing="3" fill="rgba(23,23,22,0.38)">ANWERSOLANGI.COM/BLOG</text>
 </svg>

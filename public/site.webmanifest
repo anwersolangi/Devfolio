@@ -1,7 +1,13 @@
 {
-  "name": "Anwer Solangi - Mobile App Developer",
+  "name": "Anwer Solangi — React Native Developer",
   "short_name": "Anwer Solangi",
-  "theme_color": "#0f172a",
-  "background_color": "#0f172a",
-  "display": "standalone"
+  "description": "Senior React Native developer in Karachi, Pakistan. Apps, free browser tools, UI reels and writing.",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#f7f7f5",
+  "background_color": "#f7f7f5",
+  "icons": [
+    { "src": "/icon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "/apple-icon.png", "sizes": "180x180", "type": "image/png" }
+  ]
 }

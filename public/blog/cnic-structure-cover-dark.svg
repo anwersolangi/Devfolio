@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-label="How NADRA structures the CNIC number in Pakistan">
+  <rect width="1200" height="630" fill="#121211"/>
+  <g stroke="rgba(241,240,234,0.06)" stroke-width="1">
+    <line x1="0" y1="157" x2="1200" y2="157"/>
+    <line x1="0" y1="315" x2="1200" y2="315"/>
+    <line x1="0" y1="472" x2="1200" y2="472"/>
+  </g>
+  <g transform="translate(80,430)">
+    <g font-family="ui-monospace,Menlo,monospace" font-size="40" font-weight="600" text-anchor="middle">
+      <rect x="0" y="0" width="260" height="72" rx="12" fill="#1a1a18" stroke="#52c48f" stroke-width="2.5"/>
+      <text x="130" y="49" fill="#52c48f">4 2 2 0 1</text>
+      <rect x="276" y="0" width="360" height="72" rx="12" fill="#1a1a18" stroke="rgba(241,240,234,0.25)" stroke-width="2.5"/>
+      <text x="456" y="49" fill="#f1f0ea">2 3 4 5 6 7 8</text>
+      <rect x="652" y="0" width="88" height="72" rx="12" fill="#1a1a18" stroke="#52c48f" stroke-width="2.5"/>
+      <text x="696" y="49" fill="#52c48f">3</text>
+    </g>
+    <g font-family="ui-monospace,Menlo,monospace" font-size="16" letter-spacing="2" fill="rgba(241,240,234,0.38)" text-anchor="middle">
+      <text x="130" y="104">LOCALITY</text>
+      <text x="456" y="104">FAMILY NO.</text>
+      <text x="696" y="104">GENDER</text>
+    </g>
+  </g>
+  <text x="80" y="150" font-family="ui-monospace,Menlo,monospace" font-size="22" letter-spacing="6" fill="#52c48f">THE BUILD LOG · PAKISTAN</text>
+  <text x="80" y="266" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="80" font-weight="800" letter-spacing="-3" fill="#f1f0ea">How NADRA structures</text>
+  <text x="80" y="352" font-family="system-ui,-apple-system,'Segoe UI',sans-serif" font-size="80" font-weight="800" letter-spacing="-3" fill="#f1f0ea">the <tspan fill="#52c48f">CNIC number</tspan></text>
+  <text x="1120" y="595" text-anchor="end" font-family="ui-monospace,Menlo,monospace" font-size="18" letter-spacing="3" fill="rgba(241,240,234,0.38)">ANWERSOLANGI.COM/BLOG</text>
+</svg>

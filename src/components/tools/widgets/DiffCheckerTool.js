@@ -330,7 +330,7 @@ function EditorPane({ label, value, onChange, accentClass, onFile, fileName }) {
       }`}
     >
       <div className="mb-2 flex flex-wrap items-center gap-2">
-        <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-3">
+        <span className="label-sm">
           {label}
         </span>
         <button
@@ -517,7 +517,7 @@ export default function DiffCheckerTool() {
       <div className="space-y-4 rounded-xl border border-rule bg-bg p-4">
         <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
           <div className="flex items-center gap-2">
-            <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-3">
+            <span className="label-sm">
               View
             </span>
             <Segmented
@@ -531,7 +531,7 @@ export default function DiffCheckerTool() {
             />
           </div>
           <div className="flex items-center gap-2">
-            <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-ink-3">
+            <span className="label-sm">
               Detail
             </span>
             <Segmented
@@ -581,7 +581,7 @@ export default function DiffCheckerTool() {
       </div>
 
       {diff.truncated && (
-        <p className="flex items-start gap-2 text-xs text-[#ff7a7a]">
+        <p className="flex items-start gap-2 text-xs text-bad">
           <AlertTriangle className="mt-0.5 h-3.5 w-3.5 shrink-0" />
           These texts are too large to align line by line, so the changed region
           is shown as a full rewrite. Try comparing a smaller section.
@@ -590,7 +590,7 @@ export default function DiffCheckerTool() {
 
       <div>
         <div className="mb-2 flex flex-wrap items-center gap-2">
-          <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-accent">
+          <span className="label">
             Differences
           </span>
           <span className="flex items-center gap-3 text-[11px] text-ink-3">
@@ -698,7 +698,7 @@ function UnifiedView({ rows }) {
                   line.kind === "add"
                     ? "text-good"
                     : line.kind === "del"
-                      ? "text-[#ff7a7a]"
+                      ? "text-bad"
                       : "text-ink-3"
                 }`}
               >

@@ -8,108 +8,47 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        // Same variable names as before — `font-sans` and `font-mono` keep
-        // working everywhere. We swap the underlying font in layout.js
-        // (Hanken Grotesk → --font-inter, Geist Mono → --font-mono).
-        sans: ["var(--font-inter)", "system-ui", "sans-serif"],
-        heading: ["var(--font-outfit)", "system-ui", "sans-serif"],
-        mono: ["var(--font-mono)", "monospace"],
-        // NEW — italic serif accents used in V1 hero & CTA
-        serif: ["var(--font-instrument-serif)", "Georgia", "serif"],
+        sans: ["var(--font-sans)", "system-ui", "sans-serif"],
+        mono: ["var(--font-mono)", "ui-monospace", "monospace"],
       },
+      // Every colour is a CSS variable from globals.css, so utilities follow
+      // the active theme. Tailwind v4 builds opacity modifiers
+      // (border-accent/40) with color-mix(), which works on variables.
       colors: {
-        // Preserve your existing tokens
         background: "var(--background)",
         foreground: "var(--foreground)",
-        blue: {
-          400: "var(--blue-secondary, #60a5fa)",
-          500: "var(--blue-primary, #3b82f6)",
-          600: "var(--blue-darker, #2563eb)",
-        },
-        gray: {
-          900: "#111827",
-          950: "#030712",
-        },
-        // V1 palette — warm charcoal + orange.
-        // Mirrors the custom properties in globals.css; see the comment there
-        // for why accent / accent-deep / on-accent are separate tokens.
-        bg: "#0d0c0b",
-        "bg-2": "#161514",
-        "bg-3": "#1f1d1b",
-        ink: "#f4efe7",
-        "ink-2": "rgba(244, 239, 231, 0.62)",
-        "ink-3": "rgba(244, 239, 231, 0.38)",
-        rule: "rgba(244, 239, 231, 0.10)",
-        accent: "#ff6a3d",
-        "accent-deep": "#ff6a3d",
-        "accent-2": "#ffb27a",
-        "on-accent": "#1a0a02",
-        "accent-hot": "#fff0dc",
-        good: "#7af0a8",
+        bg: "var(--bg)",
+        "bg-2": "var(--bg-2)",
+        "bg-3": "var(--bg-3)",
+        ink: "var(--ink)",
+        "ink-2": "var(--ink-2)",
+        "ink-3": "var(--ink-3)",
+        rule: "var(--rule)",
+        "rule-2": "var(--rule-2)",
+        accent: "var(--accent)",
+        "accent-deep": "var(--accent-deep)",
+        "accent-tint": "var(--accent-tint)",
+        "on-accent": "var(--on-accent)",
+        // Legacy aliases still referenced by inner pages.
+        "accent-2": "var(--accent-2)",
+        "accent-hot": "var(--accent-hot)",
+        good: "var(--good)",
+        bad: "var(--bad)",
+        bezel: "var(--bezel)",
       },
       letterSpacing: {
-        tightest: "-0.045em",
-        "extra-tight": "-0.035em",
+        tightest: "-0.03em",
+        "extra-tight": "-0.02em",
       },
       maxWidth: {
-        screen: "1440px",
+        screen: "1200px",
+        prose: "42rem",
       },
-      animation: {
-        // ALL your existing animations — preserved
-        gradient: "gradient 6s ease infinite",
-        "gradient-fast": "gradient 3s ease infinite",
-        cursor: "cursor 1s step-end infinite",
-        sparkle: "sparkle 1.5s ease-in-out infinite",
-        "bounce-slow": "bounce 3s ease-in-out infinite",
-        typing: "typing 2s ease-in-out infinite",
-        "fade-in": "fadeIn 0.5s ease-out forwards",
-        float: "float 5s ease-in-out infinite",
-        "pulse-slow": "pulse-slow 3s infinite",
-        "border-beam": "border-beam var(--beam-duration, 14s) infinite linear",
-      },
-      keyframes: {
-        "border-beam": {
-          to: { "offset-distance": "100%" },
-        },
-        gradient: {
-          "0%, 100%": { "background-position": "0% 50%" },
-          "50%": { "background-position": "100% 50%" },
-        },
-        fadeIn: {
-          "0%": { opacity: "0", transform: "translateY(10px)" },
-          "100%": { opacity: "1", transform: "translateY(0)" },
-        },
-        cursor: {
-          "0%, 100%": { opacity: "1" },
-          "50%": { opacity: "0" },
-        },
-        sparkle: {
-          "0%, 100%": { transform: "scale(1)", opacity: "1" },
-          "50%": { transform: "scale(1.2)", opacity: "0.8" },
-        },
-        typing: {
-          "0%": { transform: "translateX(0)" },
-          "50%": { transform: "translateX(150px)" },
-          "100%": { transform: "translateX(0)" },
-        },
-        float: {
-          "0%, 100%": { transform: "translateY(0)" },
-          "50%": { transform: "translateY(-10px)" },
-        },
-        "pulse-slow": {
-          "0%, 100%": { opacity: 0.6 },
-          "50%": { opacity: 1 },
-        },
-      },
-      backgroundSize: {
-        "300%": "300%",
-      },
+      // The only shadows in the system: a resting card and a suspended
+      // object (phone bezel, app icon). Both carry an offset and a soft blur.
       boxShadow: {
-        blue: "var(--blue-glow)",
-        "blue-sm": "var(--blue-glow-sm)",
-      },
-      backdropBlur: {
-        xs: "2px",
+        card: "var(--shadow-card)",
+        object: "var(--shadow-object)",
       },
     },
   },
