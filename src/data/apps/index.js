@@ -8,8 +8,10 @@ import { tapMeal } from "./tapmeal";
 import { memorIQ } from "./memoriq";
 import { docuLensAI } from "./doculensai";
 import { wasiyyah } from "./wasiyyah";
+import { hueTrace } from "./huetrace";
 
 export const APPS_DATA = {
+  huetrace: hueTrace,
   wasiyyah,
   doculensai: docuLensAI,
   nearby,
@@ -23,6 +25,12 @@ export const APPS_DATA = {
 };
 
 export const APPS_LIST = [
+  {
+    slug: hueTrace.slug,
+    name: hueTrace.name,
+    description: hueTrace.description,
+    icon: hueTrace.icon,
+  },
   {
     slug: wasiyyah.slug,
     name: wasiyyah.name,
@@ -87,6 +95,7 @@ export const APPS_LIST = [
 ];
 
 export {
+  hueTrace,
   wasiyyah,
   docuLensAI,
   nearby,

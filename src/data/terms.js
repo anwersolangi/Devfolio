@@ -1,4 +1,109 @@
 export const TERMS_OF_SERVICE = {
+  huetrace: {
+    title: "Terms of Service",
+    lastUpdated: "September 30, 2026",
+    appName: "HueTrace",
+    sections: [
+      {
+        title: "Agreement to Terms",
+        content: `By downloading, installing, or using HueTrace ("the App"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, please do not use the App.
+
+These Terms constitute a legal agreement between you and Anwer Solangi ("I", "me", "the developer").`,
+      },
+      {
+        title: "Description of Service",
+        content: `HueTrace is a color memory game that provides:`,
+        items: [
+          "Four game modes: Classic, Sequence, Blitz and a Daily Challenge",
+          "Scoring of your color matches using a perceptual color-difference formula",
+          "Streaks, achievements, personal bests and a shareable daily result card",
+          "An optional daily reminder, scheduled on your device",
+          "Optional rewarded ads that earn a bonus Daily Challenge retry",
+          "An optional one-time purchase that removes ads and unlocks every theme pack",
+        ],
+        footer:
+          "The App is free to play, works offline and stores all data locally on your device. An internet connection is only used for optional ads and purchases.",
+      },
+      {
+        title: "Not a Vision Test",
+        content: `HueTrace is a game. Its scores reflect how closely you matched a color on your screen, which also depends on your display, its brightness and color settings, and the light around you. The App is not a medical or diagnostic tool and cannot test, measure or diagnose your eyesight or color vision.`,
+        footer:
+          "If you have concerns about your vision, please see an optometrist or eye doctor.",
+      },
+      {
+        title: "License Grant",
+        content: `Subject to your compliance with these Terms, I grant you a limited, non-exclusive, non-transferable, revocable license to:`,
+        items: [
+          "Download and install the App on your personal mobile device",
+          "Play the App for your own personal, non-commercial entertainment",
+          "Share images of your results through your device's share sheet",
+        ],
+      },
+      {
+        title: "Restrictions",
+        content: `You agree NOT to:`,
+        items: [
+          "Copy, modify, or distribute the App or its content",
+          "Reverse engineer, decompile, or disassemble the App",
+          "Attempt to bypass ads, rewards or purchase restrictions",
+          "Use the App for any unlawful purpose",
+        ],
+      },
+      {
+        title: "In-App Purchase",
+        content: `HueTrace is free to download and play, and every game mode is available to everyone. One optional in-app purchase, "Remove Ads + Unlock All Themes", is offered:`,
+        items: [
+          "It is a single one-time payment — not a subscription, and it never renews",
+          "It unlocks every premium theme pack, including any added later, and gives the bonus Daily Challenge retry without an ad",
+          "Themes are cosmetic only and give no gameplay advantage",
+          "Payment is processed by Apple App Store or Google Play, and the price is shown before you buy",
+          "You can restore the purchase on a new device signed in to the same store account with Restore purchase",
+          "Refunds are handled by Apple or Google under their refund policies",
+        ],
+      },
+      {
+        title: "Advertisements",
+        content: `HueTrace shows ads only when you ask for one: you can choose to watch a short rewarded video, served by Google AdMob, to earn a bonus Daily Challenge retry. There are no banner ads and no ads that interrupt play. Where the law requires it, you are asked for consent before any personalized advertising; declining means any ads you choose to watch are non-personalized.`,
+        footer:
+          "The reward is granted once the ad has been watched to the end.",
+      },
+      {
+        title: "Your Data",
+        content: `Your progress is stored only on your device. I never receive a copy, so I cannot recover your scores or streak if you uninstall the App, reset your progress, or lose your device — except where your own device backup restores it.`,
+      },
+      {
+        title: "Intellectual Property",
+        content: `The App, its design, its source code and the HueTrace name and mark are my property and are protected by copyright and other laws.`,
+      },
+      {
+        title: "Disclaimer of Warranties",
+        content: `The App is provided "as is" and "as available", without warranties of any kind, whether express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, or non-infringement.
+
+I do not warrant that the App will be uninterrupted or error-free.`,
+      },
+      {
+        title: "Limitation of Liability",
+        content: `To the maximum extent permitted by law, I shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of data, arising from your use of the App.`,
+        footer:
+          "In every case, my total liability is limited to the amount you paid for the App in the twelve months preceding the claim — which, for free users, is zero.",
+      },
+      {
+        title: "Changes to These Terms",
+        content:
+          'I may update these Terms from time to time. Continued use of the App after changes are posted constitutes acceptance of the revised Terms. The "Last Updated" date above reflects the current version.',
+      },
+      {
+        title: "Governing Law",
+        content:
+          "These Terms are governed by the laws of Pakistan, without regard to conflict-of-law provisions. Nothing here limits any consumer rights you hold under the mandatory law of your own country of residence.",
+      },
+      {
+        title: "Contact Me",
+        content: `If you have any questions about these Terms, please contact me at:`,
+        contactEmail: "me@anwersolangi.com",
+      },
+    ],
+  },
   wasiyyah: {
     title: "Terms of Service",
     lastUpdated: "August 16, 2026",

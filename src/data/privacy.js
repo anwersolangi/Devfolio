@@ -1,4 +1,125 @@
 export const PRIVACY_POLICIES = {
+  huetrace: {
+    title: "Privacy Policy",
+    lastUpdated: "September 30, 2026",
+    appName: "HueTrace",
+    sections: [
+      {
+        title: "Introduction",
+        content: `I ("Anwer Solangi", the developer) am committed to protecting your privacy. This Privacy Policy explains how information is handled when you use the HueTrace mobile application (the "App").
+
+HueTrace is a color memory game. I do not collect, store or share any personal information, and I run no servers that could receive it. Your scores and settings stay on your device. The only data that leaves your phone goes to the advertising and purchase services described below, and only when you choose to watch an optional ad or make a purchase.`,
+      },
+      {
+        title: "Information I Do NOT Collect",
+        content: `HueTrace is designed to be a privacy-first application. I do NOT collect, store, or share:`,
+        items: [
+          "Your name, email address, phone number or any account details",
+          "Your scores, streaks, achievements or game history",
+          "Your location or precise GPS data",
+          "Your payment card or billing details",
+          "Usage analytics, crash reports or behavioral data",
+        ],
+        footer:
+          "There is no account and no sign-up. Everything the App remembers is stored only in its private storage on your device.",
+      },
+      {
+        title: "What Stays on Your Device",
+        content: `The App keeps the following in its private storage on your device, so your progress is there the next time you play:`,
+        items: [
+          "Your scores, personal bests and daily results",
+          "Your streak, streak freezes and achievements",
+          "Your settings: theme, appearance, hints, haptics, colorblind mode and reminder time",
+          "Whether you have bought the one-time unlock",
+        ],
+        footer:
+          "The Daily Challenge is generated from the calendar date on your device, so everyone gets the same five colors without the App contacting any server.",
+      },
+      {
+        title: "Third-Party Services",
+        content: "HueTrace uses the following third-party services:",
+        subsections: [
+          {
+            title: "Google AdMob",
+            content: `HueTrace has one kind of ad, and it is always optional: you can choose to watch a short rewarded video to earn a bonus Daily Challenge retry. There are no banner ads and no ads that interrupt play. Rewarded ads are served by Google AdMob, which may collect certain information as described in Google's Privacy Policy: https://policies.google.com/privacy
+
+AdMob may use:
+• Device advertising identifiers
+• General location (country/region level, not precise GPS)
+• Device information and ad-interaction data for ad personalization
+
+Where the law requires it, you are asked for consent before any personalized advertising. On iOS you are asked separately through Apple's App Tracking Transparency prompt. Declining means any ads you choose to watch are non-personalized. Buying the one-time unlock removes the ads, and this data flow, entirely.`,
+          },
+          {
+            title: "RevenueCat",
+            content: `I use RevenueCat to manage the optional one-time "Remove Ads + Unlock All Themes" purchase. RevenueCat processes:
+• Purchase status
+• Anonymous user identifiers for purchase verification
+• Transaction information necessary to confirm and restore the purchase
+
+RevenueCat never receives your scores, streaks or any gameplay data. Learn more at: https://www.revenuecat.com/privacy`,
+          },
+          {
+            title: "Apple App Store & Google Play",
+            content: `Purchases are processed by Apple or Google depending on your platform. I receive only an anonymous receipt used to unlock the purchase — never your name, card number, or billing address. These transactions are governed by Apple's and Google's respective privacy policies.`,
+          },
+        ],
+      },
+      {
+        title: "Device Backup",
+        content: `If Android's own backup is turned on for your device, Android may include the App's saved progress in your personal Google backup, so it can be restored when you reinstall or move to a new phone. That backup is handled by Google under your Google account settings. I never receive it and have no access to it.`,
+      },
+      {
+        title: "Notifications",
+        content: `If you turn on the optional daily reminder, the App asks for permission to show notifications. Reminders are scheduled on your device and are not sent from a server. Turning the reminder off in Settings cancels them.`,
+      },
+      {
+        title: "Sharing Your Result",
+        content: `When you share a Daily Challenge result, the App creates an image on your device and hands it to your phone's share sheet. Where it goes from there is up to you and the app you choose. I never see it.`,
+      },
+      {
+        title: "Permissions",
+        content: `HueTrace asks for only one permission itself, and only if you turn on reminders. The advertising and purchase services add the others:`,
+        items: [
+          "Notifications — to show the optional daily reminder",
+          "Internet access — used solely to load optional ads and verify purchases",
+          "Network state — used to skip ad requests when you are offline",
+          "Advertising ID — used by AdMob, and refusable through the consent prompt",
+          "Billing — used by Google Play to process the one-time unlock",
+        ],
+        footer:
+          "The App does not request access to your camera, microphone, contacts, location, files or photo library.",
+      },
+      {
+        title: "Your Choices",
+        content: `You have complete control over your data:`,
+        items: [
+          "Clear your bests, streak, achievements and history from Settings → Reset progress",
+          "Uninstall the App to remove everything stored locally",
+          "Turn reminders on or off at any time in Settings",
+          "Never watch an ad — they are only ever shown when you ask for a bonus retry",
+          "Reset or delete your advertising identifier in your device settings",
+          "Buy the one-time unlock to remove ads entirely",
+          "Play fully offline — an internet connection is only ever used for ads and purchases",
+        ],
+      },
+      {
+        title: "Children's Privacy",
+        content:
+          "HueTrace is suitable for all ages. I collect no personal information from anyone, including children under 13. Any data handled by Google AdMob, RevenueCat, Apple or Google is limited to what is described above.",
+      },
+      {
+        title: "Changes to This Policy",
+        content:
+          'I may update this Privacy Policy from time to time. I will post the new Privacy Policy on this page, update the "Last Updated" date, and note significant changes in the App\'s release notes.',
+      },
+      {
+        title: "Contact Me",
+        content: `If you have any questions about this Privacy Policy, please contact me at:`,
+        contactEmail: "me@anwersolangi.com",
+      },
+    ],
+  },
   wasiyyah: {
     title: "Privacy Policy",
     lastUpdated: "August 16, 2026",

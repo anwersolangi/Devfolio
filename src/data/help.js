@@ -1,4 +1,121 @@
 export const HELP_CONTENT = {
+  huetrace: {
+    title: "Help & Support",
+    appName: "HueTrace",
+    supportEmail: "me@anwersolangi.com",
+    description:
+      "Answers about how HueTrace works, how scoring and the Daily Challenge work, and how to get in touch.",
+    faqs: [
+      {
+        question: "How do I play?",
+        answer:
+          "A color fills the screen for a moment, then disappears. Rebuild it from memory: drag the hue ring to pick the color family, then the square to set saturation and brightness. The swatch beside the title shows your pick. Tap Lock it in when it matches what you remember.",
+      },
+      {
+        question: "How is my guess scored?",
+        answer:
+          "Both colors are compared with CIEDE2000, a perceptual color-difference formula, and scored from 0 to 100: Perfect Match (95+), Very Close (85+), Close (70+), Off (45+) and Way Off. The score follows what the eye notices, so a difference you can't see barely costs you anything.",
+      },
+      {
+        question: "What are the four modes?",
+        answer:
+          "Classic gives you one color at a time with three tries. Sequence shows three to seven colors in a row to recall in order. Blitz puts sixty seconds on the clock — close matches win time back, misses cost you some. The Daily Challenge is five colors, the same for everyone on the same date.",
+      },
+      {
+        question: "Why does everyone get the same Daily Challenge?",
+        answer:
+          "The five colors are generated from the date itself, so every device produces the same set with no server involved. You get one attempt a day, and it counts as soon as the first color appears — leaving partway through uses it.",
+      },
+      {
+        question: "How do streaks and streak freezes work?",
+        answer:
+          "Finishing the Daily Challenge extends your streak. If you miss a day, a streak freeze covers it automatically — one freeze per missed day — so a single busy day doesn't reset your progress.",
+      },
+      {
+        question: "Can I play if I'm colorblind?",
+        answer:
+          "Yes. Turn on Settings → Colorblind-friendly colors and every color in a run stays distinguishable with red-green color blindness. The Daily Challenge always uses this mode.",
+      },
+      {
+        question: "Does HueTrace need the internet?",
+        answer:
+          "No. Every mode, including the Daily Challenge, works offline. An internet connection is only used to load an optional ad or to make or restore a purchase.",
+      },
+      {
+        question: "Are there ads?",
+        answer:
+          "Only if you ask for one. You get one Daily Challenge attempt a day, and you can watch a short optional video for a bonus retry. There are no banner ads and nothing interrupts a game.",
+      },
+      {
+        question: "What does Remove Ads + Unlock All Themes include?",
+        answer:
+          "It's a single one-time purchase, not a subscription. It unlocks every premium theme pack, including any added later, and gives you the bonus Daily retry without watching an ad. Themes are cosmetic only, so it never changes how the game plays.",
+      },
+      {
+        question: "Is my data private?",
+        answer:
+          "Yes. There is no account and no analytics, and your scores, streaks and settings are stored only on your device. Optional ads are served by Google AdMob and purchases are verified by RevenueCat; the privacy policy explains exactly what they receive.",
+      },
+    ],
+    troubleshooting: [
+      {
+        title: "Daily Reminder Doesn't Arrive",
+        icon: "🔔",
+        steps: [
+          "Check Settings → Daily reminder is on, and pick a time",
+          "Make sure notifications are allowed for HueTrace in your phone's settings",
+          "Turn off battery optimisation for HueTrace if your phone is aggressive about it",
+          "Open the app once — reminders are planned a week ahead each time it opens",
+          "Remember a reminder is skipped on days you've already played",
+        ],
+      },
+      {
+        title: "My Progress Came Back After Reinstalling",
+        icon: "💾",
+        steps: [
+          "That's Android's device backup restoring your saved progress",
+          "To start fresh, use Settings → Reset progress",
+          "Or clear the app's storage in your phone's App info settings",
+        ],
+      },
+      {
+        title: "My Purchase Isn't Showing",
+        icon: "🛒",
+        steps: [
+          "Make sure you're signed in to the same App Store or Google Play account you bought with",
+          "Connect to the internet, open the unlock screen and tap Restore purchase",
+          "Wait a few minutes if the payment was pending, then try Restore purchase again",
+          "Still missing? Email me with your store order number and I'll sort it out",
+        ],
+      },
+      {
+        title: "Colors Look Different From Expected",
+        icon: "🎨",
+        steps: [
+          "Turn off night light, blue-light filters or reading modes while playing",
+          "Set screen brightness to a comfortable, steady level",
+          "Check your display isn't using a vivid or custom color profile",
+          "Play in even light — glare changes how colors read",
+        ],
+      },
+    ],
+    contactOptions: [
+      {
+        title: "Report a Bug",
+        description: "Found something not working correctly? Let me know!",
+        icon: "🐛",
+        subject: "HueTrace Bug Report",
+        body: "Hi,\n\nI found a bug in HueTrace:\n\nDevice: [Your device model]\niOS/Android Version: [Your version]\nApp Version: [App version]\nMode: [Classic / Sequence / Blitz / Daily]\n\nBug Description:\n[Describe the bug here]\n\nSteps to Reproduce:\n1. \n2. \n3. \n\nExpected Behavior:\n[What should happen]\n\nActual Behavior:\n[What actually happens]\n\nThank you!",
+      },
+      {
+        title: "Suggest a Feature",
+        description: "Have an idea for a mode, a theme or anything else?",
+        icon: "💡",
+        subject: "HueTrace Feature Suggestion",
+        body: "Hi,\n\nI have an idea for HueTrace:\n\n[Describe your idea]\n\nThanks!",
+      },
+    ],
+  },
   wasiyyah: {
     title: "Help & Support",
     appName: "Wasiyyah",

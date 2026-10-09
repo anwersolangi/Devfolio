@@ -36,7 +36,7 @@ The corollary is a standard, not just a tagline: the site is the largest sample 
 
 ## Capabilities and Constraints
 
-- Surfaces: home, `/apps` (11 apps), `/tools` (28), `/blog` (8 posts), `/reels` (41), `/hire-react-native-developer-karachi`, `/extensions/*`, and per-app legal/support subpages.
+- Surfaces: home, `/apps` (12 apps), `/tools` (28), `/blog` (8 posts), `/reels` (41), `/hire-react-native-developer-karachi`, `/extensions/*`, and per-app legal/support subpages.
 - Tools run entirely client-side — image, PDF, crypto and file work never leaves the browser. This is a real privacy property and a reason to keep them ungated.
 - Terminology: **Anwer**, always with an 'e'. Shipped work is "apps", not "projects" — `/projects/*` was deliberately consolidated into `/apps/*` and must not be reintroduced as a parallel concept.
 - Three app page layouts (`layout: 1|2|3`) are shared across apps; a change to one is a change to every app using it.
