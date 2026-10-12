@@ -9,8 +9,10 @@ import { memorIQ } from "./memoriq";
 import { docuLensAI } from "./doculensai";
 import { wasiyyah } from "./wasiyyah";
 import { hueTrace } from "./huetrace";
+import { salahCompass } from "./salah-compass";
 
 export const APPS_DATA = {
+  "salah-compass": salahCompass,
   huetrace: hueTrace,
   wasiyyah,
   doculensai: docuLensAI,
@@ -25,6 +27,12 @@ export const APPS_DATA = {
 };
 
 export const APPS_LIST = [
+  {
+    slug: salahCompass.slug,
+    name: salahCompass.name,
+    description: salahCompass.description,
+    icon: salahCompass.icon,
+  },
   {
     slug: hueTrace.slug,
     name: hueTrace.name,
@@ -95,6 +103,7 @@ export const APPS_LIST = [
 ];
 
 export {
+  salahCompass,
   hueTrace,
   wasiyyah,
   docuLensAI,

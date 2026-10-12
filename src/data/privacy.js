@@ -1,14 +1,132 @@
 export const PRIVACY_POLICIES = {
+  "salah-compass": {
+    title: "Privacy Policy",
+    lastUpdated: "October 12, 2026",
+    appName: "Salah Compass",
+    sections: [
+      {
+        title: "Introduction",
+        content: `I ("Anwer Solangi", the developer) am committed to protecting your privacy. This Privacy Policy explains how information is handled when you use the Salah Compass mobile application (the "App").
+
+Salah Compass shows prayer times, the direction of the Qibla and a collection of duas. It works entirely on your device. I do not collect, store or share any personal information, I run no servers that could receive it, and the App makes no network requests.`,
+      },
+      {
+        title: "Information I Do NOT Collect",
+        content: `Salah Compass is designed to be a privacy-first application. I do NOT collect, store, or share:`,
+        items: [
+          "Your name, email address, phone number or any account details",
+          "Your location, or any history of where you have been",
+          "Your prayer times, alert settings or calculation preferences",
+          "The duas you read, search for or save",
+          "Advertising identifiers",
+          "Usage analytics, crash reports or behavioral data",
+        ],
+        footer:
+          "There is no account and no sign-up. Everything the App remembers is stored only in its private storage on your device.",
+      },
+      {
+        title: "Location",
+        content: `The App uses your phone's location to calculate prayer times and the direction of the Qibla. The calculation happens on your phone.`,
+        items: [
+          "Location is read only while you are using the App, never in the background",
+          "Your most recent location is saved on your phone, so the App keeps working when no new fix is available",
+          "It is never sent to me or to anyone else",
+          "You can skip location access entirely: choose a city from the built-in list, or enter coordinates by hand",
+        ],
+        footer:
+          "The name of your city is looked up in a list that ships inside the App. No address lookup or map service is contacted.",
+      },
+      {
+        title: "What Stays on Your Device",
+        content: `The App keeps the following in its private storage on your device, so it is set up the way you left it:`,
+        items: [
+          "Your last known location, or the city or coordinates you chose",
+          "Your calculation method, Asr method, minute adjustments and Hijri day adjustment",
+          "Your alert style, which prayers alert you, and the reminder time",
+          "Your theme and Arabic text size",
+          "Your favorite duas",
+        ],
+        footer:
+          "None of it is uploaded, and there is no server that could receive it.",
+      },
+      {
+        title: "Notifications",
+        content: `If you turn on prayer alerts, the App asks for permission to show notifications. Alerts are scheduled on your phone by its operating system. No notification service, server or push provider is involved. Turning an alert off cancels it.`,
+      },
+      {
+        title: "Compass Sensors",
+        content: `The Qibla compass reads your phone's motion and magnetic sensors while the Qibla screen is open. The readings are used immediately to turn the dial and are not stored.`,
+      },
+      {
+        title: "Third-Party Services",
+        content: `Salah Compass uses no third-party services. It contains no advertising, analytics, crash-reporting or sign-in software, and nothing in it contacts a server.`,
+      },
+      {
+        title: "Device Backup",
+        content: `If Android's own backup is turned on for your device, Android may include the App's saved settings, favorites and last known location in your personal Google backup, so they can be restored when you reinstall or move to a new phone. That backup is handled by Google under your Google account settings. I never receive it and have no access to it.`,
+      },
+      {
+        title: "Sharing a Dua",
+        content: `When you copy or share a dua, the App hands the text to your phone's clipboard or share sheet. Where it goes from there is up to you and the app you choose. I never see it.`,
+      },
+      {
+        title: "Links That Leave the App",
+        content: `The Settings screen has links to this policy, the Terms of Service, my website, my email address, my Facebook page and my other apps on Google Play. The App itself still makes no network requests: tapping a link hands it to your browser, your email app or the Play Store, and what happens there is covered by that service's own privacy policy.`,
+      },
+      {
+        title: "Permissions",
+        content: `Salah Compass asks you for two permissions, each only when you use the feature that needs it. The rest are declared without a prompt:`,
+        items: [
+          "Location — to calculate prayer times and the Qibla for where you are. Optional",
+          "Notifications — to show prayer alerts, if you turn them on",
+          "Alarms and reminders — so an alert can sound on the exact minute. Newer versions of Android ask you to allow this in system settings",
+          "Run at startup, vibration and audio settings — to restore your alerts after a restart, to vibrate, and to play the adhan preview",
+          "Internet access and network state — declared by the framework the App is built with. The App itself makes no network requests",
+          "Launcher badge permissions — declared by the notification library the App uses. The App never sets a badge",
+        ],
+        footer:
+          "The App does not request access to your camera, microphone, contacts, files or photo library, and it never asks for your location in the background.",
+      },
+      {
+        title: "Your Choices",
+        content: `You have complete control over your data:`,
+        items: [
+          "Use the App without location access, by choosing a city or entering coordinates",
+          "Turn prayer alerts on or off at any time, for each prayer",
+          "Withdraw the location or notification permission in your phone's settings whenever you like",
+          "Uninstall the App to remove everything it stored",
+          "Use the App fully offline, with no internet connection at all",
+        ],
+        footer:
+          "Because nothing leaves your device, there is nothing held by me to delete.",
+      },
+      {
+        title: "Children's Privacy",
+        content:
+          "Salah Compass is suitable for all ages. I collect no personal information from anyone, including children under 13.",
+      },
+      {
+        title: "Changes to This Policy",
+        content:
+          'I may update this Privacy Policy from time to time. I will post the new Privacy Policy on this page, update the "Last Updated" date, and note significant changes in the App\'s release notes.',
+      },
+      {
+        title: "Contact Me",
+        content: `If you have any questions about this Privacy Policy, please contact me at:`,
+        contactEmail: "me@anwersolangi.com",
+      },
+    ],
+  },
   huetrace: {
     title: "Privacy Policy",
-    lastUpdated: "September 30, 2026",
+    lastUpdated: "October 12, 2026",
     appName: "HueTrace",
     sections: [
       {
         title: "Introduction",
         content: `I ("Anwer Solangi", the developer) am committed to protecting your privacy. This Privacy Policy explains how information is handled when you use the HueTrace mobile application (the "App").
 
-HueTrace is a color memory game. I do not collect, store or share any personal information, and I run no servers that could receive it. Your scores and settings stay on your device. The only data that leaves your phone goes to the advertising and purchase services described below, and only when you choose to watch an optional ad or make a purchase.`,
+HueTrace is a color memory game. I do not collect, store or share any personal information, and I run no servers that could receive it. Your scores and settings stay on your device. The only data that leaves your phone goes to the advertising and purchase services described below. The App contacts them when it starts, to prepare the optional ad and to check whether you own the one-time unlock, and again when you watch an ad or make a purchase.`,
       },
       {
         title: "Information I Do NOT Collect",
@@ -48,7 +166,9 @@ AdMob may use:
 • General location (country/region level, not precise GPS)
 • Device information and ad-interaction data for ad personalization
 
-Where the law requires it, you are asked for consent before any personalized advertising. On iOS you are asked separately through Apple's App Tracking Transparency prompt. Declining means any ads you choose to watch are non-personalized. Buying the one-time unlock removes the ads, and this data flow, entirely.`,
+So that a video is ready when you ask for one, the App contacts AdMob each time it starts: it checks whether a consent prompt is needed where you live and loads one ad in the background. This happens even if you never watch an ad.
+
+Where the law requires it, you are asked for consent before any personalized advertising. If ads are offered on iOS, you are also asked separately through Apple's App Tracking Transparency prompt. Declining means any ads you choose to watch are non-personalized. Buying the one-time unlock removes the ads, and the App stops contacting AdMob.`,
           },
           {
             title: "RevenueCat",
@@ -56,6 +176,8 @@ Where the law requires it, you are asked for consent before any personalized adv
 • Purchase status
 • Anonymous user identifiers for purchase verification
 • Transaction information necessary to confirm and restore the purchase
+
+The App contacts RevenueCat each time it starts, to check whether the unlock is active on your store account, and again when you buy or restore it. This check still runs after you have bought the unlock.
 
 RevenueCat never receives your scores, streaks or any gameplay data. Learn more at: https://www.revenuecat.com/privacy`,
           },
@@ -82,7 +204,7 @@ RevenueCat never receives your scores, streaks or any gameplay data. Learn more 
         content: `HueTrace asks for only one permission itself, and only if you turn on reminders. The advertising and purchase services add the others:`,
         items: [
           "Notifications — to show the optional daily reminder",
-          "Internet access — used solely to load optional ads and verify purchases",
+          "Internet access — used solely by AdMob and RevenueCat, to prepare and show the optional ad and to check and verify the purchase",
           "Network state — used to skip ad requests when you are offline",
           "Advertising ID — used by AdMob, and refusable through the consent prompt",
           "Billing — used by Google Play to process the one-time unlock",
@@ -100,13 +222,13 @@ RevenueCat never receives your scores, streaks or any gameplay data. Learn more 
           "Never watch an ad — they are only ever shown when you ask for a bonus retry",
           "Reset or delete your advertising identifier in your device settings",
           "Buy the one-time unlock to remove ads entirely",
-          "Play fully offline — an internet connection is only ever used for ads and purchases",
+          "Play fully offline — an internet connection is only ever used by the advertising and purchase services",
         ],
       },
       {
         title: "Children's Privacy",
         content:
-          "HueTrace is suitable for all ages. I collect no personal information from anyone, including children under 13. Any data handled by Google AdMob, RevenueCat, Apple or Google is limited to what is described above.",
+          "HueTrace has no content unsuitable for any age, but it is not directed at children under 13, and its ads are not set up for a child audience. I collect no personal information from anyone, and I do not knowingly allow the collection of personal information from children under 13. Any data handled by Google AdMob, RevenueCat, Apple or Google is limited to what is described above. If you believe a child has used the App and you have a concern, contact me at the address below.",
       },
       {
         title: "Changes to This Policy",

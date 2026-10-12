@@ -60,7 +60,7 @@ The corollary is a standard, not just a tagline: the site is the largest sample 
 - 10K+ Play Store installs on the single location-based social app. This reconciles with the 100K+ figure: 10K+ is that one app, 100K+ is the lifetime total across all apps. Both stand as written.
 - "Available for freelance · Karachi" is a true, current status — the hero badge is safe to keep making that promise.
 
-**Real assets in the repo:** 11 app records, 28 client-side tools, 8 blog posts, 41 reels with YouTube embeds, hand-authored SVG covers in `public/blog/` (1200×630), and a resume PDF that is deliberately `noindex`.
+**Real assets in the repo:** 12 app records, 28 client-side tools, 8 blog posts, 41 reels with YouTube embeds, hand-authored SVG covers in `public/blog/` (1200×630), and a resume PDF that is deliberately `noindex`.
 
 **Not confirmed — do not restate as fact:** the hero proof row's "FIVERR · 5.0★ · top rated" entry was not affirmed as current. "Top Rated" is a Fiverr seller level that can lapse. Verify before repeating it.
 

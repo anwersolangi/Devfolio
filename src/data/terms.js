@@ -1,4 +1,125 @@
 export const TERMS_OF_SERVICE = {
+  "salah-compass": {
+    title: "Terms of Service",
+    lastUpdated: "October 10, 2026",
+    appName: "Salah Compass",
+    sections: [
+      {
+        title: "Agreement to Terms",
+        content: `By downloading, installing, or using Salah Compass ("the App"), you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, please do not use the App.
+
+These Terms constitute a legal agreement between you and Anwer Solangi ("I", "me", "the developer").`,
+      },
+      {
+        title: "Description of Service",
+        content: `Salah Compass is an offline prayer companion that provides:`,
+        items: [
+          "Prayer times calculated on your device for your location, a city you choose, or coordinates you enter",
+          "Eleven calculation methods, Standard or Hanafi Asr, and a minute adjustment for each prayer",
+          "A Qibla compass, with the bearing and the distance to the Kaaba",
+          "Prayer alerts, scheduled on your device, with or without the adhan",
+          "A collection of 40 duas with Arabic text, transliteration, translation and source",
+          "The Hijri date, with a manual day adjustment",
+        ],
+        footer:
+          "The App is free, shows no advertisements, offers no purchases and works without an internet connection. All of its data is stored locally on your device.",
+      },
+      {
+        title: "Prayer Times Are Calculated",
+        content: `This is the most important term in this document. Please read it carefully.
+
+Prayer times in the App are calculated from the position of the sun for your location, using the method you select. Methods differ from one another, local authorities and masjids may add their own margins, and a calculation cannot see your horizon, your terrain or the weather. Close to the polar circles the times are especially approximate, and on days when the sun does not rise or set the App shows none.`,
+        items: [
+          "Check the times against your local masjid or authority, and use the adjustments in Settings to match them",
+          "Take extra care with any time you act on closely, such as the start or end of a fast",
+          "Make sure your phone's location, date, time and time zone are correct, because every time depends on them",
+          "The Hijri date is calculated, and can differ by a day from a local moon sighting",
+        ],
+        footer:
+          "The App is a tool to help you keep your prayers. It is not a religious authority, and it does not replace the guidance of a scholar or your local masjid.",
+      },
+      {
+        title: "The Qibla Compass",
+        content: `The direction the compass shows depends on your phone's sensors and on your location being correct. Metal objects, magnets, phone cases, speakers and electrical equipment can throw a phone's compass off by many degrees, and the App cannot always tell when that has happened.`,
+        items: [
+          "Calibrate when the App asks you to, and keep the phone away from metal",
+          "If a reading looks wrong, compare it with the bearing shown in degrees and with another compass",
+        ],
+        footer:
+          "The bearing in degrees is calculated from your location alone and does not depend on the sensors.",
+      },
+      {
+        title: "Prayer Alerts",
+        content: `Alerts are scheduled on your phone and delivered by its operating system. Battery-saving features, Do Not Disturb, your notification settings or a restart can delay or silence them. The App schedules alerts seven days ahead and renews them each time it is opened, so they stop if the App is not opened for a week.`,
+        footer:
+          "Please do not rely on an alert as your only way of knowing that a prayer time has arrived.",
+      },
+      {
+        title: "The Duas",
+        content: `Each dua is presented with its Arabic text, a transliteration, an English translation and a reference to its source. The transliterations and translations are aids to reading and understanding. They are not a substitute for the Arabic text or for scholarly commentary.`,
+        footer:
+          "If you find a mistake in a text or a reference, please email me with the source so I can correct it.",
+      },
+      {
+        title: "License Grant",
+        content: `Subject to your compliance with these Terms, I grant you a limited, non-exclusive, non-transferable, revocable license to:`,
+        items: [
+          "Download and install the App on your personal mobile device",
+          "Use the App for your own personal, non-commercial purposes",
+          "Copy and share the duas through your device's clipboard and share sheet",
+        ],
+      },
+      {
+        title: "Restrictions",
+        content: `You agree NOT to:`,
+        items: [
+          "Copy, modify, or distribute the App itself",
+          "Reverse engineer, decompile, or disassemble the App",
+          "Present the App's output as a ruling or as certified religious advice",
+          "Use the App for any unlawful purpose",
+        ],
+      },
+      {
+        title: "Your Data",
+        content: `Your settings, favorites and last known location are stored only on your device. I never receive a copy, so I cannot recover them if you uninstall the App or lose your device — except where your own device backup restores them.`,
+      },
+      {
+        title: "Intellectual Property",
+        content: `The App, its design, its source code and the Salah Compass name and mark are my property and are protected by copyright and other laws.
+
+The verses of the Quran and the supplications the App presents are not my property. The Quran text is the Tanzil Project's (tanzil.net). The adhan recording is in the public domain (CC0), and the Arabic typeface, Amiri, is used under the SIL Open Font License.`,
+      },
+      {
+        title: "Disclaimer of Warranties",
+        content: `The App is provided "as is" and "as available", without warranties of any kind, whether express or implied, including but not limited to warranties of merchantability, fitness for a particular purpose, accuracy, or non-infringement.
+
+I do not warrant that the App will be uninterrupted or error-free, or that every time, direction or date it shows will be correct for every place and every day.`,
+      },
+      {
+        title: "Limitation of Liability",
+        content: `To the maximum extent permitted by law, I shall not be liable for any indirect, incidental, special, consequential, or punitive damages, or any loss of data, arising from your use of the App.
+
+This expressly includes any consequence of a prayer time, Qibla direction, date or alert that proves inaccurate or does not arrive.`,
+        footer:
+          "In every case, my total liability is limited to the amount you paid for the App in the twelve months preceding the claim — which, for a free app, is zero.",
+      },
+      {
+        title: "Changes to These Terms",
+        content:
+          'I may update these Terms from time to time. Continued use of the App after changes are posted constitutes acceptance of the revised Terms. The "Last Updated" date above reflects the current version.',
+      },
+      {
+        title: "Governing Law",
+        content:
+          "These Terms are governed by the laws of Pakistan, without regard to conflict-of-law provisions. Nothing here limits any consumer rights you hold under the mandatory law of your own country of residence.",
+      },
+      {
+        title: "Contact Me",
+        content: `If you have any questions about these Terms, please contact me at:`,
+        contactEmail: "me@anwersolangi.com",
+      },
+    ],
+  },
   huetrace: {
     title: "Terms of Service",
     lastUpdated: "September 30, 2026",

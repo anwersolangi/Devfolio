@@ -1,4 +1,157 @@
 export const HELP_CONTENT = {
+  "salah-compass": {
+    title: "Help & Support",
+    appName: "Salah Compass",
+    supportEmail: "me@anwersolangi.com",
+    description:
+      "Answers about how prayer times are calculated, how the Qibla compass and adhan alerts work, and how to get in touch.",
+    faqs: [
+      {
+        question: "How are the prayer times calculated?",
+        answer:
+          "On your phone, from the position of the sun at your location. Each prayer is the moment the sun reaches the angle your calculation method defines. Nothing is downloaded, so the times are there even with no connection.",
+      },
+      {
+        question: "Which calculation method should I choose?",
+        answer:
+          "The one your local masjid or authority follows. Open Settings → Prayer calculation to see all eleven, each with its Fajr and Isha angles and the regions that use it. If you are not sure, ask at your masjid or compare the app with its printed timetable for a few days.",
+      },
+      {
+        question: "What is the difference between Standard and Hanafi Asr?",
+        answer:
+          "Standard starts Asr when an object's shadow equals its height, plus its shadow at noon. Hanafi starts when the shadow is twice the height, which is later. Choose the one you follow in Settings → Prayer calculation.",
+      },
+      {
+        question: "My masjid's timetable is a few minutes different. Can I match it?",
+        answer:
+          "Yes. Many timetables add a few minutes of precaution. Settings → Minute adjustments lets you move each prayer by up to 30 minutes either way, and the alerts follow the adjusted times.",
+      },
+      {
+        question: "How do I use the Qibla compass?",
+        answer:
+          "Open the Qibla tab and hold the phone flat in your palm, or upright in portrait with the screen facing you. Turn until the Qibla marker sits under the pointer at the top. The app says You are facing the Qibla and the phone gives a short vibration.",
+      },
+      {
+        question: "What are the three alert styles?",
+        answer:
+          "Adhan alarm plays the full adhan on the alarm volume, even when the phone is on silent or vibrate. Adhan notification plays the adhan with an ordinary notification and stays quiet when the phone is on silent. Simple notification uses a standard sound, without the adhan. You choose one style, then switch each prayer on or off.",
+      },
+      {
+        question: "Why did my alerts stop?",
+        answer:
+          "Alerts are scheduled seven days ahead and renewed every time you open the app. If the app stays closed for a week, they run out until you open it again.",
+      },
+      {
+        question: "Does Salah Compass need the internet?",
+        answer:
+          "No. Prayer times, the Qibla, the duas, the city list and the adhan are all on your phone, and the app makes no network requests.",
+      },
+      {
+        question: "Can I use it without giving it my location?",
+        answer:
+          "Yes. Tap Choose a city instead on the first screen, or go to Settings → Location to pick a city or enter exact coordinates. Times are shown in your phone's time zone.",
+      },
+      {
+        question: "Why is the Hijri date a day different from the one announced?",
+        answer:
+          "The app calculates the Hijri date with the tabular Islamic calendar, and a local moon sighting can fall a day either side of it. Settings → Hijri date has a day adjustment to bring it in line.",
+      },
+      {
+        question: "Where do the duas come from?",
+        answer:
+          "From the Quran and the hadith collections. Every dua shows its source, such as the surah and ayah or the collection and number, under the translation. If you spot a mistake in a text or a reference, please tell me.",
+      },
+      {
+        question: "Is my location private?",
+        answer:
+          "Yes. Your location is used on your phone to work out the times and the Qibla, and it is saved only there. There is no account, no analytics and no server behind the app.",
+      },
+    ],
+    troubleshooting: [
+      {
+        title: "Times Don't Match My Masjid",
+        icon: "🕌",
+        steps: [
+          "Check the calculation method in Settings → Prayer calculation",
+          "Check Standard or Hanafi under Asr method — it moves Asr by a long way",
+          "Confirm the city or location shown at the top of the home screen",
+          "Make sure your phone's date, time and time zone are correct",
+          "Use Settings → Minute adjustments to close any gap that remains",
+        ],
+      },
+      {
+        title: "Alerts Are Late or Missing",
+        icon: "🔔",
+        steps: [
+          "Make sure notifications are allowed for Salah Compass in your phone's settings",
+          "Allow Alarms and reminders for the app, so alerts sound on the exact minute",
+          "Turn off battery optimisation for Salah Compass",
+          "Open the app at least once a week — alerts are planned seven days ahead",
+          "Use Send a test alert on the Adhan and notifications screen to hear it",
+        ],
+      },
+      {
+        title: "The Compass Points the Wrong Way",
+        icon: "🧭",
+        steps: [
+          "Move away from metal, magnets, speakers and laptops",
+          "Take off a case with a magnetic clasp or mount plate",
+          "Move the phone in a figure of eight to recalibrate it",
+          "Hold it flat, or upright in portrait — not on its side",
+          "Check the city under the Qibla title, since the bearing depends on it",
+        ],
+      },
+      {
+        title: "My Location Can't Be Found",
+        icon: "📍",
+        steps: [
+          "Check that location is switched on, and allowed for Salah Compass",
+          "Step outside or stand near a window, then tap Try again",
+          "Or tap Choose a city instead and pick the nearest one",
+          "For an exact position, enter coordinates in Settings → Location",
+        ],
+      },
+    ],
+    contactOptions: [
+      {
+        title: "Report a Bug",
+        description: "Found something not working correctly? Let me know!",
+        icon: "🐛",
+        subject: "Salah Compass Bug Report",
+        body: "Hi,\n\nI found a bug in Salah Compass:\n\nDevice: [Your device model]\nAndroid Version: [Your version]\nApp Version: [App version]\n\nBug Description:\n[Describe the bug here]\n\nSteps to Reproduce:\n1. \n2. \n3. \n\nExpected Behavior:\n[What should happen]\n\nActual Behavior:\n[What actually happens]\n\nThank you!",
+      },
+      {
+        title: "Report a Prayer Time Issue",
+        description:
+          "Think a time is wrong? Send the details and I'll check the calculation.",
+        icon: "🕌",
+        subject: "Salah Compass Prayer Time Issue",
+        body: "Assalamu alaikum,\n\nI believe a prayer time in Salah Compass may be incorrect.\n\nCity or coordinates: [e.g. Karachi, or 24.86 N, 67.00 E]\nDate: [The date you checked]\nCalculation method: [e.g. University of Islamic Sciences, Karachi]\nAsr method: [Standard / Hanafi]\nMinute adjustments: [Any you have set]\n\nPrayer: [e.g. Fajr]\nTime the app shows: [e.g. 5:11 AM]\nTime I expected: [e.g. 5:14 AM]\n\nSource for the expected time (masjid timetable, authority, another app):\n[If you have one]\n\nJazak Allah khair.",
+      },
+      {
+        title: "Correct a Dua",
+        description:
+          "Spotted a mistake in a text, a translation or a reference? Please tell me.",
+        icon: "📖",
+        subject: "Salah Compass Dua Correction",
+        body: "Assalamu alaikum,\n\nI'd like to report a correction to a dua in Salah Compass.\n\nDua title: [As shown in the app]\nWhat is wrong: [Arabic text / transliteration / translation / source]\n\nCurrent text:\n[What it says now]\n\nSuggested text:\n[What it should say]\n\nSource:\n[Book, collection and number, or another reference]\n\nJazak Allah khair.",
+      },
+      {
+        title: "Feature Request",
+        description: "Have an idea to make Salah Compass better?",
+        icon: "💡",
+        subject: "Salah Compass Feature Request",
+        body: "Hi,\n\nI have a feature suggestion for Salah Compass:\n\nFeature Description:\n[Describe your idea here]\n\nWhy this would be useful:\n[Explain the benefit]\n\nThank you!",
+      },
+      {
+        title: "General Inquiry",
+        description: "Questions, feedback, or just want to say salaam?",
+        icon: "💬",
+        subject: "Salah Compass Inquiry",
+        body: "Hi,\n\n[Your message here]\n\nThank you!",
+      },
+    ],
+  },
   huetrace: {
     title: "Help & Support",
     appName: "HueTrace",
